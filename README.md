@@ -2,21 +2,31 @@
 
 Fork this repo and then clone it onto your local machine.
 
-`git clone <your fork name>`
-`cd website-2020`
+```
+git clone <your fork name>
+cd website-2020
+```
 
 Set the original repo (ie non fork) as the "remote"
-`git remote add origin https://github.com/thegoldenhack/website-2020.git`
-`git fetch upstream`
-`git checkout master`
+
+```
+git remote add origin https://github.com/thegoldenhack/website-2020.git
+git fetch upstream
+git checkout master
+```
 
 Set the environment variables and fill in the fields in the .env file with the appropriate values (if applicable).
 
-`cp .env.example .env`
+```
+cp .env.example .env
+```
 
 Check out a new branch and get started :)
-`git checkout -b <your branch name>`
-`npm install`
+
+```
+git checkout -b <your branch name>
+npm install
+```
 
 ## Rebasing
 
@@ -26,9 +36,12 @@ Save your progress
 `git stash save`
 
 Get any changes that may have been made on master, and keep your forked branch in sync with the main repo
-`git checkout master`
-`git pull upstream master`
-`git push origin master`
+
+```
+git checkout master
+git pull upstream master
+git push origin master
+```
 
 Go back to the branch you were on
 `git checkout <your branch name>`
@@ -60,9 +73,12 @@ Then hit the link in the console to open a pull request.
 Pull requests must be reviewed and approved by 1 other team mate, at which point I (Dunja) will review it as well. If everything looks good, I'll merge your code to master!
 
 Pull in your changes, and open a new branch
-`git checkout master`
-`git pull upstream master`
-`git checkout -b <your new branch name/>`
+
+```
+git checkout master
+git pull upstream master
+git checkout -b <your new branch name/>
+```
 
 ## `yarn start`
 
