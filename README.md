@@ -10,7 +10,7 @@ cd website-2020
 Set the original repo (ie non fork) as the "remote"
 
 ```
-git remote add origin https://github.com/thegoldenhack/website-2020.git
+git remote add upstream https://github.com/thegoldenhack/website-2020.git
 git fetch upstream
 git checkout master
 ```
@@ -87,3 +87,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+## Dad Joke Central
