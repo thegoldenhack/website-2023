@@ -89,3 +89,15 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 ## Dad Joke Central
+
+
+
+## Challenge Question
+<details>
+  <summary>What programming language does the James Webb Space Telescope use?</summary>
+
+  ```
+  JavaScript 🤣
+  https://news.ycombinator.com/item?id=19737663
+  ```
+</details>
