@@ -95,5 +95,16 @@ Kyle's favourite dad joke:
     Tennish.
 Tailai's Dad Joke that is a pun:
 ["hip", "hip"]
+
 Dhruv's favourite dad joke:
     What do you call someone with no body and no nose? Nobody knows
+
+## Challenge Question
+<details>
+  <summary>What programming language does the James Webb Space Telescope use?</summary>
+
+  ```
+  JavaScript 🤣
+  https://news.ycombinator.com/item?id=19737663
+  ```
+</details>
