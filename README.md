@@ -99,6 +99,9 @@ Tailai's Dad Joke that is a pun:
 Dhruv's favourite dad joke:
     What do you call someone with no body and no nose? Nobody knows
 
+Vipneet's dad joke:
+	Today, my son asked "Can I have a book mark?" and I burst into tears. 11 years old and he still doesn't know my name is Brian.
+
 ## Challenge Question
 <details>
   <summary>What programming language does the James Webb Space Telescope use?</summary>
