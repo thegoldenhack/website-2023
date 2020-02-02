@@ -42,12 +42,12 @@ code {
   max-width: 100%;
 }
 
-.testimonial-body {
+.testimonial-quote {
   font-style: italic;
   line-height: 95%;
   font-size: 1.07rem;
 }
-.testimonial-quotee {
+.testimonial-name {
   text-align: right;
 }
 .testimonial-box {
