@@ -73,5 +73,4 @@ class ForgotPasswordPageChange extends Component {
   }
 }
 
-export { requirements };
 export default ForgotPasswordPageChange;

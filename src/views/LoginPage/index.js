@@ -88,5 +88,4 @@ class LoginPage extends Component {
   }
 }
 
-export { requirements };
 export default LoginPage;

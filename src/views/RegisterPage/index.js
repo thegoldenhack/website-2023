@@ -139,5 +139,4 @@ class RegisterPage extends Component {
   }
 }
 
-export { requirements };
 export default RegisterPage;

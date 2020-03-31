@@ -73,5 +73,4 @@ class ForgotPasswordPageSend extends Component {
   }
 }
 
-export { requirements };
 export default ForgotPasswordPageSend;

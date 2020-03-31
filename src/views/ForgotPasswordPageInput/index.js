@@ -62,5 +62,4 @@ class ForgotPasswordPageInput extends Component {
   }
 }
 
-export { requirements };
 export default ForgotPasswordPageInput;
