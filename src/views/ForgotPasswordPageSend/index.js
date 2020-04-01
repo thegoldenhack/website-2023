@@ -4,11 +4,6 @@ import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
 import ForgotPasswordPageInput from "../ForgotPasswordPageInput";
 
-var requirements = {
-  email: undefined,
-  password: undefined
-};
-
 class ForgotPasswordPageSend extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +23,6 @@ class ForgotPasswordPageSend extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    requirements.email = this.state.email;
     console.log(this.state);
   }
   render() {

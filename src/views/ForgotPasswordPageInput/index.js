@@ -4,10 +4,6 @@ import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
 import ForgotPasswordPageChange from "../ForgotPasswordPageChange";
 
-var requirements = {
-  email: undefined,
-  password: undefined
-};
 
 class ForgotPasswordPageInput extends Component {
   constructor(props) {
@@ -28,7 +24,6 @@ class ForgotPasswordPageInput extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    requirements.code = this.state.code;
     console.log(this.state);
   }
   render() {

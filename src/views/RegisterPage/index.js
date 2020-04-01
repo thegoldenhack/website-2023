@@ -4,14 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 
-var requirements = {
-  firstname: undefined,
-  lastname: undefined,
-  email: undefined,
-  password: undefined,
-  confirmpassword: undefined,
-  termsandconditions: undefined
-};
+
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -37,13 +30,6 @@ class RegisterPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    requirements.firstname = this.state.firstname;
-    requirements.lastname = this.state.lastname;
-    requirements.email = this.state.email;
-    requirements.password = this.state.password;
-    requirements.confirmpassword = this.state.confirmpassword;
-    requirements.termsandconditions = this.state.termsandconditions;
-
     console.log(this.state);
   }
   render() {

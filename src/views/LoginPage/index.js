@@ -5,10 +5,6 @@ import { Link, Route } from "react-router-dom";
 import ForgotPasswordPageSend from "../ForgotPasswordPageSend/index";
 import HomePage from "../HomePage";
 
-var requirements = {
-  email: undefined,
-  password: undefined
-};
 
 class LoginPage extends Component {
   constructor(props) {
@@ -30,8 +26,6 @@ class LoginPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    requirements.email = this.state.email;
-    requirements.password = this.state.password;
     console.log(this.state);
   }
   render() {

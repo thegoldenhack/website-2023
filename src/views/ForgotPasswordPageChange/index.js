@@ -4,10 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 
-var requirements = {
-  password: undefined,
-  confirmpassword: undefined
-};
+
 
 class ForgotPasswordPageChange extends Component {
   constructor(props) {
@@ -28,8 +25,6 @@ class ForgotPasswordPageChange extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    requirements.password = this.state.code;
-    requirements.confirmpassword = this.state.confirmpassword;
     console.log(this.state);
   }
   render() {
