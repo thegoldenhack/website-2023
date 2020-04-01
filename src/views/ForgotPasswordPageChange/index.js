@@ -2,16 +2,15 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
-import ForgotPasswordPageSend from "../ForgotPasswordPageSend/index";
-import HomePage from "../HomePage";
+import LoginPage from "../LoginPage";
 
 
-class LoginPage extends Component {
+
+class ForgotPasswordPageChange extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: undefined,
-      password: undefined
+      code: undefined
     };
   }
 
@@ -31,55 +30,42 @@ class LoginPage extends Component {
   render() {
     return (
       <Form className="inputForm">
-        <Form.Group controlId="inputForm.email">
-          <Form.Label>Email</Form.Label>
+        <Form.Group controlId="inputForm.code">
+          <Form.Label>Password</Form.Label>
           <Form.Control
             required
-            name="email"
-            type="email"
+            name="password"
+            type="password"
             placeholder=""
             onChange={this.handleChange}
           />
         </Form.Group>
-        <Form.Group controlId="inputForm.password">
-          <Form.Label>Password</Form.Label>
+        <Form.Group controlId="inputForm.code">
+          <Form.Label>Confirm Password</Form.Label>
           <Form.Control
-            name="password"
             required
+            name="confirmpassword"
             type="password"
             placeholder=""
             onChange={this.handleChange}
           />
         </Form.Group>
         <Button
-          className="submit-btn"
-          variant="success"
-          type="submit"
-          onClick={this.handleSubmit.bind(this)}
-        >
-          <Link className="btn-link" to="/login">
-            Login
-          </Link>
-        </Button>
-        <Route path="/">
-          <HomePage />
-        </Route>
-        <Button
-          className="submit-btn"
+          className="move=btn"
           variant="success"
           type="submit"
           onClick={this.handleSubmit.bind(this)}
         >
           <Link className="btn-link" to="/forgotpassword">
-            Forgot Password?
+            Change Password
           </Link>
         </Button>
-        <Route path="/ForgotPasswordPageSend">
-          <ForgotPasswordPageSend />
+        <Route path="/LoginPage">
+          <LoginPage />
         </Route>
       </Form>
     );
   }
 }
 
-export default LoginPage;
+export default ForgotPasswordPageChange;

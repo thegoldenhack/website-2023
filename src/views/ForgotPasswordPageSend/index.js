@@ -2,16 +2,13 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
-import ForgotPasswordPageSend from "../ForgotPasswordPageSend/index";
-import HomePage from "../HomePage";
+import ForgotPasswordPageInput from "../ForgotPasswordPageInput";
 
-
-class LoginPage extends Component {
+class ForgotPasswordPageSend extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: undefined,
-      password: undefined
+      email: undefined
     };
   }
 
@@ -41,16 +38,6 @@ class LoginPage extends Component {
             onChange={this.handleChange}
           />
         </Form.Group>
-        <Form.Group controlId="inputForm.password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            name="password"
-            required
-            type="password"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
         <Button
           className="submit-btn"
           variant="success"
@@ -58,28 +45,26 @@ class LoginPage extends Component {
           onClick={this.handleSubmit.bind(this)}
         >
           <Link className="btn-link" to="/login">
-            Login
+            Send Reset Link
           </Link>
         </Button>
-        <Route path="/">
-          <HomePage />
-        </Route>
+        {/*Add routing for Send Reset Link */}
         <Button
-          className="submit-btn"
+          className="move=btn"
           variant="success"
           type="submit"
           onClick={this.handleSubmit.bind(this)}
         >
           <Link className="btn-link" to="/forgotpassword">
-            Forgot Password?
+            Input Code
           </Link>
         </Button>
-        <Route path="/ForgotPasswordPageSend">
-          <ForgotPasswordPageSend />
+        <Route path="/ForgotPasswordPageInput">
+          <ForgotPasswordPageInput />
         </Route>
       </Form>
     );
   }
 }
 
-export default LoginPage;
+export default ForgotPasswordPageSend;
