@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -5,6 +7,12 @@ import { Link, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 
 
+const poolData = {
+  UserPoolId: 'ENTER_USER_POOL_ID_HERE',
+  ClientId: 'ENTER_CLIENT_ID_HERE'
+};
+
+const UserPool = new CognitoUserPool(poolData);
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -17,19 +25,39 @@ class RegisterPage extends Component {
       confirmpassword: undefined,
       termsandconditions: undefined
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = event => {
-    const { info, value } = event.target;
-
-    this.setState({
-      [info]: value
-    });
+    this.setState({[event.target.name]: event.target.value});
     console.log(this.state);
   };
 
   handleSubmit(event) {
     event.preventDefault();
+    var attributeList = [];
+    var dataEmail ={
+      Name: 'email',
+      Value: this.state.email
+    };
+    var dataPersonalName ={
+      Name: 'name',
+      Value: this.state.firstname
+    };
+    var dataFamilyName = {
+      Name: 'family_name',
+      Value: this.state.lastname
+    };
+    attributeList.push(dataEmail);
+    attributeList.push(dataPersonalName);
+    attributeList.push(dataFamilyName);
+
+    UserPool.signUp(this.state.firstname, this.state.password, attributeList, null, (err, data) => {
+      if (err) console.error(err);
+      console.log(data);
+    });
+    console.log(this.state.firstname);
     console.log(this.state);
   }
   render() {
