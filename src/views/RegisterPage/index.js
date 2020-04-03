@@ -1,10 +1,17 @@
+import { useState } from 'react';
+import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 
+const poolData = {
+  UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
+  ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID
+};
 
+const UserPool = new CognitoUserPool(poolData);
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -20,17 +27,34 @@ class RegisterPage extends Component {
   }
 
   handleChange = event => {
-    const { info, value } = event.target;
-
-    this.setState({
-      [info]: value
-    });
-    console.log(this.state);
+    this.setState({[event.target.name]: event.target.value});
   };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    var attributeList = [];
+    var dataEmail ={
+      Name: 'email',
+      Value: this.state.email
+    };
+    var dataPersonalName ={
+      Name: 'name',
+      Value: this.state.firstname
+    };
+    var dataFamilyName = {
+      Name: 'family_name',
+      Value: this.state.lastname
+    };
+    attributeList.push(dataEmail);
+    attributeList.push(dataPersonalName);
+    attributeList.push(dataFamilyName);
+
+    UserPool.signUp(this.state.firstname, this.state.password, attributeList, null, (err, data) => {
+      if (err){
+        document.getElementById("display_error").innerHTML = err.message;
+        document.getElementById("display_error").style.color = "#ff0000";
+      } 
+    });
   }
   render() {
     return (
@@ -117,6 +141,9 @@ class RegisterPage extends Component {
             Submit
           </Link>
         </Button>
+        <div class = "display-error" id = "display_error">
+
+        </div>
         <Route path="/login">
           <LoginPage />
         </Route>
