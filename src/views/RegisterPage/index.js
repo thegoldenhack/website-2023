@@ -6,10 +6,9 @@ import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 
-
 const poolData = {
-  UserPoolId: 'ENTER_USER_POOL_ID_HERE',
-  ClientId: 'ENTER_CLIENT_ID_HERE'
+  UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
+  ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID
 };
 
 const UserPool = new CognitoUserPool(poolData);
@@ -25,16 +24,13 @@ class RegisterPage extends Component {
       confirmpassword: undefined,
       termsandconditions: undefined
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = event => {
     this.setState({[event.target.name]: event.target.value});
-    console.log(this.state);
   };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     var attributeList = [];
     var dataEmail ={
@@ -54,11 +50,11 @@ class RegisterPage extends Component {
     attributeList.push(dataFamilyName);
 
     UserPool.signUp(this.state.firstname, this.state.password, attributeList, null, (err, data) => {
-      if (err) console.error(err);
-      console.log(data);
+      if (err){
+        document.getElementById("display_error").innerHTML = err.message;
+        document.getElementById("display_error").style.color = "#ff0000";
+      } 
     });
-    console.log(this.state.firstname);
-    console.log(this.state);
   }
   render() {
     return (
@@ -145,6 +141,9 @@ class RegisterPage extends Component {
             Submit
           </Link>
         </Button>
+        <div class = "display-error" id = "display_error">
+
+        </div>
         <Route path="/login">
           <LoginPage />
         </Route>
