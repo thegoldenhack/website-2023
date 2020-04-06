@@ -1,5 +1,4 @@
-import { CognitoUserPool } from "amazon-cognito-identity-js";
-import * as AmazonCognitoIdentity from "amazon-cognito-identity-js";
+import { CognitoUserPool, AuthenticationDetails, CognitoUser } from "amazon-cognito-identity-js";
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -41,7 +40,7 @@ class LoginPage extends Component {
     attributeList.push(dataEmail);
     attributeList.push(dataPassword);
 
-    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
+    var authenticationDetails = new AuthenticationDetails(
       attributeList
     );
 
@@ -50,12 +49,12 @@ class LoginPage extends Component {
       Pool: UserPool
     };
 
-    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    var cognitoUser = new CognitoUser(userData);
 
     cognitoUser.authenticateUser(authenticationDetails, {
       onSuccess: function(result) {
         var accessToken = result.getAccessToken().getJwtToken();
-        console.log(accessToken);
+        localStorage.setItem('accessToken', accessToken);
       },
 
       onFailure: function(err) {
