@@ -112,7 +112,7 @@ class RegisterPage extends Component {
           />
         </Form.Group>
         <Form.Group controlId="inputForm.termsandconditions">
-          <Form.Label>Do you aceept the terms and conditions?</Form.Label>
+          <Form.Label>Do you accept the terms and conditions?</Form.Label>
           <Form.Control
             name="termsandconditions"
             required

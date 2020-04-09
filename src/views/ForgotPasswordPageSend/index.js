@@ -1,8 +1,15 @@
+import { useState } from 'react';
+import AWS from 'aws-sdk'
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
 import ForgotPasswordPageInput from "../ForgotPasswordPageInput";
+
+const awsRegion = process.env.REACT_APP_AWS_REGION
+
+AWS.config.update({region:awsRegion});
+const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
 
 class ForgotPasswordPageSend extends Component {
   constructor(props) {
@@ -13,18 +20,41 @@ class ForgotPasswordPageSend extends Component {
   }
 
   handleChange = event => {
-    const { info, value } = event.target;
-
-    this.setState({
-      [info]: value
-    });
-    console.log(this.state);
+    this.setState({[event.target.name]: event.target.value});
   };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
-  }
+    var dataEmail ={
+      Name: 'email',
+      Value: this.state.email
+    };
+
+    var params = {
+      ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID, 
+      Username: dataEmail.Value
+    };
+
+    cognitoidentityserviceprovider.forgotPassword(params, function(err, data) {
+      if (err) {
+        if (err.code === "MissingRequiredParameter" || err.code === "InvalidParameterException") {
+          document.getElementById("display_error").innerHTML = "Please enter your email in the textbox above.";
+          document.getElementById("display_error").style.color = "#ff0000";
+        }
+        else if (err.code === "LimitExceededException") {
+          document.getElementById("display_error").innerHTML = "You have tried too many times. Please try again later.";
+          document.getElementById("display_error").style.color = "#ff0000";
+        }
+      }
+      else {
+        document.getElementById("display_error").innerHTML = "";
+        this.props.history.push({
+          pathname: '/ForgotPasswordPageInput',
+          email: dataEmail.Value 
+        })
+      }       
+    });
+  };
   render() {
     return (
       <Form className="inputForm">
@@ -44,7 +74,7 @@ class ForgotPasswordPageSend extends Component {
           type="submit"
           onClick={this.handleSubmit.bind(this)}
         >
-          <Link className="btn-link" to="/login">
+          <Link className="btn-link" to="#">
             Send Reset Link
           </Link>
         </Button>
@@ -53,12 +83,12 @@ class ForgotPasswordPageSend extends Component {
           className="move=btn"
           variant="success"
           type="submit"
-          onClick={this.handleSubmit.bind(this)}
         >
-          <Link className="btn-link" to="/forgotpassword">
+          <Link className="btn-link" to="/ForgotPasswordPageInput">
             Input Code
           </Link>
         </Button>
+        <div className="display-error" id="display_error"></div>
         <Route path="/ForgotPasswordPageInput">
           <ForgotPasswordPageInput />
         </Route>
