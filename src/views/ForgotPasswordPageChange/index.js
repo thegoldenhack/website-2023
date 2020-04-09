@@ -59,7 +59,7 @@ class ForgotPasswordPageChange extends Component {
       document.getElementById("display_error").style.color = "#ff0000";
     }  
   }
-  render() {git restore
+  render() {
     return (
       <Form className="inputForm">
         <Form.Group controlId="inputForm.code">
