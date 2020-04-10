@@ -3,7 +3,7 @@ import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Redirect} from "react-router-dom";
 import LoginPage from "../LoginPage";
 
 const poolData = {
@@ -31,6 +31,12 @@ class RegisterPage extends Component {
   };
 
   handleSubmit = event => {
+    var error_flag = 0;
+    if(this.state.email == null || this.state.firstname == null || this.state.lastname == null
+       || this.state.password == null || this.state.confirmpassword == null){
+         error_flag = 1;
+        document.getElementById("display_error").innerHTML = "Not all fields have been filled out.";
+       }
     event.preventDefault();
     var attributeList = [];
     var dataEmail ={
@@ -48,13 +54,17 @@ class RegisterPage extends Component {
     attributeList.push(dataEmail);
     attributeList.push(dataPersonalName);
     attributeList.push(dataFamilyName);
-
     UserPool.signUp(this.state.firstname, this.state.password, attributeList, null, (err, data) => {
       if (err){
-        document.getElementById("display_error").innerHTML = err.message;
-        document.getElementById("display_error").style.color = "#ff0000";
-      } 
+        if(err.message != null && error_flag == 0){
+          error_flag = 1;
+          document.getElementById("display_error").innerHTML = err.message;
+          document.getElementById("display_error").style.color = "#ff0000";
+        }
+      }
+      if(error_flag == 0) this.props.history.push('/');
     });
+   
   }
   render() {
     return (
@@ -104,7 +114,7 @@ class RegisterPage extends Component {
         <Form.Group controlId="inputForm.password">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
-            name="confirm password"
+            name="confirmpassword"
             required
             type="password"
             placeholder=""
@@ -112,7 +122,7 @@ class RegisterPage extends Component {
           />
         </Form.Group>
         <Form.Group controlId="inputForm.termsandconditions">
-          <Form.Label>Do you aceept the terms and conditions?</Form.Label>
+          <Form.Label>Do you accept the terms and conditions?</Form.Label>
           <Form.Control
             name="termsandconditions"
             required
@@ -137,7 +147,7 @@ class RegisterPage extends Component {
           type="submit"
           onClick={this.handleSubmit.bind(this)}
         >
-          <Link className="btn-link" to="/login">
+          <Link className="btn-link">
             Submit
           </Link>
         </Button>
