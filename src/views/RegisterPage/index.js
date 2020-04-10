@@ -79,19 +79,16 @@ class RegisterPage extends Component {
     attributeList.push(dataEmail);
     attributeList.push(dataPersonalName);
     attributeList.push(dataFamilyName);
-    console.log(this.state.terms);
     UserPool.signUp(this.state.firstname, this.state.password, attributeList, null, (err, data) => {
       if (err){
         if(err.message != null && error_flag == 0){
           error_flag = 1;
-          console.log(err.message);
           document.getElementById("display_error").innerHTML = err.message;
           document.getElementById("display_error").style.color = "#ff0000";
         }
       }
       if(error_flag == 0) this.props.history.push('/');
     });
-    console.log(error_flag);
 
    
   }
