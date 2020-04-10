@@ -54,6 +54,7 @@ class RegisterPage extends Component {
 
     event.preventDefault();
     var attributeList = [];
+    
     var dataEmail ={
       Name: 'email',
       Value: this.state.email
