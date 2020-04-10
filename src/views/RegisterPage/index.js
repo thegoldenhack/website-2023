@@ -27,36 +27,26 @@ class RegisterPage extends Component {
   }
 
   handleChange = event => {
-    if(event.target.name == "terms"){
-        if(event.target.checked){
-          this.setState({
-          [event.target.name]: false});
-        }
-        else{
-          this.setState({
-            [event.target.name]: true});
-        }
+    if(event.target.name == "terms"){   
+        this.setState({[event.target.name]: !event.target.checked});
       }
     else{
-      this.setState({[event.target.name]: event.target.value});
+       this.setState({[event.target.name]: event.target.value});
     }
   };
 
   handleSubmit = event => {
     var error_flag = 0;   // if error_flag == 1, then an error in user input is detected.
     if(this.state.email == null || this.state.firstname == null || this.state.lastname == null
-       || this.state.password == null || this.state.confirmpassword == null || this.state.terms == null){
-        error_flag = 1;
-        document.getElementById("display_error").innerHTML = "Not all fields have been filled out.";
-        document.getElementById("display_error").style.color = "#ff0000";
-       }
-    if(this.state.email == "" || this.state.firstname == "" || this.state.lastname == ""
+       || this.state.password == null || this.state.confirmpassword == null || this.state.terms == null ||
+       this.state.email == "" || this.state.firstname == "" || this.state.lastname == ""
       || this.state.password == "" || this.state.confirmpassword == "" || this.state.terms){
         error_flag = 1;
         document.getElementById("display_error").innerHTML = "Not all fields have been filled out.";
         document.getElementById("display_error").style.color = "#ff0000";
-      }
-    if(this.state.password != this.state.confirmpassword){
+       }
+
+    if(this.state.password != this.state.confirmpassword && error_flag == 0){
       error_flag = 1;
       document.getElementById("display_error").innerHTML = "Password fields do not match";
       document.getElementById("display_error").style.color = "#ff0000";
