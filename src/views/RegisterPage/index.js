@@ -43,9 +43,7 @@ class RegisterPage extends Component {
   };
 
   handleSubmit = event => {
-    console.log(this.state);
-    var error_flag = 0;
-    console.log(this.state);
+    var error_flag = 0;   // if error_flag == 1, then an error in user input is detected.
     if(this.state.email == null || this.state.firstname == null || this.state.lastname == null
        || this.state.password == null || this.state.confirmpassword == null || this.state.terms == null){
         error_flag = 1;
@@ -58,6 +56,12 @@ class RegisterPage extends Component {
         document.getElementById("display_error").innerHTML = "Not all fields have been filled out.";
         document.getElementById("display_error").style.color = "#ff0000";
       }
+    if(this.state.password != this.state.confirmpassword){
+      error_flag = 1;
+      document.getElementById("display_error").innerHTML = "Password fields do not match";
+      document.getElementById("display_error").style.color = "#ff0000";
+    }
+
     event.preventDefault();
     var attributeList = [];
     var dataEmail ={
@@ -147,9 +151,8 @@ class RegisterPage extends Component {
           />
         </Form.Group>
         <Form.Group controlId="inputForm.termsandconditions">
-          <Form.Label>By checking the box you accept terms and conditions</Form.Label>
           <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" name ="terms" value ="checked" onChange={this.handleChange}/>
+            <Form.Check type="checkbox" label="By checking the box you accept terms and conditions" name ="terms" value ="checked" onChange={this.handleChange}/>
           </Form.Group>
         </Form.Group>
 
