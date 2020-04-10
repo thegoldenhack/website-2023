@@ -27,18 +27,37 @@ class RegisterPage extends Component {
   }
 
   handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
+    if(event.target.name == "terms"){
+        if(event.target.checked){
+          this.setState({
+          [event.target.name]: false});
+        }
+        else{
+          this.setState({
+            [event.target.name]: true});
+        }
+      }
+    else{
+      this.setState({[event.target.name]: event.target.value});
+    }
   };
 
   handleSubmit = event => {
+    console.log(this.state);
     var error_flag = 0;
     console.log(this.state);
     if(this.state.email == null || this.state.firstname == null || this.state.lastname == null
-       || this.state.password == null || this.state.confirmpassword == null){
-         error_flag = 1;
+       || this.state.password == null || this.state.confirmpassword == null || this.state.terms == null){
+        error_flag = 1;
         document.getElementById("display_error").innerHTML = "Not all fields have been filled out.";
         document.getElementById("display_error").style.color = "#ff0000";
        }
+    if(this.state.email == "" || this.state.firstname == "" || this.state.lastname == ""
+      || this.state.password == "" || this.state.confirmpassword == "" || this.state.terms){
+        error_flag = 1;
+        document.getElementById("display_error").innerHTML = "Not all fields have been filled out.";
+        document.getElementById("display_error").style.color = "#ff0000";
+      }
     event.preventDefault();
     var attributeList = [];
     var dataEmail ={
@@ -128,20 +147,10 @@ class RegisterPage extends Component {
           />
         </Form.Group>
         <Form.Group controlId="inputForm.termsandconditions">
-          <Form.Label>Do you accept the terms and conditions?</Form.Label>
-          <Form.Check
-            inline
-            disables
-            name = "yesterms"
-            className="radio-btn"
-            label="Yes"
-            type="radio"
-            id="yesTC"
-            value = "Yes"
-            onChange={this.handleChange}
-       
-          />
-          <Form.Check inline disables value = "No" label="No" type="radio" id="noTC" name = "noterms" onChange={this.handleChange}/>
+          <Form.Label>By checking the box you accept terms and conditions</Form.Label>
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="Check me out" name ="terms" value ="checked" onChange={this.handleChange}/>
+          </Form.Group>
         </Form.Group>
 
         <Button
