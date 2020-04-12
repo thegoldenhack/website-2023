@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
 import ForgotPasswordPageChange from "../ForgotPasswordPageChange";
 
-
 class ForgotPasswordPageInput extends Component {
   constructor(props) {
     super(props);
@@ -14,18 +13,24 @@ class ForgotPasswordPageInput extends Component {
   }
 
   handleChange = event => {
-    const { info, value } = event.target;
-
-    this.setState({
-      [info]: value
-    });
-    console.log(this.state);
+    this.setState({[event.target.name]: event.target.value});
   };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
-  }
+    var dataCode ={
+      Name: 'code',
+      Value: this.state.code
+    };
+
+    const { email } = this.props.location;
+
+    this.props.history.push({
+      pathname: '/forgotpasswordpagechange',
+      code: dataCode.Value,
+      email: email
+    });
+  };
   render() {
     return (
       <Form className="inputForm">
@@ -45,11 +50,12 @@ class ForgotPasswordPageInput extends Component {
           type="submit"
           onClick={this.handleSubmit.bind(this)}
         >
-          <Link className="btn-link" to="/forgotpassword">
+          <Link className="btn-link" to="/forgotpasswordpagechange">
             Reset Password
           </Link>
         </Button>
-        <Route path="/ForgotPasswordPageChange">
+        <div className="display-error" id="display_error"></div>
+        <Route path="/forgotpasswordpagechange">
           <ForgotPasswordPageChange />
         </Route>
       </Form>
