@@ -3,7 +3,7 @@ import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Redirect} from "react-router-dom";
 import LoginPage from "../LoginPage";
 
 const poolData = {
@@ -27,12 +27,34 @@ class RegisterPage extends Component {
   }
 
   handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
+    if(event.target.name == "terms"){   
+        this.setState({[event.target.name]: !event.target.checked});
+      }
+    else{
+       this.setState({[event.target.name]: event.target.value});
+    }
   };
 
   handleSubmit = event => {
+    var error_flag = 0;   // if error_flag == 1, then an error in user input is detected.
+    if(this.state.email == null || this.state.firstname == null || this.state.lastname == null
+       || this.state.password == null || this.state.confirmpassword == null || this.state.terms == null ||
+       this.state.email == "" || this.state.firstname == "" || this.state.lastname == ""
+      || this.state.password == "" || this.state.confirmpassword == "" || this.state.terms){
+        error_flag = 1;
+        document.getElementById("display_error").innerHTML = "Not all fields have been filled out.";
+        document.getElementById("display_error").style.color = "#ff0000";
+       }
+
+    if(this.state.password != this.state.confirmpassword && error_flag == 0){
+      error_flag = 1;
+      document.getElementById("display_error").innerHTML = "Password fields do not match";
+      document.getElementById("display_error").style.color = "#ff0000";
+    }
+
     event.preventDefault();
     var attributeList = [];
+    
     var dataEmail ={
       Name: 'email',
       Value: this.state.email
@@ -48,13 +70,18 @@ class RegisterPage extends Component {
     attributeList.push(dataEmail);
     attributeList.push(dataPersonalName);
     attributeList.push(dataFamilyName);
-
     UserPool.signUp(this.state.firstname, this.state.password, attributeList, null, (err, data) => {
       if (err){
-        document.getElementById("display_error").innerHTML = err.message;
-        document.getElementById("display_error").style.color = "#ff0000";
-      } 
+        if(err.message != null && error_flag == 0){
+          error_flag = 1;
+          document.getElementById("display_error").innerHTML = err.message;
+          document.getElementById("display_error").style.color = "#ff0000";
+        }
+      }
+      if(error_flag == 0) this.props.history.push('/');
     });
+
+   
   }
   render() {
     return (
@@ -104,7 +131,7 @@ class RegisterPage extends Component {
         <Form.Group controlId="inputForm.password">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
-            name="confirm password"
+            name="confirmpassword"
             required
             type="password"
             placeholder=""
@@ -112,23 +139,9 @@ class RegisterPage extends Component {
           />
         </Form.Group>
         <Form.Group controlId="inputForm.termsandconditions">
-          <Form.Label>Do you accept the terms and conditions?</Form.Label>
-          <Form.Control
-            name="termsandconditions"
-            required
-            type="text"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-          <Form.Check
-            inline
-            disables
-            className="radio-btn"
-            label="Yes"
-            type="radio"
-            id="yesTC"
-          />
-          <Form.Check inline disables label="No" type="radio" id="noTC" />
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="By checking the box you accept terms and conditions" name ="terms" value ="checked" onChange={this.handleChange}/>
+          </Form.Group>
         </Form.Group>
 
         <Button
@@ -137,7 +150,7 @@ class RegisterPage extends Component {
           type="submit"
           onClick={this.handleSubmit.bind(this)}
         >
-          <Link className="btn-link" to="/login">
+          <Link className="btn-link">
             Submit
           </Link>
         </Button>
