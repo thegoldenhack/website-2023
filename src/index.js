@@ -20,9 +20,9 @@ const routing = (
       <Route path="/sponsor" component={SponsorshipPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
-      <Route path="/ForgotPasswordPageSend" component={ForgotPasswordPageSend} />
-      <Route path="/ForgotPasswordPageInput" component={ForgotPasswordPageInput} />
-      <Route path="/ForgotPasswordPageChange" component={ForgotPasswordPageChange} />
+      <Route path="/forgotpasswordpagesend" component={ForgotPasswordPageSend} />
+      <Route path="/forgotpasswordpageinput" component={ForgotPasswordPageInput} />
+      <Route path="/forgotpasswordpagechange" component={ForgotPasswordPageChange} />
       <Route component={NotFound} />
     </Switch>
   </Router>

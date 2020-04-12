@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link, Route, Redirect } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import ForgotPasswordPageChange from "../ForgotPasswordPageChange";
 
 class ForgotPasswordPageInput extends Component {
@@ -26,7 +26,7 @@ class ForgotPasswordPageInput extends Component {
     const { email } = this.props.location;
 
     this.props.history.push({
-      pathname: '/ForgotPasswordPageChange',
+      pathname: '/forgotpasswordpagechange',
       code: dataCode.Value,
       email: email
     });
@@ -50,12 +50,12 @@ class ForgotPasswordPageInput extends Component {
           type="submit"
           onClick={this.handleSubmit.bind(this)}
         >
-          <Link className="btn-link" to="/ForgotPasswordPageChange">
+          <Link className="btn-link" to="/forgotpasswordpagechange">
             Reset Password
           </Link>
         </Button>
         <div className="display-error" id="display_error"></div>
-        <Route path="/ForgotPasswordPageChange">
+        <Route path="/forgotpasswordpagechange">
           <ForgotPasswordPageChange />
         </Route>
       </Form>

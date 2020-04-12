@@ -9,7 +9,7 @@ import ForgotPasswordPageInput from "../ForgotPasswordPageInput";
 const awsRegion = process.env.REACT_APP_AWS_REGION
 
 AWS.config.update({region:awsRegion});
-const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
+const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
 
 class ForgotPasswordPageSend extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class ForgotPasswordPageSend extends Component {
       Username: dataEmail.Value
     };
 
-    cognitoidentityserviceprovider.forgotPassword(params, function(err, data) {
+    cognitoIdentityServiceProvider.forgotPassword(params, function(err, data) {
       if (err) {
         if (err.code === "MissingRequiredParameter" || err.code === "InvalidParameterException") {
           document.getElementById("display_error").innerHTML = "Please enter your email in the textbox above.";
@@ -49,7 +49,7 @@ class ForgotPasswordPageSend extends Component {
       else {
         document.getElementById("display_error").innerHTML = "";
         this.props.history.push({
-          pathname: '/ForgotPasswordPageInput',
+          pathname: '/forgotpasswordpageinput',
           email: dataEmail.Value 
         })
       }       
@@ -84,12 +84,12 @@ class ForgotPasswordPageSend extends Component {
           variant="success"
           type="submit"
         >
-          <Link className="btn-link" to="/ForgotPasswordPageInput">
+          <Link className="btn-link" to="/forgotpasswordpageinput">
             Input Code
           </Link>
         </Button>
         <div className="display-error" id="display_error"></div>
-        <Route path="/ForgotPasswordPageInput">
+        <Route path="/forgotpasswordpageinput">
           <ForgotPasswordPageInput />
         </Route>
       </Form>

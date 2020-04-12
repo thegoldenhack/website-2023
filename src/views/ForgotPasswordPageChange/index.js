@@ -8,15 +8,27 @@ import LoginPage from "../LoginPage";
 const awsRegion = process.env.REACT_APP_AWS_REGION
 
 AWS.config.update({region:awsRegion});
-const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
+const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
 
 class ForgotPasswordPageChange extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       password: undefined,
       confirmpassword: undefined
     };
+  }
+
+  handleNoCode = event => {
+    if (this.props.location.code === undefined) {
+      console.log("no code")
+      document.getElementById("inputForm.password").disabled = true;
+      document.getElementById("inputForm.confirmPassword").disabled = true;
+      document.getElementById("display_error").innerHTML = "You haven't requested to change your password! Please click <a href=/forgotpasswordpagesend>here</a> to begin the password reset process."
+      document.getElementById("display_error").style.color = "#ff0000";
+      document.getElementsByClassName("move=btn")[0].disabled = true;
+    }
   }
 
   handleChange = event => {
@@ -45,7 +57,7 @@ class ForgotPasswordPageChange extends Component {
         Password: dataPassword.Value,
         Username: email
       };
-      cognitoidentityserviceprovider.confirmForgotPassword(params, function(err, data) {
+      cognitoIdentityServiceProvider.confirmForgotPassword(params, function(err, data) {
         if (err) {
           document.getElementById("display_error").innerHTML = err;
           document.getElementById("display_error").style.color = "#ff0000";
@@ -61,8 +73,11 @@ class ForgotPasswordPageChange extends Component {
   }
   render() {
     return (
-      <Form className="inputForm">
-        <Form.Group controlId="inputForm.code">
+      <Form 
+        className="inputForm"
+        onPointerMove={this.handleNoCode}
+      >
+        <Form.Group controlId="inputForm.password">
           <Form.Label>Password</Form.Label>
           <Form.Control
             required
@@ -72,7 +87,7 @@ class ForgotPasswordPageChange extends Component {
             onChange={this.handleChange}
           />
         </Form.Group>
-        <Form.Group controlId="inputForm.code">
+        <Form.Group controlId="inputForm.confirmPassword">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             required
