@@ -6,8 +6,6 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link, Route, Redirect } from "react-router-dom";
-import HomePage from "../HomePage";
-import { Dropdown } from "semantic-ui-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
