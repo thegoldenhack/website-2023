@@ -1,5 +1,4 @@
 // Application page
-// Application page
 import { useState } from "react";
 import { CognitoUserPool } from "amazon-cognito-identity-js";
 import React, { Component } from "react";
@@ -11,26 +10,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
 import { SchoolsLVpair } from "./schools.js";
 import {Majors} from './majors.js'
-
-const options = [
-  {
-    value: "American Indian or Alaskan Native",
-    label: "American Indian or Alaskan Native",
-  },
-  { value: "Asian / Pacific Islander", label: "Asian / Pacific Islander" },
-  { value: "Black or African American", label: "Black or African American" },
-  { value: "Hispanic", label: "Hispanic" },
-  { value: "White / Caucasian", label: "White / Caucasian" },
-  { value: "Mixed", label: "Mixed" },
-  { value: "Prefer not to answer", label: "Prefer not to answer" },
-];
-
-const degrees = [
-  { value: "High School", label: "High School" },
-  { value: "Undergraduate", label: "Undergraduate" },
-  { value: "Graduate", label: "Graduate" },
-  { value: "Other", label: "Other" },
-];
+import {ethnicity} from './ethnicity.js'
+import {degrees} from './degrees.js'
 
 
 
@@ -103,9 +84,9 @@ export default class application extends React.Component {
           <Form.Label>Gender</Form.Label>
           <br></br>
           <select>
-            <option value="lime">Female</option>
-            <option value="grapefruit">Male</option>
-            <option value="other">Other</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Other">Other</option>
           </select>
         </Form.Group>
 
@@ -113,7 +94,7 @@ export default class application extends React.Component {
         <Select
           value={this.state.selectedOption}
           onChange={this.handleChange}
-          options={options}
+          options={ethnicity}
         />
         <Form.Label>School</Form.Label>
         <Select
