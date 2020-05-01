@@ -9,9 +9,10 @@ import SponsorshipPage from "./views/SponsorshipPage";
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
 import NotFound from "./views/NotFound";
-import ForgotPasswordPageSend from "./views/ForgotPasswordPageSend"
-import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput"
-import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange"
+import ForgotPasswordPageSend from "./views/ForgotPasswordPageSend";
+import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput";
+import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange";
+import DashboardPage from "./views/DashboardPage";
 
 const routing = (
   <Router>
@@ -20,9 +21,16 @@ const routing = (
       <Route path="/sponsor" component={SponsorshipPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
-      <Route path="/forgotpasswordpagesend" component={ForgotPasswordPageSend} />
-      <Route path="/forgotpasswordpageinput" component={ForgotPasswordPageInput} />
-      <Route path="/forgotpasswordpagechange" component={ForgotPasswordPageChange} />
+      <Route path="/forgotpassword" component={ForgotPasswordPageSend} />
+      <Route
+        path="/forgotpasswordpageinput"
+        component={ForgotPasswordPageInput}
+      />
+      <Route
+        path="/forgotpasswordpagechange"
+        component={ForgotPasswordPageChange}
+      />
+      <Route path="/dashboard" component={DashboardPage} />
       <Route component={NotFound} />
     </Switch>
   </Router>

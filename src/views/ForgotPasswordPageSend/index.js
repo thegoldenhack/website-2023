@@ -1,100 +1,71 @@
-import { useState } from 'react';
-import AWS from 'aws-sdk'
 import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { Link, Route } from "react-router-dom";
-import ForgotPasswordPageInput from "../ForgotPasswordPageInput";
 
-const awsRegion = process.env.REACT_APP_AWS_REGION
+import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
+import InputField from "../../components/InputField";
+import SubmitButton from "../../components/SubmitButton";
 
-AWS.config.update({region:awsRegion});
-const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
-
-class ForgotPasswordPageSend extends Component {
+export default class ForgotPasswordPageSend extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      email: undefined
+      email: undefined,
+      err: false,
     };
   }
 
-  handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
+  isValidEmail = (email) => {
+    // eslint-disable-next-line
+    var re = new RegExp(
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+    );
+    return re.test(email);
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    var dataEmail ={
-      Name: 'email',
-      Value: this.state.email
-    };
-
-    var params = {
-      ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID, 
-      Username: dataEmail.Value
-    };
-
-    cognitoIdentityServiceProvider.forgotPassword(params, function(err, data) {
-      if (err) {
-        if (err.code === "MissingRequiredParameter" || err.code === "InvalidParameterException") {
-          document.getElementById("display_error").innerHTML = "Please enter your email in the textbox above.";
-          document.getElementById("display_error").style.color = "#ff0000";
-        }
-        else if (err.code === "LimitExceededException") {
-          document.getElementById("display_error").innerHTML = "You have tried too many times. Please try again later.";
-          document.getElementById("display_error").style.color = "#ff0000";
-        }
-      }
-      else {
-        document.getElementById("display_error").innerHTML = "";
-        this.props.history.push({
-          pathname: '/forgotpasswordpageinput',
-          email: dataEmail.Value 
-        })
-      }       
+  handleChange = (event) => {
+    this.setState({
+      email: event.target.value,
     });
   };
+
+  handleSubmit = () => {
+    if (this.isValidEmail(this.state.email)) {
+      // Call whatever AWS functions we need
+      // Reroute to a "check your email for the recovery code" page
+    } else {
+      this.setState({
+        err: true,
+      });
+    }
+  };
+
+  displayErrors = () => {
+    if (this.state.err) {
+      return (
+        <div className="alert alert-danger">Please enter a valid email.</div>
+      );
+    }
+  };
+
   render() {
     return (
-      <Form className="inputForm">
-        <Form.Group controlId="inputForm.email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            required
-            name="email"
-            type="email"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Button
-          className="submit-btn"
-          variant="success"
-          type="submit"
-          onClick={this.handleSubmit.bind(this)}
-        >
-          <Link className="btn-link" to="#">
-            Send Reset Link
-          </Link>
-        </Button>
-        {/*Add routing for Send Reset Link */}
-        <Button
-          className="move=btn"
-          variant="success"
-          type="submit"
-        >
-          <Link className="btn-link" to="/forgotpasswordpageinput">
-            Input Code
-          </Link>
-        </Button>
-        <div className="display-error" id="display_error"></div>
-        <Route path="/forgotpasswordpageinput">
-          <ForgotPasswordPageInput />
-        </Route>
-      </Form>
+      <ForgotPasswordLayout
+        title={"Forgot Your Password?"}
+        subtitle={
+          "Please provide your email address and we will send a recovery code."
+        }
+      >
+        <InputField
+          isRequired={true}
+          name={"email"}
+          placeholder={"Email"}
+          handleChange={this.handleChange}
+        />
+
+        {this.displayErrors()}
+
+        <SubmitButton text="Submit" handleSubmit={this.handleSubmit} />
+      </ForgotPasswordLayout>
     );
   }
 }
-
-export default ForgotPasswordPageSend;

@@ -1,66 +1,60 @@
 import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { Link, Route } from "react-router-dom";
-import ForgotPasswordPageChange from "../ForgotPasswordPageChange";
 
-class ForgotPasswordPageInput extends Component {
+import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
+import InputField from "../../components/InputField";
+import SubmitButton from "../../components/SubmitButton";
+
+export default class ForgotPasswordPageInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: undefined
+      code: undefined,
     };
   }
 
-  handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
-  };
+  handleChange = (event) => {
+    const { info, value } = event.target;
 
-  handleSubmit = event => {
-    event.preventDefault();
-    var dataCode ={
-      Name: 'code',
-      Value: this.state.code
-    };
-
-    const { email } = this.props.location;
-
-    this.props.history.push({
-      pathname: '/forgotpasswordpagechange',
-      code: dataCode.Value,
-      email: email
+    this.setState({
+      [info]: value,
     });
+    console.log(this.state);
   };
+
+  handleSubmit(event) {
+    // make sure the recovery code is 6 digits
+  }
+
+  displayErrors = () => {
+    if (this.state.err) {
+      return (
+        <div className="alert alert-danger">
+          An error occurred. Please ensure that you entered the correct recovery
+          code.
+        </div>
+      );
+    }
+  };
+
   render() {
     return (
-      <Form className="inputForm">
-        <Form.Group controlId="inputForm.code">
-          <Form.Label>Recovery Code</Form.Label>
-          <Form.Control
-            required
-            name="code"
-            type="text"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Button
-          className="move=btn"
-          variant="success"
-          type="submit"
-          onClick={this.handleSubmit.bind(this)}
-        >
-          <Link className="btn-link" to="/forgotpasswordpagechange">
-            Reset Password
-          </Link>
-        </Button>
-        <div className="display-error" id="display_error"></div>
-        <Route path="/forgotpasswordpagechange">
-          <ForgotPasswordPageChange />
-        </Route>
-      </Form>
+      <ForgotPasswordLayout
+        title={"Recovery Code"}
+        subtitle={
+          "Please enter the 6-digit recovery code you received to reset your password."
+        }
+      >
+        <InputField
+          isRequired={true}
+          name={"recovery"}
+          placeholder={"000000"}
+          handleChange={this.handleChange}
+        />
+
+        {this.displayErrors()}
+
+        <SubmitButton text="Reset Password" handleSubmit={this.handleSubmit} />
+      </ForgotPasswordLayout>
     );
   }
 }
-
-export default ForgotPasswordPageInput;
