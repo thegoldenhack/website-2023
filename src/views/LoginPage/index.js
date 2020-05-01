@@ -1,120 +1,119 @@
-import { CognitoUserPool, AuthenticationDetails, CognitoUser } from "amazon-cognito-identity-js";
+import {
+  CognitoUserPool,
+  AuthenticationDetails,
+  CognitoUser,
+} from "amazon-cognito-identity-js";
 import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { Link, Route } from "react-router-dom";
-import ForgotPasswordPageSend from "../ForgotPasswordPageSend/index";
-import HomePage from "../HomePage";
+
+import { Nav } from "react-bootstrap";
+
+import LoginRegisterLayout from "../../components/LoginRegisterLayout";
+import SubmitButton from "../../components/SubmitButton";
+import InputField from "../../components/InputField";
 
 const poolData = {
   UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
-  ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID
+  ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
 };
 
 const UserPool = new CognitoUserPool(poolData);
 
-class LoginPage extends Component {
+export default class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: undefined,
-      password: undefined
+      password: undefined,
+      error: false,
+      errMessage: "",
     };
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit(event) {
     event.preventDefault();
+
     var attributeList = [];
+
     var dataEmail = {
       Name: "email",
-      Value: this.state.email
+      Value: this.state.email,
     };
+
     var dataPassword = {
       Name: "password",
-      Value: this.state.password
+      Value: this.state.password,
     };
+
     attributeList.push(dataEmail);
     attributeList.push(dataPassword);
 
-    var authenticationDetails = new AuthenticationDetails(
-      attributeList
-    );
+    var authenticationDetails = new AuthenticationDetails(attributeList);
 
     var userData = {
       Username: this.state.email,
-      Pool: UserPool
+      Pool: UserPool,
     };
 
     var cognitoUser = new CognitoUser(userData);
 
     cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function(result) {
+      onSuccess: function (result) {
         var accessToken = result.getAccessToken().getJwtToken();
-        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem("accessToken", accessToken);
       },
 
-      onFailure: function(err) {
-        document.getElementById("display_error").innerHTML = "Email or Password is Incorrect";
-      }
+      onFailure: function (err) {
+        this.setState({
+          error: true,
+          errMessage: "Email or Password is Incorrect",
+        });
+      },
     });
   }
+
+  displayErrors = () => {
+    // do something
+    if (this.state.error) {
+      return <div className="alert alert-danger">{this.state.errMessage}</div>;
+    }
+  };
+
   render() {
     return (
-      <Form className="inputForm">
-        <Form.Group controlId="inputForm.email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            required
-            name="email"
-            type="email"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="inputForm.password">
-          <Form.Label>Password</Form.Label>
-          <Form.Controllwear
-            name="password"
-            required
-            type="password"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Button
-          className="submit-btn"
-          variant="success"
-          type="submit"
-          onClick={this.handleSubmit.bind(this)}
-        >
-          <Link className="btn-link" to="/login">
-            Login
-          </Link>
-        </Button>
-        <div class="display-error" id="display_error"></div>
-        <Route path="/">
-          <HomePage />
-        </Route>
-        <Button
-          className="submit-btn"
-          variant="success"
-          type="submit"
-          onClick={this.handleSubmit.bind(this)}
-        >
-          <Link className="btn-link" to="/forgotpassword">
-            Forgot Password?
-          </Link>
-        </Button>
-        <Route path="/ForgotPasswordPageSend">
-          <ForgotPasswordPageSend />
-        </Route>
-      </Form>
+      <LoginRegisterLayout type="login" title="Login">
+        <InputField
+          isRequired={true}
+          isPassword={true}
+          type={"text"}
+          name={"email"}
+          placeholder={"Email"}
+          handleChange={this.handleChange}
+        />
+        <InputField
+          isRequired={true}
+          isPassword={true}
+          label={"password"}
+          name={"password"}
+          placeholder={"Password"}
+          handleChange={this.handleChange}
+          type={"password"}
+        />
+
+        {/* Display an error if needed */}
+        {this.displayErrors()}
+
+        <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit} />
+
+        <Nav className="justify-content-center">
+          <Nav.Item>
+            <Nav.Link href="/forgotpassword">Forgot Password?</Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </LoginRegisterLayout>
     );
   }
 }
-
-export default LoginPage;
