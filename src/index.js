@@ -8,6 +8,7 @@ import HomePage from "./views/HomePage";
 import SponsorshipPage from "./views/SponsorshipPage";
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
+import ApplicationPage from "./views/ApplicationPage";
 import NotFound from "./views/NotFound";
 import ForgotPasswordPageSend from "./views/ForgotPasswordPageSend";
 import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput";
@@ -31,6 +32,7 @@ const routing = (
         component={ForgotPasswordPageChange}
       />
       <Route path="/dashboard" component={DashboardPage} />
+      <Route path="/application" component={ApplicationPage} />
       <Route component={NotFound} />
     </Switch>
   </Router>
