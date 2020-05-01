@@ -9,9 +9,10 @@ import SponsorshipPage from "./views/SponsorshipPage";
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
 import NotFound from "./views/NotFound";
-import ForgotPasswordPageSend from "./views/ForgotPasswordPageSend"
-import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput"
-import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange"
+import ForgotPasswordPageSend from "./views/ForgotPasswordPageSend";
+import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput";
+import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange";
+import WebsitePage from "./views/WebsitePage";
 
 const routing = (
   <Router>
@@ -23,6 +24,7 @@ const routing = (
       <Route path="/forgotpasswordpagesend" component={ForgotPasswordPageSend} />
       <Route path="/forgotpasswordpageinput" component={ForgotPasswordPageInput} />
       <Route path="/forgotpasswordpagechange" component={ForgotPasswordPageChange} />
+      <Route path="/websitepage" component={WebsitePage}/>
       <Route component={NotFound} />
     </Switch>
   </Router>
