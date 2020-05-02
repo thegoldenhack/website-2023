@@ -18,7 +18,7 @@ import WebsitePage from "./views/WebsitePage";
 const routing = (
   <Router>
     <Switch>
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={WebsitePage} />
       <Route path="/sponsor" component={SponsorshipPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
@@ -26,7 +26,6 @@ const routing = (
       <Route path="/forgotpasswordpagesend" component={ForgotPasswordPageSend} />
       <Route path="/forgotpasswordpageinput" component={ForgotPasswordPageInput} />
       <Route path="/forgotpasswordpagechange" component={ForgotPasswordPageChange} />
-      <Route path="/websitepage" component={WebsitePage}/>
       <Route component={NotFound} />
     </Switch>
   </Router>
