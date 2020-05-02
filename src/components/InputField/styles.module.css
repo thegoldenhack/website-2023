@@ -1,0 +1,9 @@
+.formControl {
+  background-color: #c4c4c4;
+  color: black;
+  border-radius: 16px;
+}
+.formControl:focus {
+  background-color: #c4c4c4;
+  color: black;
+}
