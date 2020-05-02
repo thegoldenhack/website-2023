@@ -13,12 +13,13 @@ import NotFound from "./views/NotFound";
 import ForgotPasswordPageSend from "./views/ForgotPasswordPageSend";
 import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput";
 import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange";
+import WebsitePage from "./views/WebsitePage";
 import DashboardPage from "./views/DashboardPage";
 
 const routing = (
   <Router>
     <Switch>
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={WebsitePage} />
       <Route path="/sponsor" component={SponsorshipPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
