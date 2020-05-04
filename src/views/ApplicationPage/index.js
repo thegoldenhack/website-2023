@@ -101,7 +101,7 @@ export default class application extends React.Component {
     }
     if (this.state.Why_GoldenHack.length > 1000) {
       document.getElementById("display_error").innerHTML =
-        "Over 1000 character limit in for 'Why Golden Hack'";
+        "Over 1000 character limit for 'Why Golden Hack'";
     }
 
     console.log("ASDAS");
