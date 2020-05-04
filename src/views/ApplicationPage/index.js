@@ -85,7 +85,7 @@ export default class application extends React.Component {
         "Not all required fields have been filled out.";
     }
     if (!this.state.Github_URL.startsWith("https://www.github.com/")) {
-      document.getElementById("display_error").innerHTML = "Invalid URL en";
+      document.getElementById("display_error").innerHTML = "Invalid URL entered";
     }
     if (!this.state.LinkedIn_URL.startsWith("https://www.linkedin.com/in/")) {
       document.getElementById("display_error").innerHTML =
