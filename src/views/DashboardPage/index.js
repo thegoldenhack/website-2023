@@ -31,7 +31,7 @@ window.onload = function () {
       isLoggedIn = true;
     });
   } else {
-    document.getElementByIdById("display_error").innerHTML = "Not Logged In";
+    //document.getElementByIdById("display_error").innerHTML = "Not Logged In";
   }
 };
 
