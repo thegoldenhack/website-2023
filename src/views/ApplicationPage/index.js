@@ -9,11 +9,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
 import { SchoolsLVpair } from "./schools.js";
-import {Majors} from './majors.js'
-import {ethnicity} from './ethnicity.js'
-import {degrees} from './degrees.js'
-
-
+import { Majors } from "./majors.js";
+import { ethnicity } from "./ethnicity.js";
+import { degrees } from "./degrees.js";
 
 export default class application extends React.Component {
   constructor(props) {
@@ -40,6 +38,7 @@ export default class application extends React.Component {
       termsandconditions: undefined,
     };
   }
+
   handleChangedate = (date) => {
     this.setState({
       startDate: date,
@@ -47,25 +46,66 @@ export default class application extends React.Component {
   };
 
   handleChangedateGrad = (date) => {
+    console.log("ASDAS");
     this.setState({
       gradDate: date,
     });
   };
 
-  handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
-  }
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+    console.log(this.state);
+  };
 
   handleChangeschool = (schoolOption) => {
-    this.setState({ schoolOption });
+    this.setState({ schoolOption: schoolOption });
   };
 
   handleChangedegree = (degreeOption) => {
-    this.setState({ degreeOption });
+    this.setState({ degreeOption: degreeOption });
+  };
+  handleChangeEthnicity = (selectedOption) => {
+    this.setState({ selectedOption: selectedOption });
   };
 
   handleChangeprograms = (programOption) => {
-    this.setState({ programOption});
+    this.setState({ programOption: programOption });
+  };
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if (
+      this.state.Gender == undefined ||
+      this.state.ethnicity == undefined ||
+      this.state.schoolOption == undefined ||
+      this.state.Degree == undefined ||
+      this.state.Graduation_year == undefined ||
+      this.state.Program == undefined
+    ) {
+      document.getElementById("display_error").innerHTML =
+        "Not all required fields have been filled out.";
+    }
+    if (!this.state.Github_URL.startsWith("https://www.github.com/")) {
+      document.getElementById("display_error").innerHTML = "Invalid URL entered";
+    }
+    if (!this.state.LinkedIn_URL.startsWith("https://www.linkedin.com/in/")) {
+      document.getElementById("display_error").innerHTML =
+        "Invalid URL entered";
+    }
+    if (!this.state.Dribbble_URL.startsWith("https://www.dribbble.com/")) {
+      document.getElementById("display_error").innerHTML =
+        "Invalid URL entered";
+    }
+    if (!this.state.Link_to_resume.startsWith("https://")) {
+      document.getElementById("display_error").innerHTML =
+        "Invalid URL entered";
+    }
+    if (this.state.Why_GoldenHack.length > 1000) {
+      document.getElementById("display_error").innerHTML =
+        "Over 1000 character limit for 'Why Golden Hack'";
+    }
+
+    console.log("ASDAS");
+    console.log(this.state);
   };
 
   render() {
@@ -93,11 +133,12 @@ export default class application extends React.Component {
         <Form.Label>Ethnicity</Form.Label>
         <Select
           value={this.state.selectedOption}
-          onChange={this.handleChange}
+          onChange={this.handleChangeEthnicity}
           options={ethnicity}
         />
         <Form.Label>School</Form.Label>
         <Select
+          name="schoolOption"
           value={this.state.schoolOption}
           onChange={this.handleChangeschool}
           options={SchoolsLVpair}
@@ -118,6 +159,7 @@ export default class application extends React.Component {
         <br></br>
         <Form.Label>Program</Form.Label>
         <Select
+          name="programOption"
           value={this.state.programOption}
           onChange={this.handleChangeprograms}
           options={Majors}
@@ -135,7 +177,7 @@ export default class application extends React.Component {
         <Form.Group controlId="inputForm">
           <Form.Label>LinkedIn URL</Form.Label>
           <Form.Control
-            name="LinkedIn URL"
+            name="LinkedIn_URL"
             placeholder=""
             onChange={this.handleChange}
           />
@@ -144,7 +186,7 @@ export default class application extends React.Component {
         <Form.Group controlId="inputForm">
           <Form.Label>Dribbble URL</Form.Label>
           <Form.Control
-            name="Dribble_URL"
+            name="Dribbble_URL"
             placeholder=""
             onChange={this.handleChange}
           />
@@ -158,16 +200,38 @@ export default class application extends React.Component {
             onChange={this.handleChange}
           />
         </Form.Group>
+        <Form.Group controlId="inputForm">
+          <Form.Label>Link to Resume</Form.Label>
+          <Form.Control
+            name="Link_to_resume"
+            placeholder=""
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="inputForm">
+          <Form.Label>Why GoldenHack</Form.Label>
+          <Form.Control
+            name="Why_GoldenHack"
+            placeholder=""
+            onChange={this.handleChange}
+          />
+        </Form.Group>
         <Button
           className="submit-btn"
           variant="success"
           type="submit"
-                      // Add Onclick here.
+          value={this.state}
+          onClick={this.handleSubmit} // Add Onclick here.
         >
-          <Link className="btn-link">
+          <Link
+            className="btn-link"
+            value={this.state}
+            onClick={this.handleSubmit}
+          >
             Submit
           </Link>
         </Button>
+        <div class="display-error" id="display_error"></div>
       </Form>
     );
   }
