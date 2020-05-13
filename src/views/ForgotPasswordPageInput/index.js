@@ -8,21 +8,33 @@ export default class ForgotPasswordPageInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: undefined,
+      recovery: undefined,
+      err: false,
+      email: props.location.email,
     };
   }
 
   handleChange = (event) => {
-    const { info, value } = event.target;
+    const { name, value } = event.target;
 
     this.setState({
-      [info]: value,
+      [name]: value,
     });
     console.log(this.state);
   };
 
   handleSubmit(event) {
     // make sure the recovery code is 6 digits
+    event.preventDefault();
+    if (this.state.recovery.length === 6) {
+      this.props.history.push({
+        pathname: '/forgotpasswordpagechange',
+        code: this.state.recovery,
+        email: this.state.email
+      });
+    } else {
+      this.setState({ err: true });
+    }
   }
 
   displayErrors = () => {
@@ -48,12 +60,12 @@ export default class ForgotPasswordPageInput extends Component {
           isRequired={true}
           name={"recovery"}
           placeholder={"000000"}
-          handleChange={this.handleChange}
+          handleChange={this.handleChange.bind(this)}
         />
 
         {this.displayErrors()}
 
-        <SubmitButton text="Reset Password" handleSubmit={this.handleSubmit} />
+        <SubmitButton text="Reset Password" handleSubmit={this.handleSubmit.bind(this)} />
       </ForgotPasswordLayout>
     );
   }
