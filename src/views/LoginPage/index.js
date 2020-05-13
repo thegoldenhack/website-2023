@@ -36,22 +36,12 @@ export default class LoginPage extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    var attributeList = [];
-
-    var dataEmail = {
-      Name: "email",
-      Value: this.state.email,
+    var authData = {
+      Username: this.state.email,
+      Password: this.state.password,
     };
 
-    var dataPassword = {
-      Name: "password",
-      Value: this.state.password,
-    };
-
-    attributeList.push(dataEmail);
-    attributeList.push(dataPassword);
-
-    var authenticationDetails = new AuthenticationDetails(attributeList);
+    var authenticationDetails = new AuthenticationDetails(authData);
 
     var userData = {
       Username: this.state.email,
@@ -106,7 +96,7 @@ export default class LoginPage extends Component {
         {/* Display an error if needed */}
         {this.displayErrors()}
 
-        <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit} />
+        <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit.bind(this)} />
 
         <Nav className="justify-content-center">
           <Nav.Item>

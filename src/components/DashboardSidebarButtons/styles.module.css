@@ -1,0 +1,14 @@
+.text {
+  font-size: 28px;
+  display: inline;
+  color: white;
+}
+.button:active {
+  background-color: #2585BB !important;
+}
+.button:hover {
+  background-color: #2585BB !important;
+}
+.button:focus {
+  background-color: #2585BB !important;
+}

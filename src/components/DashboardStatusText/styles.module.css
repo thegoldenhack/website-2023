@@ -1,0 +1,12 @@
+.complete {
+  font-weight: bold;
+  color: green;
+  background-color: #DDDDDD;
+  padding: 3vh 20vh;
+}
+.incomplete {
+  font-weight: bold;
+  color: red;
+  background-color: #DDDDDD;
+  padding: 3vh 20vh;
+}
