@@ -20,14 +20,12 @@ export default class CompleteApplicationButton extends Component {
           {this.state.text}
         </Button>
       );
-    } else if (this.state.status === "enabled") {
+    } else {
       return (
         <Button className={styles.button} href={"/application"}>
           {this.state.text}
         </Button>
       );
-    } else {
-      return null;
     }
   }
 }

@@ -67,38 +67,42 @@ class DashboardPage extends Component {
         }.bind(this)
       );
     } else {
-      document.getElementById("display_error").innerHTML = "Not Logged In";
+      this.props.history.push({
+        pathname: '/login',
+      });
     }
   }
 
   componentDidMount() {
-    var params = {
-      Key: {
-        email: {
-          S: this.state.email,
+    if (isLoggedIn) {
+      var params = {
+        Key: {
+          email: {
+            S: this.state.email,
+          },
         },
-      },
-      TableName: tableName,
-    };
-    dynamoDB.getItem(params, (err, data) => {
-      if (err) {
-        console.log(err);
-      }
+        TableName: tableName,
+      };
+      dynamoDB.getItem(params, (err, data) => {
+        if (err) {
+          console.log(err);
+        }
 
-      if (today > applicationDeadline) {
-        if (!data.Item.submitted.BOOL) {
-          this.setState({ status: "incomplete", buttonStatus: "disabled" });
-        } else if (data.Item.submitted.BOOL) {
-          this.setState({ status: "complete", buttonStatus: "disabled" });
+        if (today > applicationDeadline) {
+          if (!data.Item.submitted.BOOL) {
+            this.setState({ status: "incomplete", buttonStatus: "disabled" });
+          } else if (data.Item.submitted.BOOL) {
+            this.setState({ status: "complete", buttonStatus: "disabled" });
+          }
+        } else {
+          if (!data.Item.submitted.BOOL) {
+            this.setState({ status: "incomplete", buttonStatus: "enabled" });
+          } else if (data.Item.submitted.BOOL) {
+            this.setState({ status: "complete", buttonStatus: "disabled" });
+          }
         }
-      } else {
-        if (!data.Item.submitted.BOOL) {
-          this.setState({ status: "incomplete", buttonStatus: "enabled" });
-        } else if (data.Item.submitted.BOOL) {
-          this.setState({ status: "complete", buttonStatus: "disabled" });
-        }
-      }
-    });
+      });
+    }
   }
 
   handleChange = (event) => {
