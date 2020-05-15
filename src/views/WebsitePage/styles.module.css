@@ -5,6 +5,10 @@ body {
   overflow-x: hidden;
 }
 
+#nav {
+  background-color: #e5e5e5;
+}
+
 #welcome {
   padding-top: 15vh;
   min-height: 100vh;
@@ -36,10 +40,16 @@ body {
 }
 
 #lastyear {
-  /*padding-top: 15vh;*/
-  min-height: 100vh;
+  padding-top: 15vh;
   text-align: center;
   background-color: white;
+  height: auto;
+  padding-bottom: 15vh;
+}
+
+#stats {
+  width: 70%;
+  height: auto;
 }
 
 #sponsors {
@@ -54,7 +64,6 @@ body {
   padding-top: 15vh;
   padding-bottom: 15vh;
   min-height: 100vh;
-  text-align: center;
   background-color: white;
 }
 
@@ -62,7 +71,7 @@ body {
   padding-top: 2vh;
   height: 15vh;
   text-align: center;
-  background-color: #053e5e;
+  background-color: #e5e5e5;
 }
 
 #right {
