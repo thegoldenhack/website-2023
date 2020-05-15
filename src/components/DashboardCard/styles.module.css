@@ -1,0 +1,29 @@
+.card {
+  background-color: #bbbbbb;
+  border-radius: 16px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 5px 5px rgba(0, 0, 0, 0.22);
+  width: 70%;
+}
+.container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.col1 {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #053e5e;
+  height: 100vh;
+}
+.col2 {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

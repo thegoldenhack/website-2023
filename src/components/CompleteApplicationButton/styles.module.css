@@ -1,0 +1,24 @@
+.button {
+  width: 100%;
+  border-radius: 36px;
+  background-color: #053e5e;
+  border-color: #053e5e;
+  padding: 3vh 6vh;
+}
+.button:active {
+  background-color: #2585BB !important;
+  border-color: #2585bb !important;
+}
+.button:hover {
+  background-color: #2585BB !important;
+  border-color: #2585bb !important;
+}
+.button:focus {
+  background-color: #2585BB !important;
+  border-color: #2585bb !important;
+}
+.disabled {
+  background-color: #053e5e !important;
+  border-color: #053e5e !important;
+  opacity: 0.4 !important;
+}
