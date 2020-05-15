@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+body {
+  font-family: "Raleway", sans-serif;
+  padding: none;
+  overflow-x: hidden;
+}
+
+#nav {
+  background-color: #e5e5e5;
+}
+
+#welcome {
+  padding-top: 15vh;
+  min-height: 100vh;
+  background-color: #053e5e;
+  text-align: center;
+  color: #f6d030;
+}
+
+#apply {
+  font-size: 35px;
+  font-weight: bold;
+  background-color: #053e5e;
+  color: #f6d030;
+  border-color: #f6d030;
+}
+
+#about {
+  padding-top: 15vh;
+  min-height: 100vh;
+  background-color: white;
+}
+
+#create {
+  padding-top: 15vh;
+  min-height: 100vh;
+  background-color: #053e5e;
+  text-align: center;
+  color: white;
+}
+
+#lastyear {
+  padding-top: 15vh;
+  text-align: center;
+  background-color: white;
+  height: auto;
+  padding-bottom: 15vh;
+}
+
+#stats {
+  width: 70%;
+  height: auto;
+}
+
+#sponsors {
+  padding-top: 15vh;
+  min-height: 100vh;
+  background-color: #053e5e;
+  text-align: center;
+  color: white;
+}
+
+#faq {
+  padding-top: 15vh;
+  padding-bottom: 15vh;
+  min-height: 100vh;
+  background-color: white;
+}
+
+#footer {
+  padding-top: 2vh;
+  height: 15vh;
+  text-align: center;
+  background-color: #e5e5e5;
+}
+
+#right {
+  text-align: right;
+}
+
+#left {
+  text-align: left;
+  padding-right: 10vw;
+}
+
+#left p {
+  font-size: 30px;
+}
+
+#question {
+  width: 40vw;
+}
+
+#logo {
+  padding-top: 5vh;
+  width: 20vw;
+}
+
+h1 {
+  font-size: 90px;
+  padding-bottom: 5vh;
+}
+
+h3 {
+  font-size: 40px;
+  padding-bottom: 5vh;
+}
+
+h4 {
+  font-size: 35px;
+  font-weight: normal;
+}
+
+h5 {
+  font-size: 30px;
+  padding-bottom: 5vh;
+}
+
+p {
+  color: black;
+}

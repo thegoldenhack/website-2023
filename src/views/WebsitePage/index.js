@@ -1,25 +1,41 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-import { Row, Col, Card, Accordion } from "react-bootstrap";
-import "./style.css";
+import { Row, Col, Card, Accordion, Navbar, Nav } from "react-bootstrap";
+import styles from "./styles.module.css";
 
 class WebsitePage extends Component {
   render() {
     return (
       <body>
-        <div id="welcome">
+        <div id={styles.welcome}>
           <h1>The GoldenHack</h1>
           <h4>Canada's largest business hackathon</h4>
           <h4>September xx - xx, 2020, Wilfrid Laurier University</h4>
-          <Button id="apply">Apply Now</Button>
-          <h1>Enter Image Here</h1>
+          <Button id={styles.apply}>Apply Now</Button>
+          <br></br>
+          <img id={styles.logo} src="./images/logo/logo.svg"></img>
         </div>
-        <div id="about">
+        <Navbar id={styles.nav} fixed="top" expand="lg">
+          <Navbar.Brand href="/">
+            <img src="./images/logo/logo_nav.svg"></img>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse>
+            <Nav className="ml-auto">
+              <Nav.Link href="#styles_about__2MuVS">About</Nav.Link>
+              <Nav.Link href="#styles_create__14wHH">Testimonials</Nav.Link>
+              <Nav.Link href="#styles_lastyear__3Z0pa">Statistics</Nav.Link>
+              <Nav.Link href="#styles_sponsors__3eLJs">Sponsors</Nav.Link>
+              <Nav.Link href="#styles_faq__Cg0ou">FAQ</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <div id={styles.about}>
           <Row>
-            <Col id="right">
-              <h1>Enter Image Here</h1>
+            <Col id={styles.right}>
+              <img src="./images/graphics/plug.svg"></img>
             </Col>
-            <Col id="left">
+            <Col id={styles.left}>
               <h3>#What is a Business Hackathon?</h3>
               <h5>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -34,12 +50,12 @@ class WebsitePage extends Component {
             </Col>
           </Row>
         </div>
-        <div id="create">
+        <div id={styles.create}>
           <h3># Create Something Amazing</h3>
           <div class="container  align-items-center">
             <Row>
               <Col>
-                <Card id="profile">
+                <Card id={styles.profile}>
                   <Card.Img
                     variant="top"
                     src="./images/testimonials/kyle.png"
@@ -59,7 +75,7 @@ class WebsitePage extends Component {
                 </Card>
               </Col>
               <Col>
-                <Card id="profile">
+                <Card id={styles.profile}>
                   <Card.Img
                     variant="top"
                     src="./images/testimonials/lavisha.png"
@@ -79,7 +95,7 @@ class WebsitePage extends Component {
                 </Card>
               </Col>
               <Col>
-                <Card id="profile">
+                <Card id={styles.profile}>
                   <Card.Img
                     variant="top"
                     src="./images/testimonials/ishani.png"
@@ -101,26 +117,37 @@ class WebsitePage extends Component {
             </Row>
           </div>
         </div>
-        <div id="last-year">
+        <div id={styles.lastyear}>
           <h3># Last Year We Had...</h3>
+          <div id={styles.svgcontainer}>
+            <img id={styles.stats} src="images/graphics/stats.svg"></img>
+          </div>
         </div>
-        <div id="sponsors">
+        <div id={styles.sponsors}>
           <h3># Our Sponsors</h3>
+          <h4>
+            <i>Interested in sponsoring? Email us or message us on Facebook!</i>
+          </h4>
         </div>
-        <div id="faq">
-          <h3># Frequently Asked Questions</h3>
+        <div id={styles.faq}>
+          <h3 class="text-center"># Frequently Asked Questions</h3>
           <Row>
-            <Col id="right">
-              <h1>Enter Image Here</h1>
+            <Col id={styles.right}>
+              <img
+                id={styles.question}
+                src="images/graphics/question.svg"
+              ></img>
             </Col>
             <Col id="left">
               <Accordion defaultActiveKey="1">
                 <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-                      What is a Business Hackathon?
-                    </Accordion.Toggle>
-                  </Card.Header>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    variant="link"
+                    eventKey="0"
+                  >
+                    What is a Business Hackathon?
+                  </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       A business hackathon is a special type of hackathon where
@@ -138,11 +165,13 @@ class WebsitePage extends Component {
               <br />
               <Accordion defaultActiveKey="1">
                 <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-                      What if I don’t know how to code?
-                    </Accordion.Toggle>
-                  </Card.Header>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    variant="link"
+                    eventKey="0"
+                  >
+                    What if I don’t know how to code?
+                  </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       No sweat. Our goal is to make this hackathon friendly to
@@ -160,11 +189,13 @@ class WebsitePage extends Component {
               <br />
               <Accordion defaultActiveKey="1">
                 <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-                      How many people can be on a team?
-                    </Accordion.Toggle>
-                  </Card.Header>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    variant="link"
+                    eventKey="0"
+                  >
+                    How many people can be on a team?
+                  </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>There can be 1-4 people on a team.</Card.Body>
                   </Accordion.Collapse>
@@ -173,11 +204,13 @@ class WebsitePage extends Component {
               <br />
               <Accordion defaultActiveKey="1">
                 <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-                      What should I bring?
-                    </Accordion.Toggle>
-                  </Card.Header>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    variant="link"
+                    eventKey="0"
+                  >
+                    What should I bring?
+                  </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       Bring a laptop, charger and anything else that encourages
@@ -191,11 +224,13 @@ class WebsitePage extends Component {
               <br />
               <Accordion defaultActiveKey="1">
                 <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-                      How much does it cost to participate?
-                    </Accordion.Toggle>
-                  </Card.Header>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    variant="link"
+                    eventKey="0"
+                  >
+                    How much does it cost to participate?
+                  </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       It’s absolutely free to participate. Not only that, you’ll
@@ -207,11 +242,13 @@ class WebsitePage extends Component {
               <br />
               <Accordion defaultActiveKey="1">
                 <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-                      How will I get there?
-                    </Accordion.Toggle>
-                  </Card.Header>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    variant="link"
+                    eventKey="0"
+                  >
+                    How will I get there?
+                  </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       Check out our <a href="/travel.html">travel advice.</a>
@@ -222,18 +259,20 @@ class WebsitePage extends Component {
               <br />
               <Accordion defaultActiveKey="1">
                 <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-                      What if I don't see my question here?
-                    </Accordion.Toggle>
-                  </Card.Header>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    variant="link"
+                    eventKey="0"
+                  >
+                    What if I don't see my question here?
+                  </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
-                      Shoot us an email at
+                      Shoot us an email at&nbsp;
                       <a class="mailto" href="mailto:contact@thegoldenhack.com">
                         contact@thegoldenhack.com
                       </a>
-                      or message us on
+                      &nbsp;or message us on&nbsp;
                       <a href="https://www.facebook.com/TheGoldenHackOfficial/">
                         Facebook
                       </a>
@@ -244,9 +283,9 @@ class WebsitePage extends Component {
             </Col>
           </Row>
         </div>
-        <div id="footer">
-            <p>&lt;/&gt; with ❤️</p>
-            <p> © Copyright 2020 The GoldenHack</p>
+        <div id={styles.footer}>
+          <p>&lt;/&gt; with ❤️</p>
+          <p> © Copyright 2020 The GoldenHack</p>
         </div>
       </body>
     );
