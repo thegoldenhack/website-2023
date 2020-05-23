@@ -3,6 +3,10 @@ import ReactDOM from "react-dom";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap-grid.css";
+import "bootstrap/dist/css/bootstrap-reboot.css";
+
 import SponsorshipPage from "./views/SponsorshipPage";
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
