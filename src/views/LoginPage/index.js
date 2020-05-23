@@ -96,7 +96,7 @@ export default class LoginPage extends Component {
         {/* Display an error if needed */}
         {this.displayErrors()}
 
-        <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit.bind(this)} />
+        <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit} />
 
         <Nav className="justify-content-center">
           <Nav.Item>

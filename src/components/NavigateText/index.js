@@ -15,17 +15,17 @@ export default class NavigateText extends Component {
   getLink = () => {
     if (this.state.type === "register") {
       return (
-        <h1 className={styles.text}>
+        <h2 className={styles.text}>
           Already have an account?
           <a href="/login"> Login here</a>
-        </h1>
+        </h2>
       );
     } else {
       return (
-        <h1 className={styles.text}>
+        <h2 className={styles.text}>
           Don't have an account yet?
           <a href="/register"> Register here</a>
-        </h1>
+        </h2>
       );
     }
   };

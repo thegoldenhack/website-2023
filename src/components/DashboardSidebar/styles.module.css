@@ -6,6 +6,8 @@
   flex-direction: column;
   background-color: #053e5e;
   height: 100vh;
+  width: 25%;
+  position: fixed;
 }
 .col2 {
   text-align: center;

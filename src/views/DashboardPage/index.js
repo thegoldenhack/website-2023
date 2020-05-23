@@ -1,16 +1,17 @@
 // Dashbaord page
 import React, { Component } from "react";
-import { CognitoUserPool } from "amazon-cognito-identity-js";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { Link, Route } from "react-router-dom";
-import HomePage from "../HomePage";
+
+import AWS from "aws-sdk";
+import { CognitoUserPool } from "amazon-cognito-identity-js";
+
+import { Row, Col, Container } from "react-bootstrap";
+
 import LoginPage from "../LoginPage";
 import DashboardSidebar from "../../components/DashboardSidebar";
 import DashboardCard from "../../components/DashboardCard";
-import styles from "../../components/DashboardSidebar/styles.module.css";
-import { Row, Col, Container } from "react-bootstrap";
-import AWS from "aws-sdk";
+
+import styles from "./styles.module.css";
 
 const poolData = {
   UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
@@ -36,7 +37,7 @@ var cognitoUser = userPool.getCurrentUser();
 var dynamoDB = new AWS.DynamoDB(dynamoDbData);
 var isLoggedIn = false;
 
-class DashboardPage extends Component {
+export default class DashboardPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,7 +69,7 @@ class DashboardPage extends Component {
       );
     } else {
       this.props.history.push({
-        pathname: '/login',
+        pathname: "/login",
       });
     }
   }
@@ -125,10 +126,10 @@ class DashboardPage extends Component {
       return (
         <Container fluid>
           <Row>
-            <Col sm={{ span: 3 }} className={styles.col1}>
+            <Col sm={{ span: 3 }} className={styles.noPadding}>
               <DashboardSidebar />
             </Col>
-            <Col className={styles.col2}>
+            <Col className={styles.centerContent}>
               <DashboardCard
                 title="Application Status"
                 key={this.state.status}
@@ -143,5 +144,3 @@ class DashboardPage extends Component {
     }
   }
 }
-
-export default DashboardPage;

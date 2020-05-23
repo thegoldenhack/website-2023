@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.scrollCol {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  margin: 30px 0px 30px 0px;
+}
+
+.heading {
+  font-size: 48px;
+  text-align: center;
+  margin: 20px 0 20px 0;
+}
