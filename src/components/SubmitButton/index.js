@@ -19,6 +19,7 @@ export default class SubmitButton extends Component {
         variant="success"
         type="submit"
         onClick={this.props.handleSubmit}
+        onSubmit={this.props.handleSubmit}
       >
         {this.state.text}
       </Button>

@@ -1,77 +1,75 @@
-// Application page
-import { useState } from "react";
-import { CognitoUserPool } from "amazon-cognito-identity-js";
 import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { Link, Route, Redirect } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import Select from "react-select";
-import { SchoolsLVpair } from "./schools.js";
-import { Majors } from "./majors.js";
-import { ethnicity } from "./ethnicity.js";
-import { degrees } from "./degrees.js";
 
-export default class application extends React.Component {
+import { Row, Col } from "react-bootstrap";
+
+import { schools } from "../../assets/data/schools.js";
+import { majors } from "../../assets/data/majors.js";
+import { ethnicity } from "../../assets/data/ethnicity.js";
+import { degrees } from "../../assets/data/degrees.js";
+import { genders } from "../../assets/data/genders.js";
+import { gradYears } from "../../assets/data/gradYears.js";
+
+import DashboardSidebar from "../../components/DashboardSidebar";
+import InputFieldApplication from "../../components/InputFieldApplication";
+import InputFieldSelect from "../../components/InputFieldSelect";
+import SubmitButton from "../../components/SubmitButton";
+
+import styles from "./styles.module.css";
+
+export default class application extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gradDate: null,
-      selectedOption: null,
-      schoolOption: null,
-      degreeOption: null,
-      programOption: null,
-      Birthdate: undefined,
-      Gender: undefined,
-      Ethnicity: undefined,
-      School: undefined,
-      Degree: undefined,
-      Graduation_year: undefined,
-      Program: undefined,
-      Github_URL: undefined,
-      LinkedIn_URL: undefined,
-      Dribbble_URL: undefined,
-      Personal_URL: undefined,
-      Link_to_resume: undefined,
-      Why_GoldenHack: undefined,
-      termsandconditions: undefined,
+      saved: false,
+      submitted: false,
+      birth_date: undefined,
+      gender: undefined,
+      ethnicity: undefined,
+      school: undefined,
+      degree: undefined,
+      graduation_year: undefined,
+      program: undefined,
+      github_url: undefined,
+      linkedin_url: undefined,
+      dribbble_url: undefined,
+      personal_url: undefined,
+      link_to_resume: undefined,
+      why_goldenHack: undefined,
     };
   }
 
-  handleChangedate = (date) => {
-    this.setState({
-      startDate: date,
-    });
+  // React-select handles events a little weirdly (ie it doesn't contain the name
+  // of the field which was passed in props), so when an input field uses
+  // react-select we get another field which does contain the name, and we have
+  // to do a little extra work.
+  handleChange = (event, extra) => {
+    if (extra != null) {
+      // If it's possible to select mutliple options, then the event
+      // will be an array (even if only 1 option was selected)
+      if (event.length > 0) {
+        var arr = [];
+        for (var i = 0; i < event.length; i++) {
+          arr.push(event[i].value);
+        }
+        this.setState({ [extra.name]: arr, saved: false, submitted: false });
+      } else {
+        this.setState({
+          [extra.name]: event.value,
+          saved: false,
+          submitted: false,
+        });
+      }
+    } else {
+      this.setState({
+        [event.target.name]: event.target.value,
+        saved: false,
+        submitted: false,
+      });
+    }
   };
 
-  handleChangedateGrad = (date) => {
-    console.log("ASDAS");
-    this.setState({
-      gradDate: date,
-    });
-  };
-
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state);
-  };
-
-  handleChangeschool = (schoolOption) => {
-    this.setState({ schoolOption: schoolOption });
-  };
-
-  handleChangedegree = (degreeOption) => {
-    this.setState({ degreeOption: degreeOption });
-  };
-  handleChangeEthnicity = (selectedOption) => {
-    this.setState({ selectedOption: selectedOption });
-  };
-
-  handleChangeprograms = (programOption) => {
-    this.setState({ programOption: programOption });
-  };
   handleSubmit = (event) => {
+    console.log("Submitting!");
     event.preventDefault();
     if (
       this.state.Gender == undefined ||
@@ -85,7 +83,8 @@ export default class application extends React.Component {
         "Not all required fields have been filled out.";
     }
     if (!this.state.Github_URL.startsWith("https://www.github.com/")) {
-      document.getElementById("display_error").innerHTML = "Invalid URL entered";
+      document.getElementById("display_error").innerHTML =
+        "Invalid URL entered";
     }
     if (!this.state.LinkedIn_URL.startsWith("https://www.linkedin.com/in/")) {
       document.getElementById("display_error").innerHTML =
@@ -104,135 +103,191 @@ export default class application extends React.Component {
         "Over 1000 character limit for 'Why Golden Hack'";
     }
 
-    console.log("ASDAS");
+    this.setState({ submitted: true });
+
     console.log(this.state);
+  };
+
+  handleSave = () => {
+    console.log("Saving!");
+    this.setState({ saved: true });
+    console.log(this.state);
+  };
+
+  displayStatus = () => {
+    if (this.state.submitted) {
+      return <p>Successfully submitted application!</p>;
+    } else if (this.state.saved) {
+      return <p>Successfully saved application!</p>;
+    }
   };
 
   render() {
     return (
-      <Form className="inputForm">
-        <Form.Group controlId="inputForm.firstname">
-          <Form.Label>Birthday</Form.Label>
-          <br></br>
-          <DatePicker
-            selected={this.state.startDate}
-            onChange={this.handleChangedate}
-          />
-        </Form.Group>
+      <div className={styles.container}>
+        <Row>
+          <Col sm={{ span: 3 }}>
+            <DashboardSidebar />
+          </Col>
 
-        <Form.Group controlId="inputForm.firstname">
-          <Form.Label>Gender</Form.Label>
-          <br></br>
-          <select>
-            <option value="Female">Female</option>
-            <option value="Male">Male</option>
-            <option value="Other">Other</option>
-          </select>
-        </Form.Group>
+          <Col sm className={styles.scrollCol}>
+            <h2 className={styles.heading}>The GoldenHack 2020 Application</h2>
 
-        <Form.Label>Ethnicity</Form.Label>
-        <Select
-          value={this.state.selectedOption}
-          onChange={this.handleChangeEthnicity}
-          options={ethnicity}
-        />
-        <Form.Label>School</Form.Label>
-        <Select
-          name="schoolOption"
-          value={this.state.schoolOption}
-          onChange={this.handleChangeschool}
-          options={SchoolsLVpair}
-        />
+            <p>
+              Little blurb or something about how after you submit you can't
+              edit your application.
+            </p>
 
-        <Form.Label>Degree</Form.Label>
-        <Select
-          value={this.state.degreeOption}
-          onChange={this.handleChangedegree}
-          options={degrees}
-        />
-        <Form.Label>Graduation Year</Form.Label>
-        <br></br>
-        <DatePicker
-          selected={this.state.gradDate}
-          onChange={this.handleChangedateGrad}
-        />
-        <br></br>
-        <Form.Label>Program</Form.Label>
-        <Select
-          name="programOption"
-          value={this.state.programOption}
-          onChange={this.handleChangeprograms}
-          options={Majors}
-        />
+            {/* Birthday */}
+            <InputFieldApplication
+              label="Birthday"
+              name={"birth_date"}
+              required={true}
+              value={this.state.birth_date}
+              onChange={this.handleChange}
+              type="date"
+            />
 
-        <Form.Group controlId="inputForm">
-          <Form.Label>Github URL</Form.Label>
-          <Form.Control
-            name="Github_URL"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
+            {/* Gender */}
+            <InputFieldSelect
+              label={"Gender"}
+              name={"gender"}
+              multiSelect={false}
+              value={this.state.gender}
+              onChange={this.handleChange}
+              options={genders}
+            />
 
-        <Form.Group controlId="inputForm">
-          <Form.Label>LinkedIn URL</Form.Label>
-          <Form.Control
-            name="LinkedIn_URL"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
+            {/* Ethnicity */}
+            <InputFieldSelect
+              label={"Ethnicity"}
+              name={"ethnicity"}
+              multiSelect={true}
+              value={this.state.ethnicity}
+              onChange={this.handleChange}
+              options={ethnicity}
+            />
 
-        <Form.Group controlId="inputForm">
-          <Form.Label>Dribbble URL</Form.Label>
-          <Form.Control
-            name="Dribbble_URL"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
+            {/* School */}
+            <InputFieldSelect
+              label={"School"}
+              name={"school"}
+              multiSelect={true}
+              value={this.state.school}
+              onChange={this.handleChange}
+              options={schools}
+            />
 
-        <Form.Group controlId="inputForm">
-          <Form.Label>Personal URL</Form.Label>
-          <Form.Control
-            name="Personal_URL"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="inputForm">
-          <Form.Label>Link to Resume</Form.Label>
-          <Form.Control
-            name="Link_to_resume"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="inputForm">
-          <Form.Label>Why GoldenHack</Form.Label>
-          <Form.Control
-            name="Why_GoldenHack"
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Button
-          className="submit-btn"
-          variant="success"
-          type="submit"
-          value={this.state}
-          onClick={this.handleSubmit} // Add Onclick here.
-        >
-          <Link
-            className="btn-link"
-            value={this.state}
-            onClick={this.handleSubmit}
-          >
-            Submit
-          </Link>
-        </Button>
-        <div class="display-error" id="display_error"></div>
-      </Form>
+            {/* Degree */}
+            <InputFieldSelect
+              label={"Degree"}
+              name={"degree"}
+              multiSelect={false}
+              value={this.state.degree}
+              onChange={this.handleChange}
+              options={degrees}
+            />
+
+            {/* Graduation Year */}
+            <InputFieldSelect
+              label={"Graduation Year"}
+              name={"graduation_year"}
+              multiSelect={false}
+              value={this.state.graduation_year}
+              onChange={this.handleChange}
+              options={gradYears}
+            />
+
+            {/* Program */}
+            <InputFieldSelect
+              label={"Program"}
+              name={"program"}
+              multiSelect={true}
+              value={this.state.program}
+              onChange={this.handleChange}
+              options={majors}
+            />
+
+            {/* Github URL */}
+            <InputFieldApplication
+              label={"Github URL"}
+              name={"github_url"}
+              required={false}
+              placeholder={"https://github.com/"}
+              value={this.state.github_url}
+              onChange={(event) => this.handleChange(event, null)}
+            />
+
+            {/* LinkedIn URL */}
+            <InputFieldApplication
+              label={"LinkedIn URL"}
+              name={"linkedin_url"}
+              required={false}
+              placeholder={"https://www.linkedin.com/in/"}
+              value={this.state.linkedin_url}
+              onChange={(event) => this.handleChange(event, null)}
+            />
+
+            {/* Dribbble URL */}
+            <InputFieldApplication
+              label={"Dribbble URL"}
+              name={"dribbble_url"}
+              required={false}
+              placeholder={"https://www.dribbble.com/"}
+              value={this.state.dribbble_url}
+              onChange={(event) => this.handleChange(event, null)}
+            />
+
+            {/* Personal URL */}
+            <InputFieldApplication
+              label={"Personal URL"}
+              name={"personal_url"}
+              required={false}
+              placeholder={"https://"}
+              value={this.state.personal_url}
+              onChange={(event) => this.handleChange(event, null)}
+            />
+
+            {/* Link to Resume */}
+            <InputFieldApplication
+              label={"Link To Resume"}
+              name={"link_to_resume"}
+              required={false}
+              placeholder={"https://"}
+              value={this.state.link_to_resume}
+              onChange={(event) => this.handleChange(event, null)}
+            />
+
+            {/* Why The GoldenHack? */}
+            <InputFieldApplication
+              label={"Why The GoldenHack?"}
+              name={"why_goldenHack"}
+              required={true}
+              placeholder={"Give us your best answer in 1000 words or less."}
+              value={this.state.why_goldenHack}
+              onChange={(event) => this.handleChange(event, null)}
+              longAnswer={true}
+            />
+
+            {this.displayStatus()}
+
+            <div class="display-error" id="display_error"></div>
+
+            <Row>
+              <Col>
+                <SubmitButton text={"Save"} handleSubmit={this.handleSave} />
+              </Col>
+
+              <Col>
+                <SubmitButton
+                  text={"Submit"}
+                  handleSubmit={this.handleSubmit}
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </div>
     );
   }
 }

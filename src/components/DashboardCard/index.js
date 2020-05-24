@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
+
 import DashboardTitleText from "../DashboardTitleText";
 import DashboardStatusText from "../DashboardStatusText";
 import CompleteApplicationButton from "../CompleteApplicationButton";
-import { Row, Col } from "react-bootstrap";
 
 import styles from "./styles.module.css";
 
@@ -22,41 +22,37 @@ export default class DashboardCard extends Component {
 
   render() {
     return (
-      <Container className={styles.container}>
-        <Card className={styles.card}>
-          <Container className="py-5 pr-5 pl-3">
-            <Card.Body className="py-5">
-              {this.props.children}
-              <Col className={styles.col2}>
-                <Row>
-                  <DashboardTitleText
-                    key={this.state.title}
-                    text={this.state.title}
-                  />
-                </Row>
-                <Row>
-                  <DashboardStatusText
-                    key={this.state.status}
-                    type={this.state.status}
-                  />
-                </Row>
-                <br />
-                <Row>
-                  <h4>Application Deadline: {applicationDeadline}</h4>
-                </Row>
-                <br />
-                <Row>
-                  <CompleteApplicationButton
-                    key={this.state.buttonStatus}
-                    text={"Complete Application"}
-                    status={this.state.buttonStatus}
-                  />
-                </Row>
-              </Col>
-            </Card.Body>
-          </Container>
-        </Card>
-      </Container>
+      <Card className={styles.card}>
+        <Card.Body className="py-5 my-5">
+          {this.props.children}
+          <Col className={styles.col}>
+            <Row>
+              <DashboardTitleText
+                key={this.state.title}
+                text={this.state.title}
+              />
+            </Row>
+            <Row>
+              <DashboardStatusText
+                key={this.state.status}
+                type={this.state.status}
+              />
+            </Row>
+            <br />
+            <Row>
+              <h5>Application Deadline: {applicationDeadline}</h5>
+            </Row>
+            <br />
+            <Row>
+              <CompleteApplicationButton
+                key={this.state.buttonStatus}
+                text={"Complete Application"}
+                status={this.state.buttonStatus}
+              />
+            </Row>
+          </Col>
+        </Card.Body>
+      </Card>
     );
   }
 }

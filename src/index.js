@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
-import HomePage from "./views/HomePage";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap-grid.css";
+import "bootstrap/dist/css/bootstrap-reboot.css";
+
 import SponsorshipPage from "./views/SponsorshipPage";
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
@@ -15,6 +17,8 @@ import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput";
 import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange";
 import WebsitePage from "./views/WebsitePage";
 import DashboardPage from "./views/DashboardPage";
+
+import "./index.css";
 
 const routing = (
   <Router>

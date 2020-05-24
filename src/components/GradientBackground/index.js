@@ -4,6 +4,6 @@ import styles from "./styles.module.css";
 
 export default class GradientBackground extends Component {
   render() {
-    return <body className={styles.bg}>{this.props.children}</body>;
+    return <div className={styles.bg}>{this.props.children}</div>;
   }
 }

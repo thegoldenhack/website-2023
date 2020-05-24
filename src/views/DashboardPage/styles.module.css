@@ -1,0 +1,9 @@
+.noPadding {
+  padding-left: 0px;
+}
+.centerContent {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+}

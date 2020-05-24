@@ -12,6 +12,6 @@ export default class LoginTitleText extends Component {
   }
 
   render() {
-    return <h1 className={styles.text}>{this.state.text}</h1>;
+    return <h2 className={styles.text}>{this.state.text}</h2>;
   }
 }

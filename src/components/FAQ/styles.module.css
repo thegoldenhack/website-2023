@@ -1,0 +1,17 @@
+.faqTop {
+  background-color: white;
+  border-width: 1;
+  border-color: #053e5e;
+  border-radius: 25px 25px 0 0;
+}
+.faq {
+  background-color: white;
+  border-width: 1;
+  border-color: #053e5e;
+}
+.faqBottom {
+  background-color: white;
+  border-width: 1;
+  border-color: #053e5e;
+  border-radius: 0 0 25px 25px;
+}

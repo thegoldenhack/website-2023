@@ -12,6 +12,7 @@ export default class InputField extends Component {
       name: this.props.name,
       type: this.props.type,
       placeholder: this.props.placeholder,
+      value: this.props.value,
       handleChange: this.props.handleChange,
 
       error: false,
@@ -29,6 +30,7 @@ export default class InputField extends Component {
           type={this.state.type}
           placeholder={this.state.placeholder}
           onChange={this.state.handleChange}
+          value={this.state.value}
           className={styles.formControl}
         />
       );
@@ -39,6 +41,7 @@ export default class InputField extends Component {
           type={this.state.type}
           placeholder={this.state.placeholder}
           onChange={this.state.handleChange}
+          value={this.state.value}
           className={styles.formControl}
         />
       );
