@@ -1,295 +1,213 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
-import { Row, Col, Card, Accordion, Navbar, Nav } from "react-bootstrap";
+import { Row, Col, Button, Image } from "react-bootstrap";
+
+import cute_lil_dudes from "../../assets/tmp_images/cute_lil_dudes.svg";
+import collaboration from "../../assets/tmp_images/collaboration.svg";
+import design from "../../assets/icons/design.png";
+import develop from "../../assets/icons/develop.png";
+import pitch from "../../assets/icons/pitch.png";
+import kyle from "../../assets/testimonials/kyle.png";
+import ishani from "../../assets/testimonials/ishani.png";
+import lavisha from "../../assets/testimonials/lavisha.png";
+import statistics from "../../assets/statistics.png";
+
+import BlueBackground from "../../components/BlueBackground";
+import BlankBackground from "../../components/BlankBackground";
+import CustomNavbar from "../../components/CustomNavbar";
+import FAQ from "../../components/FAQ";
+import Footer from "../../components/Footer";
+import Sponsors from "../../components/Sponsors";
+import Testimonial from "../../components/Testimonial";
+
 import styles from "./styles.module.css";
 
-class WebsitePage extends Component {
+export default class WebsitePage extends Component {
   render() {
     return (
-      <body>
-        <div id={styles.welcome}>
-          <h1>The GoldenHack</h1>
-          <h4>Canada's largest business hackathon</h4>
-          <h4>September xx - xx, 2020, Wilfrid Laurier University</h4>
-          <Button id={styles.apply}>Apply Now</Button>
-          <br></br>
-          <img id={styles.logo} src="./images/logo/logo.svg"></img>
-        </div>
-        <Navbar id={styles.nav} fixed="top" expand="lg">
-          <Navbar.Brand href="/">
-            <img src="./images/logo/logo_nav.svg"></img>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse>
-            <Nav className="ml-auto">
-              <Nav.Link href="#styles_about__2MuVS">About</Nav.Link>
-              <Nav.Link href="#styles_create__14wHH">Testimonials</Nav.Link>
-              <Nav.Link href="#styles_lastyear__3Z0pa">Statistics</Nav.Link>
-              <Nav.Link href="#styles_sponsors__3eLJs">Sponsors</Nav.Link>
-              <Nav.Link href="#styles_faq__Cg0ou">FAQ</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        <div id={styles.about}>
-          <Row>
-            <Col id={styles.right}>
-              <img src="./images/graphics/plug.svg"></img>
-            </Col>
-            <Col id={styles.left}>
-              <h3>#What is a Business Hackathon?</h3>
-              <h5>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud
-              </h5>
-              <h5>
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum
-              </h5>
-            </Col>
-          </Row>
-        </div>
-        <div id={styles.create}>
-          <h3># Create Something Amazing</h3>
-          <div class="container  align-items-center">
-            <Row>
-              <Col>
-                <Card id={styles.profile}>
-                  <Card.Img
-                    variant="top"
-                    src="./images/testimonials/kyle.png"
-                  />
-                  <Card.Body>
-                    <Card.Text>
-                      <p>
-                        It was great to see so many people passionate about
-                        designing interesting projects! Everyone was willing to
-                        help each other, including people from other teams,
-                        providing a great sense of community.
-                      </p>
-                      <br></br>
-                      <p class="card-text">~ Kyle Yarwood</p>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
+      <div className={styles.bg}>
+        <CustomNavbar
+          headings={["About", "Statistics", "Testimonials", "Sponsors", "FAQ"]}
+        />
+
+        <BlueBackground title={true}>
+          <h1>The</h1>
+          <h1>Golden</h1>
+          <h1>Hack 2.0</h1>
+          {/* <h4>The hackathon for entrepreneurs.</h4> */}
+          <h4>October 3 - 4, 2020.</h4>
+          <h4>Wilfrid Laurier University.</h4>
+          <h4>Now entirely online.</h4>
+        </BlueBackground>
+
+        <div id="about">
+          <BlankBackground>
+            <Row className="align-items-center">
+              <Col lg>
+                <Image
+                  src={collaboration}
+                  alt="TGH"
+                  className={styles.width90}
+                ></Image>
               </Col>
-              <Col>
-                <Card id={styles.profile}>
-                  <Card.Img
-                    variant="top"
-                    src="./images/testimonials/lavisha.png"
-                  />
-                  <Card.Body>
-                    <Card.Text>
-                      <p>
-                        Competing in The GoldenHack gave me the opportunity to
-                        practice my technical and business skills that I learned
-                        in the classroom. I was also able to meet like-minded
-                        individuals who shared an interest for business and
-                        technology like me!
-                      </p>
-                      <p class="card-text">~ Lavisha Bugreja</p>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col>
-                <Card id={styles.profile}>
-                  <Card.Img
-                    variant="top"
-                    src="./images/testimonials/ishani.png"
-                  />
-                  <Card.Body>
-                    <Card.Text>
-                      <p>
-                        The golden hack was the first hackathon I ever attended.
-                        The 24 hours helped me push myself both mentally and
-                        physically! The uniqueness of the challenges and the
-                        variety of workshops made the experience even more
-                        memorable!
-                      </p>
-                      <p class="card-text">~ Ishani Sootha</p>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
+              <Col lg className={styles.center}>
+                <h3>About Us</h3>
+                <h5>
+                  In light of the Covid-19 pandemic, The Goldenhack team will be
+                  hosting our first digital hackathon to ensure the health &
+                  safety of our community. We are committed to hosting an
+                  exciting online event and hope to bring together participants
+                  from all-across Canada.
+                  <br />
+                  <br />
+                  Our Golden Purpose is to cultivate a collaborative ecosystem
+                  where business, design and technology students can connect and
+                  let their imaginations run wild. We strive to be the hackathon
+                  of choice for our sponsors to source talent.
+                </h5>
               </Col>
             </Row>
-          </div>
+          </BlankBackground>
         </div>
-        <div id={styles.lastyear}>
-          <h3># Last Year We Had...</h3>
-          <div id={styles.svgcontainer}>
-            <img id={styles.stats} src="images/graphics/stats.svg"></img>
-          </div>
+
+        <div id="more-about">
+          <BlueBackground>
+            <Row lg>
+              <Col lg>
+                <Row className={styles.ddpRow}>
+                  <Image
+                    src={design}
+                    alt="design"
+                    className={styles.height100}
+                  ></Image>
+                  <h3 className={styles.ddpText}>Design</h3>
+                </Row>
+                <Row className={styles.ddpRow}>
+                  <Image
+                    src={develop}
+                    alt="develop"
+                    className={styles.height100}
+                  ></Image>
+                  <h3 className={styles.ddpText}>Develop</h3>
+                </Row>
+                <Row className={styles.ddpRow}>
+                  <Image
+                    src={pitch}
+                    alt="pitch"
+                    className={styles.height100}
+                  ></Image>
+                  <h3 className={styles.ddpText}>Pitch</h3>
+                </Row>
+              </Col>
+
+              <Col lg className={styles.ddpBlurb}>
+                <h5>
+                  The Goldenhack has something for everyone! Amazing ideas come
+                  to life when business, design & technology students come
+                  together.
+                  <br /> <br />
+                  The entrepreneurial journey incorporates all three of these
+                  still, so we invite business and design students to apply! -
+                  not just developers.
+                </h5>
+              </Col>
+            </Row>
+          </BlueBackground>
         </div>
-        <div id={styles.sponsors}>
-          <h3># Our Sponsors</h3>
-          <h4>
-            <i>Interested in sponsoring? Email us or message us on Facebook!</i>
-          </h4>
+
+        <div id="statistics">
+          <BlankBackground center={true}>
+            <h3>Last Year We Had...</h3>
+
+            <Image
+              fluid
+              src={statistics}
+              alt="stats"
+              className={styles.width75}
+            ></Image>
+          </BlankBackground>
         </div>
-        <div id={styles.faq}>
-          <h3 class="text-center"># Frequently Asked Questions</h3>
-          <Row>
-            <Col id={styles.right}>
-              <img
-                id={styles.question}
-                src="images/graphics/question.svg"
-              ></img>
-            </Col>
-            <Col id="left">
-              <Accordion defaultActiveKey="1">
-                <Card>
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    variant="link"
-                    eventKey="0"
-                  >
-                    What is a Business Hackathon?
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      A business hackathon is a special type of hackathon where
-                      participants (hackers) come and turn into entrepreneurs.
-                      Together in teams made up of business, design and
-                      programming students, you will build & share your ideas
-                      throughout the weekend in a relaxed and welcoming
-                      atmosphere. You don’t have to be a programmer and you
-                      certainly don’t have to be majoring in a technical degree
-                      to participate in a business hackathon.
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-              <br />
-              <Accordion defaultActiveKey="1">
-                <Card>
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    variant="link"
-                    eventKey="0"
-                  >
-                    What if I don’t know how to code?
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      No sweat. Our goal is to make this hackathon friendly to
-                      newcomers. We’ll have lots of mentors and workshops to
-                      help you get up and running. Hacking should be fun, not
-                      frustrating.
-                      <br />
-                      <br />
-                      Not interested in coding? We have plenty of business and
-                      design opportunities as well.
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-              <br />
-              <Accordion defaultActiveKey="1">
-                <Card>
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    variant="link"
-                    eventKey="0"
-                  >
-                    How many people can be on a team?
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>There can be 1-4 people on a team.</Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-              <br />
-              <Accordion defaultActiveKey="1">
-                <Card>
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    variant="link"
-                    eventKey="0"
-                  >
-                    What should I bring?
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      Bring a laptop, charger and anything else that encourages
-                      you to be at your best! We recommend headphones, a change
-                      of clothes, water bottle, sleeping bag, a toothbrush, and
-                      deodorant (please).
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-              <br />
-              <Accordion defaultActiveKey="1">
-                <Card>
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    variant="link"
-                    eventKey="0"
-                  >
-                    How much does it cost to participate?
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      It’s absolutely free to participate. Not only that, you’ll
-                      get free food, drinks and lots of free swag!
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-              <br />
-              <Accordion defaultActiveKey="1">
-                <Card>
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    variant="link"
-                    eventKey="0"
-                  >
-                    How will I get there?
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      Check out our <a href="/travel.html">travel advice.</a>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-              <br />
-              <Accordion defaultActiveKey="1">
-                <Card>
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    variant="link"
-                    eventKey="0"
-                  >
-                    What if I don't see my question here?
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      Shoot us an email at&nbsp;
-                      <a class="mailto" href="mailto:contact@thegoldenhack.com">
-                        contact@thegoldenhack.com
-                      </a>
-                      &nbsp;or message us on&nbsp;
-                      <a href="https://www.facebook.com/TheGoldenHackOfficial/">
-                        Facebook
-                      </a>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-            </Col>
-          </Row>
+
+        <div id="testimonials">
+          <BlueBackground>
+            <h3>Create Something Amazing</h3>
+            <Row>
+              <Col md>
+                <Testimonial
+                  image={kyle}
+                  quote={
+                    "It was great to see that everyone was willing to help each other, including people from other teams, providing a great sense of community."
+                  }
+                  speaker={"- Kyle Yarwood"}
+                />
+              </Col>
+              <Col md>
+                <Testimonial
+                  image={lavisha}
+                  quote={
+                    "Competing in The GoldenHack gave me the opportunity to practice my technical and business skills that I learned in the classroom."
+                  }
+                  speaker={"- Lavisha Bugreja"}
+                />
+              </Col>
+              <Col md>
+                <Testimonial
+                  image={ishani}
+                  quote={
+                    "The GoldenHack was the first hackathon I ever attended. The 24 hours helped me push myself both mentally and physically!"
+                  }
+                  speaker={"- Ishani Sootha"}
+                />
+              </Col>
+            </Row>
+          </BlueBackground>
         </div>
-        <div id={styles.footer}>
-          <p>&lt;/&gt; with ❤️</p>
-          <p> © Copyright 2020 The GoldenHack</p>
+
+        <div id="sponsors">
+          <BlankBackground center={true}>
+            <h3>Our Previous Sponsors</h3>
+
+            <Sponsors />
+
+            <div className={styles.marginTop100}>
+              <h2 className={styles.fontSize64}>Interested in Sponsoring?</h2>
+              <Button
+                className={styles.button}
+                href="mailto:sponsorship@thegoldenhack.ca"
+              >
+                Get in touch
+              </Button>
+            </div>
+          </BlankBackground>
         </div>
-      </body>
+
+        {/* <div id="get-in-touch">
+          <BlueBackground>
+            <h3>Meet the Team</h3>
+
+            <CustomCarousel style={{ height: "60%" }} />
+          </BlueBackground>
+        </div> */}
+
+        <div id="faq">
+          <BlankBackground center={true}>
+            <h3>Frequently Asked Questions</h3>
+            <Row>
+              <Col lg>
+                <Image
+                  src={cute_lil_dudes}
+                  alt="FAQ"
+                  className={styles.faqImage}
+                ></Image>
+              </Col>
+              <Col lg>
+                <FAQ />
+              </Col>
+            </Row>
+          </BlankBackground>
+        </div>
+
+        <Footer />
+      </div>
     );
   }
 }
-
-export default WebsitePage;

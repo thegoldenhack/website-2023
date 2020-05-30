@@ -1,26 +1,32 @@
+import React, { Component } from "react";
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { Card } from "react-bootstrap";
 
-class Testimonial extends Component {
-  static propTypes = {
-    image: PropTypes.string,
-    quote: PropTypes.string,
-    name: PropTypes.string,
-  };
+import styles from "./styles.module.css";
 
+export default class Testimonial extends Component {
   render() {
-    const { image, quote, name, classes } = this.props;
-
     return (
-      <div className={classes}>
-        <div className="testimonial">
-          <img className="testimonial-image" src={image} alt={name}></img>
-          <p className="testimonial-quote">"{quote}"</p>
-          <p className="testimonial-name">- {name}</p>
-        </div>
-      </div>
+      <Card className={styles.card}>
+        <Card.Img
+          variant="top"
+          src={this.props.image}
+          className={styles.circleImage}
+        />
+        <Card.Body>
+          <Card.Text>
+            <p>
+              {this.props.quote}
+              <br />
+            </p>
+
+            {/* Hacky way to make sure that the cards are the same height but hey it works¯\_(ツ)_/¯ */}
+            {this.props.newline ? <br /> : ""}
+
+            <p>{this.props.speaker}</p>
+          </Card.Text>
+        </Card.Body>
+      </Card>
     );
   }
 }
-export default Testimonial;
