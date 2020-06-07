@@ -1,0 +1,19 @@
+.circleImage {
+  border-radius: 50%;
+  width: 75%;
+}
+
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px;
+  }
+}
+
+.card {
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 5px;
+  box-shadow: 11px 14px 24px -4px rgba(0, 0, 0, 0.5);
+}

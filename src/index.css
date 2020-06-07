@@ -5,7 +5,7 @@
 
 h1 {
   font-family: "Jost";
-  font-size: 120px;
+  font-size: 100px;
   font-weight: 600;
   color: #f6d030;
 }
@@ -17,7 +17,8 @@ h2 {
 }
 
 h3 {
-  font-size: 40px;
+  font-family: "Montserrat";
+  font-size: 48px;
   padding-bottom: 5vh;
 }
 
@@ -29,17 +30,19 @@ h4 {
 }
 
 h5 {
+  font-family: "Montserrat";
   font-size: 20px;
   padding-bottom: 5vh;
 }
 
 p {
+  font-family: "Montserrat";
   color: black;
 }
 
-body {
-  width: "100vw";
+/* body {
+  width: 100vw;
   font-family: "Montserrat";
-  max-width: "100%";
-  overflow-x: "hidden";
-}
+  max-width: 100%;
+  overflow-x: hidden;
+} */
