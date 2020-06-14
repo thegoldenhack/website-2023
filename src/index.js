@@ -17,6 +17,7 @@ import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput";
 import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange";
 import WebsitePage from "./views/WebsitePage";
 import DashboardPage from "./views/DashboardPage";
+import ConfirmAccountPage from "./views/ConfirmAccountPage"
 
 import "./index.css";
 
@@ -27,6 +28,7 @@ const routing = (
       <Route path="/sponsor" component={SponsorshipPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
+      <Route path="/confirmaccount" component={ConfirmAccountPage} />
       <Route path="/forgotpassword" component={ForgotPasswordPageSend} />
       <Route
         path="/forgotpasswordpageinput"

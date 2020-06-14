@@ -19,9 +19,10 @@ export default class ForgotPasswordPageChange extends Component {
       code: props.location.code,
       email: props.location.email,
       err: false,
+      success: false,
     };
 
-    if (this.state.code === undefined) {
+    if (this.state.code === undefined || this.state.email === undefined) {
       // Somehow disable the input fields and button
       this.state.err = "noCode";
     }
@@ -33,7 +34,6 @@ export default class ForgotPasswordPageChange extends Component {
     this.setState({
       [name]: value,
     });
-    console.log(this.state);
   };
 
   handleSubmit = (event) => {
@@ -53,10 +53,10 @@ export default class ForgotPasswordPageChange extends Component {
           // Do something to communicate error
         }
         else {
-          console.log("Your password has been successfully changed.");
+          this.setState({ success: true });
           // Do something when successfully changed
         }       
-      });
+      }.bind(this));
     } else {
       this.setState({ err: "noMatch" });
     }  
@@ -74,6 +74,16 @@ export default class ForgotPasswordPageChange extends Component {
       return (
         <div className="alert alert-danger">
           Please ensure that passwords match.
+        </div>
+      );
+    }
+  };
+
+  displaySuccess = () => {
+    if (this.state.success) {
+      return (
+        <div className="alert alert-success">
+          You have successfully changed your password! Please click <a href="/login">here</a> to login to your account.
         </div>
       );
     }
@@ -107,6 +117,9 @@ export default class ForgotPasswordPageChange extends Component {
 
         {/* Display an error if needed */}
         {this.displayErrors()}
+
+        {/* Display a success message if needed */}
+        {this.displaySuccess()}
 
         <SubmitButton
           text={"Recover Account"}
