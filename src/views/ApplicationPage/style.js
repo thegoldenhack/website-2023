@@ -1,0 +1,1 @@
+// Application page style
