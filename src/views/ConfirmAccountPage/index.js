@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
-import AWS from 'aws-sdk'
+import AWS from 'aws-sdk' 
 
 const poolData = {
   UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
