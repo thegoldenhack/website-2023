@@ -24,13 +24,13 @@ class RegisterPage extends Component {
       email: undefined,
       password: undefined,
       confirmpassword: undefined,
-      termsandconditions: undefined,
+      terms: undefined,
     };
   }
 
   handleChange = (event) => {
     if (event.target.name === "terms") {
-      this.setState({ [event.target.name]: !event.target.checked });
+      this.setState({ [event.target.name]: event.target.checked });
     } else {
       this.setState({ [event.target.name]: event.target.value });
     }
@@ -50,7 +50,7 @@ class RegisterPage extends Component {
       this.state.lastname === "" ||
       this.state.password === "" ||
       this.state.confirmpassword === "" ||
-      this.state.terms
+      !this.state.terms
     ) {
       error_flag = 1;
       document.getElementById("display_error").innerHTML =
@@ -86,22 +86,29 @@ class RegisterPage extends Component {
     attributeList.push(dataEmail);
     attributeList.push(dataPersonalName);
     attributeList.push(dataFamilyName);
-    UserPool.signUp(
-      this.state.firstname,
-      this.state.password,
-      attributeList,
-      null,
-      (err, data) => {
-        if (err) {
-          if (err.message != null && error_flag === 0) {
-            error_flag = 1;
-            document.getElementById("display_error").innerHTML = err.message;
-            document.getElementById("display_error").style.color = "#ff0000";
+    if (error_flag === 0) {
+      UserPool.signUp(
+        this.state.email,
+        this.state.password,
+        attributeList,
+        null,
+        (err, data) => {
+          if (err) {
+            if (err.message != null && error_flag === 0) {
+              error_flag = 1;
+              document.getElementById("display_error").innerHTML = err.message;
+              document.getElementById("display_error").style.color = "#ff0000";
+            }
+          }
+          if (error_flag === 0) {
+            this.props.history.push({
+              pathname: "/confirmaccount",
+              email: this.state.email,
+            });
           }
         }
-        if (error_flag === 0) this.props.history.push("/");
-      }
-    );
+      );
+    }
   };
   render() {
     return (

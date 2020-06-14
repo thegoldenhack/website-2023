@@ -20,7 +20,6 @@ export default class ForgotPasswordPageInput extends Component {
     this.setState({
       [name]: value,
     });
-    console.log(this.state);
   };
 
   handleSubmit(event) {

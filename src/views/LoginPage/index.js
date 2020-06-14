@@ -33,7 +33,7 @@ export default class LoginPage extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     var authData = {
@@ -54,14 +54,15 @@ export default class LoginPage extends Component {
       onSuccess: function (result) {
         var accessToken = result.getAccessToken().getJwtToken();
         localStorage.setItem("accessToken", accessToken);
-      },
+        this.props.history.push('/dashboard');
+      }.bind(this),
 
       onFailure: function (err) {
         this.setState({
           error: true,
           errMessage: "Email or Password is Incorrect",
         });
-      },
+      }.bind(this)
     });
   }
 
@@ -97,6 +98,7 @@ export default class LoginPage extends Component {
         {this.displayErrors()}
 
         <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit} />
+        {/* <SubmitButton text={"Confirm"} handleSubmit={this.confirm} /> */}
 
         <Nav className="justify-content-center">
           <Nav.Item>
