@@ -23,4 +23,5 @@
   justify-content: center;
   flex-direction: row;
   padding-bottom: 10vh;
+  min-width: 25vh;
 }
