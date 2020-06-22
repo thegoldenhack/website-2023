@@ -54,7 +54,13 @@ export default class FAQ extends Component {
             How many people can be on a team?
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="3">
-            <Card.Body>Teams can range in size from 1-4 people.</Card.Body>
+            <Card.Body>
+              Teams can range in size from 1-4 people.
+              <br />
+              <br />
+              Don't have a team? No sweat! We'll be hosting a team-building
+              activity during the event.
+            </Card.Body>
           </Accordion.Collapse>
         </Card>
         <Card className={styles.faq}>
@@ -62,10 +68,7 @@ export default class FAQ extends Component {
             How much does it cost to participate?
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="4">
-            <Card.Body>
-              Participation is entirely free. On top of that, you will receive
-              free food, drink and lots of swag!
-            </Card.Body>
+            <Card.Body>Participation is entirely free!</Card.Body>
           </Accordion.Collapse>
         </Card>
         <Card className={styles.faq}>
