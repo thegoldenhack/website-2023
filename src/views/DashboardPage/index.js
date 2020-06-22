@@ -96,7 +96,7 @@ export default class DashboardPage extends Component {
             this.setState({ status: "complete", buttonStatus: "disabled" });
           }
         } else {
-          if (!data.Item.submitted.BOOL) {
+          if (!data || !data.Item || !data.Item.submitted.BOOL) {
             this.setState({ status: "incomplete", buttonStatus: "enabled" });
           } else if (data.Item.submitted.BOOL) {
             this.setState({ status: "complete", buttonStatus: "disabled" });
