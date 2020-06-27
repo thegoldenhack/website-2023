@@ -1,5 +1,7 @@
 .blue {
   color: #053e5e;
+  margin-right: 15px;
+  font-family: "Montserrat";
 }
 .yellow {
   color: #f6d030;
@@ -7,4 +9,5 @@
 .container {
   padding-left: 50px;
   padding-right: 50px;
+  background-color: #f2f2f2;
 }

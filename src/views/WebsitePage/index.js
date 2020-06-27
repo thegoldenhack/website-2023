@@ -9,7 +9,8 @@ import pitch from "../../assets/icons/pitch.png";
 import kyle from "../../assets/testimonials/kyle.png";
 import ishani from "../../assets/testimonials/ishani.png";
 import lavisha from "../../assets/testimonials/lavisha.png";
-import statistics from "../../assets/statistics.png";
+import statisticsLeft from "../../assets/statisticsLeft.png";
+import statisticsRight from "../../assets/statisticsRight.png";
 
 import BlueBackground from "../../components/BlueBackground";
 import BlankBackground from "../../components/BlankBackground";
@@ -52,17 +53,17 @@ export default class WebsitePage extends Component {
               <Col lg className={styles.center}>
                 <h3>About Us</h3>
                 <h5>
+                  Our Golden Purpose is to cultivate a collaborative ecosystem
+                  where business, design and technology students can connect and
+                  let their imaginations run wild. We strive to be the hackathon
+                  of choice for our sponsors to source talent.
+                  <br />
+                  <br />
                   In light of the Covid-19 pandemic, The Goldenhack team will be
                   hosting our first digital hackathon to ensure the health &
                   safety of our community. We are committed to hosting an
                   exciting online event and hope to bring together participants
                   from all-across Canada.
-                  <br />
-                  <br />
-                  Our Golden Purpose is to cultivate a collaborative ecosystem
-                  where business, design and technology students can connect and
-                  let their imaginations run wild. We strive to be the hackathon
-                  of choice for our sponsors to source talent.
                 </h5>
               </Col>
             </Row>
@@ -71,46 +72,48 @@ export default class WebsitePage extends Component {
 
         <div id="more-about">
           <BlueBackground>
-            <Row lg>
-              <Col lg>
-                <Row className={styles.ddpRow}>
+            <Col lg>
+              <Row lg className={styles.fullWidthCenter}>
+                <div className={styles.ddpRow}>
                   <Image
                     src={design}
                     alt="design"
-                    className={styles.height100}
+                    className={styles.height75}
                   ></Image>
                   <h3 className={styles.ddpText}>Design</h3>
-                </Row>
-                <Row className={styles.ddpRow}>
+                </div>
+                <div className={styles.ddpRow}>
                   <Image
                     src={develop}
                     alt="develop"
-                    className={styles.height100}
+                    className={styles.height75}
                   ></Image>
                   <h3 className={styles.ddpText}>Develop</h3>
-                </Row>
-                <Row className={styles.ddpRow}>
+                </div>
+                <div className={styles.ddpRow}>
                   <Image
                     src={pitch}
                     alt="pitch"
-                    className={styles.height100}
+                    className={styles.height75}
                   ></Image>
                   <h3 className={styles.ddpText}>Pitch</h3>
-                </Row>
-              </Col>
+                </div>
+              </Row>
 
-              <Col lg className={styles.ddpBlurb}>
-                <h5>
-                  The Goldenhack has something for everyone! Amazing ideas come
-                  to life when business, design & technology students come
-                  together.
-                  <br /> <br />
-                  The entrepreneurial journey incorporates all three of these
-                  still, so we invite business and design students to apply! -
-                  not just developers.
-                </h5>
-              </Col>
-            </Row>
+              <div className={styles.fullWidthCenter}>
+                <div className={styles.ddpBlurb}>
+                  <h5>
+                    The Goldenhack has something for everyone! <br /> Amazing
+                    ideas come to life when business, design & technology
+                    students come together.
+                    <br /> <br />
+                    The entrepreneurial journey incorporates all three of these
+                    still, so we invite business and design students to apply! -
+                    not just developers.
+                  </h5>
+                </div>
+              </div>
+            </Col>
           </BlueBackground>
         </div>
 
@@ -118,12 +121,26 @@ export default class WebsitePage extends Component {
           <BlankBackground center={true}>
             <h3>Last Year We Had...</h3>
 
-            <Image
-              fluid
-              src={statistics}
-              alt="stats"
-              className={styles.width75}
-            ></Image>
+            <div className={styles.fullWidthCenter}>
+              <Row className={styles.width80}>
+                <Col md className={styles.padding0}>
+                  <Image
+                    fluid
+                    src={statisticsLeft}
+                    alt="stats"
+                    className={styles.width100}
+                  ></Image>
+                </Col>
+                <Col md className={styles.padding0}>
+                  <Image
+                    fluid
+                    src={statisticsRight}
+                    alt="stats"
+                    className={styles.width100}
+                  ></Image>
+                </Col>
+              </Row>
+            </div>
           </BlankBackground>
         </div>
 
