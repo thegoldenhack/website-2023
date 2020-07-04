@@ -19,6 +19,7 @@ import FAQ from "../../components/FAQ";
 import Footer from "../../components/Footer";
 import Sponsors from "../../components/Sponsors";
 import Testimonial from "../../components/Testimonial";
+import CustomCarousel from "../../components/CustomCarousel";
 
 import styles from "./styles.module.css";
 
@@ -197,13 +198,13 @@ export default class WebsitePage extends Component {
           </BlankBackground>
         </div>
 
-        {/* <div id="get-in-touch">
+        <div id="photos-from-last-year">
           <BlueBackground>
-            <h3>Meet the Team</h3>
+            <h3>The GoldenHack v1.0</h3>
 
-            <CustomCarousel style={{ height: "60%" }} />
+            <CustomCarousel />
           </BlueBackground>
-        </div> */}
+        </div>
 
         <div id="faq">
           <BlankBackground center={true}>
