@@ -1,8 +1,3 @@
-import {
-  CognitoUserPool,
-  AuthenticationDetails,
-  CognitoUser,
-} from "amazon-cognito-identity-js";
 import React, { Component } from "react";
 
 import { Nav } from "react-bootstrap";
@@ -11,14 +6,9 @@ import LoginRegisterLayout from "../../components/LoginRegisterLayout";
 import SubmitButton from "../../components/SubmitButton";
 import InputField from "../../components/InputField";
 
+import { login } from "../../utils/Cognito/index.js";
+
 import strings from "../../assets/data/strings.js";
-
-const poolData = {
-  UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
-  ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
-};
-
-const UserPool = new CognitoUserPool(poolData);
 
 export default class LoginPage extends Component {
   constructor(props) {
@@ -38,33 +28,18 @@ export default class LoginPage extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    var authData = {
-      Username: this.state.email,
-      Password: this.state.password,
-    };
-
-    var authenticationDetails = new AuthenticationDetails(authData);
-
-    var userData = {
-      Username: this.state.email,
-      Pool: UserPool,
-    };
-
-    var cognitoUser = new CognitoUser(userData);
-
-    cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function (result) {
-        var accessToken = result.getAccessToken().getJwtToken();
+    login(this.state.email, this.state.password, {
+      onSuccess: (result) => {
+        var accessToken = result.getIdToken().getJwtToken();
         localStorage.setItem("accessToken", accessToken);
         this.props.history.push("/dashboard");
-      }.bind(this),
-
-      onFailure: function (err) {
+      },
+      onFailure: () => {
         this.setState({
           err: true,
           errMessage: strings.login.incorrectLoginDetails,
         });
-      }.bind(this),
+      },
     });
   };
 
@@ -99,7 +74,6 @@ export default class LoginPage extends Component {
         {this.displayErrors()}
 
         <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit} />
-        {/* <SubmitButton text={"Confirm"} handleSubmit={this.confirm} /> */}
 
         <Nav className="justify-content-center">
           <Nav.Item>
