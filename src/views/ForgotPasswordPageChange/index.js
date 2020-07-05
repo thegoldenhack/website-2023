@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import AWS from "aws-sdk";
-
 import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
-import strings from "../../assets/data/strings.js";
+import {
+  confirmForgotPassword,
+  getEmailFromJwt,
+} from "../../utils/Cognito/index.js";
+import { sendEmails, emailTemplates } from "../../utils/Emails/index.js";
 
-const awsRegion = process.env.REACT_APP_AWS_REGION;
-AWS.config.update({ region: awsRegion });
-const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
+import strings from "../../assets/data/strings.js";
 
 export default class ForgotPasswordPageChange extends Component {
   constructor(props) {
@@ -47,16 +47,11 @@ export default class ForgotPasswordPageChange extends Component {
     event.preventDefault();
 
     if (this.state.newPassword === this.state.confirmPassword) {
-      var params = {
-        ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
-        ConfirmationCode: this.state.code,
-        Password: this.state.newPassword,
-        Username: this.state.email,
-      };
-
-      cognitoIdentityServiceProvider.confirmForgotPassword(
-        params,
-        function (err, data) {
+      confirmForgotPassword(
+        this.state.email,
+        this.state.newPassword,
+        this.state.code,
+        (err, data) => {
           if (err) {
             console.log(err);
             this.setState({
@@ -64,10 +59,15 @@ export default class ForgotPasswordPageChange extends Component {
               errMessage: strings.forgotPassword.somethingWentWrong,
             });
           } else {
-            this.setState({ success: true, err: false });
-            // Do something when successfully changed
+            this.setState({ success: true });
+
+            // Send Password Successfully Changed email
+            sendEmails(
+              getEmailFromJwt(),
+              emailTemplates.FORGOT_PASSWORD_SUCCESS
+            );
           }
-        }.bind(this)
+        }
       );
     } else {
       this.setState({ err: true, errMessage: strings.forgotPassword.noMatch });

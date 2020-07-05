@@ -1,9 +1,8 @@
 // Dashbaord page
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import AWS from "aws-sdk";
-import { CognitoUserPool } from "amazon-cognito-identity-js";
 
 import { Row, Col, Container } from "react-bootstrap";
 
@@ -13,10 +12,7 @@ import DashboardCard from "../../components/DashboardCard";
 
 import styles from "./styles.module.css";
 
-const poolData = {
-  UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
-  ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
-};
+import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
 
 const applicationDeadline = new Date(
   process.env.REACT_APP_APPLICATION_DEADLINE
@@ -32,8 +28,6 @@ const dynamoDbData = {
 
 const tableName = process.env.REACT_APP_DYNAMO_DB_TABLE;
 
-const userPool = new CognitoUserPool(poolData);
-var cognitoUser = userPool.getCurrentUser();
 var dynamoDB = new AWS.DynamoDB(dynamoDbData);
 var isLoggedIn = false;
 
@@ -41,32 +35,15 @@ export default class DashboardPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: undefined,
       status: undefined,
       buttonStatus: undefined,
     };
 
-    if (cognitoUser != null) {
-      cognitoUser.getSession(
-        function (err, session) {
-          if (err) {
-            console.log(err);
-            return;
-          } else {
-            this.state.email = session.idToken.payload.email;
-          }
+    var jwt = getJwt();
 
-          //Set the profile info
-          cognitoUser.getUserAttributes(function (err, result) {
-            if (err) {
-              console.log(err);
-              return;
-            }
-          });
-
-          isLoggedIn = true;
-        }.bind(this)
-      );
+    if (jwt != null) {
+      this.state.email = getEmailFromJwt();
+      isLoggedIn = true;
     } else {
       this.props.history.push({
         pathname: "/login",

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 import { schools } from "../../assets/data/schools.js";
 import { majors } from "../../assets/data/majors.js";
@@ -14,7 +14,8 @@ import InputFieldApplication from "../../components/InputFieldApplication";
 import InputFieldSelect from "../../components/InputFieldSelect";
 import SubmitButton from "../../components/SubmitButton";
 
-import "./styles.css";
+import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
+import { sendEmails, emailTemplates } from "../../utils/Emails/index.js";
 
 export default class application extends Component {
   constructor(props) {
@@ -36,6 +37,16 @@ export default class application extends Component {
       link_to_resume: undefined,
       why_goldenHack: undefined,
     };
+
+    var jwt = getJwt();
+
+    if (jwt != null) {
+      this.state.email = getEmailFromJwt();
+    } else {
+      this.props.history.push({
+        pathname: "/login",
+      });
+    }
   }
   // React-select handles events a little weirdly (ie it doesn't contain the name
   // of the field which was passed in props), so when an input field uses
@@ -102,9 +113,9 @@ export default class application extends Component {
         "Over 1000 character limit for 'Why Golden Hack'";
     }
 
-    this.setState({ submitted: true });
-
     console.log(this.state);
+
+    sendEmails(getEmailFromJwt(), emailTemplates.APPLICATION_SUBMITTED);
   };
 
   handleSave = () => {
@@ -122,162 +133,180 @@ export default class application extends Component {
   };
   render() {
     return (
-      <div id="App">
-        <DashboardSidebar pageWrapId={"page-wrap"} outerContainerId={"App"} />
+      <div id="outer-container">
+        <DashboardSidebar
+          pageWrapId={"page-wrap"}
+          outerContainerId={"outer-container"}
+        />
 
-        <div id="page-wrap">
-          <h2 className="heading">The GoldenHack 2020 Application</h2>
+        <main id="page-wrap">
+          <Container
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <h2 style={{ fontSize: "32px", marginTop: "20px" }}>
+              The GoldenHack 2020 Hacker Application
+            </h2>
 
-          <p>
-            Little blurb or something about how after you submit you can't edit
-            your application.
-          </p>
+            <p>
+              Please note that once you submit your application it cannot be
+              edited. <br />
+              Save your progress as you go!
+            </p>
 
-          {/* Birthday */}
-          <InputFieldApplication
-            label="Birthday"
-            name={"birth_date"}
-            required={true}
-            value={this.state.birth_date}
-            onChange={this.handleChange}
-            type="date"
-          />
+            {/* Birthday */}
+            <InputFieldApplication
+              label="Birthday"
+              name={"birth_date"}
+              required={true}
+              value={this.state.birth_date}
+              onChange={this.handleChange}
+              type="date"
+            />
 
-          {/* Gender */}
-          <InputFieldSelect
-            label={"Gender"}
-            name={"gender"}
-            multiSelect={false}
-            value={this.state.gender}
-            onChange={this.handleChange}
-            options={genders}
-          />
+            {/* Gender */}
+            <InputFieldSelect
+              label={"Gender"}
+              name={"gender"}
+              multiSelect={false}
+              value={this.state.gender}
+              onChange={this.handleChange}
+              options={genders}
+            />
 
-          {/* Ethnicity */}
-          <InputFieldSelect
-            label={"Ethnicity"}
-            name={"ethnicity"}
-            multiSelect={true}
-            value={this.state.ethnicity}
-            onChange={this.handleChange}
-            options={ethnicity}
-          />
+            {/* Ethnicity */}
+            <InputFieldSelect
+              label={"Ethnicity"}
+              name={"ethnicity"}
+              multiSelect={true}
+              value={this.state.ethnicity}
+              onChange={this.handleChange}
+              options={ethnicity}
+            />
 
-          {/* School */}
-          <InputFieldSelect
-            label={"School"}
-            name={"school"}
-            multiSelect={true}
-            value={this.state.school}
-            onChange={this.handleChange}
-            options={schools}
-          />
+            {/* School */}
+            <InputFieldSelect
+              label={"School"}
+              name={"school"}
+              multiSelect={true}
+              value={this.state.school}
+              onChange={this.handleChange}
+              options={schools}
+            />
 
-          {/* Degree */}
-          <InputFieldSelect
-            label={"Degree"}
-            name={"degree"}
-            multiSelect={false}
-            value={this.state.degree}
-            onChange={this.handleChange}
-            options={degrees}
-          />
+            {/* Degree */}
+            <InputFieldSelect
+              label={"Degree"}
+              name={"degree"}
+              multiSelect={false}
+              value={this.state.degree}
+              onChange={this.handleChange}
+              options={degrees}
+            />
 
-          {/* Graduation Year */}
-          <InputFieldSelect
-            label={"Graduation Year"}
-            name={"graduation_year"}
-            multiSelect={false}
-            value={this.state.graduation_year}
-            onChange={this.handleChange}
-            options={gradYears}
-          />
+            {/* Graduation Year */}
+            <InputFieldSelect
+              label={"Graduation Year"}
+              name={"graduation_year"}
+              multiSelect={false}
+              value={this.state.graduation_year}
+              onChange={this.handleChange}
+              options={gradYears}
+            />
 
-          {/* Program */}
-          <InputFieldSelect
-            label={"Program"}
-            name={"program"}
-            multiSelect={true}
-            value={this.state.program}
-            onChange={this.handleChange}
-            options={majors}
-          />
+            {/* Program */}
+            <InputFieldSelect
+              label={"Program"}
+              name={"program"}
+              multiSelect={true}
+              value={this.state.program}
+              onChange={this.handleChange}
+              options={majors}
+            />
 
-          {/* Github URL */}
-          <InputFieldApplication
-            label={"Github URL"}
-            name={"github_url"}
-            required={false}
-            placeholder={"https://github.com/"}
-            value={this.state.github_url}
-            onChange={(event) => this.handleChange(event, null)}
-          />
+            {/* Github URL */}
+            <InputFieldApplication
+              label={"Github URL"}
+              name={"github_url"}
+              required={false}
+              placeholder={"https://github.com/"}
+              value={this.state.github_url}
+              onChange={(event) => this.handleChange(event, null)}
+            />
 
-          {/* LinkedIn URL */}
-          <InputFieldApplication
-            label={"LinkedIn URL"}
-            name={"linkedin_url"}
-            required={false}
-            placeholder={"https://www.linkedin.com/in/"}
-            value={this.state.linkedin_url}
-            onChange={(event) => this.handleChange(event, null)}
-          />
+            {/* LinkedIn URL */}
+            <InputFieldApplication
+              label={"LinkedIn URL"}
+              name={"linkedin_url"}
+              required={false}
+              placeholder={"https://www.linkedin.com/in/"}
+              value={this.state.linkedin_url}
+              onChange={(event) => this.handleChange(event, null)}
+            />
 
-          {/* Dribbble URL */}
-          <InputFieldApplication
-            label={"Dribbble URL"}
-            name={"dribbble_url"}
-            required={false}
-            placeholder={"https://www.dribbble.com/"}
-            value={this.state.dribbble_url}
-            onChange={(event) => this.handleChange(event, null)}
-          />
+            {/* Dribbble URL */}
+            <InputFieldApplication
+              label={"Dribbble URL"}
+              name={"dribbble_url"}
+              required={false}
+              placeholder={"https://www.dribbble.com/"}
+              value={this.state.dribbble_url}
+              onChange={(event) => this.handleChange(event, null)}
+            />
 
-          {/* Personal URL */}
-          <InputFieldApplication
-            label={"Personal URL"}
-            name={"personal_url"}
-            required={false}
-            placeholder={"https://"}
-            value={this.state.personal_url}
-            onChange={(event) => this.handleChange(event, null)}
-          />
+            {/* Personal URL */}
+            <InputFieldApplication
+              label={"Personal URL"}
+              name={"personal_url"}
+              required={false}
+              placeholder={"https://"}
+              value={this.state.personal_url}
+              onChange={(event) => this.handleChange(event, null)}
+            />
 
-          {/* Link to Resume */}
-          <InputFieldApplication
-            label={"Link To Resume"}
-            name={"link_to_resume"}
-            required={false}
-            placeholder={"https://"}
-            value={this.state.link_to_resume}
-            onChange={(event) => this.handleChange(event, null)}
-          />
+            {/* Link to Resume */}
+            <InputFieldApplication
+              label={"Link To Resume"}
+              name={"link_to_resume"}
+              required={false}
+              placeholder={"https://"}
+              value={this.state.link_to_resume}
+              onChange={(event) => this.handleChange(event, null)}
+            />
 
-          {/* Why The GoldenHack? */}
-          <InputFieldApplication
-            label={"Why The GoldenHack?"}
-            name={"why_goldenHack"}
-            required={true}
-            placeholder={"Give us your best answer in 1000 words or less."}
-            value={this.state.why_goldenHack}
-            onChange={(event) => this.handleChange(event, null)}
-            longAnswer={true}
-          />
+            {/* Why The GoldenHack? */}
+            <InputFieldApplication
+              label={"Why The GoldenHack?"}
+              name={"why_goldenHack"}
+              required={true}
+              placeholder={"Give us your best answer in 1000 words or less."}
+              value={this.state.why_goldenHack}
+              onChange={(event) => this.handleChange(event, null)}
+              longAnswer={true}
+            />
 
-          {this.displayStatus()}
+            {this.displayStatus()}
 
-          <div class="display-error" id="display_error"></div>
+            <div class="display-error" id="display_error"></div>
 
-          <Row>
-            <Col>
-              <SubmitButton text={"Save"} handleSubmit={this.handleSave} />
-            </Col>
+            <Row>
+              <Col>
+                <SubmitButton text={"Save"} handleSubmit={this.handleSave} />
+              </Col>
 
-            <Col>
-              <SubmitButton text={"Submit"} handleSubmit={this.handleSubmit} />
-            </Col>
-          </Row>
-        </div>
+              <Col>
+                <SubmitButton
+                  text={"Submit"}
+                  handleSubmit={this.handleSubmit}
+                />
+              </Col>
+            </Row>
+          </Container>
+        </main>
       </div>
     );
   }

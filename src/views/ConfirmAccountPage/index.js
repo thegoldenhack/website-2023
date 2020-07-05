@@ -1,21 +1,13 @@
 import React, { Component } from "react";
 
-import AWS from "aws-sdk";
-
 import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
+import { confirmAccount } from "../../utils/Cognito/index.js";
+import { sendEmails, emailTemplates } from "../../utils/Emails/index.js";
+
 import strings from "../../assets/data/strings.js";
-
-const poolData = {
-  UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
-  ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
-};
-
-AWS.config.update({ region: "us-east-2" });
-
-var cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
 
 export default class ConfirmAccountPage extends Component {
   constructor(props) {
@@ -38,28 +30,23 @@ export default class ConfirmAccountPage extends Component {
   };
 
   handleSubmit = (event) => {
-    // make sure the recovery code is 6 digits
     event.preventDefault();
-    if (this.state.confirmation.length === 6) {
-      var params = {
-        ClientId: poolData.ClientId,
-        ConfirmationCode: this.state.confirmation,
-        Username: this.state.email,
-      };
 
-      cognitoIdentityServiceProvider.confirmSignUp(
-        params,
-        function (err, data) {
-          if (err)
-            this.setState({
-              err: true,
-              errMessage: strings.confirmAccount.confirmFailure,
-            });
-          else {
-            this.setState({ success: true, err: false });
-          }
-        }.bind(this)
-      );
+    // make sure the recovery code is 6 digits
+    if (this.state.confirmation.length === 6) {
+      confirmAccount(this.state.email, this.state.confirmation, (err, data) => {
+        if (err) {
+          this.setState({
+            err: true,
+            errMessage: strings.confirmAccount.confirmFailure,
+          });
+        } else {
+          this.setState({ success: true });
+
+          // Send Welcome email
+          sendEmails(this.state.email, emailTemplates.WELCOME);
+        }
+      });
     } else {
       this.setState({
         err: true,

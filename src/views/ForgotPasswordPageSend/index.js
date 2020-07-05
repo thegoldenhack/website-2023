@@ -1,16 +1,12 @@
 import React, { Component } from "react";
-import AWS from "aws-sdk";
 
 import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
+import { forgotPassword } from "../../utils/Cognito/index.js";
+
 import strings from "../../assets/data/strings.js";
-
-const awsRegion = process.env.REACT_APP_AWS_REGION;
-AWS.config.update({ region: awsRegion });
-
-const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
 
 export default class ForgotPasswordPageSend extends Component {
   constructor(props) {
@@ -41,34 +37,21 @@ export default class ForgotPasswordPageSend extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.isValidEmail(this.state.email)) {
-      var params = {
-        ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
-        Username: this.state.email,
-      };
-
-      cognitoIdentityServiceProvider.forgotPassword(
-        params,
-        function (err, data) {
-          console.log("HERE!");
-          console.log(err);
-          console.log(data);
-          if (err) {
-            if (err.code === "LimitExceededException") {
-              this.setState({
-                err: true,
-                errMessage: strings.forgotPassword.tooManyAttempts,
-              });
-            }
-          } else {
-            this.props.history.push({
-              pathname: "/forgotpasswordpageinput",
-              email: this.state.email,
+      forgotPassword(this.state.email, (err, data) => {
+        if (err) {
+          if (err.code === "LimitExceededException") {
+            this.setState({
+              err: true,
+              errMessage: strings.forgotPassword.tooManyAttempts,
             });
           }
-        }.bind(this)
-      );
-      // Call whatever AWS functions we need
-      // Reroute to a "check your email for the recovery code" page
+        } else {
+          this.props.history.push({
+            pathname: "/forgotpasswordpageinput",
+            email: this.state.email,
+          });
+        }
+      });
     } else {
       this.setState({
         err: true,

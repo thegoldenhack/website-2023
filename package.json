@@ -14,7 +14,7 @@
     "jwt-decode": "^2.2.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
-    "react-burger-menu": "^2.6.17",
+    "react-burger-menu": "^2.7.0",
     "react-chartjs-2": "^2.9.0",
     "react-datepicker": "^2.14.1",
     "react-day-picker": "^7.4.8",
