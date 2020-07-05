@@ -17,7 +17,6 @@ import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
 const applicationDeadline = new Date(
   process.env.REACT_APP_APPLICATION_DEADLINE
 );
-const decisionDate = new Date(process.env.REACT_APP_DECISION_DATE);
 const today = new Date();
 
 const dynamoDbData = {

@@ -19,7 +19,7 @@ export default class Sponsors extends Component {
       <div>
         <Row className="align-items-center justify-content-center mt-5">
           <Col md>
-            <a href="https://www.facebook.com/wluPHI/" target="_blank">
+            <a href="https://www.facebook.com/wluPHI/" target="_blank" rel="noopener noreferrer">
               <img src={phi_logo} className={styles.width100} alt="WLU Phi" />
             </a>
           </Col>
@@ -28,20 +28,21 @@ export default class Sponsors extends Component {
             <a
               href="https://wlu.campusvibe.ca/campusvibe/group/3b395ea1-9f4c-420f-bf4f-c17871093415/1f4c35ea-c960-45b9-9b26-c309141c9a97"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img src={ldss_logo} className={styles.width75} alt="LDSS" />
             </a>
           </Col>
         </Row>
         <Row className="align-items-center justify-content-center py-5 my-5">
-          <a href="http://fossa.ca/" target="_blank">
+          <a href="http://fossa.ca/" target="_blank" rel="noopener noreferrer">
             <img src={fossa_logo} className={styles.width75} alt="FOSSA" />
           </a>
         </Row>
 
         <Row className="align-items-center py-5 my-5">
           <Col md>
-            <a href="https://dynamic.ca/eng.html" target="_blank">
+            <a href="https://dynamic.ca/eng.html" target="_blank" rel="noopener noreferrer">
               <img
                 src={df_logo}
                 className={styles.width50}
@@ -53,7 +54,7 @@ export default class Sponsors extends Component {
           <Col md>
             <a
               href="https://www2.deloitte.com/ca/en/pages/technology/articles/welcome-to-d-space.html"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
             >
               <img src={dspace_logo} className={styles.width50} alt="DSpace" />
             </a>
@@ -62,7 +63,7 @@ export default class Sponsors extends Component {
 
         <Row className="align-items-center mt-5">
           <Col md>
-            <a href="https://www.nextcanada.com/" target="_blank">
+            <a href="https://www.nextcanada.com/" target="_blank" rel="noopener noreferrer">
               <img
                 src={next_canada_logo}
                 className={styles.width50}
@@ -72,13 +73,13 @@ export default class Sponsors extends Component {
           </Col>
 
           <Col>
-            <a href="https://zebu.io/" target="_blank">
+            <a href="https://zebu.io/" target="_blank" rel="noopener noreferrer">
               <img src={zebu_logo} className={styles.width50} alt="Zebu" />
             </a>
           </Col>
 
           <Col>
-            <a href="https://camplete.com/" target="_blank">
+            <a href="https://camplete.com/" target="_blank" rel="noopener noreferrer">
               <img
                 src={camplete_logo}
                 className={styles.width75}
