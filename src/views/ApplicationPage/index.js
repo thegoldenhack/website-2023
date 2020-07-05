@@ -82,12 +82,12 @@ export default class application extends Component {
     console.log("Submitting!");
     event.preventDefault();
     if (
-      this.state.Gender == undefined ||
-      this.state.ethnicity == undefined ||
-      this.state.schoolOption == undefined ||
-      this.state.Degree == undefined ||
-      this.state.Graduation_year == undefined ||
-      this.state.Program == undefined
+      this.state.Gender === undefined ||
+      this.state.ethnicity === undefined ||
+      this.state.schoolOption === undefined ||
+      this.state.Degree === undefined ||
+      this.state.Graduation_year === undefined ||
+      this.state.Program === undefined
     ) {
       document.getElementById("display_error").innerHTML =
         "Not all required fields have been filled out.";

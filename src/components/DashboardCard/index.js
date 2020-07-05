@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 
 import DashboardTitleText from "../DashboardTitleText";
 import DashboardStatusText from "../DashboardStatusText";

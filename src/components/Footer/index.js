@@ -10,14 +10,16 @@ export default class Footer extends Component {
   render() {
     return (
       <div className={styles.footer}>
-        <p>&lt;/&gt; with ❤️</p>
-        <p> © Copyright 2020 The GoldenHack</p>
-        <a href="https://instagram.com/thegoldenhackofficial" target="_blank">
+        <p className={styles.inline}>&lt;/&gt; with </p>
+        <span role="img" aria-label="love">❤️</span>
+        <p><br /> © Copyright 2020 The GoldenHack</p>
+        <a href="https://instagram.com/thegoldenhackofficial" target="_blank" rel="noopener noreferrer">
           <img src={instagram} alt="Instagram" s />
         </a>
         <a
           href="https://www.facebook.com/TheGoldenHackOfficial"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <img src={facebook} alt="Facebook" />
         </a>
