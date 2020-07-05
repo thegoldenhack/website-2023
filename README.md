@@ -94,6 +94,9 @@ Kyle's favourite dad joke:
     What time did Sean Connery get to Wimbledon? 
     Tennish.
 
+Bonus dad joke!:
+    Last Christmas my family bought a fake Christmas tree and the clerk said to my dad "Are you going to put it up yourself?". My dad replied "Don't be disgusting, I'm going to put it in the living room."
+
 Tailai's Dad Joke that is a pun:
     ["hip", "hip"]
 
