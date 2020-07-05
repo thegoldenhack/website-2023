@@ -5,6 +5,7 @@ import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
 import { confirmAccount } from "../../utils/Cognito/index.js";
+import { sendEmails, emailTemplates } from "../../utils/Emails/index.js";
 
 import strings from "../../assets/data/strings.js";
 
@@ -41,6 +42,9 @@ export default class ConfirmAccountPage extends Component {
           });
         } else {
           this.setState({ success: true });
+
+          // Send Welcome email
+          sendEmails(this.state.email, emailTemplates.WELCOME);
         }
       });
     } else {

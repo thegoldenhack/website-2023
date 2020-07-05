@@ -3,7 +3,11 @@ import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
-import { confirmForgotPassword } from "../../utils/Cognito/index.js";
+import {
+  confirmForgotPassword,
+  getEmailFromJwt,
+} from "../../utils/Cognito/index.js";
+import { sendEmails, emailTemplates } from "../../utils/Emails/index.js";
 
 import strings from "../../assets/data/strings.js";
 
@@ -55,7 +59,13 @@ export default class ForgotPasswordPageChange extends Component {
               errMessage: strings.forgotPassword.somethingWentWrong,
             });
           } else {
-            this.setState({ success: true, err: false });
+            this.setState({ success: true });
+
+            // Send Password Successfully Changed email
+            sendEmails(
+              getEmailFromJwt(),
+              emailTemplates.FORGOT_PASSWORD_SUCCESS
+            );
           }
         }
       );

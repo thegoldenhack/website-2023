@@ -15,6 +15,7 @@ import InputFieldSelect from "../../components/InputFieldSelect";
 import SubmitButton from "../../components/SubmitButton";
 
 import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
+import { sendEmails, emailTemplates } from "../../utils/Emails/index.js";
 
 export default class application extends Component {
   constructor(props) {
@@ -113,6 +114,8 @@ export default class application extends Component {
     }
 
     console.log(this.state);
+
+    sendEmails(getEmailFromJwt(), emailTemplates.APPLICATION_SUBMITTED);
   };
 
   handleSave = () => {
