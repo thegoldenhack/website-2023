@@ -12,7 +12,7 @@ export default class Notfound extends Component {
     return (
       <div className={styles.background}>
         <CustomNavbar
-          headings={["About", "Statistics", "Testimonials", "Sponsors", "FAQ"]}
+          headings={["About", "Sponsors", "FAQ"]}
         />
 
         <Container className={styles.container}>

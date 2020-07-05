@@ -28,7 +28,7 @@ export default class WebsitePage extends Component {
     return (
       <div className={styles.bg}>
         <CustomNavbar
-          headings={["About", "Statistics", "Testimonials", "Sponsors", "FAQ"]}
+          headings={["About", "Sponsors", "FAQ"]}
         />
 
         <BlueBackground title={true}>
