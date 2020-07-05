@@ -1,5 +1,5 @@
 {
-  "name": "tgh-website",
+  "name": "website-2020",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,16 +11,17 @@
     "aws-sdk": "^2.667.0",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
-    "react": "^16.12.0",
+    "jwt-decode": "^2.2.0",
+    "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-burger-menu": "^2.6.17",
     "react-chartjs-2": "^2.9.0",
     "react-datepicker": "^2.14.1",
     "react-day-picker": "^7.4.8",
-    "react-dom": "^16.12.0",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
     "react-native-config": "^0.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
     "react-select": "^3.1.0",
     "react-sidebar": "^3.0.2",
     "reactstrap": "^8.4.1",
@@ -28,7 +29,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "startWindows": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
