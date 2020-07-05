@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import AWS from 'aws-sdk';
+import AWS from "aws-sdk";
 
 import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
-const awsRegion = process.env.REACT_APP_AWS_REGION
-AWS.config.update({region:awsRegion});
+import strings from "../../assets/data/strings.js";
+
+const awsRegion = process.env.REACT_APP_AWS_REGION;
+AWS.config.update({ region: awsRegion });
 const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
 
 export default class ForgotPasswordPageChange extends Component {
@@ -19,12 +21,16 @@ export default class ForgotPasswordPageChange extends Component {
       code: props.location.code,
       email: props.location.email,
       err: false,
+      errMessage: null,
       success: false,
     };
 
     if (this.state.code === undefined || this.state.email === undefined) {
       // Somehow disable the input fields and button
-      this.state.err = "noCode";
+      this.setState({
+        err: true,
+        errMessage: strings.forgotPassword.noCode,
+      });
     }
   }
 
@@ -33,57 +39,48 @@ export default class ForgotPasswordPageChange extends Component {
 
     this.setState({
       [name]: value,
+      err: false,
     });
   };
 
   handleSubmit = (event) => {
-    // do something
-    event.preventDefault()
+    event.preventDefault();
 
     if (this.state.newPassword === this.state.confirmPassword) {
       var params = {
         ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
         ConfirmationCode: this.state.code,
         Password: this.state.newPassword,
-        Username: this.state.email
+        Username: this.state.email,
       };
-      cognitoIdentityServiceProvider.confirmForgotPassword(params, function(err, data) {
-        if (err) {
-          console.log(err);
-          // Do something to communicate error
-        }
-        else {
-          this.setState({ success: true });
-          // Do something when successfully changed
-        }       
-      }.bind(this));
-    } else {
-      this.setState({ err: "noMatch" });
-    }  
-  };
-  
 
-  displayErrors = () => {
-    if (this.state.err === "noCode") {
-      return (
-        <div className="alert alert-danger">
-          You haven't requested to change your password! Please click <a href="/forgotpassword">here</a> to begin the password reset process.
-        </div>
+      cognitoIdentityServiceProvider.confirmForgotPassword(
+        params,
+        function (err, data) {
+          if (err) {
+            console.log(err);
+            this.setState({
+              err: true,
+              errMessage: strings.forgotPassword.somethingWentWrong,
+            });
+          } else {
+            this.setState({ success: true, err: false });
+            // Do something when successfully changed
+          }
+        }.bind(this)
       );
-    } else if (this.state.err === "noMatch") {
-      return (
-        <div className="alert alert-danger">
-          Please ensure that passwords match.
-        </div>
-      );
+    } else {
+      this.setState({ err: true, errMessage: strings.forgotPassword.noMatch });
     }
   };
 
-  displaySuccess = () => {
-    if (this.state.success) {
+  displayErrors = () => {
+    if (this.state.err) {
+      return <div className="alert alert-danger">{this.state.errMessage}</div>;
+    } else if (this.state.success) {
       return (
         <div className="alert alert-success">
-          You have successfully changed your password! Please click <a href="/login">here</a> to login to your account.
+          {strings.forgotPassword.success}
         </div>
       );
     }
@@ -117,9 +114,6 @@ export default class ForgotPasswordPageChange extends Component {
 
         {/* Display an error if needed */}
         {this.displayErrors()}
-
-        {/* Display a success message if needed */}
-        {this.displaySuccess()}
 
         <SubmitButton
           text={"Recover Account"}

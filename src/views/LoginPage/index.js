@@ -11,6 +11,8 @@ import LoginRegisterLayout from "../../components/LoginRegisterLayout";
 import SubmitButton from "../../components/SubmitButton";
 import InputField from "../../components/InputField";
 
+import strings from "../../assets/data/strings.js";
+
 const poolData = {
   UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
   ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
@@ -24,8 +26,8 @@ export default class LoginPage extends Component {
     this.state = {
       email: undefined,
       password: undefined,
-      error: false,
-      errMessage: "",
+      err: false,
+      errMessage: null,
     };
   }
 
@@ -54,21 +56,20 @@ export default class LoginPage extends Component {
       onSuccess: function (result) {
         var accessToken = result.getAccessToken().getJwtToken();
         localStorage.setItem("accessToken", accessToken);
-        this.props.history.push('/dashboard');
+        this.props.history.push("/dashboard");
       }.bind(this),
 
       onFailure: function (err) {
         this.setState({
-          error: true,
-          errMessage: "Email or Password is Incorrect",
+          err: true,
+          errMessage: strings.login.incorrectLoginDetails,
         });
-      }.bind(this)
+      }.bind(this),
     });
-  }
+  };
 
   displayErrors = () => {
-    // do something
-    if (this.state.error) {
+    if (this.state.err) {
       return <div className="alert alert-danger">{this.state.errMessage}</div>;
     }
   };

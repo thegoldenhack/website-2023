@@ -8,6 +8,8 @@ import LoginRegisterLayout from "../../components/LoginRegisterLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
+import strings from "../../assets/data/strings.js";
+
 const poolData = {
   UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
   ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
@@ -25,19 +27,20 @@ class RegisterPage extends Component {
       password: undefined,
       confirmpassword: undefined,
       terms: undefined,
+      err: false,
+      errMessage: null,
     };
   }
 
   handleChange = (event) => {
     if (event.target.name === "terms") {
-      this.setState({ [event.target.name]: event.target.checked });
+      this.setState({ [event.target.name]: event.target.checked, err: false });
     } else {
-      this.setState({ [event.target.name]: event.target.value });
+      this.setState({ [event.target.name]: event.target.value, err: false });
     }
   };
 
   handleSubmit = (event) => {
-    var error_flag = 0; // if error_flag == 1, then an error in user input is detected.
     if (
       this.state.email === null ||
       this.state.firstname === null ||
@@ -52,20 +55,17 @@ class RegisterPage extends Component {
       this.state.confirmpassword === "" ||
       !this.state.terms
     ) {
-      error_flag = 1;
-      document.getElementById("display_error").innerHTML =
-        "Not all fields have been filled out.";
-      document.getElementById("display_error").style.color = "#ff0000";
+      this.setState({
+        err: true,
+        errMessage: strings.register.notComplete,
+      });
     }
 
-    if (
-      this.state.password !== this.state.confirmpassword &&
-      error_flag === 0
-    ) {
-      error_flag = 1;
-      document.getElementById("display_error").innerHTML =
-        "Password fields do not match";
-      document.getElementById("display_error").style.color = "#ff0000";
+    if (this.state.password !== this.state.confirmpassword) {
+      this.setState({
+        err: true,
+        errMessage: strings.register.passwordsDontMatch,
+      });
     }
 
     event.preventDefault();
@@ -86,7 +86,8 @@ class RegisterPage extends Component {
     attributeList.push(dataEmail);
     attributeList.push(dataPersonalName);
     attributeList.push(dataFamilyName);
-    if (error_flag === 0) {
+
+    if (!this.state.err) {
       UserPool.signUp(
         this.state.email,
         this.state.password,
@@ -94,13 +95,26 @@ class RegisterPage extends Component {
         null,
         (err, data) => {
           if (err) {
-            if (err.message != null && error_flag === 0) {
-              error_flag = 1;
-              document.getElementById("display_error").innerHTML = err.message;
-              document.getElementById("display_error").style.color = "#ff0000";
+            console.log(err);
+            if (err != null) {
+              if (err.code === "InvalidPasswordException") {
+                this.setState({
+                  err: true,
+                  errMessage: strings.register.passwordPolicy,
+                });
+              } else if (err.code === "UsernameExistsException") {
+                this.setState({
+                  err: true,
+                  errMessage: strings.register.emailAlreadyExists,
+                });
+              } else {
+                this.setState({
+                  err: true,
+                  errMessage: strings.register.genericError,
+                });
+              }
             }
-          }
-          if (error_flag === 0) {
+          } else {
             this.props.history.push({
               pathname: "/confirmaccount",
               email: this.state.email,
@@ -110,6 +124,13 @@ class RegisterPage extends Component {
       );
     }
   };
+
+  displayErrors = () => {
+    if (this.state.err) {
+      return <div className="alert alert-danger">{this.state.errMessage}</div>;
+    }
+  };
+
   render() {
     return (
       <LoginRegisterLayout type="register" title="Register">
@@ -165,7 +186,7 @@ class RegisterPage extends Component {
           </Form.Group>
         </Form.Group>
 
-        <div class="display-error" id="display_error"></div>
+        {this.displayErrors()}
 
         <SubmitButton text={"Register"} handleSubmit={this.handleSubmit} />
       </LoginRegisterLayout>

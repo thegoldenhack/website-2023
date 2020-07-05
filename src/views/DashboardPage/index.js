@@ -138,7 +138,6 @@ export default class DashboardPage extends Component {
               />
             </Col>
           </Row>
-          <div className="display-error" id="display_error"></div>
         </Container>
       );
     }

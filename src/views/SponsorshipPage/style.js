@@ -1,1 +1,0 @@
-// Sponsorshp page style
