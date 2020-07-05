@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Navbar, Nav, Image } from "react-bootstrap";
+import { Navbar, Nav, Image, Button } from "react-bootstrap";
 
 import logo_blue from "../../assets/logo_blue.png";
 import styles from "./styles.module.css";
@@ -21,12 +21,15 @@ export default class CustomNavbar extends Component {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
-          <Nav className="ml-auto">
+          <Nav className="ml-auto" style={{alignItems: "center"}}>
             {this.props.headings.map((item) => (
               <Nav.Link href={"#" + item.toLowerCase()}>
                 <div className={styles.blue}>{item}</div>
               </Nav.Link>
             ))}
+            <Nav.Link href={"/application"}>
+              <Button className={styles.button}>Apply!</Button>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

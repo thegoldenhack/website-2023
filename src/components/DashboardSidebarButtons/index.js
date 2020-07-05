@@ -22,7 +22,7 @@ export default class DashboardSidebarButtons extends Component {
   getLink = () => {
     if (this.state.type === "status") {
       return (
-        <Button variant="link" className={styles.button} block>
+        <Button href={"/dashboard"} variant="link" className={styles.button} block>
           <h1 className={styles.text}>Status</h1>
         </Button>
       );
