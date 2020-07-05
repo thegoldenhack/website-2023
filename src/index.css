@@ -46,3 +46,10 @@ p {
   max-width: 100%;
   overflow-x: hidden;
 } */
+
+/* .BrainhubCarouselItem {
+  margin: 0 10px 0 10px;
+} */
+.BrainhubCarousel__arrows {
+  background-color: #f6d030;
+}
