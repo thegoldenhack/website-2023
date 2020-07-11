@@ -10,6 +10,10 @@ const strings = {
     overCharLimit: "Over 1000 character limit for 'Why Golden Hack'",
     submitSuccessful: "Successfully submitted application!",
     saveSuccessful: "Successfully saved application!",
+    submitUnsuccessful:
+      "There was a problem submitting your application. Please try again later.",
+    saveUnsuccessful:
+      "There was a problem saving your application. Please try again later.",
   },
   confirmAccount: {
     confirmFailure:

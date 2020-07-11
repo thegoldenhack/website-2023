@@ -27,13 +27,11 @@ export default class WebsitePage extends Component {
   render() {
     return (
       <div className={styles.bg}>
-        <CustomNavbar
-          headings={["About", "Sponsors", "FAQ"]}
-        />
+        <CustomNavbar headings={["About", "Sponsors", "FAQ"]} />
 
         <BlueBackground title={true}>
           {/* Idk how to have multiple classNames so here's another little inline style for ya */}
-          <Row className="align-items-center" style={{minHeight: "100vh", height: "100%"}}>
+          <Row className={styles.fullHeight}>
             <Col md className={styles.title}>
               <h1>The</h1>
               <h1>Golden</h1>
@@ -46,12 +44,11 @@ export default class WebsitePage extends Component {
             <Col md>
               {/* Temp picture until we get the real one */}
               <Image
-                    src={collaboration}
-                    alt="TGH"
-                    className={styles.width90}
-                ></Image>
+                src={collaboration}
+                alt="TGH"
+                className={styles.width90}
+              ></Image>
             </Col>
-
           </Row>
         </BlueBackground>
 

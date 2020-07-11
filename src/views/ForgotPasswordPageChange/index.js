@@ -7,7 +7,7 @@ import {
   confirmForgotPassword,
   getEmailFromJwt,
 } from "../../utils/Cognito/index.js";
-import { sendEmails, emailTemplates } from "../../utils/Emails/index.js";
+import { sendEmails, emailTemplates } from "../../utils/API/index.js";
 
 import strings from "../../assets/data/strings.js";
 

@@ -5,7 +5,7 @@ import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
 import { confirmAccount } from "../../utils/Cognito/index.js";
-import { sendEmails, emailTemplates } from "../../utils/Emails/index.js";
+import { sendEmails, emailTemplates } from "../../utils/API/index.js";
 
 import strings from "../../assets/data/strings.js";
 
