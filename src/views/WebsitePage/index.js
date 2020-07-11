@@ -32,13 +32,27 @@ export default class WebsitePage extends Component {
         />
 
         <BlueBackground title={true}>
-          <h1>The</h1>
-          <h1>Golden</h1>
-          <h1>Hack 2.0</h1>
-          {/* <h4>The hackathon for entrepreneurs.</h4> */}
-          <h4>October 3 - 4, 2020.</h4>
-          <h4>Wilfrid Laurier University.</h4>
-          <h4>Now entirely online.</h4>
+          {/* Idk how to have multiple classNames so here's another little inline style for ya */}
+          <Row className="align-items-center" style={{minHeight: "100vh", height: "100%"}}>
+            <Col md className={styles.title}>
+              <h1>The</h1>
+              <h1>Golden</h1>
+              <h1>Hack 2.0</h1>
+              {/* <h4>The hackathon for entrepreneurs.</h4> */}
+              <h4>October 3 - 4, 2020.</h4>
+              <h4>Wilfrid Laurier University.</h4>
+              <h4>Now entirely online.</h4>
+            </Col>
+            <Col md>
+              {/* Temp picture until we get the real one */}
+              <Image
+                    src={collaboration}
+                    alt="TGH"
+                    className={styles.width90}
+                ></Image>
+            </Col>
+
+          </Row>
         </BlueBackground>
 
         <div id="about">

@@ -5,33 +5,33 @@
 
 h1 {
   font-family: "Jost";
-  font-size: 100px;
-  font-weight: 600;
+  font-size: 4.5rem;
+  font-weight: 400;
   color: #f6d030;
 }
 
 h2 {
   font-family: "Jost";
-  font-size: 90px;
+  font-size: 4rem;
   font-weight: 300;
 }
 
 h3 {
   font-family: "Montserrat";
-  font-size: 48px;
-  padding-bottom: 5vh;
+  font-size: 2rem;
+  margin-bottom: 5vh;
 }
 
 h4 {
   font-family: "Jost";
-  font-size: 30px;
+  font-size: 1.75rem;
   font-weight: normal;
   color: white;
 }
 
 h5 {
   font-family: "Montserrat";
-  font-size: 20px;
+  font-size: 1.15rem;
   padding-bottom: 5vh;
 }
 
@@ -40,16 +40,6 @@ p {
   color: black;
 }
 
-/* body {
-  width: 100vw;
-  font-family: "Montserrat";
-  max-width: 100%;
-  overflow-x: hidden;
-} */
-
-/* .BrainhubCarouselItem {
-  margin: 0 10px 0 10px;
-} */
 .BrainhubCarousel__arrows {
   background-color: #f6d030;
 }
