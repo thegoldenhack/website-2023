@@ -106,6 +106,10 @@ Dhruv's favourite dad joke:
 Vipneet's dad joke:
     Today, my son asked "Can I have a book mark?" and I burst into tears. 11 years old and he still doesn't know my name is Brian.
 
+Tailai's New Dad Joke:
+    What's the difference between a bird and a fly?
+    A bird can fly but a fly can't bird.
+
 ## Challenge Question
 <details>
   <summary>What programming language does the James Webb Space Telescope use?</summary>
