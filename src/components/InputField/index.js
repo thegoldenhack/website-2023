@@ -48,7 +48,7 @@ export default class InputField extends Component {
     }
 
     return (
-      <Form className="inputForm">
+      <Form className="inputForm" style={{ width: "100%" }}>
         <Form.Group>{control}</Form.Group>
       </Form>
     );
