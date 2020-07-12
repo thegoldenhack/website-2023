@@ -15,7 +15,7 @@ export default class InputFieldApplication extends Component {
       required: this.props.required,
       placeholder: this.props.placeholder,
       onChange: this.props.onChange,
-      value: this.props.value,
+      defaultValue: this.props.defaultValue,
       longAnswer: this.props.longAnswer,
     };
   }
@@ -41,7 +41,7 @@ export default class InputFieldApplication extends Component {
                 type={this.state.type}
                 placeholder={this.state.placeholder}
                 onChange={this.state.onChange}
-                value={this.state.value}
+                defaultValue={this.state.defaultValue}
                 as="textarea"
               />
             </Form.Group>
@@ -55,7 +55,7 @@ export default class InputFieldApplication extends Component {
                 type={this.state.type}
                 placeholder={this.state.placeholder}
                 onChange={this.state.onChange}
-                value={this.state.value}
+                defaultValue={this.state.defaultValue}
               />
             </Form.Group>
           </Form>

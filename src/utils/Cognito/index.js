@@ -95,10 +95,13 @@ export const signOut = () => {
 };
 
 export const getJwt = () => {
-  return localStorage.getItem("accessToken");
+  return localStorage.getItem("accessToken") ?? null;
 };
 
 export const getEmailFromJwt = () => {
-  var jwtDecoded = jwtDecode(getJwt());
-  return jwtDecoded.email;
+  const jwt = getJwt();
+  if (jwt) {
+    var jwtDecoded = jwtDecode(jwt);
+    return jwtDecoded.email;
+  }
 };

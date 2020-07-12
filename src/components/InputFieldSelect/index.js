@@ -16,6 +16,7 @@ export default class InputField extends Component {
       value: this.props.value,
       onChange: this.props.onChange,
       options: this.props.options,
+      defaultValue: this.props.defaultValue,
 
       error: false,
     };
@@ -54,6 +55,7 @@ export default class InputField extends Component {
               value={this.state.value}
               onChange={this.state.onChange}
               options={this.state.options}
+              defaultValue={this.state.defaultValue}
               // apparently createFilter makes it go faster but idk if it actually does
               filterOption={createFilter({ ignoreAccents: false })}
             />
