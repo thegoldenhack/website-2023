@@ -4,6 +4,7 @@ import { Row, Col, Container } from "react-bootstrap";
 
 import DashboardSidebar from "../../components/DashboardSidebar";
 import DashboardCard from "../../components/DashboardCard";
+import GradientBackground from "../../components/GradientBackground";
 
 import styles from "./styles.module.css";
 
@@ -57,23 +58,25 @@ export default class DashboardPage extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col sm={{ span: 3 }} className={styles.noPadding}>
-            <DashboardSidebar />
-          </Col>
-          {this.state.status && (
-            <Col className={styles.centerContent}>
-              <DashboardCard
-                title="Application Status"
-                key={this.state.status}
-                status={this.state.status}
-                buttonStatus={this.state.buttonStatus}
-              />
+      <GradientBackground className={styles.gradientBackground}>
+        <Container fluid>
+          <Row>
+            <Col sm="auto" className={styles.noPadding}>
+              <DashboardSidebar />
             </Col>
-          )}
-        </Row>
-      </Container>
+            {this.state.status && (
+              <Col className={styles.centerContent}>
+                <DashboardCard
+                  title="Application Status"
+                  key={this.state.status}
+                  status={this.state.status}
+                  buttonStatus={this.state.buttonStatus}
+                />
+              </Col>
+            )}
+          </Row>
+        </Container>
+      </GradientBackground>
     );
   }
 }
