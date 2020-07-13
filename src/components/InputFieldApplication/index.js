@@ -22,7 +22,7 @@ export default class InputFieldApplication extends Component {
 
   render() {
     return (
-      <div className={styles.width50}>
+      <div className={styles.container}>
         {!this.state.required ? (
           <div>
             <p className={styles.optionalHeading}>{this.state.label}</p>
