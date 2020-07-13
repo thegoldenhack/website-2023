@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 import { schools } from "../../assets/data/schools.js";
 import { majors } from "../../assets/data/majors.js";
@@ -13,6 +13,8 @@ import DashboardSidebar from "../../components/DashboardSidebar";
 import InputFieldApplication from "../../components/InputFieldApplication";
 import InputFieldSelect from "../../components/InputFieldSelect";
 import SubmitButton from "../../components/SubmitButton";
+import GradientBackground from "../../components/GradientBackground";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 import styles from "./styles.module.css";
 
@@ -288,20 +290,22 @@ export default class Application extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        <Row>
-          <Col
-            sm={{
-              span: 3,
-            }}
-          >
-            <DashboardSidebar />
-          </Col>
-          <Col sm className={styles.scrollCol}>
-            <h2 className={styles.heading}>The GoldenHack 2020 Application</h2>
-            <p>Application cannot be edited once submitted! </p>
+      <div>
+        <DashboardSidebar />
 
-            {this.state.loadComplete && (
+        {!this.state.loadComplete && (
+          <div className={styles.loading}>
+            <LoadingSpinner />
+          </div>
+        )}
+
+        {this.state.loadComplete && (
+          <GradientBackground className={styles.gradientBackground}>
+            <Container className={styles.container}>
+              <h2 className={styles.heading}>
+                The GoldenHack 2020 Application
+              </h2>
+
               <div>
                 {/* Birthday */}
                 <InputFieldApplication
@@ -476,6 +480,8 @@ export default class Application extends Component {
 
                 {this.displayErrors()}
 
+                <p>Application cannot be edited once submitted! </p>
+
                 <Row>
                   <Col>
                     <SubmitButton
@@ -491,9 +497,9 @@ export default class Application extends Component {
                   </Col>
                 </Row>
               </div>
-            )}
-          </Col>
-        </Row>
+            </Container>
+          </GradientBackground>
+        )}
       </div>
     );
   }

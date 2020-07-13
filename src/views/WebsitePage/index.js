@@ -30,7 +30,6 @@ export default class WebsitePage extends Component {
         <CustomNavbar headings={["About", "Sponsors", "FAQ"]} />
 
         <BlueBackground title={true}>
-          {/* Idk how to have multiple classNames so here's another little inline style for ya */}
           <Row className={styles.fullHeight}>
             <Col md className={styles.title}>
               <h1>The</h1>

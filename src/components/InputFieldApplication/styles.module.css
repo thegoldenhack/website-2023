@@ -1,6 +1,6 @@
-.width50 {
-  width: 50%;
-  margin: 20px 0 0 20px;
+.container {
+  width: 100%;
+  margin-top: 20px;
 }
 
 .formControl {
