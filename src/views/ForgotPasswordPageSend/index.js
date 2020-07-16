@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import AWS from "aws-sdk";
 
 import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
-const awsRegion = process.env.REACT_APP_AWS_REGION;
-AWS.config.update({ region:awsRegion });
+import { forgotPassword } from "../../utils/Cognito/index.js";
 
-const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
+import strings from "../../assets/data/strings.js";
 
 export default class ForgotPasswordPageSend extends Component {
   constructor(props) {
@@ -17,12 +15,13 @@ export default class ForgotPasswordPageSend extends Component {
     this.state = {
       email: undefined,
       err: false,
+      errMessage: null,
     };
   }
 
   isValidEmail = (email) => {
-    // eslint-disable-next-line
     var re = new RegExp(
+      // eslint-disable-next-line no-useless-escape
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     );
     return re.test(email);
@@ -31,49 +30,39 @@ export default class ForgotPasswordPageSend extends Component {
   handleChange = (event) => {
     this.setState({
       email: event.target.value,
+      err: false,
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.isValidEmail(this.state.email)) {
-      var params = {
-        ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
-        Username: this.state.email,
-      };
-
-      cognitoIdentityServiceProvider.forgotPassword(params, function(err, data) {
+      forgotPassword(this.state.email, (err, data) => {
         if (err) {
           if (err.code === "LimitExceededException") {
             this.setState({
-              err: "tooManyAttempts"
+              err: true,
+              errMessage: strings.forgotPassword.tooManyAttempts,
             });
           }
         } else {
           this.props.history.push({
-            pathname: '/forgotpasswordpageinput',
-            email: this.state.email
-          })
+            pathname: "/forgotpasswordpageinput",
+            email: this.state.email,
+          });
         }
-      }.bind(this));
-      // Call whatever AWS functions we need
-      // Reroute to a "check your email for the recovery code" page
+      });
     } else {
       this.setState({
-        err: "badEmail",
+        err: true,
+        errMessage: strings.forgotPassword.badEmail,
       });
     }
   };
 
   displayErrors = () => {
-    if (this.state.err === "badEmail") {
-      return (
-        <div className="alert alert-danger">Please enter a valid email.</div>
-      );
-    } else if (this.state.err === "tooManyAttempts") {
-      return (
-        <div className="alert alert-danger">You have try too many times. Please try again later.</div>
-      );
+    if (this.state.err) {
+      return <div className="alert alert-danger">{this.state.errMessage}</div>;
     }
   };
 
@@ -94,8 +83,10 @@ export default class ForgotPasswordPageSend extends Component {
 
         {this.displayErrors()}
 
-        
-          <SubmitButton text="Submit" handleSubmit={this.handleSubmit.bind(this)} />
+        <SubmitButton
+          text="Submit"
+          handleSubmit={this.handleSubmit.bind(this)}
+        />
       </ForgotPasswordLayout>
     );
   }

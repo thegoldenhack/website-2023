@@ -1,19 +1,14 @@
 import React, { Component } from "react";
-import { Link, Route, Redirect } from "react-router-dom";
 
-import { CognitoUserPool } from "amazon-cognito-identity-js";
 import { Form } from "react-bootstrap";
 
 import LoginRegisterLayout from "../../components/LoginRegisterLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
-const poolData = {
-  UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
-  ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
-};
+import { register } from "../../utils/Cognito/index.js";
 
-const UserPool = new CognitoUserPool(poolData);
+import strings from "../../assets/data/strings.js";
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -24,20 +19,21 @@ class RegisterPage extends Component {
       email: undefined,
       password: undefined,
       confirmpassword: undefined,
-      termsandconditions: undefined,
+      terms: undefined,
+      err: false,
+      errMessage: null,
     };
   }
 
   handleChange = (event) => {
     if (event.target.name === "terms") {
-      this.setState({ [event.target.name]: !event.target.checked });
+      this.setState({ [event.target.name]: event.target.checked, err: false });
     } else {
-      this.setState({ [event.target.name]: event.target.value });
+      this.setState({ [event.target.name]: event.target.value, err: false });
     }
   };
 
   handleSubmit = (event) => {
-    var error_flag = 0; // if error_flag == 1, then an error in user input is detected.
     if (
       this.state.email === null ||
       this.state.firstname === null ||
@@ -50,59 +46,67 @@ class RegisterPage extends Component {
       this.state.lastname === "" ||
       this.state.password === "" ||
       this.state.confirmpassword === "" ||
-      this.state.terms
+      !this.state.terms
     ) {
-      error_flag = 1;
-      document.getElementById("display_error").innerHTML =
-        "Not all fields have been filled out.";
-      document.getElementById("display_error").style.color = "#ff0000";
+      this.setState({
+        err: true,
+        errMessage: strings.register.notComplete,
+      });
     }
 
-    if (
-      this.state.password !== this.state.confirmpassword &&
-      error_flag === 0
-    ) {
-      error_flag = 1;
-      document.getElementById("display_error").innerHTML =
-        "Password fields do not match";
-      document.getElementById("display_error").style.color = "#ff0000";
+    if (this.state.password !== this.state.confirmpassword) {
+      this.setState({
+        err: true,
+        errMessage: strings.register.passwordsDontMatch,
+      });
     }
 
     event.preventDefault();
-    var attributeList = [];
 
-    var dataEmail = {
-      Name: "email",
-      Value: this.state.email,
-    };
-    var dataPersonalName = {
-      Name: "name",
-      Value: this.state.firstname,
-    };
-    var dataFamilyName = {
-      Name: "family_name",
-      Value: this.state.lastname,
-    };
-    attributeList.push(dataEmail);
-    attributeList.push(dataPersonalName);
-    attributeList.push(dataFamilyName);
-    UserPool.signUp(
-      this.state.firstname,
-      this.state.password,
-      attributeList,
-      null,
-      (err, data) => {
-        if (err) {
-          if (err.message != null && error_flag === 0) {
-            error_flag = 1;
-            document.getElementById("display_error").innerHTML = err.message;
-            document.getElementById("display_error").style.color = "#ff0000";
+    if (!this.state.err) {
+      register(
+        this.state.email,
+        this.state.password,
+        this.state.firstname,
+        this.state.lastname,
+        (err, data) => {
+          if (err) {
+            console.log(err);
+            if (err != null) {
+              if (err.code === "InvalidPasswordException") {
+                this.setState({
+                  err: true,
+                  errMessage: strings.register.passwordPolicy,
+                });
+              } else if (err.code === "UsernameExistsException") {
+                this.setState({
+                  err: true,
+                  errMessage: strings.register.emailAlreadyExists,
+                });
+              } else {
+                this.setState({
+                  err: true,
+                  errMessage: strings.register.genericError,
+                });
+              }
+            }
+          } else {
+            this.props.history.push({
+              pathname: "/confirmaccount",
+              email: this.state.email,
+            });
           }
         }
-        if (error_flag === 0) this.props.history.push("/");
-      }
-    );
+      );
+    }
   };
+
+  displayErrors = () => {
+    if (this.state.err) {
+      return <div className="alert alert-danger">{this.state.errMessage}</div>;
+    }
+  };
+
   render() {
     return (
       <LoginRegisterLayout type="register" title="Register">
@@ -158,7 +162,7 @@ class RegisterPage extends Component {
           </Form.Group>
         </Form.Group>
 
-        <div class="display-error" id="display_error"></div>
+        {this.displayErrors()}
 
         <SubmitButton text={"Register"} handleSubmit={this.handleSubmit} />
       </LoginRegisterLayout>

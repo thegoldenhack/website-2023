@@ -1,8 +1,3 @@
-import {
-  CognitoUserPool,
-  AuthenticationDetails,
-  CognitoUser,
-} from "amazon-cognito-identity-js";
 import React, { Component } from "react";
 
 import { Nav } from "react-bootstrap";
@@ -11,12 +6,9 @@ import LoginRegisterLayout from "../../components/LoginRegisterLayout";
 import SubmitButton from "../../components/SubmitButton";
 import InputField from "../../components/InputField";
 
-const poolData = {
-  UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
-  ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
-};
+import { login } from "../../utils/Cognito/index.js";
 
-const UserPool = new CognitoUserPool(poolData);
+import strings from "../../assets/data/strings.js";
 
 export default class LoginPage extends Component {
   constructor(props) {
@@ -24,8 +16,8 @@ export default class LoginPage extends Component {
     this.state = {
       email: undefined,
       password: undefined,
-      error: false,
-      errMessage: "",
+      err: false,
+      errMessage: null,
     };
   }
 
@@ -33,41 +25,26 @@ export default class LoginPage extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
 
-    var authData = {
-      Username: this.state.email,
-      Password: this.state.password,
-    };
-
-    var authenticationDetails = new AuthenticationDetails(authData);
-
-    var userData = {
-      Username: this.state.email,
-      Pool: UserPool,
-    };
-
-    var cognitoUser = new CognitoUser(userData);
-
-    cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function (result) {
-        var accessToken = result.getAccessToken().getJwtToken();
+    login(this.state.email, this.state.password, {
+      onSuccess: (result) => {
+        var accessToken = result.getIdToken().getJwtToken();
         localStorage.setItem("accessToken", accessToken);
+        this.props.history.push("/dashboard");
       },
-
-      onFailure: function (err) {
+      onFailure: () => {
         this.setState({
-          error: true,
-          errMessage: "Email or Password is Incorrect",
+          err: true,
+          errMessage: strings.login.incorrectLoginDetails,
         });
       },
     });
-  }
+  };
 
   displayErrors = () => {
-    // do something
-    if (this.state.error) {
+    if (this.state.err) {
       return <div className="alert alert-danger">{this.state.errMessage}</div>;
     }
   };

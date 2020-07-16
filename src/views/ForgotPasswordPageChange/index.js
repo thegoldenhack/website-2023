@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import AWS from 'aws-sdk';
-
 import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
-const awsRegion = process.env.REACT_APP_AWS_REGION
-AWS.config.update({region:awsRegion});
-const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
+import {
+  confirmForgotPassword,
+  getEmailFromJwt,
+} from "../../utils/Cognito/index.js";
+import { sendEmails, emailTemplates } from "../../utils/API/index.js";
+
+import strings from "../../assets/data/strings.js";
 
 export default class ForgotPasswordPageChange extends Component {
   constructor(props) {
@@ -19,11 +21,16 @@ export default class ForgotPasswordPageChange extends Component {
       code: props.location.code,
       email: props.location.email,
       err: false,
+      errMessage: null,
+      success: false,
     };
 
-    if (this.state.code === undefined) {
+    if (this.state.code === undefined || this.state.email === undefined) {
       // Somehow disable the input fields and button
-      this.state.err = "noCode";
+      this.setState({
+        err: true,
+        errMessage: strings.forgotPassword.noCode,
+      });
     }
   }
 
@@ -32,48 +39,48 @@ export default class ForgotPasswordPageChange extends Component {
 
     this.setState({
       [name]: value,
+      err: false,
     });
-    console.log(this.state);
   };
 
   handleSubmit = (event) => {
-    // do something
-    event.preventDefault()
+    event.preventDefault();
 
     if (this.state.newPassword === this.state.confirmPassword) {
-      var params = {
-        ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
-        ConfirmationCode: this.state.code,
-        Password: this.state.newPassword,
-        Username: this.state.email
-      };
-      cognitoIdentityServiceProvider.confirmForgotPassword(params, function(err, data) {
-        if (err) {
-          console.log(err);
-          // Do something to communicate error
+      confirmForgotPassword(
+        this.state.email,
+        this.state.newPassword,
+        this.state.code,
+        (err, data) => {
+          if (err) {
+            console.log(err);
+            this.setState({
+              err: true,
+              errMessage: strings.forgotPassword.somethingWentWrong,
+            });
+          } else {
+            this.setState({ success: true });
+
+            // Send Password Successfully Changed email
+            sendEmails(
+              getEmailFromJwt(),
+              emailTemplates.FORGOT_PASSWORD_SUCCESS
+            );
+          }
         }
-        else {
-          console.log("Your password has been successfully changed.");
-          // Do something when successfully changed
-        }       
-      });
+      );
     } else {
-      this.setState({ err: "noMatch" });
-    }  
+      this.setState({ err: true, errMessage: strings.forgotPassword.noMatch });
+    }
   };
-  
 
   displayErrors = () => {
-    if (this.state.err === "noCode") {
+    if (this.state.err) {
+      return <div className="alert alert-danger">{this.state.errMessage}</div>;
+    } else if (this.state.success) {
       return (
-        <div className="alert alert-danger">
-          You haven't requested to change your password! Please click <a href="/forgotpassword">here</a> to begin the password reset process.
-        </div>
-      );
-    } else if (this.state.err === "noMatch") {
-      return (
-        <div className="alert alert-danger">
-          Please ensure that passwords match.
+        <div className="alert alert-success">
+          {strings.forgotPassword.success}
         </div>
       );
     }

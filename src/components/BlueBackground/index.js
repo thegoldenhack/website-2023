@@ -12,7 +12,7 @@ export default class BlueBackground extends Component {
           this.props.title === true ? styles.backgroundTitle : styles.background
         }
       >
-        <Container>{this.props.children}</Container>
+        <Container className="align-items-center">{this.props.children}</Container>
       </div>
     );
   }

@@ -1,0 +1,27 @@
+.background {
+  height: 100vh;
+  background-color: #053e5e;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lostText {
+  font-size: 64px;
+  margin-top: 10px;
+}
+
+.subtitleText {
+  font-size: 32px;
+  color: white;
+}
+
+.linkText {
+  text-decoration: underline;
+  color: white;
+}

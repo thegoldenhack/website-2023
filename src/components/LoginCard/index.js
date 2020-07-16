@@ -8,7 +8,7 @@ export default class LoginCard extends Component {
     return (
       <Container className={styles.container}>
         <Card className={styles.card}>
-          <Container className="py-5 pr-5 pl-3">
+          <Container className="py-5 pr-5 pl-5">
             <Card.Body className="py-5">{this.props.children}</Card.Body>
           </Container>
         </Card>

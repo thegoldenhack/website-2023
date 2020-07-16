@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import PropTypes from "prop-types";
-import AWS from "aws-sdk";
 
-const awsRegion = process.env.REACT_APP_AWS_REGION;
-
-AWS.config.update({ region: awsRegion });
-const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
+import { signOut } from "../../utils/Cognito/index.js";
 
 const handleLogout = () => {
-  cognitoIdentityServiceProvider.globalSignOut();
+  signOut();
 };
 
 class LogoutButton extends Component {

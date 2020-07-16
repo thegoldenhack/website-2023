@@ -6,7 +6,7 @@ export default class Logo extends Component {
   render() {
     return (
       <Image
-        width="100%"
+        width="75%"
         className="logo"
         src={"/images/logo/logo_dark.svg"}
         alt={"The GoldenHack Logo"}

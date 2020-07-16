@@ -4,12 +4,15 @@ import ForgotPasswordLayout from "../../components/ForgotPasswordLayout";
 import InputField from "../../components/InputField";
 import SubmitButton from "../../components/SubmitButton";
 
+import strings from "../../assets/data/strings.js";
+
 export default class ForgotPasswordPageInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
       recovery: undefined,
       err: false,
+      errMessage: null,
       email: props.location.email,
     };
   }
@@ -19,8 +22,11 @@ export default class ForgotPasswordPageInput extends Component {
 
     this.setState({
       [name]: value,
+
+      // set the error to false after the user types, otherwise they won't be able
+      // to resubmit after an error occurs
+      err: false,
     });
-    console.log(this.state);
   };
 
   handleSubmit(event) {
@@ -28,23 +34,21 @@ export default class ForgotPasswordPageInput extends Component {
     event.preventDefault();
     if (this.state.recovery.length === 6) {
       this.props.history.push({
-        pathname: '/forgotpasswordpagechange',
+        pathname: "/forgotpasswordpagechange",
         code: this.state.recovery,
-        email: this.state.email
+        email: this.state.email,
       });
     } else {
-      this.setState({ err: true });
+      this.setState({
+        err: true,
+        errMessage: strings.forgotPassword.recoveryCodeError,
+      });
     }
   }
 
   displayErrors = () => {
     if (this.state.err) {
-      return (
-        <div className="alert alert-danger">
-          An error occurred. Please ensure that you entered the correct recovery
-          code.
-        </div>
-      );
+      return <div className="alert alert-danger">{this.state.errMessage}</div>;
     }
   };
 
@@ -65,7 +69,10 @@ export default class ForgotPasswordPageInput extends Component {
 
         {this.displayErrors()}
 
-        <SubmitButton text="Reset Password" handleSubmit={this.handleSubmit.bind(this)} />
+        <SubmitButton
+          text="Reset Password"
+          handleSubmit={this.handleSubmit.bind(this)}
+        />
       </ForgotPasswordLayout>
     );
   }

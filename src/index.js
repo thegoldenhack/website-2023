@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap-grid.css";
 import "bootstrap/dist/css/bootstrap-reboot.css";
 
-import SponsorshipPage from "./views/SponsorshipPage";
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
 import ApplicationPage from "./views/ApplicationPage";
@@ -18,6 +17,7 @@ import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange";
 import WebsitePage from "./views/WebsitePage";
 import DashboardPage from "./views/DashboardPage";
 import TermsPage from "./views/TermsPage";
+import ConfirmAccountPage from "./views/ConfirmAccountPage";
 
 import "./index.css";
 
@@ -25,9 +25,9 @@ const routing = (
   <Router>
     <Switch>
       <Route exact path="/" component={WebsitePage} />
-      <Route path="/sponsor" component={SponsorshipPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
+      <Route path="/confirmaccount" component={ConfirmAccountPage} />
       <Route path="/forgotpassword" component={ForgotPasswordPageSend} />
       <Route
         path="/forgotpasswordpageinput"

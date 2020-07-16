@@ -1,7 +1,21 @@
 .center {
-  justify-content: "center";
-  align-items: "center";
+  justify-content: center;
+  align-items: center;
 }
+
+.fullWidthCenter {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.fullHeight {
+  min-height: 100vh;
+  height: 100%;
+  align-items: center;
+}
+
 .width75 {
   width: 75%;
 }
@@ -11,14 +25,19 @@
 .width90 {
   width: 90%;
 }
+.width80 {
+  width: 80%;
+}
 .height40 {
   height: 40%;
   margin-right: 20px;
 }
-.height100 {
+.height75 {
   height: 75%;
 }
-
+.padding0 {
+  padding: 0;
+}
 .fontSize78 {
   font-size: 48px;
 }
@@ -30,7 +49,13 @@
 }
 .button {
   background-color: #f6d030;
-  color: black;
+  color: #053e5e;
+  border-color: white;
+}
+.button:hover {
+  background-color: #fdce04;
+  color: #053e5e;
+  border-color: #053e5e;
 }
 .bg {
   width: 100vw;
@@ -40,37 +65,40 @@
 
 .ddpRow {
   align-items: center;
-  margin-bottom: 30px;
-}
-
-@media (max-width: 992px) {
-  .ddpRow {
-    justify-content: center;
-  }
-}
-@media (min-width: 992px) {
-  .ddpRow {
-    margin-left: 100px;
-  }
+  margin: 0 50px 50px 50px;
 }
 .ddpText {
-  font-size: 72px;
+  font-size: 2.5vw;
   padding-bottom: 0;
   margin-bottom: 0;
   margin-left: 20px;
 }
 
 .ddpBlurb {
-  align-items: center;
-  justify-content: center;
-  display: flex;
+  width: 50%;
+  margin-top: 50px;
 }
 
 .faqImage {
   width: 100%;
 }
 
+/* Medium breakpoint */
+@media (max-width: 768px) {
+  .title {
+    margin-top: 20vh;
+    margin-left: 10vw;
+  }
+}
+
+/* Large breakpoint */
 @media (max-width: 992px) {
+  .ddpRow {
+    justify-content: center;
+  }
+  .ddpBlurb {
+    width: 100%;
+  }
   .faqImage {
     margin-bottom: 40px;
   }

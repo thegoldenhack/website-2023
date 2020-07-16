@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Sidebar from "react-sidebar";
 
 export default class LogoBlack extends Component {
   render() {
