@@ -70,6 +70,7 @@ export default class InputField extends Component {
             value={this.state.value}
             onChange={this.state.onChange}
             options={this.state.options}
+            defaultValue={this.state.defaultValue}
           />
         )}
       </div>
