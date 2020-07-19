@@ -75,7 +75,7 @@ export default class DashboardPage extends Component {
               {this.state.status && (
                 <Col className={styles.centerContent}>
                   <DashboardCard
-                    title={"Welcome, " + getNameFromJwt()}
+                    title={"Welcome, " + getNameFromJwt() + "!"}
                     key={this.state.status}
                     status={this.state.status}
                     buttonStatus={this.state.buttonStatus}
