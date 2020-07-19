@@ -14,7 +14,7 @@ export default class CompleteApplicationButton extends Component {
   }
 
   render() {
-    if (this.state.status === "disabled") {
+    if (this.state.status === "disabled") { 
       return (
         <Button className={styles.button + ' ' + styles.disabled} href={"/application"} disabled>
           {this.state.text}
@@ -22,7 +22,7 @@ export default class CompleteApplicationButton extends Component {
       );
     } else {
       return (
-        <Button className={styles.button} href={"/application"}>
+        <Button className={styles.button} href={"/application"} variant="success">
           {this.state.text}
         </Button>
       );

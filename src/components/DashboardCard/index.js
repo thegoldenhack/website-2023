@@ -40,15 +40,15 @@ export default class DashboardCard extends Component {
             </Row>
             <br />
             <Row>
-              <h5>Application Deadline: {applicationDeadline}</h5>
-            </Row>
-            <br />
-            <Row>
               <CompleteApplicationButton
                 key={this.state.buttonStatus}
                 text={"Complete Application"}
                 status={this.state.buttonStatus}
               />
+            </Row>
+            <br />
+            <Row>
+              <h5>Application Deadline: {applicationDeadline}</h5>
             </Row>
           </Col>
         </Card.Body>

@@ -4,10 +4,12 @@ import { Row, Col, Container } from "react-bootstrap";
 
 import DashboardSidebar from "../../components/DashboardSidebar";
 import DashboardCard from "../../components/DashboardCard";
+import GradientBackground from "../../components/GradientBackground";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 import styles from "./styles.module.css";
 
-import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
+import { getJwt, getEmailFromJwt, getNameFromJwt } from "../../utils/Cognito/index.js";
 import { getApplication } from "../../utils/API/index.js";
 
 const applicationDeadline = new Date(
@@ -21,6 +23,7 @@ export default class DashboardPage extends Component {
     this.state = {
       status: undefined,
       buttonStatus: undefined,
+      loadComplete: false,
     };
 
     if (getJwt()) {
@@ -38,42 +41,51 @@ export default class DashboardPage extends Component {
       (data) => {
         if (today > applicationDeadline) {
           if (!data.submitted) {
-            this.setState({ status: "incomplete", buttonStatus: "disabled" });
+            this.setState({ status: "incomplete", buttonStatus: "disabled", loadComplete: true });
           } else {
-            this.setState({ status: "complete", buttonStatus: "disabled" });
+            this.setState({ status: "complete", buttonStatus: "disabled", loadComplete: true });
           }
         } else {
           if (!data || !data.submitted) {
-            this.setState({ status: "incomplete", buttonStatus: "enabled" });
+            this.setState({ status: "incomplete", buttonStatus: "enabled", loadComplete: true });
           } else {
-            this.setState({ status: "complete", buttonStatus: "disabled" });
+            this.setState({ status: "complete", buttonStatus: "disabled", loadComplete: true });
           }
         }
       },
       // If there is an error then there is no application for the user
-      () => this.setState({ status: "incomplete", buttonStatus: "enabled" })
+      () => this.setState({ status: "incomplete", buttonStatus: "enabled", loadComplete: true })
     );
   }
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col sm={{ span: 3 }} className={styles.noPadding}>
-            <DashboardSidebar />
-          </Col>
-          {this.state.status && (
-            <Col className={styles.centerContent}>
-              <DashboardCard
-                title="Application Status"
-                key={this.state.status}
-                status={this.state.status}
-                buttonStatus={this.state.buttonStatus}
-              />
-            </Col>
-          )}
-        </Row>
-      </Container>
+      <GradientBackground className={styles.gradientBackground}>
+        {!this.state.loadComplete && (
+          <div className={styles.loading}>
+            <LoadingSpinner />
+          </div>
+        )}
+        {this.state.loadComplete && (
+          <Container fluid>
+            <Row>
+              <Col sm="auto" className={styles.noPadding}>
+                <DashboardSidebar />
+              </Col>
+              {this.state.status && (
+                <Col className={styles.centerContent}>
+                  <DashboardCard
+                    title={"Welcome, " + getNameFromJwt() + "!"}
+                    key={this.state.status}
+                    status={this.state.status}
+                    buttonStatus={this.state.buttonStatus}
+                  />
+                </Col>
+              )}
+            </Row>
+          </Container>
+        )}
+      </GradientBackground>
     );
   }
 }
