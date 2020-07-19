@@ -1,0 +1,237 @@
+swagger: "2.0"
+info:
+  description: "This is for everything to do with the GoldenHack applications."
+  version: "1.0.0"
+  title: "The GoldenHack Applications"
+host: "vewoyuxe51.execute-api.us-east-2.amazonaws.com"
+basePath: "/test"
+tags:
+- name: "applications"
+  description: "Everything about your applications"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "emails"
+  description: "Send emails to hackers"
+schemes:
+- "https"
+paths:
+  /applications:
+    get:
+      tags:
+      - "applications"
+      summary: "Get all of the hacker applications"
+      description: ""
+      operationId: "getApplications"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+      security:
+      - api_key: []
+  /applications/accept:
+    post:
+      tags:
+      - "applications"
+      summary: "Marks a list of applications as accepted"
+      operationId: "markApplicationsAccepted"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "applications"
+        in: "query"
+        description: "Each email must have an application in the database"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+      responses:
+        "200":
+          description: "Successfully accepted all of the submitted applications."
+        "400":
+          description: "Not all of the emails provided were valid."
+      security:
+      - api_key: []
+  /applications/accepted:
+    get:
+      tags:
+      - "applications"
+      summary: "Get all accepted applications"
+      description: ""
+      operationId: "getAcceptedApplications"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/DynamoResponse"
+      deprecated: false
+      security:
+      - api_key: []
+  /applications/application/submit:
+    post:
+      tags:
+      - "applications"
+      summary: "Submit application"
+      description: "Provide an application that you want to submit. Will rewrite an application if you resubmit."
+      operationId: "submitApplication"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "application"
+        in: "body"
+        description: "An Object containing at least the email and submitted = false if you are saving their application or submitted = true if it is being submitted."
+        required: true
+        schema:
+          $ref: "#/definitions/SubmitPerson"
+      responses:
+        "200":
+          description: "OK"
+      security:
+      - api_key: []
+  /applications/reject:
+    post:
+      tags:
+      - "applications"
+      summary: "Marks a list of applications as rejected"
+      operationId: "markApplicationsRejected"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "applications"
+        in: "query"
+        description: "Each email must have an application in the database"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+      responses:
+        "200":
+          description: "Successfully rejected all of the submitted applications."
+        "400":
+          description: "Not all of the emails provided were valid."
+      security:
+      - api_key: []
+  /applications/rejected:
+    get:
+      tags:
+      - "applications"
+      summary: "Get all rejected applications"
+      description: ""
+      operationId: "getRejectedApplications"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/DynamoResponse"
+      deprecated: false
+      security:
+      - api_key: []
+  /applications/waitlist:
+    post:
+      tags:
+      - "applications"
+      summary: "Marks a list of applications as waitlisted"
+      operationId: "markApplicationsWaitlisted"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "applications"
+        in: "query"
+        description: "Each email must have an application in the database"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+      responses:
+        "200":
+          description: "Successfully waitlisted all of the submitted applications."
+        "400":
+          description: "Not all of the emails provided were valid."
+      security:
+      - api_key: []
+  /applications/waitlisted:
+    get:
+      tags:
+      - "applications"
+      summary: "Get all waitlisted applications"
+      description: ""
+      operationId: "getWaitlistedApplications"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/DynamoResponse"
+      deprecated: false
+      security:
+      - api_key: []
+  /emails:
+    post:
+      tags:
+      - "emails"
+      summary: "Send email to hacker using template"
+      description: ""
+      operationId: "sendEmail"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The email of the hacker and the template name for the email you want to send."
+        required: true
+        schema:
+          $ref: "#/definitions/Email"
+      responses:
+        "200":
+          description: "OK"
+        
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  Email:
+    type: "object"
+    properties:
+      people:
+        type: "array"
+        items: 
+          $ref: "#/definitions/Person"
+      templateName:
+        type: "string"
+  Person:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+
+
+  DynamoResponse:
+    type: "object"
+    properties:
+      Items:
+        type: "array"
+        items:
+          $ref: "#/definitions/Person"
+  SubmitPerson:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      submitted:
+        type: "boolean"
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
