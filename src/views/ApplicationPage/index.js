@@ -599,8 +599,8 @@ export default class Application extends Component {
 
                 {this.displayErrors()}
 
-                <p style={{ marginTop: "50px" }}>
-                  Application cannot be edited once it has been submitted!{" "}
+                <p className={styles.disclaimerText}>
+                  Application cannot be edited once it has been submitted!
                 </p>
 
                 <Row>
