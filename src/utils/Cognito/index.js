@@ -105,3 +105,11 @@ export const getEmailFromJwt = () => {
     return jwtDecoded.email;
   }
 };
+
+export const getNameFromJwt = () => {
+  const jwt = getJwt();
+  if (jwt) {
+    var jwtDecoded = jwtDecode(jwt);
+    return jwtDecoded.name;
+  }
+};
