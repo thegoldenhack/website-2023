@@ -44,6 +44,9 @@ export default class InputField extends Component {
     return (
       <div className={styles.container}>
         <p className={styles.title}>{this.state.label}</p>
+        {this.props.optional && (
+          <p className={styles.optionalSubhedding}>(Optional)</p>
+        )}
 
         {this.props.multiSelect ? (
           <div>
@@ -67,6 +70,7 @@ export default class InputField extends Component {
             value={this.state.value}
             onChange={this.state.onChange}
             options={this.state.options}
+            defaultValue={this.state.defaultValue}
           />
         )}
       </div>

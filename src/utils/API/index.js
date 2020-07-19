@@ -45,14 +45,7 @@ export const sendEmails = (recipient, emailTemplate) => {
 // Application is an object consisting of all the fields of the application.
 // onSuccess will be called when the request was successful, and onFailure
 // will be called when it was unsucessful
-// If submitBool is true then it will also submit the application ie the user
-// won't be able to edit it once it's been submitted
-export const saveApplication = (
-  application,
-  submitBool,
-  onSuccess,
-  onFailure
-) => {
+export const saveApplication = (application, onSuccess, onFailure) => {
   var requestOptions = {
     method: "POST",
     headers: {
@@ -62,11 +55,36 @@ export const saveApplication = (
     },
     body: JSON.stringify({
       application: application,
-      submit: submitBool,
     }),
   };
 
   fetch(proxyurl + endpoint + "/applications/application/save", requestOptions)
+    .then((response) => response.json())
+    .then((data) => onSuccess(data))
+    .catch((error) => onFailure(error));
+};
+
+// Submits an application to the HackerApplications table in the database
+// Application is an object consisting of all the fields of the application.
+// onSuccess will be called when the request was successful, and onFailure
+// will be called when it was unsucessful
+export const submitApplication = (application, onSuccess, onFailure) => {
+  var requestOptions = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+      "x-api-key": apiKey,
+    },
+    body: JSON.stringify({
+      application: application,
+    }),
+  };
+
+  fetch(
+    proxyurl + endpoint + "/applications/application/submit",
+    requestOptions
+  )
     .then((response) => response.json())
     .then((data) => onSuccess(data))
     .catch((error) => onFailure(error));
