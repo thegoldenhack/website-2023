@@ -2,11 +2,11 @@ const studyYearsList = [
   "< Grade 11",
   "Grade 11",
   "Grade 12",
-  "1A/1B",
-  "2A/2B",
-  "3A/3B",
-  "4A/4B",
-  "5A/5B",
+  "1st Year",
+  "2nd Year",
+  "3rd Year",
+  "4th Year",
+  "5th Year",
   "Grad School",
 ];
 export const studyYears = studyYearsList.map((v) => ({ label: v, value: v }));

@@ -20,6 +20,7 @@ export default class SubmitButton extends Component {
         type="submit"
         onClick={this.props.handleSubmit}
         onSubmit={this.props.handleSubmit}
+        disabled={this.props.disabled}
       >
         {this.state.text}
       </Button>

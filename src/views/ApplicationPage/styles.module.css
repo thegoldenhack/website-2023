@@ -6,6 +6,15 @@
   width: 100vw;
   background-color: #f2f2f2;
 }
+.accessDenied {
+  height: 100vh;
+  width: 100vw;
+  background-color: #f2f2f2;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
 .container {
   background-color: white;
   display: flex;
@@ -17,4 +26,22 @@
   font-size: 3rem;
   text-align: center;
   margin: 5vh 0 5vh 0;
+}
+.disclaimerText {
+  margin-top: 25px;
+  font-size: 11px;
+  text-align: center;
+}
+.spinnerContainer {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+}
+.errorContainer {
+  margin-top: 20px;
+}
+.centerAlignText {
+  text-align: center;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Spinner } from "react-bootstrap";
 
 import {
   schools,
@@ -28,6 +28,7 @@ import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
 import {
   getApplication,
   saveApplication,
+  submitApplication,
   sendEmails,
   emailTemplates,
 } from "../../utils/API/index.js";
@@ -57,7 +58,7 @@ export default class Application extends Component {
 
   isPhoneNumber(number) {
     var re = RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
-    return re.text(number);
+    return re.test(number);
   }
 
   componentDidMount = () => {
@@ -155,7 +156,8 @@ export default class Application extends Component {
     // Validate Github URl
     else if (
       this.state.github_url !== undefined &&
-      !this.state.github_url.startsWith("https://www.github.com/")
+      (!this.state.github_url.startsWith("https://www.github.com/") ||
+        this.state.github_url.startsWith("https://github.com/"))
     ) {
       this.setState({
         err: true,
@@ -272,14 +274,46 @@ export default class Application extends Component {
     }
   };
 
+  getApplicationFields = () => {
+    return {
+      email: getEmailFromJwt(),
+      phone_number: this.state.phone_number,
+      gender: this.state.gender,
+      ethnicity: this.state.ethnicity,
+      streams: this.state.streams,
+      degree: this.state.degree,
+      study_year: this.state.study_year,
+      coop_terms: this.state.coop_terms,
+      program: this.state.program,
+      github_url: this.state.github_url,
+      linkedin_url: this.state.linkedin_url,
+      dribbble_url: this.state.dribbble_url,
+      personal_url: this.state.personal_url,
+      link_to_resume: this.state.link_to_resume,
+      num_hackathons: this.state.num_hackathons,
+      how_heard: this.state.how_heard,
+      why_goldenhack: this.state.why_goldenHack,
+    };
+  };
+
   handleSubmit = (event) => {
+    this.setState({ loading: true });
     if (this.validateResponses()) {
-      saveApplication(
-        this.state,
-        true,
+      submitApplication(
+        this.getApplicationFields(),
         () => {
-          this.setState({ submitted: true, saved: true, err: false });
+          this.setState({
+            submitted: true,
+            saved: true,
+            err: false,
+            loading: false,
+          });
           sendEmails(getEmailFromJwt(), emailTemplates.APPLICATION_SUBMITTED);
+
+          // go to the dashboard after submit
+          this.props.history.push({
+            pathname: "/dashboard",
+          });
         },
         () =>
           this.setState({
@@ -287,23 +321,25 @@ export default class Application extends Component {
             save: false,
             err: true,
             errMessage: strings.application.submitUnsuccesful,
+            loading: false,
           })
       );
     }
   };
 
   handleSave = (event) => {
+    this.setState({ loading: true });
     saveApplication(
-      this.state,
-      false,
+      this.getApplicationFields(),
       () => {
-        this.setState({ saved: true, err: false });
+        this.setState({ saved: true, err: false, loading: false });
       },
       () => {
         this.setState({
           save: false,
           err: true,
           errMessage: strings.application.saveUnsuccesful,
+          loading: false,
         });
       }
     );
@@ -338,7 +374,19 @@ export default class Application extends Component {
           </div>
         )}
 
-        {this.state.loadComplete && (
+        {/* Show this if the application has already been submitted */}
+        {this.state.loadComplete && !this.state.submitted && (
+          <div className={styles.accessDenied}>
+            <h3 className={styles.centerAlignText}>Application Submitted</h3>
+            <p className={styles.centerAlignText}>
+              Thanks for submitting your application! <br /> We'll be releasing
+              acceptances very shortly, so keep en eye on our social media for
+              updates.
+            </p>
+          </div>
+        )}
+
+        {this.state.loadComplete && this.state.submitted && (
           <GradientBackground className={styles.gradientBackground}>
             <Container className={styles.container}>
               <h2 className={styles.heading}>
@@ -597,26 +645,35 @@ export default class Application extends Component {
                   options={howHeard}
                 />
 
-                {this.displayErrors()}
+                <div className={styles.errorContainer}>
+                  {this.displayErrors()}
+                </div>
 
-                <p className={styles.disclaimerText}>
-                  Application cannot be edited once it has been submitted!
-                </p>
+                {this.state.loading && (
+                  <div className={styles.spinnerContainer}>
+                    <Spinner animation="border" />
+                  </div>
+                )}
 
                 <Row>
                   <Col>
                     <SubmitButton
                       text={"Save"}
                       handleSubmit={this.handleSave}
+                      disabled={this.state.loading}
                     />
                   </Col>
                   <Col>
                     <SubmitButton
                       text={"Submit"}
                       handleSubmit={this.handleSubmit}
+                      disabled={this.state.loading}
                     />
                   </Col>
                 </Row>
+                <p className={styles.disclaimerText}>
+                  Application cannot be edited after it's been submitted!
+                </p>
               </div>
             </Container>
           </GradientBackground>
