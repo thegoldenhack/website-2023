@@ -20,7 +20,7 @@ class LogoutButton extends Component {
     return (
       <div className={classes}>
         <Button
-          vairant="danger"
+          variant="danger"
           className="logout-button"
           onClick={handleLogout}
         >
