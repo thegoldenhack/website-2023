@@ -44,6 +44,9 @@ export default class InputField extends Component {
     return (
       <div className={styles.container}>
         <p className={styles.title}>{this.state.label}</p>
+        {this.props.optional && (
+          <p className={styles.optionalSubhedding}>(Optional)</p>
+        )}
 
         {this.props.multiSelect ? (
           <div>

@@ -1,0 +1,10 @@
+export { default as degrees } from "./degrees.js";
+export { default as ethnicity } from "./ethnicity.js";
+export { default as genders } from "./genders.js";
+export { default as majors } from "./majors.js";
+export { default as schools } from "./schools.js";
+export { default as studyYears } from "./studyYears.js";
+export { default as streams } from "./streams.js";
+export { default as coopTerms } from "./coopTerms.js";
+export { default as numHackathons } from "./numHackathons.js";
+export { default as howHeard } from "./howHeard.js";

@@ -2,12 +2,18 @@ import React, { Component } from "react";
 
 import { Row, Col, Container } from "react-bootstrap";
 
-import { schools } from "../../assets/data/schools.js";
-import { majors } from "../../assets/data/majors.js";
-import { ethnicity } from "../../assets/data/ethnicity.js";
-import { degrees } from "../../assets/data/degrees.js";
-import { genders } from "../../assets/data/genders.js";
-import { gradYears } from "../../assets/data/gradYears.js";
+import {
+  schools,
+  majors,
+  ethnicity,
+  degrees,
+  genders,
+  coopTerms,
+  studyYears,
+  howHeard,
+  numHackathons,
+  streams,
+} from "../../assets/data";
 
 import DashboardSidebar from "../../components/DashboardSidebar";
 import InputFieldApplication from "../../components/InputFieldApplication";
@@ -19,7 +25,12 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import styles from "./styles.module.css";
 
 import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
-import { getApplication, saveApplication } from "../../utils/API/index.js";
+import {
+  getApplication,
+  saveApplication,
+  sendEmails,
+  emailTemplates,
+} from "../../utils/API/index.js";
 
 import strings from "../../assets/data/strings.js";
 
@@ -44,6 +55,11 @@ export default class Application extends Component {
     }
   }
 
+  isPhoneNumber(number) {
+    var re = RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
+    return re.text(number);
+  }
+
   componentDidMount = () => {
     getApplication(
       getEmailFromJwt(),
@@ -56,21 +72,27 @@ export default class Application extends Component {
             });
           } else
             this.setState({
+              phone_number: data.phone_number,
               birth_date: data.birth_date,
               gender: data.gender,
               degree: data.degree,
-              graduation_year: data.graduation_year,
+              study_year: data.study_year,
               github_url: data.github_url,
               linkedin_url: data.linkedin_url,
               dribbble_url: data.dribbble_url,
               personal_url: data.personal_url,
               link_to_resume: data.link_to_resume,
+              num_hackathons: data.link_to_resume,
+              why_goldenhack: data.why_goldenhack,
+              how_heard: data.how_heard,
 
               // if this field doesn't exist in the application then set it to an
               // empty array instead of just null
               school: data.school ?? [],
               ethnicity: data.ethnicity ?? [],
               program: data.program ?? [],
+              coop_terms: data.coop_terms ?? [],
+              streams: data.streams ?? [],
 
               loadComplete: true,
             });
@@ -80,18 +102,23 @@ export default class Application extends Component {
       // so just initiate the
       () => {
         this.setState({
+          phone_number: undefined,
           birth_date: undefined,
           gender: undefined,
           ethnicity: [],
+          streams: [],
           school: [],
           degree: undefined,
-          graduation_year: undefined,
+          study_year: undefined,
+          coop_terms: [],
           program: [],
           github_url: undefined,
           linkedin_url: undefined,
           dribbble_url: undefined,
           personal_url: undefined,
           link_to_resume: undefined,
+          num_hackathons: undefined,
+          how_heard: undefined,
           why_goldenHack: undefined,
 
           loadComplete: true,
@@ -102,15 +129,26 @@ export default class Application extends Component {
 
   validateResponses = () => {
     if (
+      this.state.phone_number === undefined ||
+      this.state.birth_date === undefined ||
       this.state.gender === undefined ||
       this.state.school === [] ||
       this.state.degree === [] ||
-      this.state.graduation_year === undefined ||
-      this.state.program === []
+      this.state.program === [] ||
+      this.state.study_year === undefined ||
+      this.state.streams === [] ||
+      this.state.num_hackathons === undefined ||
+      this.state.why_goldenHack === undefined ||
+      this.state.how_heard === undefined
     ) {
       this.setState({
         err: true,
         errMessage: strings.application.notComplete,
+      });
+    } else if (!this.isPhoneNumber(this.state.phone_number)) {
+      this.setState({
+        err: true,
+        errMessage: strings.application.invalidPhoneNumber,
       });
     }
 
@@ -239,7 +277,10 @@ export default class Application extends Component {
       saveApplication(
         this.state,
         true,
-        () => this.setState({ submit: true, save: true, err: false }),
+        () => {
+          this.setState({ submitted: true, saved: true, err: false });
+          sendEmails(getEmailFromJwt(), emailTemplates.APPLICATION_SUBMITTED);
+        },
         () =>
           this.setState({
             submit: false,
@@ -252,22 +293,20 @@ export default class Application extends Component {
   };
 
   handleSave = (event) => {
-    if (this.validateResponses()) {
-      saveApplication(
-        this.state,
-        false,
-        () => {
-          this.setState({ save: true, err: false });
-        },
-        () => {
-          this.setState({
-            save: false,
-            err: true,
-            errMessage: strings.application.saveUnsuccesful,
-          });
-        }
-      );
-    }
+    saveApplication(
+      this.state,
+      false,
+      () => {
+        this.setState({ saved: true, err: false });
+      },
+      () => {
+        this.setState({
+          save: false,
+          err: true,
+          errMessage: strings.application.saveUnsuccesful,
+        });
+      }
+    );
   };
 
   displayErrors = () => {
@@ -307,6 +346,17 @@ export default class Application extends Component {
               </h2>
 
               <div>
+                {/* Phone Number */}
+                <InputFieldApplication
+                  label={"Phone Number"}
+                  name={"phone_number"}
+                  required={true}
+                  placeholder={"(###) ###-####"}
+                  defaultValue={this.state.phone_number}
+                  component={this.state.phone_number}
+                  onChange={(event) => this.handleChange(event, null)}
+                />
+
                 {/* Birthday */}
                 <InputFieldApplication
                   label="Birthday"
@@ -349,6 +399,23 @@ export default class Application extends Component {
                   options={ethnicity}
                 />
 
+                {/* Stream */}
+                <InputFieldSelect
+                  label={"Which streams are you applying for?"}
+                  name={"streams"}
+                  multiSelect={true}
+                  defaultValue={
+                    this.state.streams
+                      ? this.state.streams.map((stream) => ({
+                          value: stream,
+                          label: stream,
+                        }))
+                      : null
+                  }
+                  onChange={this.handleChange}
+                  options={streams}
+                />
+
                 {/* School */}
                 <InputFieldSelect
                   label={"School"}
@@ -380,21 +447,39 @@ export default class Application extends Component {
                   options={degrees}
                 />
 
-                {/* Graduation Year */}
+                {/* Study Year */}
                 <InputFieldSelect
-                  label={"Graduation Year"}
-                  name={"graduation_year"}
+                  label={"What year are you in?"}
+                  name={"study_year"}
                   multiSelect={false}
                   defaultValue={
-                    this.state.graduation_year
+                    this.state.study_year
                       ? {
-                          value: this.state.graduation_year,
-                          label: this.state.graduation_year,
+                          value: this.state.study_year,
+                          label: this.state.study_year,
                         }
                       : null
                   }
                   onChange={this.handleChange}
-                  options={gradYears}
+                  options={studyYears}
+                />
+
+                {/* Seeking opportunities */}
+                <InputFieldSelect
+                  label={"Are you currently seeking opportunities for...?"}
+                  name={"coop_terms"}
+                  multiSelect={true}
+                  optional={true}
+                  defaultValue={
+                    this.state.coop_terms
+                      ? this.state.coop_terms.map((coop_term) => ({
+                          value: coop_term,
+                          label: coop_term,
+                        }))
+                      : null
+                  }
+                  onChange={this.handleChange}
+                  options={coopTerms}
                 />
 
                 {/* Program */}
@@ -465,22 +550,58 @@ export default class Application extends Component {
                   onChange={(event) => this.handleChange(event, null)}
                 />
 
+                {/* # Hackathons */}
+                <InputFieldSelect
+                  label={"How many hackathons have you attended in the past?"}
+                  name={"num_hackathons"}
+                  multiSelect={false}
+                  defaultValue={
+                    this.state.num_hackathons
+                      ? {
+                          value: this.state.num_hackathons,
+                          label: this.state.num_hackathons,
+                        }
+                      : null
+                  }
+                  onChange={this.handleChange}
+                  options={numHackathons}
+                />
+
                 {/* Why The GoldenHack? */}
                 <InputFieldApplication
-                  label={"Why The GoldenHack?"}
+                  label={"Why do you want to attend The GoldenHack?"}
                   name={"why_goldenHack"}
                   required={true}
                   placeholder={
-                    "Give us your best answer in 1000 words or less."
+                    "Give us your best answer in 1000 characters or less."
                   }
                   defaultValue={this.state.why_goldenHack}
                   onChange={(event) => this.handleChange(event, null)}
                   longAnswer={true}
                 />
 
+                {/* How heard */}
+                <InputFieldSelect
+                  label={"How did you hear about us?"}
+                  name={"how_heard"}
+                  multiSelect={false}
+                  defaultValue={
+                    this.state.how_heard
+                      ? {
+                          value: this.state.how_heard,
+                          label: this.state.how_heard,
+                        }
+                      : null
+                  }
+                  onChange={this.handleChange}
+                  options={howHeard}
+                />
+
                 {this.displayErrors()}
 
-                <p>Application cannot be edited once submitted! </p>
+                <p style={{ marginTop: "50px" }}>
+                  Application cannot be edited once it has been submitted!{" "}
+                </p>
 
                 <Row>
                   <Col>
