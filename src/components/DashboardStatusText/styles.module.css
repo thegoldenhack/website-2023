@@ -2,11 +2,13 @@
   font-weight: bold;
   color: green;
   background-color: #DDDDDD;
-  padding: 3vh 20vh;
+  padding: 3% 20%;
+  display: flex;
 }
 .incomplete {
   font-weight: bold;
   color: red;
   background-color: #DDDDDD;
-  padding: 3vh 20vh;
+  padding: 3% 20%;
+  display: flex;
 }
