@@ -54,7 +54,7 @@ const strings = {
     passwordsDontMatch: "Password fields do not match",
     genericError: "Oops! An error occurred on our end. Please try again later.",
     passwordPolicy:
-      "Please ensure that your password is at least 6 characters long, has at least one capital letter and at least one digit.",
+      "Please ensure that your password is at least 7 characters long, has at least one capital letter and at least one digit.",
     emailAlreadyExists: "An account with this email already exists.",
   },
 };

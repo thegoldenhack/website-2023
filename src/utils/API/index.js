@@ -26,11 +26,7 @@ export const sendEmails = (recipient, emailTemplate) => {
       "x-api-key": apiKey,
     },
     body: JSON.stringify({
-      people: [
-        {
-          email: recipient,
-        },
-      ],
+      people: recipient,
       templateName: emailTemplate,
     }),
   };

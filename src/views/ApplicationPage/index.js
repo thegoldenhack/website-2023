@@ -71,8 +71,9 @@ export default class Application extends Component {
             this.props.history.push({
               pathname: "/login",
             });
-          } else
+          } else {
             this.setState({
+              submitted: data.submitted,
               phone_number: data.phone_number,
               birth_date: data.birth_date,
               gender: data.gender,
@@ -97,6 +98,7 @@ export default class Application extends Component {
 
               loadComplete: true,
             });
+          }
         }
       },
       // If there was an error then there was no application in the db
@@ -120,7 +122,7 @@ export default class Application extends Component {
           link_to_resume: undefined,
           num_hackathons: undefined,
           how_heard: undefined,
-          why_goldenHack: undefined,
+          why_goldenhack: undefined,
 
           loadComplete: true,
         });
@@ -139,7 +141,7 @@ export default class Application extends Component {
       this.state.study_year === undefined ||
       this.state.streams === [] ||
       this.state.num_hackathons === undefined ||
-      this.state.why_goldenHack === undefined ||
+      this.state.why_goldenhack === undefined ||
       this.state.how_heard === undefined
     ) {
       this.setState({
@@ -199,7 +201,7 @@ export default class Application extends Component {
     }
 
     // Validate long answer
-    else if (this.state.why_goldenHack.length > 1000) {
+    else if (this.state.why_goldenhack.length > 1000) {
       this.setState({
         err: true,
         errMessage: strings.application.overCharLimit,
@@ -274,7 +276,7 @@ export default class Application extends Component {
     }
   };
 
-  getApplicationFields = () => {
+  getApplicationFields = (submittedBool) => {
     return {
       email: getEmailFromJwt(),
       phone_number: this.state.phone_number,
@@ -292,15 +294,16 @@ export default class Application extends Component {
       link_to_resume: this.state.link_to_resume,
       num_hackathons: this.state.num_hackathons,
       how_heard: this.state.how_heard,
-      why_goldenhack: this.state.why_goldenHack,
+      why_goldenhack: this.state.why_goldenhack,
+      submitted: submittedBool,
     };
   };
 
   handleSubmit = (event) => {
-    this.setState({ loading: true });
     if (this.validateResponses()) {
+      this.setState({ loading: true });
       submitApplication(
-        this.getApplicationFields(),
+        this.getApplicationFields(true),
         () => {
           this.setState({
             submitted: true,
@@ -329,7 +332,7 @@ export default class Application extends Component {
 
   handleSave = (event) => {
     this.setState({ loading: true });
-    saveApplication(
+    submitApplication(
       this.getApplicationFields(),
       () => {
         this.setState({ saved: true, err: false, loading: false });
@@ -375,7 +378,7 @@ export default class Application extends Component {
         )}
 
         {/* Show this if the application has already been submitted */}
-        {this.state.loadComplete && !this.state.submitted && (
+        {this.state.loadComplete && this.state.submitted && (
           <div className={styles.accessDenied}>
             <h3 className={styles.centerAlignText}>Application Submitted</h3>
             <p className={styles.centerAlignText}>
@@ -386,7 +389,7 @@ export default class Application extends Component {
           </div>
         )}
 
-        {this.state.loadComplete && this.state.submitted && (
+        {this.state.loadComplete && !this.state.submitted && (
           <GradientBackground className={styles.gradientBackground}>
             <Container className={styles.container}>
               <h2 className={styles.heading}>
@@ -603,14 +606,9 @@ export default class Application extends Component {
                   label={"How many hackathons have you attended in the past?"}
                   name={"num_hackathons"}
                   multiSelect={false}
-                  defaultValue={
-                    this.state.num_hackathons
-                      ? {
-                          value: this.state.num_hackathons,
-                          label: this.state.num_hackathons,
-                        }
-                      : null
-                  }
+                  defaultValue={numHackathons.find(
+                    (obj) => obj.value === this.state.num_hackathons
+                  )}
                   onChange={this.handleChange}
                   options={numHackathons}
                 />
@@ -618,12 +616,12 @@ export default class Application extends Component {
                 {/* Why The GoldenHack? */}
                 <InputFieldApplication
                   label={"Why do you want to attend The GoldenHack?"}
-                  name={"why_goldenHack"}
+                  name={"why_goldenhack"}
                   required={true}
                   placeholder={
                     "Give us your best answer in 1000 characters or less."
                   }
-                  defaultValue={this.state.why_goldenHack}
+                  defaultValue={this.state.why_goldenhack}
                   onChange={(event) => this.handleChange(event, null)}
                   longAnswer={true}
                 />
@@ -633,14 +631,9 @@ export default class Application extends Component {
                   label={"How did you hear about us?"}
                   name={"how_heard"}
                   multiSelect={false}
-                  defaultValue={
-                    this.state.how_heard
-                      ? {
-                          value: this.state.how_heard,
-                          label: this.state.how_heard,
-                        }
-                      : null
-                  }
+                  defaultValue={howHeard.find(
+                    (obj) => obj.value === this.state.how_heard
+                  )}
                   onChange={this.handleChange}
                   options={howHeard}
                 />

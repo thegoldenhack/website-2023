@@ -26,6 +26,7 @@ export default class ConfirmAccountPage extends Component {
 
     this.setState({
       [name]: value,
+      err: false,
     });
   };
 
