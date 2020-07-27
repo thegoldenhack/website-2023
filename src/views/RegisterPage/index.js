@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Form } from "react-bootstrap";
+import { Form, Nav, Row, Col } from "react-bootstrap";
 
 import LoginRegisterLayout from "../../components/LoginRegisterLayout";
 import InputField from "../../components/InputField";
@@ -154,7 +154,14 @@ class RegisterPage extends Component {
           <Form.Group controlId="formBasicCheckbox">
             <Form.Check
               type="checkbox"
-              label="By checking the box you accept terms and conditions"
+              label={
+                <>
+                  I accept the&nbsp;
+                  <a href="/termsandconditions" className="blue-text">
+                    Terms and Conditions
+                  </a>
+                </>
+              }
               name="terms"
               value="checked"
               onChange={this.handleChange}

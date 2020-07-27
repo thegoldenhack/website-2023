@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Document, Page } from "react-pdf/dist/entry.webpack";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Nav } from "react-bootstrap";
 
 import LoginCard from "../../components/LoginCard";
 import BlueBackground from "../../components/BlueBackground";
@@ -58,6 +58,15 @@ export default function SheetViewer() {
             </Col>
             <Col sm={{ span: 6 }} className={styles.col}>
               <LoginTitleText text={"Terms and Conditions"} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Nav className="justify-content-center">
+                <Nav.Item>
+                  <Nav.Link href="/register">Back to Register</Nav.Link>
+                </Nav.Item>
+              </Nav>
             </Col>
           </Row>
           <Document file={terms} onLoadSuccess={onDocumentLoadSuccess}>
