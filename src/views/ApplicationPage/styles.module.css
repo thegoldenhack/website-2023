@@ -45,3 +45,10 @@
 .centerAlignText {
   text-align: center;
 }
+.disclaimerText {
+  text-align: center;
+  width: 70%;
+}
+.loadingText {
+  margin: 0 0 0 10px;
+}

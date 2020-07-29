@@ -2,11 +2,12 @@ import React from "react";
 
 const strings = {
   application: {
-    notComplete: "Not all required fields have been filled out.",
+    notComplete: "The following fields have not been completed:",
     invalidPhoneNumber: "Invalid phone number entered",
     invalidGithubURL: "Invalid GitHub URL entered",
     invalidLinkedInURL: "Invalid LinkedIn URL entered",
     invalidDribbbleURL: "Invalid Dribbble URL entered",
+    invalidPersonalURL: "Invalid Personal URL entered",
     invalidResumeURL: "Invalid Resume URL entered",
     overCharLimit: "Over 1000 character limit for 'Why Golden Hack'",
     submitSuccessful: "Successfully submitted application!",

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Row, Col, Button, Image } from "react-bootstrap";
 
-import cute_lil_dudes from "../../assets/tmp_images/cute_lil_dudes.svg";
-import collaboration from "../../assets/tmp_images/collaboration.svg";
-import team from "../../assets/tmp_images/team.svg";
+import about_us from "../../assets/images/about_us.png";
+import faq_image from "../../assets/images/faq.png";
+import header from "../../assets/images/header.png";
 import design from "../../assets/icons/design.png";
 import develop from "../../assets/icons/develop.png";
 import pitch from "../../assets/icons/pitch.png";
@@ -43,11 +43,7 @@ export default class WebsitePage extends Component {
             </Col>
             <Col md className={styles.headerImage}>
               {/* Temp picture until we get the real one */}
-              <Image
-                src={team}
-                alt="TGH"
-                className={styles.width75}
-              ></Image>
+              <Image src={header} alt="TGH" className={styles.width100}></Image>
             </Col>
           </Row>
         </BlueBackground>
@@ -57,7 +53,7 @@ export default class WebsitePage extends Component {
             <Row className="align-items-center">
               <Col md>
                 <Image
-                  src={collaboration}
+                  src={about_us}
                   alt="TGH"
                   className={styles.aboutUsImage}
                 ></Image>
@@ -223,7 +219,7 @@ export default class WebsitePage extends Component {
             <Row>
               <Col lg>
                 <Image
-                  src={cute_lil_dudes}
+                  src={faq_image}
                   alt="FAQ"
                   className={styles.faqImage}
                 ></Image>
