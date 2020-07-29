@@ -66,39 +66,32 @@ export default class Application extends Component {
       getEmailFromJwt(),
       (data) => {
         if (data) {
-          // If their application has already been submittd, redirect them back
-          if (data.submitted) {
-            this.props.history.push({
-              pathname: "/login",
-            });
-          } else {
-            this.setState({
-              submitted: data.submitted,
-              phone_number: data.phone_number,
-              birth_date: data.birth_date,
-              gender: data.gender,
-              degree: data.degree,
-              study_year: data.study_year,
-              github_url: data.github_url,
-              linkedin_url: data.linkedin_url,
-              dribbble_url: data.dribbble_url,
-              personal_url: data.personal_url,
-              link_to_resume: data.link_to_resume,
-              num_hackathons: data.link_to_resume,
-              why_goldenhack: data.why_goldenhack,
-              how_heard: data.how_heard,
+          this.setState({
+            submitted: data.submitted,
+            phone_number: data.phone_number,
+            birth_date: data.birth_date,
+            gender: data.gender,
+            degree: data.degree,
+            study_year: data.study_year,
+            github_url: data.github_url,
+            linkedin_url: data.linkedin_url,
+            dribbble_url: data.dribbble_url,
+            personal_url: data.personal_url,
+            link_to_resume: data.link_to_resume,
+            num_hackathons: data.num_hackathons,
+            why_goldenhack: data.why_goldenhack,
+            how_heard: data.how_heard,
 
-              // if this field doesn't exist in the application then set it to an
-              // empty array instead of just null
-              school: data.school ?? [],
-              ethnicity: data.ethnicity ?? [],
-              program: data.program ?? [],
-              coop_terms: data.coop_terms ?? [],
-              streams: data.streams ?? [],
+            // if this field doesn't exist in the application then set it to an
+            // empty array instead of just null
+            school: data.school ?? [],
+            ethnicity: data.ethnicity ?? [],
+            program: data.program ?? [],
+            coop_terms: data.coop_terms ?? [],
+            streams: data.streams ?? [],
 
-              loadComplete: true,
-            });
-          }
+            loadComplete: true,
+          });
         }
       },
       // If there was an error then there was no application in the db
@@ -280,10 +273,12 @@ export default class Application extends Component {
     return {
       email: getEmailFromJwt(),
       phone_number: this.state.phone_number,
+      birth_date: this.state.birth_date,
       gender: this.state.gender,
       ethnicity: this.state.ethnicity,
       streams: this.state.streams,
       degree: this.state.degree,
+      school: this.state.school,
       study_year: this.state.study_year,
       coop_terms: this.state.coop_terms,
       program: this.state.program,

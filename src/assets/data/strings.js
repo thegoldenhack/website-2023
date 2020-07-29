@@ -35,7 +35,7 @@ const strings = {
     ],
     noMatch: "Please ensure that passwords match.",
     somethingWentWrong:
-      "Something went wrong with your request. Please try again later.",
+      "Please ensure that your password is at least 7 characters long, has at least one capital letter and at least one digit.",
     success: [
       "You have successfully changed your password! Please click ",
       <a href="/login">here</a>,

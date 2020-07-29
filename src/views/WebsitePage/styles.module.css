@@ -47,6 +47,14 @@
 .marginTop100 {
   margin-top: 100px;
 }
+.headerImage {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.aboutUsImage {
+  width: 90%;
+}
 .button {
   background-color: #f6d030;
   color: #053e5e;
@@ -88,6 +96,13 @@
   .title {
     margin-top: 20vh;
     margin-left: 10vw;
+  }
+  .headerImage {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+  .aboutUsImage {
+    margin-bottom: 5vh;
   }
 }
 
