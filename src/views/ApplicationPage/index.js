@@ -216,7 +216,7 @@ export default class Application extends Component {
     // Validate Dribbble URL
     else if (
       this.state.dribbble_url &&
-      !this.state.dribbble_url.startsWith("https://www.dribbble.com/")
+      !this.state.dribbble_url.startsWith("https://www.dribbble.com/") &&
       !this.state.dribbble_url.startsWith("https://dribbble.com/")
     ) {
       this.setState({
