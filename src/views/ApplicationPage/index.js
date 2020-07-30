@@ -27,7 +27,6 @@ import styles from "./styles.module.css";
 import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
 import {
   getApplication,
-  saveApplication,
   submitApplication,
   sendEmails,
   emailTemplates,
@@ -57,7 +56,7 @@ export default class Application extends Component {
   }
 
   isPhoneNumber(number) {
-    var re = RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
+    var re = RegExp(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g);
     return re.test(number);
   }
 
@@ -66,63 +65,56 @@ export default class Application extends Component {
       getEmailFromJwt(),
       (data) => {
         if (data) {
-          // If their application has already been submittd, redirect them back
-          if (data.submitted) {
-            this.props.history.push({
-              pathname: "/login",
-            });
-          } else {
-            this.setState({
-              submitted: data.submitted,
-              phone_number: data.phone_number,
-              birth_date: data.birth_date,
-              gender: data.gender,
-              degree: data.degree,
-              study_year: data.study_year,
-              github_url: data.github_url,
-              linkedin_url: data.linkedin_url,
-              dribbble_url: data.dribbble_url,
-              personal_url: data.personal_url,
-              link_to_resume: data.link_to_resume,
-              num_hackathons: data.link_to_resume,
-              why_goldenhack: data.why_goldenhack,
-              how_heard: data.how_heard,
+          this.setState({
+            submitted: data.submitted,
+            phone_number: data.phone_number,
+            birth_date: data.birth_date,
+            gender: data.gender,
+            degree: data.degree,
+            study_year: data.study_year,
+            github_url: data.github_url,
+            linkedin_url: data.linkedin_url,
+            dribbble_url: data.dribbble_url,
+            personal_url: data.personal_url,
+            link_to_resume: data.link_to_resume,
+            num_hackathons: data.num_hackathons,
+            why_goldenhack: data.why_goldenhack,
+            how_heard: data.how_heard,
 
-              // if this field doesn't exist in the application then set it to an
-              // empty array instead of just null
-              school: data.school ?? [],
-              ethnicity: data.ethnicity ?? [],
-              program: data.program ?? [],
-              coop_terms: data.coop_terms ?? [],
-              streams: data.streams ?? [],
+            // if this field doesn't exist in the application then set it to an
+            // empty array instead of just null
+            school: data.school ?? [],
+            ethnicity: data.ethnicity ?? [],
+            program: data.program ?? [],
+            coop_terms: data.coop_terms ?? [],
+            streams: data.streams ?? [],
 
-              loadComplete: true,
-            });
-          }
+            loadComplete: true,
+          });
         }
       },
       // If there was an error then there was no application in the db
       // so just initiate the
       () => {
         this.setState({
-          phone_number: undefined,
-          birth_date: undefined,
-          gender: undefined,
+          phone_number: "",
+          birth_date: "",
+          gender: "",
           ethnicity: [],
           streams: [],
           school: [],
-          degree: undefined,
-          study_year: undefined,
+          degree: "",
+          study_year: "",
           coop_terms: [],
           program: [],
-          github_url: undefined,
-          linkedin_url: undefined,
-          dribbble_url: undefined,
-          personal_url: undefined,
-          link_to_resume: undefined,
-          num_hackathons: undefined,
-          how_heard: undefined,
-          why_goldenhack: undefined,
+          github_url: "",
+          linkedin_url: "",
+          dribbble_url: "",
+          personal_url: "",
+          link_to_resume: "",
+          num_hackathons: "",
+          how_heard: "",
+          why_goldenhack: "",
 
           loadComplete: true,
         });
@@ -130,23 +122,62 @@ export default class Application extends Component {
     );
   };
 
+  formatNotFilledOut = (items) => {
+    let retVal = strings.application.notComplete;
+    let item;
+
+    for (item of items) {
+      retVal += "\n  - " + item;
+    }
+
+    // return retVal;
+    return retVal.split("\n").map((item, i) => <p key={i}>{item}</p>);
+  };
+
   validateResponses = () => {
-    if (
-      this.state.phone_number === undefined ||
-      this.state.birth_date === undefined ||
-      this.state.gender === undefined ||
-      this.state.school === [] ||
-      this.state.degree === [] ||
-      this.state.program === [] ||
-      this.state.study_year === undefined ||
-      this.state.streams === [] ||
-      this.state.num_hackathons === undefined ||
-      this.state.why_goldenhack === undefined ||
-      this.state.how_heard === undefined
-    ) {
+    let notAllFilledOutItems = [];
+
+    if (!this.state.phone_number) {
+      notAllFilledOutItems.push("Phone Number");
+    }
+    if (!this.state.birth_date) {
+      notAllFilledOutItems.push("Birthday");
+    }
+    if (!this.state.gender) {
+      notAllFilledOutItems.push("Gender");
+    }
+    if (this.state.school.length === 0) {
+      notAllFilledOutItems.push("School");
+    }
+    if (this.state.degree.length === 0) {
+      notAllFilledOutItems.push("Degree");
+    }
+    if (this.state.program.length === 0) {
+      notAllFilledOutItems.push("Program of Study");
+    }
+    if (!this.state.study_year) {
+      notAllFilledOutItems.push("Study Year");
+    }
+    if (!this.state.study_year) {
+      notAllFilledOutItems.push("Study Year");
+    }
+    if (this.state.streams.length === 0) {
+      notAllFilledOutItems.push("Streams");
+    }
+    if (!this.state.num_hackathons) {
+      notAllFilledOutItems.push("Number of hackathons attended previously");
+    }
+    if (!this.state.why_goldenhack) {
+      notAllFilledOutItems.push("Why do you want to attend The GoldenHack?");
+    }
+    if (!this.state.how_heard) {
+      notAllFilledOutItems.push("How did you hear about us?");
+    }
+
+    if (notAllFilledOutItems.length > 0) {
       this.setState({
         err: true,
-        errMessage: strings.application.notComplete,
+        errMessage: this.formatNotFilledOut(notAllFilledOutItems),
       });
     } else if (!this.isPhoneNumber(this.state.phone_number)) {
       this.setState({
@@ -157,9 +188,9 @@ export default class Application extends Component {
 
     // Validate Github URl
     else if (
-      this.state.github_url !== undefined &&
-      (!this.state.github_url.startsWith("https://www.github.com/") ||
-        this.state.github_url.startsWith("https://github.com/"))
+      this.state.github_url &&
+      !this.state.github_url.startsWith("https://www.github.com/") &&
+      !this.state.github_url.startsWith("https://github.com/")
     ) {
       this.setState({
         err: true,
@@ -169,7 +200,7 @@ export default class Application extends Component {
 
     // Validate LinkedIn URL
     else if (
-      this.state.linkedin_url !== undefined &&
+      this.state.linkedin_url &&
       !this.state.linkedin_url.startsWith("https://www.linkedin.com/in/")
     ) {
       this.setState({
@@ -180,7 +211,7 @@ export default class Application extends Component {
 
     // Validate Dribbble URL
     else if (
-      this.state.dribbble_url !== undefined &&
+      this.state.dribbble_url &&
       !this.state.dribbble_url.startsWith("https://www.dribbble.com/")
     ) {
       this.setState({
@@ -189,10 +220,23 @@ export default class Application extends Component {
       });
     }
 
+    // Validate Personal URL
+    else if (
+      this.state.personal_url &&
+      !this.state.personal_url.startsWith("https://") &&
+      !this.state.personal_url.startsWith("http://")
+    ) {
+      this.setState({
+        err: true,
+        errMessage: strings.application.invalidPersonalURL,
+      });
+    }
+
     // Validate Resume URL
     else if (
-      this.state.link_to_resume !== undefined &&
-      !this.state.link_to_resume.startsWith("https://")
+      this.state.link_to_resume &&
+      !this.state.link_to_resume.startsWith("https://") &&
+      !this.state.link_to_resume.startsWith("http://")
     ) {
       this.setState({
         err: true,
@@ -234,7 +278,7 @@ export default class Application extends Component {
         // Otherwise just set it to undefined
         else {
           await this.setState({
-            [extra.name]: undefined,
+            [extra.name]: "",
             saved: false,
             submitted: false,
             err: false,
@@ -280,10 +324,12 @@ export default class Application extends Component {
     return {
       email: getEmailFromJwt(),
       phone_number: this.state.phone_number,
+      birth_date: this.state.birth_date,
       gender: this.state.gender,
       ethnicity: this.state.ethnicity,
       streams: this.state.streams,
       degree: this.state.degree,
+      school: this.state.school,
       study_year: this.state.study_year,
       coop_terms: this.state.coop_terms,
       program: this.state.program,
@@ -395,6 +441,14 @@ export default class Application extends Component {
               <h2 className={styles.heading}>
                 The GoldenHack 2020 Application
               </h2>
+
+              <p className={styles.disclaimerText}>
+                Use the "Save" button at the bottom to save your progress as you
+                go to prevent losing your information. When you are sure you
+                don't want to edit your application anymore, press the "Submit"
+                button. Please note that submitted applications cannot be
+                edited, but feel free to save as many times as you'd like.
+              </p>
 
               <div>
                 {/* Phone Number */}
@@ -643,9 +697,12 @@ export default class Application extends Component {
                 </div>
 
                 {this.state.loading && (
-                  <div className={styles.spinnerContainer}>
+                  <Row className={styles.spinnerContainer}>
                     <Spinner animation="border" />
-                  </div>
+                    <p className={styles.loadingText}>
+                      Loading! Please do not refresh this page
+                    </p>
+                  </Row>
                 )}
 
                 <Row>

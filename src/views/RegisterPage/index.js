@@ -52,52 +52,48 @@ class RegisterPage extends Component {
         err: true,
         errMessage: strings.register.notComplete,
       });
-    }
-
-    if (this.state.password !== this.state.confirmpassword) {
+    } else if (this.state.password !== this.state.confirmpassword) {
       this.setState({
         err: true,
         errMessage: strings.register.passwordsDontMatch,
       });
-    }
-
-    event.preventDefault();
-
-    if (!this.state.err) {
-      register(
-        this.state.email,
-        this.state.password,
-        this.state.firstname,
-        this.state.lastname,
-        (err, data) => {
-          if (err) {
-            console.log(err);
-            if (err != null) {
-              if (err.code === "InvalidPasswordException") {
-                this.setState({
-                  err: true,
-                  errMessage: strings.register.passwordPolicy,
-                });
-              } else if (err.code === "UsernameExistsException") {
-                this.setState({
-                  err: true,
-                  errMessage: strings.register.emailAlreadyExists,
-                });
-              } else {
-                this.setState({
-                  err: true,
-                  errMessage: strings.register.genericError,
-                });
+    } else {
+      if (!this.state.err) {
+        register(
+          this.state.email,
+          this.state.password,
+          this.state.firstname,
+          this.state.lastname,
+          (err, data) => {
+            if (err) {
+              console.log(err);
+              if (err != null) {
+                if (err.code === "InvalidPasswordException") {
+                  this.setState({
+                    err: true,
+                    errMessage: strings.register.passwordPolicy,
+                  });
+                } else if (err.code === "UsernameExistsException") {
+                  this.setState({
+                    err: true,
+                    errMessage: strings.register.emailAlreadyExists,
+                  });
+                } else {
+                  this.setState({
+                    err: true,
+                    errMessage: strings.register.genericError,
+                  });
+                }
               }
+            } else {
+              this.props.history.push({
+                pathname: "/confirmaccount",
+                email: this.state.email,
+              });
             }
-          } else {
-            this.props.history.push({
-              pathname: "/confirmaccount",
-              email: this.state.email,
-            });
           }
-        }
-      );
+        );
+      }
     }
   };
 
