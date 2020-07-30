@@ -53,11 +53,14 @@ export default class Application extends Component {
         pathname: "/login",
       });
     }
+
   }
 
   isPhoneNumber(number) {
     var re = RegExp(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g);
-    return re.test(number);
+    var re2 = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/g);
+    var re3 = RegExp(/((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/g);
+    return (re.test(number) || re2.test(number) || re3.test(number));
   }
 
   componentDidMount = () => {
@@ -201,7 +204,8 @@ export default class Application extends Component {
     // Validate LinkedIn URL
     else if (
       this.state.linkedin_url &&
-      !this.state.linkedin_url.startsWith("https://www.linkedin.com/in/")
+      !this.state.linkedin_url.startsWith("https://www.linkedin.com/in/") &&
+      !this.state.linkedin_url.startsWith("https://linkedin.com/in/")
     ) {
       this.setState({
         err: true,
@@ -212,7 +216,8 @@ export default class Application extends Component {
     // Validate Dribbble URL
     else if (
       this.state.dribbble_url &&
-      !this.state.dribbble_url.startsWith("https://www.dribbble.com/")
+      !this.state.dribbble_url.startsWith("https://www.dribbble.com/") &&
+      !this.state.dribbble_url.startsWith("https://dribbble.com/")
     ) {
       this.setState({
         err: true,

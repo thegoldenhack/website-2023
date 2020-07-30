@@ -26,7 +26,7 @@ export default class Sponsors extends Component {
 
           <Col md>
             <a
-              href="https://wlu.campusvibe.ca/campusvibe/group/3b395ea1-9f4c-420f-bf4f-c17871093415/1f4c35ea-c960-45b9-9b26-c309141c9a97"
+              href="https://www.facebook.com/LaurierDataScienceSociety/"
               target="_blank"
               rel="noopener noreferrer"
             >
