@@ -2,8 +2,9 @@ import React from "react";
 
 const strings = {
   application: {
-    notComplete: "The following fields have not been completed:",
+    notComplete: "The following fields have not been completed or are invalid:",
     invalidPhoneNumber: "Invalid phone number entered",
+    invalidBirthDate: "Invalid birthday entered",
     invalidGithubURL: "Invalid GitHub URL entered",
     invalidLinkedInURL: "Invalid LinkedIn URL entered",
     invalidDribbbleURL: "Invalid Dribbble URL entered",

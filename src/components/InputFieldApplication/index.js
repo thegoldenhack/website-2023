@@ -33,32 +33,28 @@ export default class InputFieldApplication extends Component {
         )}
 
         {this.state.longAnswer ? (
-          <Form>
-            <Form.Group>
-              <Form.Control
-                className={styles.longAnswer}
-                name={this.state.name}
-                type={this.state.type}
-                placeholder={this.state.placeholder}
-                onChange={this.state.onChange}
-                defaultValue={this.state.defaultValue}
-                as="textarea"
-              />
-            </Form.Group>
-          </Form>
+          <Form.Group>
+            <Form.Control
+              className={styles.longAnswer}
+              name={this.state.name}
+              type={this.state.type}
+              placeholder={this.state.placeholder}
+              onChange={this.state.onChange}
+              defaultValue={this.state.defaultValue}
+              as="textarea"
+            />
+          </Form.Group>
         ) : (
-          <Form>
-            <Form.Group>
-              <Form.Control
-                className={styles.formControl}
-                name={this.state.name}
-                type={this.state.type}
-                placeholder={this.state.placeholder}
-                onChange={this.state.onChange}
-                defaultValue={this.state.defaultValue}
-              />
-            </Form.Group>
-          </Form>
+          <Form.Group>
+            <Form.Control
+              className={styles.formControl}
+              name={this.state.name}
+              type={this.state.type}
+              placeholder={this.state.placeholder}
+              onChange={this.state.onChange}
+              defaultValue={this.state.defaultValue}
+            />
+          </Form.Group>
         )}
       </div>
     );

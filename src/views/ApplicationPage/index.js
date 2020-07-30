@@ -34,6 +34,8 @@ import {
 
 import strings from "../../assets/data/strings.js";
 
+const applicationDeadline = process.env.REACT_APP_APPLICATION_DEADLINE;
+
 export default class Application extends Component {
   constructor(props) {
     super(props);
@@ -254,6 +256,9 @@ export default class Application extends Component {
 
     // If nothing's wrong then return true
     else {
+      this.setState({
+        err: false,
+      });
       return true;
     }
   };
@@ -449,6 +454,8 @@ export default class Application extends Component {
                 button. Please note that submitted applications cannot be
                 edited, but feel free to save as many times as you'd like.
               </p>
+
+              <h5>Application Deadline: {applicationDeadline}</h5>
 
               <div>
                 {/* Phone Number */}

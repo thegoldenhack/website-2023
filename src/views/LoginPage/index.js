@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Nav } from "react-bootstrap";
+import { Nav, Form } from "react-bootstrap";
 
 import LoginRegisterLayout from "../../components/LoginRegisterLayout";
 import SubmitButton from "../../components/SubmitButton";
@@ -52,28 +52,35 @@ export default class LoginPage extends Component {
   render() {
     return (
       <LoginRegisterLayout type="login" title="Login">
-        <InputField
-          isRequired={true}
-          isPassword={true}
-          type={"text"}
-          name={"email"}
-          placeholder={"Email"}
-          handleChange={this.handleChange}
-        />
-        <InputField
-          isRequired={true}
-          isPassword={true}
-          label={"password"}
-          name={"password"}
-          placeholder={"Password"}
-          handleChange={this.handleChange}
-          type={"password"}
-        />
+        <Form
+          style={{ width: "100%" }}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") this.handleSubmit(event);
+          }}
+        >
+          <InputField
+            isRequired={true}
+            isPassword={true}
+            type={"text"}
+            name={"email"}
+            placeholder={"Email"}
+            handleChange={this.handleChange}
+          />
+          <InputField
+            isRequired={true}
+            isPassword={true}
+            label={"password"}
+            name={"password"}
+            placeholder={"Password"}
+            handleChange={this.handleChange}
+            type={"password"}
+          />
 
-        {/* Display an error if needed */}
-        {this.displayErrors()}
+          {/* Display an error if needed */}
+          {this.displayErrors()}
 
-        <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit} />
+          <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit} />
+        </Form>
 
         <Nav className="justify-content-center">
           <Nav.Item>

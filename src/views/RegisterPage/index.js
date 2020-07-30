@@ -34,6 +34,7 @@ class RegisterPage extends Component {
   };
 
   handleSubmit = (event) => {
+    event.preventDefault();
     if (
       this.state.email === null ||
       this.state.firstname === null ||
@@ -106,68 +107,70 @@ class RegisterPage extends Component {
   render() {
     return (
       <LoginRegisterLayout type="register" title="Register">
-        <InputField
-          isRequired={true}
-          type={"text"}
-          name={"firstname"}
-          placeholder={"First Name"}
-          value={this.state.firstname}
-          handleChange={this.handleChange}
-        />
-        <InputField
-          isRequired={true}
-          type={"text"}
-          name={"lastname"}
-          placeholder={"Last Name"}
-          value={this.state.lastname}
-          handleChange={this.handleChange}
-        />
-        <InputField
-          isRequired={true}
-          type={"email"}
-          name={"email"}
-          placeholder={"Email"}
-          value={this.state.email}
-          handleChange={this.handleChange}
-        />
-        <InputField
-          isRequired={true}
-          type={"password"}
-          name={"password"}
-          placeholder={"Password"}
-          value={this.state.password}
-          handleChange={this.handleChange}
-        />
-        <InputField
-          isRequired={true}
-          type={"password"}
-          name={"confirmpassword"}
-          placeholder={"Confirm Password"}
-          handleChange={this.handleChange}
-        />
+        <Form style={{ width: "100%" }}>
+          <InputField
+            isRequired={true}
+            type={"text"}
+            name={"firstname"}
+            placeholder={"First Name"}
+            value={this.state.firstname}
+            handleChange={this.handleChange}
+          />
+          <InputField
+            isRequired={true}
+            type={"text"}
+            name={"lastname"}
+            placeholder={"Last Name"}
+            value={this.state.lastname}
+            handleChange={this.handleChange}
+          />
+          <InputField
+            isRequired={true}
+            type={"email"}
+            name={"email"}
+            placeholder={"Email"}
+            value={this.state.email}
+            handleChange={this.handleChange}
+          />
+          <InputField
+            isRequired={true}
+            type={"password"}
+            name={"password"}
+            placeholder={"Password"}
+            value={this.state.password}
+            handleChange={this.handleChange}
+          />
+          <InputField
+            isRequired={true}
+            type={"password"}
+            name={"confirmpassword"}
+            placeholder={"Confirm Password"}
+            handleChange={this.handleChange}
+          />
 
-        <Form.Group controlId="inputForm.termsandconditions">
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label={
-                <>
-                  I accept the&nbsp;
-                  <a href="/termsandconditions" className="blue-text">
-                    Terms and Conditions
-                  </a>
-                </>
-              }
-              name="terms"
-              value="checked"
-              onChange={this.handleChange}
-            />
+          <Form.Group controlId="inputForm.termsandconditions">
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                label={
+                  <>
+                    I accept the&nbsp;
+                    <a href="/termsandconditions" className="blue-text">
+                      Terms and Conditions
+                    </a>
+                  </>
+                }
+                name="terms"
+                value="checked"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
           </Form.Group>
-        </Form.Group>
 
-        {this.displayErrors()}
+          {this.displayErrors()}
 
-        <SubmitButton text={"Register"} handleSubmit={this.handleSubmit} />
+          <SubmitButton text={"Register"} handleSubmit={this.handleSubmit} />
+        </Form>
       </LoginRegisterLayout>
     );
   }
