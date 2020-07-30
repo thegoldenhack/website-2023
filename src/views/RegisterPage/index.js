@@ -10,6 +10,8 @@ import { register } from "../../utils/Cognito/index.js";
 
 import strings from "../../assets/data/strings.js";
 
+import styles from "./styles.module.css";
+
 class RegisterPage extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,7 @@ class RegisterPage extends Component {
       terms: undefined,
       err: false,
       errMessage: null,
+      loading: false,
     };
   }
 
@@ -35,6 +38,9 @@ class RegisterPage extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    this.setState({ loading: true });
+
     if (
       this.state.email === null ||
       this.state.firstname === null ||
@@ -52,11 +58,13 @@ class RegisterPage extends Component {
       this.setState({
         err: true,
         errMessage: strings.register.notComplete,
+        loading: false,
       });
     } else if (this.state.password !== this.state.confirmpassword) {
       this.setState({
         err: true,
         errMessage: strings.register.passwordsDontMatch,
+        loading: false,
       });
     } else {
       if (!this.state.err) {
@@ -73,20 +81,27 @@ class RegisterPage extends Component {
                   this.setState({
                     err: true,
                     errMessage: strings.register.passwordPolicy,
+                    loading: false,
                   });
                 } else if (err.code === "UsernameExistsException") {
                   this.setState({
                     err: true,
                     errMessage: strings.register.emailAlreadyExists,
+                    loading: false,
                   });
                 } else {
                   this.setState({
                     err: true,
                     errMessage: strings.register.genericError,
+                    loading: false,
                   });
                 }
               }
             } else {
+              this.setState({
+                loading: false,
+              });
+
               this.props.history.push({
                 pathname: "/confirmaccount",
                 email: this.state.email,
@@ -107,7 +122,7 @@ class RegisterPage extends Component {
   render() {
     return (
       <LoginRegisterLayout type="register" title="Register">
-        <Form style={{ width: "100%" }}>
+        <Form className={styles.width100}>
           <InputField
             isRequired={true}
             type={"text"}
@@ -169,7 +184,11 @@ class RegisterPage extends Component {
 
           {this.displayErrors()}
 
-          <SubmitButton text={"Register"} handleSubmit={this.handleSubmit} />
+          <SubmitButton
+            text={"Register"}
+            handleSubmit={this.handleSubmit}
+            disabled={this.state.loading}
+          />
         </Form>
       </LoginRegisterLayout>
     );

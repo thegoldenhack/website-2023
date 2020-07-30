@@ -10,6 +10,8 @@ import { login } from "../../utils/Cognito/index.js";
 
 import strings from "../../assets/data/strings.js";
 
+import styles from "./styles.module.css";
+
 export default class LoginPage extends Component {
   constructor(props) {
     super(props);
@@ -18,26 +20,41 @@ export default class LoginPage extends Component {
       password: undefined,
       err: false,
       errMessage: null,
+      loading: false,
     };
   }
 
   handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value, err: false });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    // The login function hangs for way too long if email or password are null
+    // so let's cut out the middle man and just display the error
+    if (!this.state.email || !this.state.password) {
+      this.setState({
+        err: true,
+        errMessage: strings.login.incorrectLoginDetails,
+      });
+      return;
+    }
+
+    this.setState({ loading: true });
 
     login(this.state.email, this.state.password, {
       onSuccess: (result) => {
         var accessToken = result.getIdToken().getJwtToken();
         localStorage.setItem("accessToken", accessToken);
         this.props.history.push("/dashboard");
+        this.setState({ loading: false });
       },
       onFailure: () => {
         this.setState({
           err: true,
           errMessage: strings.login.incorrectLoginDetails,
+          loading: false,
         });
       },
     });
@@ -52,15 +69,9 @@ export default class LoginPage extends Component {
   render() {
     return (
       <LoginRegisterLayout type="login" title="Login">
-        <Form
-          style={{ width: "100%" }}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") this.handleSubmit(event);
-          }}
-        >
+        <Form className={styles.width100}>
           <InputField
             isRequired={true}
-            isPassword={true}
             type={"text"}
             name={"email"}
             placeholder={"Email"}
@@ -68,7 +79,6 @@ export default class LoginPage extends Component {
           />
           <InputField
             isRequired={true}
-            isPassword={true}
             label={"password"}
             name={"password"}
             placeholder={"Password"}
@@ -79,7 +89,11 @@ export default class LoginPage extends Component {
           {/* Display an error if needed */}
           {this.displayErrors()}
 
-          <SubmitButton text={"Log In"} handleSubmit={this.handleSubmit} />
+          <SubmitButton
+            text={"Log In"}
+            handleSubmit={this.handleSubmit}
+            disabled={this.state.loading}
+          />
         </Form>
 
         <Nav className="justify-content-center">
