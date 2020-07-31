@@ -8,6 +8,14 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  margin: 0;
+}
+
+.ddpContainer {
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
 }
 
 .fullHeight {
@@ -73,13 +81,11 @@
 
 .ddpRow {
   align-items: center;
-  margin: 0 50px 50px 50px;
 }
 .ddpText {
   font-size: 2.5vw;
   padding-bottom: 0;
   margin-bottom: 0;
-  margin-left: 20px;
 }
 
 .ddpBlurb {
