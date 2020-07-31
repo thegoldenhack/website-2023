@@ -374,7 +374,7 @@ export default class Application extends Component {
             submit: false,
             save: false,
             err: true,
-            errMessage: strings.application.submitUnsuccesful,
+            errMessage: strings.application.submitUnsuccessful,
             loading: false,
           })
       );
@@ -392,7 +392,7 @@ export default class Application extends Component {
         this.setState({
           save: false,
           err: true,
-          errMessage: strings.application.saveUnsuccesful,
+          errMessage: strings.application.saveUnsuccessful,
           loading: false,
         });
       }
