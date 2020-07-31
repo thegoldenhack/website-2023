@@ -10,6 +10,8 @@ import { register } from "../../utils/Cognito/index.js";
 
 import strings from "../../assets/data/strings.js";
 
+import styles from "./styles.module.css";
+
 class RegisterPage extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,7 @@ class RegisterPage extends Component {
       terms: undefined,
       err: false,
       errMessage: null,
+      loading: false,
     };
   }
 
@@ -34,6 +37,10 @@ class RegisterPage extends Component {
   };
 
   handleSubmit = (event) => {
+    event.preventDefault();
+
+    this.setState({ loading: true });
+
     if (
       this.state.email === null ||
       this.state.firstname === null ||
@@ -51,11 +58,13 @@ class RegisterPage extends Component {
       this.setState({
         err: true,
         errMessage: strings.register.notComplete,
+        loading: false,
       });
     } else if (this.state.password !== this.state.confirmpassword) {
       this.setState({
         err: true,
         errMessage: strings.register.passwordsDontMatch,
+        loading: false,
       });
     } else {
       if (!this.state.err) {
@@ -72,20 +81,27 @@ class RegisterPage extends Component {
                   this.setState({
                     err: true,
                     errMessage: strings.register.passwordPolicy,
+                    loading: false,
                   });
                 } else if (err.code === "UsernameExistsException") {
                   this.setState({
                     err: true,
                     errMessage: strings.register.emailAlreadyExists,
+                    loading: false,
                   });
                 } else {
                   this.setState({
                     err: true,
                     errMessage: strings.register.genericError,
+                    loading: false,
                   });
                 }
               }
             } else {
+              this.setState({
+                loading: false,
+              });
+
               this.props.history.push({
                 pathname: "/confirmaccount",
                 email: this.state.email,
@@ -106,68 +122,74 @@ class RegisterPage extends Component {
   render() {
     return (
       <LoginRegisterLayout type="register" title="Register">
-        <InputField
-          isRequired={true}
-          type={"text"}
-          name={"firstname"}
-          placeholder={"First Name"}
-          value={this.state.firstname}
-          handleChange={this.handleChange}
-        />
-        <InputField
-          isRequired={true}
-          type={"text"}
-          name={"lastname"}
-          placeholder={"Last Name"}
-          value={this.state.lastname}
-          handleChange={this.handleChange}
-        />
-        <InputField
-          isRequired={true}
-          type={"email"}
-          name={"email"}
-          placeholder={"Email"}
-          value={this.state.email}
-          handleChange={this.handleChange}
-        />
-        <InputField
-          isRequired={true}
-          type={"password"}
-          name={"password"}
-          placeholder={"Password"}
-          value={this.state.password}
-          handleChange={this.handleChange}
-        />
-        <InputField
-          isRequired={true}
-          type={"password"}
-          name={"confirmpassword"}
-          placeholder={"Confirm Password"}
-          handleChange={this.handleChange}
-        />
+        <Form className={styles.width100}>
+          <InputField
+            isRequired={true}
+            type={"text"}
+            name={"firstname"}
+            placeholder={"First Name"}
+            value={this.state.firstname}
+            handleChange={this.handleChange}
+          />
+          <InputField
+            isRequired={true}
+            type={"text"}
+            name={"lastname"}
+            placeholder={"Last Name"}
+            value={this.state.lastname}
+            handleChange={this.handleChange}
+          />
+          <InputField
+            isRequired={true}
+            type={"email"}
+            name={"email"}
+            placeholder={"Email"}
+            value={this.state.email}
+            handleChange={this.handleChange}
+          />
+          <InputField
+            isRequired={true}
+            type={"password"}
+            name={"password"}
+            placeholder={"Password"}
+            value={this.state.password}
+            handleChange={this.handleChange}
+          />
+          <InputField
+            isRequired={true}
+            type={"password"}
+            name={"confirmpassword"}
+            placeholder={"Confirm Password"}
+            handleChange={this.handleChange}
+          />
 
-        <Form.Group controlId="inputForm.termsandconditions">
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label={
-                <>
-                  I accept the&nbsp;
-                  <a href="/termsandconditions" className="blue-text">
-                    Terms and Conditions
-                  </a>
-                </>
-              }
-              name="terms"
-              value="checked"
-              onChange={this.handleChange}
-            />
+          <Form.Group controlId="inputForm.termsandconditions">
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                label={
+                  <>
+                    I accept the&nbsp;
+                    <a href="/termsandconditions" className="blue-text">
+                      Terms and Conditions
+                    </a>
+                  </>
+                }
+                name="terms"
+                value="checked"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
           </Form.Group>
-        </Form.Group>
 
-        {this.displayErrors()}
+          {this.displayErrors()}
 
-        <SubmitButton text={"Register"} handleSubmit={this.handleSubmit} />
+          <SubmitButton
+            text={"Register"}
+            handleSubmit={this.handleSubmit}
+            disabled={this.state.loading}
+          />
+        </Form>
       </LoginRegisterLayout>
     );
   }

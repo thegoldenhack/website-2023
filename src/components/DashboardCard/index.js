@@ -7,8 +7,6 @@ import CompleteApplicationButton from "../CompleteApplicationButton";
 
 import styles from "./styles.module.css";
 
-const applicationDeadline = process.env.REACT_APP_APPLICATION_DEADLINE;
-
 export default class DashboardCard extends Component {
   constructor(props) {
     super(props);
@@ -48,9 +46,6 @@ export default class DashboardCard extends Component {
                 />
               </Row>
               <br />
-              <Row style={{ marginTop: "30px" }}>
-                <h5>Application Deadline: {applicationDeadline}</h5>
-              </Row>
               <Row>
                 <h5>
                   Applying to be a mentor? Submit your application{" "}

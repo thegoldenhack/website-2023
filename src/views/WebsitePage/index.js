@@ -4,6 +4,8 @@ import { Row, Col, Button, Image } from "react-bootstrap";
 import about_us from "../../assets/images/about_us.png";
 import faq_image from "../../assets/images/faq.png";
 import header from "../../assets/images/header.png";
+import fade from "../../assets/images/pic_numbers_fade.png";
+import fadeWhite from "../../assets/images/pic_numbers_fade_w.png";
 import design from "../../assets/icons/design.png";
 import develop from "../../assets/icons/develop.png";
 import pitch from "../../assets/icons/pitch.png";
@@ -48,6 +50,8 @@ export default class WebsitePage extends Component {
           </Row>
         </BlueBackground>
 
+        <Image src={fade} className={styles.width100} />
+
         <div id="about">
           <BlankBackground>
             <Row className="align-items-center">
@@ -78,33 +82,37 @@ export default class WebsitePage extends Component {
           </BlankBackground>
         </div>
 
+        <Image src={fadeWhite} className={styles.width100} />
+
         <div id="more-about">
           <BlueBackground>
             <Col lg>
               <Row lg className={styles.fullWidthCenter}>
-                <div className={styles.ddpRow}>
-                  <Image
-                    src={design}
-                    alt="design"
-                    className={styles.height75}
-                  ></Image>
-                  <h3 className={styles.ddpText}>Design</h3>
-                </div>
-                <div className={styles.ddpRow}>
-                  <Image
-                    src={develop}
-                    alt="develop"
-                    className={styles.height75}
-                  ></Image>
-                  <h3 className={styles.ddpText}>Develop</h3>
-                </div>
-                <div className={styles.ddpRow}>
-                  <Image
-                    src={pitch}
-                    alt="pitch"
-                    className={styles.height75}
-                  ></Image>
-                  <h3 className={styles.ddpText}>Pitch</h3>
+                <div className={styles.ddpContainer}>
+                  <div className={styles.ddpRow}>
+                    <Image
+                      src={design}
+                      alt="design"
+                      className={styles.height75}
+                    ></Image>
+                    <h3 className={styles.ddpText}>Design</h3>
+                  </div>
+                  <div className={styles.ddpRow}>
+                    <Image
+                      src={develop}
+                      alt="develop"
+                      className={styles.height75}
+                    ></Image>
+                    <h3 className={styles.ddpText}>Develop</h3>
+                  </div>
+                  <div className={styles.ddpRow}>
+                    <Image
+                      src={pitch}
+                      alt="pitch"
+                      className={styles.height75}
+                    ></Image>
+                    <h3 className={styles.ddpText}>Pitch</h3>
+                  </div>
                 </div>
               </Row>
 
@@ -124,6 +132,8 @@ export default class WebsitePage extends Component {
             </Col>
           </BlueBackground>
         </div>
+
+        <Image src={fade} className={styles.width100} />
 
         <div id="statistics">
           <BlankBackground center={true}>
@@ -151,6 +161,8 @@ export default class WebsitePage extends Component {
             </div>
           </BlankBackground>
         </div>
+
+        <Image src={fadeWhite} className={styles.width100} />
 
         <div id="testimonials">
           <BlueBackground>
@@ -187,6 +199,8 @@ export default class WebsitePage extends Component {
           </BlueBackground>
         </div>
 
+        <Image src={fade} className={styles.width100} />
+
         <div id="sponsors">
           <BlankBackground center={true}>
             <h3>Our Previous Sponsors</h3>
@@ -205,6 +219,8 @@ export default class WebsitePage extends Component {
           </BlankBackground>
         </div>
 
+        <Image src={fadeWhite} className={styles.width100} />
+
         <div id="photos-from-last-year">
           <BlueBackground>
             <h3>The GoldenHack v1.0</h3>
@@ -212,6 +228,8 @@ export default class WebsitePage extends Component {
             <CustomCarousel />
           </BlueBackground>
         </div>
+
+        <Image src={fade} className={styles.width100} />
 
         <div id="faq">
           <BlankBackground center={true}>

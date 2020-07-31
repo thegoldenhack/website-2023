@@ -32,7 +32,6 @@ h4 {
 h5 {
   font-family: "Montserrat";
   font-size: 1.15rem;
-  padding-bottom: 5vh;
 }
 
 p {
@@ -43,7 +42,6 @@ p {
 .BrainhubCarousel__arrows {
   background-color: #f6d030;
 }
-
 
 /* Individual item */
 .bm-item {
