@@ -7,6 +7,8 @@ import CompleteApplicationButton from "../CompleteApplicationButton";
 
 import styles from "./styles.module.css";
 
+const mentorApplicationLink = process.env.REACT_APP_MENTOR_APPLICATION_LINK;
+
 export default class DashboardCard extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +51,14 @@ export default class DashboardCard extends Component {
               <Row>
                 <h5>
                   Applying to be a mentor? Submit your application{" "}
-                  <a href="https://forms.gle/JhubCiWK6as1MyXz5">here</a>!
+                  <a
+                    href={mentorApplicationLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    here
+                  </a>
+                  !
                 </h5>
               </Row>
             </Col>
