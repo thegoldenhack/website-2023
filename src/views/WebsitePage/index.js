@@ -21,6 +21,7 @@ import CustomNavbar from "../../components/CustomNavbar";
 import FAQ from "../../components/FAQ";
 import Footer from "../../components/Footer";
 import Sponsors from "../../components/Sponsors";
+import PreviousSponsors from "../../components/PreviousSponsors";
 import Testimonial from "../../components/Testimonial";
 import CustomCarousel from "../../components/CustomCarousel";
 
@@ -203,9 +204,13 @@ export default class WebsitePage extends Component {
 
         <div id="sponsors">
           <BlankBackground center={true}>
-            <h3>Our Previous Sponsors</h3>
+            <h3>Our Sponsors</h3>
 
             <Sponsors />
+
+            <h3 className={styles.marginTop100}>Our Previous Sponsors</h3>
+
+            <PreviousSponsors />
 
             <div className={styles.marginTop100}>
               <h2 className={styles.fontSize64}>Interested in Sponsoring?</h2>
