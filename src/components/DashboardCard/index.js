@@ -4,6 +4,7 @@ import { Card, Row, Col, Container } from "react-bootstrap";
 import DashboardTitleText from "../DashboardTitleText";
 import DashboardStatusText from "../DashboardStatusText";
 import CompleteApplicationButton from "../CompleteApplicationButton";
+import RSVPButton from "../RSVPButton";
 
 import styles from "./styles.module.css";
 
@@ -17,6 +18,7 @@ export default class DashboardCard extends Component {
       title: props.title,
       status: props.status,
       buttonStatus: props.buttonStatus,
+      accepted: props.accepted
     };
   }
 
@@ -37,16 +39,29 @@ export default class DashboardCard extends Component {
                 <DashboardStatusText
                   key={this.state.status}
                   type={this.state.status}
+                  accepted={this.state.accepted}
                 />
               </Row>
               <br />
+              {!this.state.accepted && (
               <Row>
                 <CompleteApplicationButton
                   key={this.state.buttonStatus}
                   text={"Complete Application"}
                   status={this.state.buttonStatus}
+                  accepted={this.state.accepted}
                 />
               </Row>
+              )}
+              {this.state.accepted && (
+                <Row>
+                  <RSVPButton
+                    key={this.state.accepted}
+                    text={"RSVP"}
+                    accepted={this.state.accepted}
+                  />
+                </Row>
+              )}
               <br />
               <Row>
                 <h5>

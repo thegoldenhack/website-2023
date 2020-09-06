@@ -59,6 +59,10 @@ const strings = {
       "Please ensure that your password is at least 7 characters long, has at least one capital letter and at least one digit.",
     emailAlreadyExists: "An account with this email already exists.",
   },
+  rsvp: {
+    submitUnsuccessful: "There was a problem submitting your RSVP response. Please try again later.",
+    submitSuccessful: "RSVP response successfully submitted!"
+  }
 };
 
 export default strings;
