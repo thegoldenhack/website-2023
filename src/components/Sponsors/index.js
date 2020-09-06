@@ -1,94 +1,115 @@
 import React, { Component } from "react";
 
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 
-import phi_logo from "../../assets/sponsor_logos/phi_logo.png";
-import ldss_logo from "../../assets/sponsor_logos/ldss_logo.png";
-import fossa_logo from "../../assets/sponsor_logos/fossa_logo.png";
-import df_logo from "../../assets/sponsor_logos/df_logo.png";
-import dspace_logo from "../../assets/sponsor_logos/dspace_logo.png";
-import next_canada_logo from "../../assets/sponsor_logos/next_canada_logo.png";
-import zebu_logo from "../../assets/sponsor_logos/zebu_logo.png";
-import camplete_logo from "../../assets/sponsor_logos/camplete_logo.svg";
+import caa_logo from "../../assets/sponsor_logos_2020/caa_logo.jpg";
+import digital_ocean_logo from "../../assets/sponsor_logos_2020/digital_ocean_logo.png";
+import jtdc_logo from "../../assets/sponsor_logos_2020/jtdc_logo.png";
+import shopify_logo from "../../assets/sponsor_logos_2020/shopify_logo.png";
+import sunlife_logo from "../../assets/sponsor_logos_2020/sunlife_logo.jpg";
+import uphabit_logo from "../../assets/sponsor_logos_2020/uphabit_logo.png";
+import voiceflow_logo from "../../assets/sponsor_logos_2020/voiceflow_logo.png";
 
 import styles from "./styles.module.css";
 
 export default class Sponsors extends Component {
   render() {
     return (
-      <div>
-        <Row className="align-items-center justify-content-center mt-5">
-          <Col md>
-            <a href="https://www.facebook.com/wluPHI/" target="_blank" rel="noopener noreferrer">
-              <img src={phi_logo} className={styles.width100} alt="WLU Phi" />
-            </a>
-          </Col>
-
-          <Col md>
+      <Container>
+        <Row className={styles.row}>
+          <Col className={styles.col}>
             <a
-              href="https://www.facebook.com/LaurierDataScienceSociety/"
+              href="https://uphabit.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={ldss_logo} className={styles.width75} alt="LDSS" />
-            </a>
-          </Col>
-        </Row>
-        <Row className="align-items-center justify-content-center py-5 my-5">
-          <a href="http://fossa.ca/" target="_blank" rel="noopener noreferrer">
-            <img src={fossa_logo} className={styles.width75} alt="FOSSA" />
-          </a>
-        </Row>
-
-        <Row className="align-items-center py-5 my-5">
-          <Col md>
-            <a href="https://dynamic.ca/eng.html" target="_blank" rel="noopener noreferrer">
-              <img
-                src={df_logo}
-                className={styles.width50}
-                alt="Dynamic Funds"
+              <Image
+                src={uphabit_logo}
+                className={styles.width35}
+                alt="UpHabit"
               />
             </a>
           </Col>
+        </Row>
 
-          <Col md>
+        <Row xs={2} md={3} className={styles.row}>
+          <Col className={styles.col}>
             <a
-              href="https://www2.deloitte.com/ca/en/pages/technology/articles/welcome-to-d-space.html"
-              target="_blank" rel="noopener noreferrer"
+              href="https://www.caa.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <img src={dspace_logo} className={styles.width50} alt="DSpace" />
+              <Image src={caa_logo} className={styles.width75} alt="CAA" />
             </a>
           </Col>
-        </Row>
-
-        <Row className="align-items-center mt-5">
-          <Col md>
-            <a href="https://www.nextcanada.com/" target="_blank" rel="noopener noreferrer">
-              <img
-                src={next_canada_logo}
-                className={styles.width50}
-                alt="Next Canada"
-              />
-            </a>
-          </Col>
-
-          <Col>
-            <a href="https://zebu.io/" target="_blank" rel="noopener noreferrer">
-              <img src={zebu_logo} className={styles.width50} alt="Zebu" />
-            </a>
-          </Col>
-
-          <Col>
-            <a href="https://camplete.com/" target="_blank" rel="noopener noreferrer">
-              <img
-                src={camplete_logo}
+          <Col className={styles.col}>
+            <a
+              href="https://www.sunlife.ca/en/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={sunlife_logo}
                 className={styles.width75}
-                alt="Camplete"
+                alt="Sun Life Financial"
+              />
+            </a>
+          </Col>
+          <Col className={styles.col}>
+            <a
+              href="https://www.shopify.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={shopify_logo}
+                className={styles.width75}
+                alt="Shopify"
+              />
+            </a>
+          </Col>
+
+          <Col className={styles.col}>
+            <a
+              href="https://www.jtdc.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={jtdc_logo}
+                className={styles.width75}
+                alt="JTD Consulting"
+              />
+            </a>
+          </Col>
+          <Col className={styles.col}>
+            <a
+              href="https://www.digitalocean.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={digital_ocean_logo}
+                className={styles.width75}
+                alt="Digital Ocean"
+              />
+            </a>
+          </Col>
+          <Col className={styles.col}>
+            <a
+              href="https://www.voiceflow.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={voiceflow_logo}
+                className={styles.width75}
+                alt="Voiceflow"
               />
             </a>
           </Col>
         </Row>
-      </div>
+      </Container>
     );
   }
 }
