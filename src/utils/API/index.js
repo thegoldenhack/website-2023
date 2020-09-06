@@ -111,3 +111,29 @@ export const getApplication = (email, onSuccess, onFailure) => {
     .then((data) => onSuccess(data))
     .catch((error) => onFailure(error));
 };
+
+// Submits RSVP status of an applicant to the HackerApplications table in the database
+// RSVP is an object consisting of a user's email and their rsvp_response (bool).
+// onSuccess will be called when the request was successful, and onFailure
+// will be called when it was unsucessful
+export const RSVPApplication = (RSVP, onSuccess, onFailure) => {
+  var requestOptions = {
+    method: "PUT",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+      "x-api-key": apiKey,
+    },
+    body: JSON.stringify({
+      application: RSVP,
+    }),
+  };
+
+  fetch(
+    proxyurl + endpoint + "/applications/application/rsvp",
+    requestOptions
+  )
+    .then((response) => response.json())
+    .then((data) => onSuccess(data))
+    .catch((error) => onFailure(error));
+};

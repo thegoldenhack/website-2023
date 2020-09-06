@@ -24,6 +24,7 @@ export default class DashboardPage extends Component {
       status: undefined,
       buttonStatus: undefined,
       loadComplete: false,
+      accepted: null,
     };
 
     if (getJwt()) {
@@ -40,7 +41,13 @@ export default class DashboardPage extends Component {
       getEmailFromJwt(),
       (data) => {
         if (today > applicationDeadline) {
-          if (!data.submitted) {
+          if (data.accepted) {
+            this.setState({ status: "complete", buttonStatus: "disabled", loadComplete: true, accepted: true });
+          }
+          else if (!data.accepted) {
+            this.setState({ status: "complete", buttonStatus: "disabled", loadComplete: true, accepted: false });
+          }
+          else if (!data.submitted) {
             this.setState({ status: "incomplete", buttonStatus: "disabled", loadComplete: true });
           } else {
             this.setState({ status: "complete", buttonStatus: "disabled", loadComplete: true });
@@ -79,8 +86,7 @@ export default class DashboardPage extends Component {
                     key={this.state.status}
                     status={this.state.status}
                     buttonStatus={this.state.buttonStatus}
-                    // the following needs a value from the db to see if they were accepted or not
-                    accepted={true}
+                    accepted={this.state.accepted}
                   />
                 </Col>
               )}
