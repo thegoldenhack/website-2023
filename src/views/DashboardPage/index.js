@@ -79,6 +79,8 @@ export default class DashboardPage extends Component {
                     key={this.state.status}
                     status={this.state.status}
                     buttonStatus={this.state.buttonStatus}
+                    // the following needs a value from the db to see if they were accepted or not
+                    accepted={true}
                   />
                 </Col>
               )}
