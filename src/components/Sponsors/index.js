@@ -12,7 +12,7 @@ import voiceflow_logo from "../../assets/sponsor_logos_2020/voiceflow_logo.png";
 
 import styles from "./styles.module.css";
 
-export default class PreviousSponsors extends Component {
+export default class Sponsors extends Component {
   render() {
     return (
       <Container>
