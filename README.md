@@ -110,6 +110,9 @@ Tailai's New Dad Joke:
     What's the difference between a bird and a fly?
     A bird can fly but a fly can't bird.
 
+Wen's dad joke:
+    Where are average things manufactured? The satisfactory.
+
 ## Challenge Question
 <details>
   <summary>What programming language does the James Webb Space Telescope use?</summary>
