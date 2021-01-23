@@ -110,6 +110,9 @@ Tailai's New Dad Joke:
     What's the difference between a bird and a fly?
     A bird can fly but a fly can't bird.
 
+Kyle's New Favourite Dad Joke:
+	I recently bought a new thesaurus. Not only is it terrible, it's terrible.
+
 ## Challenge Question
 <details>
   <summary>What programming language does the James Webb Space Telescope use?</summary>
