@@ -110,6 +110,9 @@ Tailai's New Dad Joke:
     What's the difference between a bird and a fly?
     A bird can fly but a fly can't bird.
 
+Brayden's Dad Joke:
+    There's a very fine line between numerators and denominators, and only a fraction of people understand that.
+
 ## Challenge Question
 <details>
   <summary>What programming language does the James Webb Space Telescope use?</summary>
