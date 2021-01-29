@@ -110,6 +110,10 @@ Tailai's New Dad Joke:
     What's the difference between a bird and a fly?
     A bird can fly but a fly can't bird.
 
+Alice's Favorite Dad Joke:
+    What's Forrest Gump's password?
+    1Forrest1
+
 ## Challenge Question
 <details>
   <summary>What programming language does the James Webb Space Telescope use?</summary>
