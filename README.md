@@ -113,6 +113,9 @@ Tailai's New Dad Joke:
 Kyle's New Favourite Dad Joke:
 	I recently bought a new thesaurus. Not only is it terrible, it's terrible.
 
+Vipneet's New Dad Joke:
+    Why are elevator jokes so classic and good? They work on many levels.
+
 ## Challenge Question
 <details>
   <summary>What programming language does the James Webb Space Telescope use?</summary>
