@@ -120,6 +120,9 @@ Alice's Favorite Dad Joke:
 Kyle's New Favourite Dad Joke:
 	I recently bought a new thesaurus. Not only is it terrible, it's terrible.
 
+Dennis's dad joke:
+    (Read it aloud) What do you call a fish with no eyes? Fsh.
+
 ## Challenge Question
 <details>
   <summary>What programming language does the James Webb Space Telescope use?</summary>
