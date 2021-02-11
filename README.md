@@ -120,6 +120,9 @@ Alice's Favorite Dad Joke:
 Kyle's New Favourite Dad Joke:
 	I recently bought a new thesaurus. Not only is it terrible, it's terrible.
 
+Brayden's Dad Joke:
+    There's a very fine line between numerators and denominators, and only a fraction of people understand that.
+
 ## Challenge Question
 <details>
   <summary>What programming language does the James Webb Space Telescope use?</summary>
