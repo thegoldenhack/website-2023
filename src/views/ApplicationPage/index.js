@@ -24,7 +24,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 
 import styles from "./styles.module.css";
 
-import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
+import { getJwt, getEmailFromJwt, getRoleFromJwt } from "../../utils/Cognito/index.js";
 import {
   getApplication,
   submitApplication,
@@ -55,7 +55,12 @@ export default class Application extends Component {
         pathname: "/login",
       });
     }
-
+    // if the user is not a hacker, also yeet them out
+    if (getRoleFromJwt() != "hacker") {
+      this.props.history.push({
+        pathname: "/dashboard",
+      });
+    }
   }
 
   isPhoneNumber(number) {

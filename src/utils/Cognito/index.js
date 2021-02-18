@@ -113,3 +113,11 @@ export const getNameFromJwt = () => {
     return jwtDecoded.name;
   }
 };
+
+export const getRoleFromJwt = () => {
+  const jwt = getJwt();
+  if (jwt) {
+    var jwtDecoded = jwtDecode(jwt);
+    return jwtDecoded["custom:role"];
+  }
+};

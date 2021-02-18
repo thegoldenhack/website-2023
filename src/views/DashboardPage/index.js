@@ -9,7 +9,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 
 import styles from "./styles.module.css";
 
-import { getJwt, getEmailFromJwt, getNameFromJwt } from "../../utils/Cognito/index.js";
+import { getJwt, getEmailFromJwt, getNameFromJwt, getRoleFromJwt } from "../../utils/Cognito/index.js";
 import { getApplication } from "../../utils/API/index.js";
 
 const applicationDeadline = new Date(
@@ -66,34 +66,67 @@ export default class DashboardPage extends Component {
   }
 
   render() {
-    return (
-      <GradientBackground className={styles.gradientBackground}>
-        {!this.state.loadComplete && (
-          <div className={styles.loading}>
-            <LoadingSpinner />
-          </div>
-        )}
-        {this.state.loadComplete && (
-          <Container fluid>
-            <Row>
-              <Col sm="auto" className={styles.noPadding}>
-                <DashboardSidebar />
-              </Col>
-              {this.state.status && (
-                <Col className={styles.centerContent}>
-                  <DashboardCard
-                    title={"Welcome, " + getNameFromJwt() + "!"}
-                    key={this.state.status}
-                    status={this.state.status}
-                    buttonStatus={this.state.buttonStatus}
-                    accepted={this.state.accepted}
-                  />
+    const user_role = getRoleFromJwt();
+
+    if (user_role == "hacker") {
+      // hacker dashboard
+      return (
+        <GradientBackground className={styles.gradientBackground}>
+          {!this.state.loadComplete && (
+            <div className={styles.loading}>
+              <LoadingSpinner />
+            </div>
+          )}
+          {this.state.loadComplete && (
+            <Container fluid>
+              <Row>
+                <Col sm="auto" className={styles.noPadding}>
+                  <DashboardSidebar />
                 </Col>
-              )}
-            </Row>
-          </Container>
-        )}
-      </GradientBackground>
-    );
+                {this.state.status && (
+                  <Col className={styles.centerContent}>
+                    <DashboardCard
+                      title={"Welcome, " + getNameFromJwt() + "!"}
+                      key={this.state.status}
+                      status={this.state.status}
+                      buttonStatus={this.state.buttonStatus}
+                      accepted={this.state.accepted}
+                    />
+                  </Col>
+                )}
+              </Row>
+            </Container>
+          )}
+        </GradientBackground>
+      );
+    }
+    else {
+      return(
+        // exec dashboard
+        <GradientBackground className={styles.gradientBackground}>
+          {!this.state.loadComplete && (
+            <div className={styles.loading}>
+              <LoadingSpinner />
+            </div>
+          )}
+          {this.state.loadComplete && (
+            <Container fluid>
+              <Row>
+                <Col sm="auto" className={styles.noPadding}>
+                  <DashboardSidebar />
+                </Col>
+                {this.state.status && (
+                  <Col className={styles.centerContent}>
+                    <div style={{color: "white"}}>
+                      Hello World, welcome to the Executive Dashboard!
+                    </div>
+                  </Col>
+                )}
+              </Row>
+            </Container>
+          )}
+        </GradientBackground>
+      );
+    }
   }
 }
