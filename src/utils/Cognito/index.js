@@ -113,3 +113,20 @@ export const getNameFromJwt = () => {
     return jwtDecoded.name;
   }
 };
+
+export const getFirstNameFromJwt = () => {
+  const jwt = getJwt();
+  if (jwt) {
+    var jwtDecoded = jwtDecode(jwt);
+    return jwtDecoded.firstName;
+  }
+};
+
+export const getLastNameFromJwt = () => {
+  const jwt = getJwt();
+  if (jwt) {
+    var jwtDecoded = jwtDecode(jwt);
+    return jwtDecoded.LastName;
+  }
+};
+
