@@ -120,6 +120,9 @@ Alice's Favorite Dad Joke:
 Kyle's New Favourite Dad Joke:
 	I recently bought a new thesaurus. Not only is it terrible, it's terrible.
 
+Vipneet's New Dad Joke:
+    Why are elevator jokes so classic and good? They work on many levels.
+
 Brayden's Dad Joke:
     There's a very fine line between numerators and denominators, and only a fraction of people understand that.
 
