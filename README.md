@@ -122,6 +122,12 @@ Kyle's New Favourite Dad Joke:
 
 Dennis's dad joke:
     (Read it aloud) What do you call a fish with no eyes? Fsh.
+    
+Vipneet's New Dad Joke:
+    Why are elevator jokes so classic and good? They work on many levels.
+
+Brayden's Dad Joke:
+    There's a very fine line between numerators and denominators, and only a fraction of people understand that.
 
 ## Challenge Question
 <details>

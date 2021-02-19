@@ -52,10 +52,15 @@ export const register = (email, password, firstName, lastName, callback) => {
     Name: "family_name",
     Value: lastName,
   };
+  var dataRole = {
+    Name: "custom:role",
+    Value: email.includes("@thegoldenhack.ca") ? "exec" : "hacker",
+  };
 
   attributeList.push(dataEmail);
   attributeList.push(dataPersonalName);
   attributeList.push(dataFamilyName);
+  attributeList.push(dataRole);
 
   userPool.signUp(email, password, attributeList, null, callback);
 };
