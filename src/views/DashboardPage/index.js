@@ -68,9 +68,37 @@ export default class DashboardPage extends Component {
   render() {
     const user_role = getRoleFromJwt();
 
-    if (user_role == "hacker") {
-      // hacker dashboard
+    if (user_role == "exec") {
+      // exec dashboard
       return (
+        <GradientBackground className={styles.gradientBackground}>
+          {!this.state.loadComplete && (
+            <div className={styles.loading}>
+              <LoadingSpinner />
+            </div>
+          )}
+          {this.state.loadComplete && (
+            <Container fluid>
+              <Row>
+                <Col sm="auto" className={styles.noPadding}>
+                  <DashboardSidebar />
+                </Col>
+                {this.state.status && (
+                  <Col className={styles.centerContent}>
+                    <div style={{color: "white"}}>
+                      Hello World, welcome to the Executive Dashboard!
+                    </div>
+                  </Col>
+                )}
+              </Row>
+            </Container>
+          )}
+        </GradientBackground>
+      );
+    }
+    else {
+      return(
+        // hacker dashboard
         <GradientBackground className={styles.gradientBackground}>
           {!this.state.loadComplete && (
             <div className={styles.loading}>
@@ -92,34 +120,6 @@ export default class DashboardPage extends Component {
                       buttonStatus={this.state.buttonStatus}
                       accepted={this.state.accepted}
                     />
-                  </Col>
-                )}
-              </Row>
-            </Container>
-          )}
-        </GradientBackground>
-      );
-    }
-    else {
-      return(
-        // exec dashboard
-        <GradientBackground className={styles.gradientBackground}>
-          {!this.state.loadComplete && (
-            <div className={styles.loading}>
-              <LoadingSpinner />
-            </div>
-          )}
-          {this.state.loadComplete && (
-            <Container fluid>
-              <Row>
-                <Col sm="auto" className={styles.noPadding}>
-                  <DashboardSidebar />
-                </Col>
-                {this.state.status && (
-                  <Col className={styles.centerContent}>
-                    <div style={{color: "white"}}>
-                      Hello World, welcome to the Executive Dashboard!
-                    </div>
                   </Col>
                 )}
               </Row>
