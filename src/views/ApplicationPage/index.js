@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 import { Row, Col, Container, Spinner } from "react-bootstrap";
 
@@ -333,6 +334,7 @@ export default class Application extends Component {
 
   getApplicationFields = (submittedBool) => {
     return {
+      id: uuidv4(),
       email: getEmailFromJwt(),
       first_name: getFirstNameFromJwt(),
       last_name: getLastNameFromJwt(),
