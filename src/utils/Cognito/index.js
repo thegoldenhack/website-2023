@@ -118,6 +118,6 @@ export const getRoleFromJwt = () => {
   const jwt = getJwt();
   if (jwt) {
     var jwtDecoded = jwtDecode(jwt);
-    return jwtDecoded["custom:role"];
+    return jwtDecoded["custom:userRole"];
   }
 };
