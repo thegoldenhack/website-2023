@@ -119,6 +119,14 @@ export const getNameFromJwt = () => {
   }
 };
 
+export const getRoleFromJwt = () => {
+  const jwt = getJwt();
+  if (jwt) {
+    var jwtDecoded = jwtDecode(jwt);
+    return jwtDecoded["custom:userRole"];
+  }
+};
+
 export const getFirstNameFromJwt = () => {
   const jwt = getJwt();
   if (jwt) {
@@ -134,4 +142,3 @@ export const getLastNameFromJwt = () => {
     return jwtDecoded.LastName;
   }
 };
-
