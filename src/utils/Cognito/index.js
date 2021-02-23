@@ -53,7 +53,7 @@ export const register = (email, password, firstName, lastName, callback) => {
     Value: lastName,
   };
   var dataRole = {
-    Name: "custom:role",
+    Name: "custom:userRole",
     Value: email.includes("@thegoldenhack.ca") ? "exec" : "hacker",
   };
 
