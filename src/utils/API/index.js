@@ -141,13 +141,15 @@ export const getApplicationById = (applicationId, onSuccess, onFailure) => {
         "Access-Control-Allow-Credentials": true,
         "x-api-key": apiKey,
       },
+      body: JSON.stringify({
+        id: applicationId,
+      }),
     };
   fetch(
-  proxyurl +
-      endpoint +
-      `/applications/application?`+ // questions remain about this endpoint. These new endpoints currently cannot be found in AWS?!
-      new URLSearchParams({ id: applicationId }),
-  requestOptions
+    proxyurl +
+        endpoint +
+        `/applications/getById`,
+    requestOptions
   )
   .then((response) => response.json())
   .then((data) => onSuccess(data))
@@ -216,7 +218,7 @@ export const rejectApplication = (applicationId, onSuccess, onFailure) => {
       }),
     };
   fetch(
-      proxyurl + endpoint + `/application/reject`,
+      proxyurl + endpoint + `/applications/reject`,
       requestOptions
   )
   .then((response) => response.json())
@@ -238,7 +240,7 @@ export const waitlistApplication = (applicationId, onSuccess, onFailure) => {
       }),
     };
   fetch(
-      proxyurl + endpoint + `/application/waitlist`,
+      proxyurl + endpoint + `/applications/waitlist`,
       requestOptions
   )
   .then((response) => response.json())
