@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 import { Row, Col, Container, Spinner } from "react-bootstrap";
 
@@ -24,7 +25,13 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 
 import styles from "./styles.module.css";
 
-import { getJwt, getEmailFromJwt } from "../../utils/Cognito/index.js";
+import { getJwt, 
+        getEmailFromJwt, 
+        getRoleFromJwt, 
+        getFirstNameFromJwt, 
+        getLastNameFromJwt } 
+from "../../utils/Cognito/index.js";
+
 import {
   getApplication,
   submitApplication,
@@ -48,6 +55,7 @@ export default class Application extends Component {
     };
 
     var jwt = getJwt();
+    const currentDate = new Date();
 
     // if the user is not logged in yeet them out
     if (!jwt) {
@@ -55,7 +63,12 @@ export default class Application extends Component {
         pathname: "/login",
       });
     }
-
+    // if the user is not a hacker, also yeet them out
+    if (getRoleFromJwt() != "hacker") {
+      this.props.history.push({
+        pathname: "/dashboard",
+      });
+    }
   }
 
   isPhoneNumber(number) {
@@ -332,7 +345,10 @@ export default class Application extends Component {
 
   getApplicationFields = (submittedBool) => {
     return {
+      id: uuidv4(),
       email: getEmailFromJwt(),
+      first_name: getFirstNameFromJwt(),
+      last_name: getLastNameFromJwt(),
       phone_number: this.state.phone_number,
       birth_date: this.state.birth_date,
       gender: this.state.gender,
@@ -352,6 +368,7 @@ export default class Application extends Component {
       how_heard: this.state.how_heard,
       why_goldenhack: this.state.why_goldenhack,
       submitted: submittedBool,
+      timestamp: this.currentDate.getTime()
     };
   };
 

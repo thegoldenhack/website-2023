@@ -182,6 +182,7 @@ export const RSVPApplication = (RSVP, onSuccess, onFailure) => {
     .catch((error) => onFailure(error));
 };
 
+
 //Accept the application with the given id. Flip their status to “accepted”
 export const acceptApplication = (applicationId, onSuccess, onFailure) => {
   var requestOptions = {
@@ -247,3 +248,4 @@ export const waitlistApplication = (applicationId, onSuccess, onFailure) => {
   .then((data) => onSuccess(data))
   .catch((error) => onFailure(error));
 };
+

@@ -52,10 +52,15 @@ export const register = (email, password, firstName, lastName, callback) => {
     Name: "family_name",
     Value: lastName,
   };
+  var dataRole = {
+    Name: "custom:userRole",
+    Value: email.includes("@thegoldenhack.ca") ? "exec" : "hacker",
+  };
 
   attributeList.push(dataEmail);
   attributeList.push(dataPersonalName);
   attributeList.push(dataFamilyName);
+  attributeList.push(dataRole);
 
   userPool.signUp(email, password, attributeList, null, callback);
 };
@@ -111,5 +116,29 @@ export const getNameFromJwt = () => {
   if (jwt) {
     var jwtDecoded = jwtDecode(jwt);
     return jwtDecoded.name;
+  }
+};
+
+export const getRoleFromJwt = () => {
+  const jwt = getJwt();
+  if (jwt) {
+    var jwtDecoded = jwtDecode(jwt);
+    return jwtDecoded["custom:userRole"];
+  }
+};
+
+export const getFirstNameFromJwt = () => {
+  const jwt = getJwt();
+  if (jwt) {
+    var jwtDecoded = jwtDecode(jwt);
+    return jwtDecoded.firstName;
+  }
+};
+
+export const getLastNameFromJwt = () => {
+  const jwt = getJwt();
+  if (jwt) {
+    var jwtDecoded = jwtDecode(jwt);
+    return jwtDecoded.LastName;
   }
 };
