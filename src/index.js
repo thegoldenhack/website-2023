@@ -16,7 +16,6 @@ import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput";
 import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange";
 import WebsitePage from "./views/WebsitePage";
 import DashboardPage from "./views/DashboardPage";
-import TermsPage from "./views/TermsPage";
 import ConfirmAccountPage from "./views/ConfirmAccountPage";
 
 import "./index.css";
