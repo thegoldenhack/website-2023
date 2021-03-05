@@ -8,7 +8,7 @@ phases:
     commands:
       - yarn build
 
-  artficats:
+  artifacts:
     files:
       - '**/*'
     discard-paths: no
