@@ -39,7 +39,6 @@ const routing = (
       />
       <Route path="/dashboard" component={DashboardPage} />
       <Route path="/application" component={ApplicationPage} />
-      <Route path="/termsandconditions" component={TermsPage} />
       <Route path="/exec" component={ExecPage} />
       <Route component={NotFound} />
     </Switch>
