@@ -17,6 +17,7 @@ import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange";
 import WebsitePage from "./views/WebsitePage";
 import DashboardPage from "./views/DashboardPage";
 import ConfirmAccountPage from "./views/ConfirmAccountPage";
+import ExecPage from "./views/ExecPage";
 
 import "./index.css";
 
@@ -39,6 +40,7 @@ const routing = (
       <Route path="/dashboard" component={DashboardPage} />
       <Route path="/application" component={ApplicationPage} />
       <Route path="/termsandconditions" component={TermsPage} />
+      <Route path="/exec" component={ExecPage} />
       <Route component={NotFound} />
     </Switch>
   </Router>
