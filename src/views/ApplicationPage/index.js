@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 import { Row, Col, Container, Spinner } from "react-bootstrap";
 
@@ -25,12 +25,13 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 
 import styles from "./styles.module.css";
 
-import { getJwt, 
-        getEmailFromJwt, 
-        getRoleFromJwt, 
-        getFirstNameFromJwt, 
-        getLastNameFromJwt } 
-from "../../utils/Cognito/index.js";
+import {
+  getJwt,
+  getEmailFromJwt,
+  getRoleFromJwt,
+  getFirstNameFromJwt,
+  getLastNameFromJwt,
+} from "../../utils/Cognito/index.js";
 
 import {
   getApplication,
@@ -75,7 +76,7 @@ export default class Application extends Component {
     var re = RegExp(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g);
     var re2 = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/g);
     var re3 = RegExp(/((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/g);
-    return (re.test(number) || re2.test(number) || re3.test(number));
+    return re.test(number) || re2.test(number) || re3.test(number);
   }
 
   componentDidMount = () => {
@@ -368,7 +369,7 @@ export default class Application extends Component {
       how_heard: this.state.how_heard,
       why_goldenhack: this.state.why_goldenhack,
       submitted: submittedBool,
-      timestamp: this.currentDate.getTime()
+      timestamp: this.currentDate.getTime(),
     };
   };
 
