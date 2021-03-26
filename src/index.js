@@ -25,6 +25,7 @@ const routing = (
   <Router>
     <Switch>
       <Route exact path="/" component={WebsitePage} />
+      <Route path="/exec" component={ExecPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
       <Route path="/confirmaccount" component={ConfirmAccountPage} />

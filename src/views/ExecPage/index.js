@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import ApplicationGrid from "../../components/ApplicationGrid";
+import ApplicationModal from "../../components/ApplicationModal";
 
 export default class ExecPage extends Component {
   constructor(props) {
@@ -8,6 +9,11 @@ export default class ExecPage extends Component {
   }
 
   render() {
-    return <ApplicationGrid />;
+    return (
+      <div>
+        {/* <ApplicationGrid /> */}
+        <ApplicationModal />
+      </div>
+    );
   }
 }
