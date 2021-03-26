@@ -1,8 +1,5 @@
 import "./modalHeader.scss";
-import images from "../../../assets/icons/modal";
 import React, { Component } from "react";
-
-
 
 const ModalHeader = ({ handleClose, show, children }) => {
     return (
