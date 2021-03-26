@@ -1,6 +1,7 @@
 import "./modal.scss";
 import images from "../../../assets/icons/modal";
 import React, { Component } from "react";
+import ModalHeader from '../ModalHeader/index';
 
 const ModalDisplay = ({ handleClose, show, children }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";

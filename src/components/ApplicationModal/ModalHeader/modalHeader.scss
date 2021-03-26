@@ -1,0 +1,110 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    h1 {
+        justify-content: space-around;
+        color: #396889;
+        font-size: 72px;
+    }
+
+    .status {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 50px;
+        width: 30%;
+
+        .dropdown {
+            background-color: #FFFFFF;
+            color: black;
+            border-radius: 15px;
+            height: 30px;
+            width: 60%;
+            text-indent: 10pt;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FFFFFF;
+            transform: translate(0px, -1px);
+            width: 100%;
+            height: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0, 0.2);
+            z-index: 1;
+            border-radius: 0px 0px 5px 5px;
+
+            ul {
+                color: black;
+                list-style-type: none;
+                text-align: left;
+                padding: 10px 0px;
+            }
+
+            li {
+                width: 100%;
+                text-align: left;
+            }
+
+            li:hover {
+                background-color: #d9dbe0
+            }
+
+        }
+
+        .dropdown:hover {
+            display: block;
+            border-radius: 15px 15px 0px 0px;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        button {
+            background: #139969;
+            border: 1px solid black;
+            border-radius: 5px;
+            color: white;
+            height: 30px;
+            font-size: 14px;
+            text-align: center;
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .button {
+        display: flex;
+        justify-content: space-between;
+        width: 70px;
+
+        .expand-button {
+            background-image: url("../../../assets/icons/modal/expand_button.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 30px;
+            height: 30px;
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+
+        .close-button {
+            background-image: url("../../../assets/icons/modal/close_button.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 30px;
+            height: 30px;
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+}
