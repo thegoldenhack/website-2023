@@ -24,10 +24,16 @@ import Sponsors from "../../components/Sponsors";
 import PreviousSponsors from "../../components/PreviousSponsors";
 import Testimonial from "../../components/Testimonial";
 import CustomCarousel from "../../components/CustomCarousel";
+import Gear from "../../components/RotatingGear";
 
 import styles from "./styles.module.css";
 
 export default class WebsitePage extends Component {
+  /*
+  Testing with Rotating Gear components: add this snippet to any section with specified rotation, timing and width 
+  Default parameters are also provided in the component
+    <Gear rotation={40} timing={300} width={100}></Gear>
+  */
   render() {
     return (
       <div className={styles.bg}>
@@ -229,7 +235,6 @@ export default class WebsitePage extends Component {
         <div id="photos-from-last-year">
           <BlueBackground>
             <h3>The GoldenHack v1.0</h3>
-
             <CustomCarousel />
           </BlueBackground>
         </div>
