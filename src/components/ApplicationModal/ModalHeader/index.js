@@ -1,7 +1,7 @@
 import "./modalHeader.scss";
 import React, { Component } from "react";
 
-const ModalHeader = ({ handleClose, show, children }) => {
+const ModalHeader = ({ handleClose }) => {
     return (
         <div className="header">
             <h1>Dunja Tomic</h1>

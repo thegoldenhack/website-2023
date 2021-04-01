@@ -12,7 +12,7 @@ const ModalDisplay = ({ handleClose, show, children }) => {
     return (
         <div className={showHideClassName}>
             <section className="modal-main">
-                <ModalHeader />
+                <ModalHeader handleClose={handleClose}/>
                 <div className="info-display">
                     <div class="info-column left">
                         <ModalContact />
