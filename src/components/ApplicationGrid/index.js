@@ -49,7 +49,7 @@ export default () => {
     { name: "date_submitted", title: "Application date/time" },
     { name: "github_url", title: "Github URL" },
   ]);
-  const [selection, setSelection] = useState([1]);
+  const [selection, setSelection] = useState([]);
 
   const [defaultHiddenColumnNames] = useState(["submitted"]);
   const [filteringColumnExtensions, setFilteringColumnExtensions] = useState(
@@ -64,6 +64,7 @@ export default () => {
   let history = useHistory();
 
   const onSelectionChange = (selection) => {
+    console.log(selection);
     history.push('/exec/1020');
   }
 
