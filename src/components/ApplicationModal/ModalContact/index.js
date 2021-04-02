@@ -2,13 +2,11 @@ import "./modalContact.scss";
 import images from "../../../assets/icons/modal";
 import React, { Component } from "react";
 
-
-
-const ModalHeader = () => {
+const ModalContact = () => {
     return (
-        <div class="info-box">
+        <div className="info-box">
             <h1>Contact Info</h1>
-            <div class="label">
+            <div className="label">
                 <div>
                     <img src={images.email}/>
                 </div>
@@ -16,7 +14,7 @@ const ModalHeader = () => {
                     <p>dunja.tomic@thegoldenhack.ca</p>
                 </div>
             </div>
-            <div class="label">
+            <div className="label">
                 <div>
                     <img src={images.phone}/>
                 </div>
@@ -28,4 +26,4 @@ const ModalHeader = () => {
     );
 };
 
-export default ModalHeader
+export default ModalContact

@@ -1,9 +1,9 @@
 import "./modalApplicationInfo.scss";
 import React, { Component } from "react";
 
-const ModalHeader = ({ handleClose, show, children }) => {
+const ModalApplicationInfo = ({ handleClose, show, children }) => {
     return (
-        <div class="info-box">
+        <div className="info-box">
             <h1>Application Info</h1>
             <h2>Why do you want to attend The Goldenhack?</h2>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
@@ -42,4 +42,4 @@ const ModalHeader = ({ handleClose, show, children }) => {
     );
 };
 
-export default ModalHeader
+export default ModalApplicationInfo

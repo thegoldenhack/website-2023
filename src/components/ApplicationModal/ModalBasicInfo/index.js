@@ -4,11 +4,11 @@ import React, { Component } from "react";
 
 
 
-const ModalHeader = () => {
+const ModalBasicInfo = () => {
     return (
-        <div class="info-box">
+        <div className="info-box">
             <h1>Basic Info</h1>
-            <div class="label">
+            <div className="label">
                 <div>
                     <img src={images.school}/>
                 </div>
@@ -32,4 +32,4 @@ const ModalHeader = () => {
     );
 };
 
-export default ModalHeader
+export default ModalBasicInfo

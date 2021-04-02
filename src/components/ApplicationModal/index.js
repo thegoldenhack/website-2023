@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import ModalDisplay from './ModalDisplay';
-import { Route, Link } from "react-router-dom";
+import { Route, Link, withRouter } from "react-router-dom";
+
+const id = 1020;
 
 class ApplicationModal extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             show: false
         };
@@ -18,19 +20,20 @@ class ApplicationModal extends Component {
 
     hideModal = () => {
         this.setState({ show: false });
+        this.props.history.push('/exec');
     };
 
     render() {
         return (
             <div>
-                <Link to={`/exec/view`} onClick={this.showModal}>View Application Info</Link>
+                <Link to={`/exec/` + id}>View Application Info</Link>
 
                 <Route
-                    path={`/exec/view`}
+                    path={`/exec/` + id}
                     render={() => {
                         return (
                             <main>
-                                <ModalDisplay show={this.state.show} handleClose={this.hideModal}>
+                                <ModalDisplay show={true} handleClose={this.hideModal}>
                                     <p>Modal</p>
                                 </ModalDisplay>
                             </main>
@@ -42,4 +45,4 @@ class ApplicationModal extends Component {
     }
 }
 
-export default ApplicationModal
+export default withRouter(ApplicationModal)

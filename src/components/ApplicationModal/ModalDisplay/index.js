@@ -14,11 +14,11 @@ const ModalDisplay = ({ handleClose, show, children }) => {
             <section className="modal-main">
                 <ModalHeader handleClose={handleClose}/>
                 <div className="info-display">
-                    <div class="info-column left">
+                    <div className="info-column left">
                         <ModalContact />
                         <ModalBasicInfo />
                     </div>
-                    <div class="info-column right">
+                    <div className="info-column right">
                         <ModalApplicationInfo />
                     </div>
                 </div>

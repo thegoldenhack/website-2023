@@ -5,11 +5,11 @@ const ModalHeader = ({ handleClose }) => {
     return (
         <div className="header">
             <h1>Dunja Tomic</h1>
-            <div class="status">
-                <div class="dropdown">
+            <div className="status">
+                <div className="dropdown">
                     <span>Pending</span>
-                    <div class="arrow"></div>
-                    <div class="dropdown-content">
+                    <div className="arrow"></div>
+                    <div className="dropdown-content">
                         <ul>
                             <li>
                                 Approved
@@ -22,9 +22,9 @@ const ModalHeader = ({ handleClose }) => {
                 </div>
                 <button>Change Status</button>
             </div>
-            <div class="button">
-                <div class="expand-button" onClick={handleClose}></div>
-                <div class="close-button" onClick={handleClose}></div>
+            <div className="button">
+                <div className="expand-button" onClick={handleClose}></div>
+                <div className="close-button" onClick={handleClose}></div>
             </div>
         </div>
     );

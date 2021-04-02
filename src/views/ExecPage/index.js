@@ -11,7 +11,7 @@ export default class ExecPage extends Component {
   render() {
     return (
       <div>
-        {/* <ApplicationGrid /> */}
+        <ApplicationGrid />
         <ApplicationModal />
       </div>
     );
