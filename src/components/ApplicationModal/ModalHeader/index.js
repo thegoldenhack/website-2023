@@ -1,10 +1,10 @@
 import "./modalHeader.scss";
 import React, { Component } from "react";
 
-const ModalHeader = ({ handleClose }) => {
+const ModalHeader = ({ handleClose, name }) => {
     return (
         <div className="header">
-            <h1>Dunja Tomic</h1>
+            <h1>{name}</h1>
             <div className="status">
                 <div className="dropdown">
                     <span>Pending</span>

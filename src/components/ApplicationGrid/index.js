@@ -23,7 +23,7 @@ const getHiddenColumnsFilteringExtensions = (hiddenColumnNames) =>
 export default () => {
   const [rows, setRows] = useState([
     { first_name: "Wen", last_name: "Zhang", email: "wz2705@gmail.com"},
-    { first_name: "Brayden", last_name: "Royston", email: "broyston@gmail.com"},
+    { first_name: "Brayden", last_name: "Royston", email: "helloworld1@gmail.com"},
     { first_name: "Dunja", last_name: "Tomic", email: "dunja.tomic@thegoldenhack.ca"}
   ]);
   // getAllApplications(
@@ -62,10 +62,11 @@ export default () => {
     );
 
   let history = useHistory();
+  let id = '1020';
 
   const onSelectionChange = (selection) => {
-    console.log(selection);
-    history.push('/exec/1020');
+    id = rows[selection].email;
+    history.push('/exec/' + id);
   }
 
   return (

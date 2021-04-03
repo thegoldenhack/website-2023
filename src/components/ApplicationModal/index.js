@@ -26,15 +26,15 @@ class ApplicationModal extends Component {
     render() {
         return (
             <div>
-                <Link to={`/exec/` + id}>View Application Info</Link>
+                <Link to={`/exec/:id`}>View Application Info</Link>
 
                 <Route
-                    path={`/exec/` + id}
+                    path={`/exec/:id`}
                     render={() => {
                         return (
                             <main>
                                 <ModalDisplay show={true} handleClose={this.hideModal}>
-                                    <p>Modal</p>
+                                    <p>test</p>
                                 </ModalDisplay>
                             </main>
                         );
