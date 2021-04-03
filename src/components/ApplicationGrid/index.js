@@ -23,17 +23,17 @@ const getHiddenColumnsFilteringExtensions = (hiddenColumnNames) =>
 export default () => {
   const [rows, setRows] = useState([
     { first_name: "Wen", last_name: "Zhang", email: "wz2705@gmail.com"},
-    { first_name: "Brayden", last_name: "Royston", email: "helloworld1@gmail.com"},
+    { first_name: "Brayden", last_name: "Royston", email: "helloworld2@gmail.com"},
     { first_name: "Dunja", last_name: "Tomic", email: "dunja.tomic@thegoldenhack.ca"}
   ]);
-  // getAllApplications(
-  //   (response) => {
-  //     setRows(response.Items);
-  //   },
-  //   () => {
-  //     console.log("error");
-  //   }
-  // );
+  getAllApplications(
+    (response) => {
+      setRows(response.Items);
+    },
+    () => {
+      console.log("error");
+    }
+  );
   const [columns] = useState([
     { name: "first_name", title: "First Name" },
     { name: "last_name", title: "Last Name" },
