@@ -2,7 +2,7 @@ import "./modalContact.scss";
 import images from "../../../assets/icons/modal";
 import React, { Component } from "react";
 
-const ModalContact = () => {
+const ModalContact = ({email, phoneNumber}) => {
     return (
         <div className="info-box">
             <h1>Contact Info</h1>
@@ -11,7 +11,7 @@ const ModalContact = () => {
                     <img src={images.email}/>
                 </div>
                 <div>
-                    <p>dunja.tomic@thegoldenhack.ca</p>
+                    <p>{email}</p> 
                 </div>
             </div>
             <div className="label">
@@ -19,7 +19,7 @@ const ModalContact = () => {
                     <img src={images.phone}/>
                 </div>
                 <div>
-                    <p>+1 647 123 456</p>
+                    <p>{phoneNumber}</p>
                 </div>
             </div>
         </div>

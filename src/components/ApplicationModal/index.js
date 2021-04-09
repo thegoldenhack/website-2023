@@ -34,7 +34,6 @@ class ApplicationModal extends Component {
                         return (
                             <main>
                                 <ModalDisplay show={true} handleClose={this.hideModal}>
-                                    <p>test</p>
                                 </ModalDisplay>
                             </main>
                         );

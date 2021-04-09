@@ -4,7 +4,7 @@ import React, { Component } from "react";
 
 
 
-const ModalBasicInfo = () => {
+const ModalBasicInfo = ({ schoolInfo, year }) => {
     return (
         <div className="info-box">
             <h1>Basic Info</h1>
@@ -13,7 +13,7 @@ const ModalBasicInfo = () => {
                     <img src={images.school}/>
                 </div>
                 <div>
-                    <p>University of Waterloo - Computer Science</p>
+                    <p>{schoolInfo}</p>
                     <p>Class of 2022</p>
                 </div>
             </div>

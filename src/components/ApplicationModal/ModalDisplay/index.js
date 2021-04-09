@@ -1,6 +1,7 @@
 import "./modal.scss";
+import { withRouter } from "react-router";
 import images from "../../../assets/icons/modal";
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
 import ModalHeader from '../ModalHeader/index';
 import ModalContact from '../ModalContact/index';
 import ModalBasicInfo from '../ModalBasicInfo/index';
@@ -10,77 +11,81 @@ import { getApplication } from '../../../utils/API/index.js';
 import LoadingSpinner from "../../LoadingSpinner";
 import { ResponsiveEmbed } from "react-bootstrap";
 
-const ModalDisplay = ({ handleClose, show, children }) => {
-    const showHideClassName = show ? "modal display-block" : "modal display-none";
-    let id = useParams().id;
-    let name = '';
-    let [ loading, setLoading ] = useState(true);
-    let [ userData , setUserData ] = useState({error: false});
+class ModalDisplay extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: this.props.match.params.id,
+            dataRetrieved: true,
+        };
+        console.log(this.state.id);
+    };
 
-    // useEffect(async () => {
-    //     await getApplication(id,
-    //         (response) => {
-    //             console.log(response);
-    //             name = response.first_name + ' ' + response.last_name;
-    //             console.log(name);
-    //         }, () => {
-    //             console.log("FAILURE");
-    //         }
-    //     );
-    // });
+    hideModal = () => {
+        this.setState({ show: false });
+        this.props.history.push('/exec');
+    };
 
-    async function asyncCall() {
-        await getApplication(id,
-            (response) => {
-                name = response.first_name + ' ' + response.last_name;
-                setUserData({
-                    userName: response.first_name ?? 'N/A' + ' ' + response.last_name ?? 'N/A',
-                    userSchoolInfo: response.school ?? 'N/A' + ' - ' + response.degree ?? 'N/A',
-                    userBirthDate: response.birth_date ?? 'N/A',
-                    userNextCoop: response.coop_terms[0] ?? 'N/A',
-                    userHowHeard: response.how_heard ?? 'N/A',
-                    userGithub: response.github_url ?? 'N/A',
-                    userDribbble: response.dribbble_url ?? 'N/A',
-                    userResume: response.link_to_resume ?? 'N/A',
-                    userLinkedIn: response.linkedin_url ?? 'N/A',
-                    userPersonalSite: response.personal_url ?? 'N/A',
-                    error: false,
-                });
-                setLoading(false);
-            }, () => {
-                console.log("FAILURE");
-                setUserData({
-                    error: true,
-                });
-                setLoading(false);
-            }
-        );
-    }
-    // call async function
-    asyncCall();
+    componentDidMount() {
+        getApplication(this.state.id,
+        (response) => {
+            this.setState({
+                userName: response.first_name ?? 'N/A' + ' ' + response.last_name ?? 'N/A',
+                userSchoolInfo: response.school ?? 'N/A' + ' - ' + response.degree ?? 'N/A',
+                userBirthDate: response.birth_date ?? 'N/A',
+                userNextCoop: response.coop_terms[0] ?? 'N/A',
+                userHowHeard: response.how_heard ?? 'N/A',
+                userGithub: response.github_url ?? 'N/A',
+                userDribbble: response.dribbble_url ?? 'N/A',
+                userResume: response.link_to_resume ?? 'N/A',
+                userLinkedIn: response.linkedin_url ?? 'N/A',
+                userPersonalSite: response.personal_url ?? 'N/A',
 
-    if (loading) {
-        return (<LoadingSpinner />)
-    } else {
-        console.log(name);
-        return (
-            <div className={showHideClassName}>
-                <section className="modal-main">
-                    <ModalHeader handleClose={handleClose} name={name}/>
-                    <div className="info-display">
-                        <div className="info-column left">
-                            <ModalContact />
-                            <ModalBasicInfo />
+                error: false,
+                dataRetrieved: true,
+            });
+        }, () => {
+            console.log("FAILURE");
+            this.setState({
+                userName: 'N/A',
+                userSchoolInfo: 'N/A',
+                userBirthDate: 'N/A',
+                userNextCoop:'N/A',
+                userHowHeard: 'N/A',
+                userGithub:'N/A',
+                userDribbble:'N/A',
+                userResume: 'N/A',
+                userLinkedIn: 'N/A',
+                userPersonalSite: 'N/A',
+
+                error: true,
+                dataRetrieved: true,
+            });
+        });
+    };
+
+    render() {
+        if (!this.state.dataRetrieved) {
+            return (<LoadingSpinner />)
+        } else {
+            return (
+                <div className="modal display-block">
+                    <section className="modal-main">
+                        <ModalHeader name={this.state.userName} handleClose={this.props.handleClose}/>
+                        <div className="info-display">
+                            <div className="info-column left">
+                                <ModalContact email={this.state.id} phoneNumber="123"/>
+                                <ModalBasicInfo/>
+                            </div>
+                            <div className="info-column right">
+                                <ModalApplicationInfo />
+                            </div>
                         </div>
-                        <div className="info-column right">
-                            <ModalApplicationInfo />
-                        </div>
-                    </div>
-                    {/*children*/}
-                </section>
-            </div>
-        );
+                    </section>
+                </div> 
+            );
+        }
     }
 };
 
-export default ModalDisplay
+export default withRouter(ModalDisplay);

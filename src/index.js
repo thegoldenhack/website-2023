@@ -18,6 +18,7 @@ import WebsitePage from "./views/WebsitePage";
 import DashboardPage from "./views/DashboardPage";
 import ConfirmAccountPage from "./views/ConfirmAccountPage";
 import ExecPage from "./views/ExecPage";
+import ModalDisplay from "./components/ApplicationModal/ModalDisplay";
 
 import "./index.css";
 
