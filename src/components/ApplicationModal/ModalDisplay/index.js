@@ -40,12 +40,14 @@ class ModalDisplay extends Component {
                 userResume: response.link_to_resume ?? 'N/A',
                 userLinkedIn: response.linkedin_url ?? 'N/A',
                 userPersonalSite: response.personal_url ?? 'N/A',
+                userPhoneNumber: response.phone_number ?? 'N/A',
+                userWhyGoldenhack: response.why_goldenhack ?? 'N/A',
 
                 error: false,
                 dataRetrieved: true,
             });
         }, () => {
-            console.log("FAILURE");
+            console.log("API FAILURE");
             this.setState({
                 userName: 'N/A',
                 userSchoolInfo: 'N/A',
@@ -57,6 +59,8 @@ class ModalDisplay extends Component {
                 userResume: 'N/A',
                 userLinkedIn: 'N/A',
                 userPersonalSite: 'N/A',
+                userPhoneNumber: 'N/A',
+                userWhyGoldenhack: 'N/A',
 
                 error: true,
                 dataRetrieved: true,
@@ -74,11 +78,11 @@ class ModalDisplay extends Component {
                         <ModalHeader name={this.state.userName} handleClose={this.props.handleClose}/>
                         <div className="info-display">
                             <div className="info-column left">
-                                <ModalContact email={this.state.id} phoneNumber="123"/>
-                                <ModalBasicInfo/>
+                                <ModalContact email={this.state.id} phoneNumber={this.state.userPhoneNumber}/>
+                                <ModalBasicInfo schoolInfo={this.state.userSchoolInfo}/> {/* add year */}
                             </div>
                             <div className="info-column right">
-                                <ModalApplicationInfo />
+                                <ModalApplicationInfo userWhyGoldenhack={this.state.userWhyGoldenhack}/>
                             </div>
                         </div>
                     </section>

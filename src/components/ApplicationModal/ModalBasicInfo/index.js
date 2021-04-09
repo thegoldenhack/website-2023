@@ -14,7 +14,7 @@ const ModalBasicInfo = ({ schoolInfo, year }) => {
                 </div>
                 <div>
                     <p>{schoolInfo}</p>
-                    <p>Class of 2022</p>
+                    <p>{year}</p>
                 </div>
             </div>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
