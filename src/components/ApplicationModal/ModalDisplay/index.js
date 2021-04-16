@@ -18,7 +18,6 @@ class ModalDisplay extends Component {
             id: this.props.match.params.id,
             dataRetrieved: true,
         };
-        console.log(this.state.id);
     };
 
     hideModal = () => {
