@@ -74,7 +74,7 @@ class ModalDisplay extends Component {
             return (
                 <div className="modal display-block">
                     <section className="modal-main">
-                        <ModalHeader name={this.state.userName} handleClose={this.props.handleClose}/>
+                        <ModalHeader name={this.state.userName} id={this.state.id} handleClose={this.props.handleClose}/>
                         <div className="info-display">
                             <div className="info-column left">
                                 <ModalContact email={this.state.id} phoneNumber={this.state.userPhoneNumber}/>
