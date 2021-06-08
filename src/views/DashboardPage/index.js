@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 import { Row, Col, Container } from "react-bootstrap";
 
@@ -9,7 +10,12 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 
 import styles from "./styles.module.css";
 
-import { getJwt, getEmailFromJwt, getNameFromJwt, getRoleFromJwt } from "../../utils/Cognito/index.js";
+import {
+  getJwt,
+  getEmailFromJwt,
+  getNameFromJwt,
+  getRoleFromJwt,
+} from "../../utils/Cognito/index.js";
 import { getApplication } from "../../utils/API/index.js";
 
 const applicationDeadline = new Date(
@@ -29,11 +35,13 @@ export default class DashboardPage extends Component {
 
     if (getJwt()) {
       this.state.email = getEmailFromJwt();
-    } else {
-      this.props.history.push({
-        pathname: "/login",
-      });
     }
+    // } else {
+    //   return <Redirect to="/login" />;
+    //   // this.props.history.push({
+    //   //   pathname: "/login",
+    //   // });
+    // }
   }
 
   componentDidMount() {
@@ -42,34 +50,63 @@ export default class DashboardPage extends Component {
       (data) => {
         if (today > applicationDeadline) {
           if (data.accepted) {
-            this.setState({ status: "complete", buttonStatus: "disabled", loadComplete: true, accepted: true });
-          }
-          else if (!data.accepted) {
-            this.setState({ status: "complete", buttonStatus: "disabled", loadComplete: true, accepted: false });
-          }
-          else if (!data.submitted) {
-            this.setState({ status: "incomplete", buttonStatus: "disabled", loadComplete: true });
+            this.setState({
+              status: "complete",
+              buttonStatus: "disabled",
+              loadComplete: true,
+              accepted: true,
+            });
+          } else if (!data.accepted) {
+            this.setState({
+              status: "complete",
+              buttonStatus: "disabled",
+              loadComplete: true,
+              accepted: false,
+            });
+          } else if (!data.submitted) {
+            this.setState({
+              status: "incomplete",
+              buttonStatus: "disabled",
+              loadComplete: true,
+            });
           } else {
-            this.setState({ status: "complete", buttonStatus: "disabled", loadComplete: true });
+            this.setState({
+              status: "complete",
+              buttonStatus: "disabled",
+              loadComplete: true,
+            });
           }
         } else {
           if (!data || !data.submitted) {
-            this.setState({ status: "incomplete", buttonStatus: "enabled", loadComplete: true });
+            this.setState({
+              status: "incomplete",
+              buttonStatus: "enabled",
+              loadComplete: true,
+            });
           } else {
-            this.setState({ status: "complete", buttonStatus: "disabled", loadComplete: true });
+            this.setState({
+              status: "complete",
+              buttonStatus: "disabled",
+              loadComplete: true,
+            });
           }
         }
       },
       // If there is an error then there is no application for the user
-      () => this.setState({ status: "incomplete", buttonStatus: "enabled", loadComplete: true })
+      () =>
+        this.setState({
+          status: "incomplete",
+          buttonStatus: "enabled",
+          loadComplete: true,
+        })
     );
   }
 
   render() {
     const user_role = getRoleFromJwt();
-
-    if (user_role == "exec") {
-      // exec dashboard
+    if (!getJwt()) {
+      return <Redirect to="/login" />;
+    } else if (user_role == "exec") {
       return (
         <GradientBackground className={styles.gradientBackground}>
           {!this.state.loadComplete && (
@@ -85,7 +122,7 @@ export default class DashboardPage extends Component {
                 </Col>
                 {this.state.status && (
                   <Col className={styles.centerContent}>
-                    <div style={{color: "white"}}>
+                    <div style={{ color: "white" }}>
                       Hello World, welcome to the Executive Dashboard!
                     </div>
                   </Col>
@@ -95,10 +132,8 @@ export default class DashboardPage extends Component {
           )}
         </GradientBackground>
       );
-    }
-    else {
-      return(
-        // hacker dashboard
+    } else {
+      return (
         <GradientBackground className={styles.gradientBackground}>
           {!this.state.loadComplete && (
             <div className={styles.loading}>
