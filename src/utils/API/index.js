@@ -5,6 +5,18 @@ const apiKey = process.env.REACT_APP_API_KEY;
 // around the CORS policy without it. If anyone has a better solution please share!
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
+const isLocalhost = Boolean(
+  window.location.hostname === 'localhost' ||
+  // [::1] is the IPv6 localhost address.
+  window.location.hostname === '[::1]' ||
+  // 127.0.0.1/8 is considered localhost for IPv4.
+  window.location.hostname.match(
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+  )
+);
+
+const apiEndpoint = isLocalhost ? proxyurl + endpoint : endpoint
+
 // js doesn't have enums so here's a janky DIY version
 export const emailTemplates = {
   APPLICATION_SUBMITTED: "ApplicationSubmitted",
@@ -31,7 +43,7 @@ export const sendEmails = (recipient, emailTemplate) => {
     }),
   };
 
-  fetch(proxyurl + endpoint + "/emails", requestOptions)
+  fetch(apiEndpoint + "/emails", requestOptions)
     .then((response) => response.json())
     .then((data) => console.log(data))
     .catch((error) => console.log(error));
@@ -54,7 +66,7 @@ export const saveApplication = (application, onSuccess, onFailure) => {
     }),
   };
 
-  fetch(proxyurl + endpoint + "/applications/application/save", requestOptions)
+  fetch(apiEndpoint + "/applications/application/save", requestOptions)
     .then((response) => response.json())
     .then((data) => onSuccess(data))
     .catch((error) => onFailure(error));
@@ -78,7 +90,7 @@ export const submitApplication = (application, onSuccess, onFailure) => {
   };
 
   fetch(
-    proxyurl + endpoint + "/applications/application/submit",
+    apiEndpoint + "/applications/application/submit",
     requestOptions
   )
     .then((response) => response.json())
@@ -97,7 +109,7 @@ export const getAllApplications = (onSuccess, onFailure) => {
       "x-api-key": apiKey,
     },
   };
-  fetch(proxyurl + endpoint + `/applications`, requestOptions)
+  fetch(apiEndpoint + `/applications`, requestOptions)
     .then((response) => response.json())
     .then((data) => onSuccess(data))
     .catch((error) => onFailure(error));
@@ -117,11 +129,14 @@ export const getApplication = (email, onSuccess, onFailure) => {
     },
   };
 
+  var searchParams = {
+    email: email
+  }
+
   fetch(
-    proxyurl +
-      endpoint +
+    apiEndpoint +
       "/applications/application?" +
-      new URLSearchParams({ email: email }),
+      new URLSearchParams(searchParams),
     requestOptions
   )
     .then((response) => response.json())
@@ -142,7 +157,7 @@ export const getApplicationById = (applicationId, onSuccess, onFailure) => {
       id: applicationId,
     }),
   };
-  fetch(proxyurl + endpoint + `/applications/getById`, requestOptions)
+  fetch(apiEndpoint + `/applications/getById`, requestOptions)
     .then((response) => response.json())
     .then((data) => onSuccess(data))
     .catch((error) => onFailure(error));
@@ -165,7 +180,7 @@ export const RSVPApplication = (RSVP, onSuccess, onFailure) => {
     }),
   };
 
-  fetch(proxyurl + endpoint + "/applications/application/rsvp", requestOptions)
+  fetch(apiEndpoint+ "/applications/application/rsvp", requestOptions)
     .then((response) => response.json())
     .then((data) => onSuccess(data))
     .catch((error) => onFailure(error));
@@ -185,7 +200,7 @@ export const acceptApplication = (applicationId, onSuccess, onFailure) => {
     }),
   };
   fetch(
-    proxyurl + endpoint + `/applications/accept`, // this path currently doesn not support PUT, we need to att the PUT function to this endpoint
+    apiEndpoint + `/applications/accept`, // this path currently doesn not support PUT, we need to att the PUT function to this endpoint
     requestOptions
   )
     .then((response) => response.json())
@@ -206,7 +221,7 @@ export const rejectApplication = (applicationId, onSuccess, onFailure) => {
       id: applicationId,
     }),
   };
-  fetch(proxyurl + endpoint + `/applications/reject`, requestOptions)
+  fetch(apiEndpoint + `/applications/reject`, requestOptions)
     .then((response) => response.json())
     .then((data) => onSuccess(data))
     .catch((error) => onFailure(error));
@@ -225,7 +240,7 @@ export const waitlistApplication = (applicationId, onSuccess, onFailure) => {
       id: applicationId,
     }),
   };
-  fetch(proxyurl + endpoint + `/applications/waitlist`, requestOptions)
+  fetch(apiEndpoint + `/applications/waitlist`, requestOptions)
     .then((response) => response.json())
     .then((data) => onSuccess(data))
     .catch((error) => onFailure(error));

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Redirect } from "react-router-dom";
 
 import { Row, Col, Container, Spinner } from "react-bootstrap";
 
@@ -55,21 +56,8 @@ export default class Application extends Component {
       errMessage: "",
     };
 
-    var jwt = getJwt();
     const currentDate = new Date();
 
-    // if the user is not logged in yeet them out
-    if (!jwt) {
-      this.props.history.push({
-        pathname: "/login",
-      });
-    }
-    // if the user is not a hacker, also yeet them out
-    if (getRoleFromJwt() != "hacker") {
-      this.props.history.push({
-        pathname: "/dashboard",
-      });
-    }
   }
 
   isPhoneNumber(number) {
@@ -441,7 +429,15 @@ export default class Application extends Component {
   };
 
   render() {
-    return (
+    var jwt = getJwt();
+    // if the user is not logged in yeet them out
+    if (!jwt) {
+      return <Redirect to="/login" />;
+    }
+    // if the user is not a hacker, also yeet them out
+    else if (getRoleFromJwt() != "hacker") {
+      return <Redirect to="/dashboard" />;
+    } else return (
       <div>
         <DashboardSidebar />
 
