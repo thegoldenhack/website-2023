@@ -22,3 +22,6 @@
   flex-direction: row;
   align-items: center;
 }
+.marginTop100 {
+  margin-top: 100px;
+}

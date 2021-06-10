@@ -14,8 +14,8 @@ import ishani from "../../assets/testimonials/ishani.png";
 import lavisha from "../../assets/testimonials/lavisha.png";
 import statisticsLeft from "../../assets/statisticsLeft.png";
 import statisticsRight from "../../assets/statisticsRight.png";
-
 import caa_logo from "../../assets/sponsor_logos_2020/caa_logo.jpg";
+
 import digital_ocean_logo from "../../assets/sponsor_logos_2020/digital_ocean_logo.png";
 import jtdc_logo from "../../assets/sponsor_logos_2020/jtdc_logo.png";
 import shopify_logo from "../../assets/sponsor_logos_2020/shopify_logo.png";
@@ -39,14 +39,10 @@ import Footer from "../../components/Footer";
 import Sponsors from "../../components/Sponsors";
 import Testimonial from "../../components/Testimonial";
 import CustomCarousel from "../../components/CustomCarousel";
-import Gear from "../../components/RotatingGear";
+// import Gear from "../../components/RotatingGear";
 
 import styles from "./styles.module.css";
 
-/*
-  THIS IS A TEMPORARY PLACEHOLDER FOR THE 2021 WEBSITE CONTAINING JUST THE MOST BASIC INFO
-  REPLACE WITH 2021 WEBSITE
-*/
 export default class WebsitePage extends Component {
   /*
   Testing with Rotating Gear components: add this snippet to any section with specified rotation, timing and width 
@@ -56,16 +52,17 @@ export default class WebsitePage extends Component {
   render() {
     return (
       <div className={styles.bg}>
-        <CustomNavbar headings={["About", "Sponsors", "FAQ"]} />
+        <CustomNavbar headings={["About", "Sponsors", "FAQ"]} apply={true} />
 
         <BlueBackground title={true}>
           <Row className={styles.fullHeight}>
             <Col md className={styles.title}>
               <h1>The</h1>
               <h1>Golden</h1>
-              <h1>Hack 3.0</h1>
-              <h4>October 2021</h4>
-              <h4>Wilfrid Laurier University</h4>
+              <h1>Hack 2.0</h1>
+              <h4>October 3 - 4, 2020.</h4>
+              <h4>Wilfrid Laurier University.</h4>
+              <h4>Now entirely online.</h4>
             </Col>
             <Col md className={styles.headerImage}>
               <Image src={header} alt="TGH" className={styles.width100}></Image>
@@ -160,7 +157,7 @@ export default class WebsitePage extends Component {
 
         <div id="statistics">
           <BlankBackground center={true}>
-            <h3>In 2019 We Had...</h3>
+            <h3>Last Year We Had...</h3>
 
             <div className={styles.fullWidthCenter}>
               <Row className={styles.width80}>
@@ -226,15 +223,17 @@ export default class WebsitePage extends Component {
 
         <div id="sponsors">
           <BlankBackground center={true}>
-            <Sponsors
-              previous={[
-                { title: "Uphabit", logo: uphabit_logo, href: "https://www.uphabit.com/" },
+          <Sponsors
+              keynote={[{ title: "Uphabit", logo: uphabit_logo, href: "https://www.uphabit.com/" }]}
+              current={[
                 { title: "Sun Life Financial", logo: sunlife_logo, href: "https://www.sunlife.ca/en/" },
                 { title: "CAA", logo: caa_logo, href: "https://www.caa.ca/" },
                 { title: "Shopify", logo: shopify_logo, href: "https://www.shopify.ca/" },
                 { title: "JTD Consulting", logo: jtdc_logo, href: "https://www.jtdc.ca/" },
                 { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/" },
                 { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" },
+              ]}
+              previous={[
                 { title: "WLU Phi", logo: phi_logo, href: "https://www.facebook.com/wluPHI/" },
                 { title: "LDSS", logo: ldss_logo, href: "https://www.facebook.com/LaurierDataScienceSociety/" },
                 { title: "FOSSA", logo: fossa_logo, href: "http://fossa.ca/" },
