@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Form, Nav, Row, Col } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 import LoginRegisterLayout from "../../components/LoginRegisterLayout";
 import InputField from "../../components/InputField";
