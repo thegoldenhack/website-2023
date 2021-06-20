@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-
-import styles from "./styles.module.css";
+import React from "react";
 
 import Gear from "./../../assets/images/gear.png";
 

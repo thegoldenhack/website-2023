@@ -27,9 +27,11 @@ export default class CustomNavbar extends Component {
                 <div className={styles.blue}>{item}</div>
               </Nav.Link>
             ))}
-            <Nav.Link href={"/application"}>
-              <Button className={styles.button}>Apply!</Button>
-            </Nav.Link>
+            {this.props.apply &&
+              <Nav.Link href={"/application"}>
+                <Button className={styles.button}>Apply!</Button>
+              </Nav.Link>
+            }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
