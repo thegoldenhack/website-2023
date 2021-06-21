@@ -8,8 +8,13 @@ export default class Sponsors extends Component {
     return (
       <Container>
         <div>
-          {this.props.current &&
-            <h3>Our Sponsors</h3>
+          {this.props.v2021 &&
+            this.props.current &&
+            <h1 className={styles.h1_2021}>Our Sponsors</h1>
+          }
+          {!this.props.v2021 &&
+            this.props.current &&
+            <h1>Our Sponsors</h1>
           }
         </div>
 
@@ -17,15 +22,15 @@ export default class Sponsors extends Component {
           {this.props.keynote &&
             this.props.keynote.map((item) => (
               <Col className={styles.col}>
-                  <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 >
-                  <Image
-                    src={item.logo}
-                    className={styles.width35}
-                    alt={item.title}
+                <Image
+                  src={item.logo}
+                  className={styles.width35}
+                  alt={item.title}
                   />
                 </a>
               </Col>
@@ -50,8 +55,14 @@ export default class Sponsors extends Component {
         </Row>
 
         <div>
-          {this.props.previous &&
-            <h3 className={styles.marginTop100}>Our Previous Sponsors</h3>
+          {this.props.v2021 &&
+            this.props.previous &&
+              <h1 className={styles.h1_2021_marginTop100}>Previous Sponsors</h1>
+            }
+
+          {!this.props.v2021 &&
+            this.props.previous &&
+            <h1 className={styles.marginTop100}>Previous Sponsors</h1>
           }
         </div>
 
@@ -69,6 +80,19 @@ export default class Sponsors extends Component {
             </Col>
             ))
           }
+        </Row>
+
+        <Row className={styles.justifyContentCenter}>
+          <p>
+            Interested in sponsoring? 
+          </p>
+        </Row>
+        <Row className={styles.justifyContentCenter}>
+          <a href="mailto:sponsoring@thegoldenhack.ca?subject=Hello!">
+            <p className={styles.underline}>
+              Get in touch!
+            </p>
+          </a>
         </Row>
       </Container>
     );

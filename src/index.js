@@ -14,8 +14,8 @@ import NotFound from "./views/NotFound";
 import ForgotPasswordPageSend from "./views/ForgotPasswordPageSend";
 import ForgotPasswordPageInput from "./views/ForgotPasswordPageInput";
 import ForgotPasswordPageChange from "./views/ForgotPasswordPageChange";
-import WebsitePage from "./views/WebsitePage";
 import WebsitePage2020 from "./views/WebsitePage2020";
+import WebsitePage2021 from "./views/WebsitePage2021";
 import DashboardPage from "./views/DashboardPage";
 import ConfirmAccountPage from "./views/ConfirmAccountPage";
 import ExecPage from "./views/ExecPage";
@@ -26,7 +26,7 @@ import "./index.css";
 const routing = (
   <Router>
     <Switch>
-      <Route exact path="/" component={WebsitePage} />
+      <Route exact path="/" component={WebsitePage2021} />
       <Route path="/exec" component={ExecPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />

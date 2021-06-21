@@ -14,12 +14,12 @@ import ishani from "../../assets/testimonials/ishani.png";
 import lavisha from "../../assets/testimonials/lavisha.png";
 import statisticsLeft from "../../assets/statisticsLeft.png";
 import statisticsRight from "../../assets/statisticsRight.png";
-import caa_logo from "../../assets/sponsor_logos_2020/caa_logo.jpg";
+import caa_logo from "../../assets/sponsor_logos_2020/caa_logo.png";
 
 import digital_ocean_logo from "../../assets/sponsor_logos_2020/digital_ocean_logo.png";
 import jtdc_logo from "../../assets/sponsor_logos_2020/jtdc_logo.png";
 import shopify_logo from "../../assets/sponsor_logos_2020/shopify_logo.png";
-import sunlife_logo from "../../assets/sponsor_logos_2020/sunlife_logo.jpg";
+import sunlife_logo from "../../assets/sponsor_logos_2020/sunlife_logo.png";
 import uphabit_logo from "../../assets/sponsor_logos_2020/uphabit_logo.png";
 import voiceflow_logo from "../../assets/sponsor_logos_2020/voiceflow_logo.png";
 import phi_logo from "../../assets/sponsor_logos/phi_logo.png";

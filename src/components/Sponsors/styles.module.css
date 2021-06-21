@@ -24,4 +24,23 @@
 }
 .marginTop100 {
   margin-top: 100px;
+  font-size: 2rem;
+  text-align: center;
+}
+.h1_2021 {
+  font-family: "Press Start 2P";
+  font-size: 4rem;
+}
+.h1_2021_marginTop100 {
+  font-family: "Press Start 2P";
+  font-size: 4rem;
+  margin-top: 100px;
+  font-size: 2rem;
+  text-align: center;
+}
+.justifyContentCenter {
+  justify-content: center;
+}
+.underline {
+  text-decoration: underline;
 }
