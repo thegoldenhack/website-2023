@@ -19,6 +19,7 @@ import WebsitePage2020 from "./views/WebsitePage2020";
 import DashboardPage from "./views/DashboardPage";
 import ConfirmAccountPage from "./views/ConfirmAccountPage";
 import ExecPage from "./views/ExecPage";
+import ModalDisplay from "./components/ApplicationModal/ModalDisplay";
 
 import "./index.css";
 
@@ -26,6 +27,7 @@ const routing = (
   <Router>
     <Switch>
       <Route exact path="/" component={WebsitePage} />
+      <Route path="/exec" component={ExecPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
       <Route path="/confirmaccount" component={ConfirmAccountPage} />
