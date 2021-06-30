@@ -82,18 +82,20 @@ export default class Sponsors extends Component {
           }
         </Row>
 
-        <Row className={styles.justifyContentCenter}>
-          <p>
-            Interested in sponsoring? 
-          </p>
-        </Row>
-        <Row className={styles.justifyContentCenter}>
-          <a href="mailto:sponsoring@thegoldenhack.ca?subject=Hello!">
-            <p className={styles.underline}>
-              Get in touch!
+        <div className={styles.pb10}>
+          <Row className={styles.justifyContentCenter}>
+            <p>
+              Interested in sponsoring? 
             </p>
-          </a>
-        </Row>
+          </Row>
+          <Row className={styles.justifyContentCenter}>
+            <a href="mailto:sponsoring@thegoldenhack.ca?subject=Hello!">
+              <p className={styles.underline}>
+                Get in touch!
+              </p>
+            </a>
+          </Row>
+        </div>
       </Container>
     );
   }

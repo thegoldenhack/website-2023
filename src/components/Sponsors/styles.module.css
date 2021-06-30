@@ -1,19 +1,18 @@
 .width100 {
   width: 100%;
 }
-
 .width75 {
   width: 75%;
 }
-
 .width50 {
   width: 50%;
 }
-
 .width35 {
   width: 35%;
 }
-
+.pb10 {
+  padding-bottom: 10vh;
+}
 .col {
   margin-top: 30px;
 }

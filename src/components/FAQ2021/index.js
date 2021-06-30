@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { Accordion, Card } from "react-bootstrap";
 
+import styles from "./styles.module.css"
+
 // For some reason when we pass in the style through the className it gets overridden by the default
 // Bootstrap Accordion styles, so we have to pass in our custom styles like this.
 var accordionStyle = {
@@ -38,7 +40,7 @@ export default class FAQ2021 extends Component {
                 { this.props.faqs.map((item, index) => (
                     <Card style={cardStyle}>
                         <Accordion.Toggle as={Card.Header} eventKey={ index } style={ accordionToggleStyle }>
-                            <p>{ item.question }</p>
+                            <p className={styles.white}>{ item.question }</p>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey={ index }>
                             <Card.Body>
@@ -47,14 +49,14 @@ export default class FAQ2021 extends Component {
                                     if (index !== item.answer.length - 1) {
                                         return (
                                             <div>
-                                                <p>{ line }</p>
+                                                <p className={styles.white}>{ line }</p>
                                                 <br/>
                                             </div>
                                         )
                                     } else {
                                         return (
                                             <div>
-                                                <p>{ line }</p>
+                                                <p className={styles.white}>{ line }</p>
                                             </div>
                                         )
                                     }

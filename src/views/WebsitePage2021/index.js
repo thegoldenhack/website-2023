@@ -3,9 +3,11 @@ import { Container, Row, Col, Image } from 'react-bootstrap'
 import ReactPlayer from "react-player"
 
 import header from "../../assets/images/header.png";
-import header1 from "../../assets/images/test.png";
+import header1 from "../../assets/images/header1.png";
 import hexagon from "../../assets/images/hexagon.png";
 import hexagon2 from "../../assets/images/hexagon2.png";
+import gradient_bits from "../../assets/images/pic_numbers_fade_gradient.png"
+import gradient_bits_out from "../../assets/images/pic_numbers_fade_out_gradient.png"
 
 import caa_logo from "../../assets/sponsor_logos_2020/caa_logo.png";
 import digital_ocean_logo from "../../assets/sponsor_logos_2020/digital_ocean_logo.png";
@@ -40,10 +42,10 @@ export default class WebsitePage extends Component {
                 
                 {/* Header */}
                 <div className={styles.background}>
-                    <div className={styles.zIndexMinus1}>
-                        <Particles/>
-                    </div>
-                    <div className={styles.topLeft}>
+                    <div className={styles.positionRelative}>
+                        <div className={styles.particles}>
+                            <Particles/>
+                        </div>
                         <div className={styles.centerVertically}>
                             <Container className="align-items-center">
                                 <Row className={styles.fullHeight}>
@@ -52,15 +54,15 @@ export default class WebsitePage extends Component {
                                         <h1 className={styles.h1}>Golden</h1>
                                         <h1 className={styles.h1}>Hack</h1>
                                         <h1 className={styles.h1}>3.0</h1>
-                                        <h4>October 2021</h4>
+                                        <h4>October 2-3, 2021</h4>
                                         <h4>Wilfrid Laurier University</h4>
                                     </Col>
-                                    <Col md>
-                                        <Image src={header} alt="TGH" className={styles.width100}></Image>
+                                    <Col md className={styles.flexCenter}>
+                                        <Image src={header1} alt="TGH" className={styles.width80}></Image>
                                     </Col>
                                 </Row>
                             </Container>
-                        </div>
+                            </div>
                     </div>
                 </div>
 
@@ -68,12 +70,17 @@ export default class WebsitePage extends Component {
                 <div className={styles.backgroundInverted}>
                     <Container>
                         <Row className={styles.fullHeight}>
-                            <Col md="auto" className={styles.headerImage}>
-                                <ReactPlayer url="videos/take_on_the_challenge.mp4" controls={true}/>
+                            <Col lg={8}>
+                                <ReactPlayer
+                                    url="videos/take_on_the_challenge.mp4"
+                                    controls={true}
+                                    width="100%"
+                                    height="100%"
+                                />
                             </Col>
-                            <Col className={styles.title}>
+                            <Col lg>
                                 <h2 className={styles.h2}>Take on the Challenge!</h2>
-                                <p>Lorem ipsum...</p>
+                                <p className={styles.white}>Unlock the best of both the tech and business worlds at The GoldenHack 3.0!</p>
                             </Col>
                         </Row>
                     </Container>
@@ -104,46 +111,45 @@ export default class WebsitePage extends Component {
                     <Container>
                         <Row className={styles.fullHeight}>
                             <Col>
-                                <Row>
-                                    <h2 className={styles.h2}>Last Year We Had...</h2>
-                                </Row>
+                                <h2 className={styles.h2}>Last Year We Had...</h2>
                                 <Row>
                                     <Col md>
                                         <Row className={styles.alignItemsCenter}>
                                             <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>200 developers</p>
+                                            <p className={styles.statsFont}>276 applicants</p>
                                         </Row>
                                         <Row className={styles.alignItemsCenter}>
                                             <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>150 first-time hackers</p>
+                                            <p className={styles.statsFont}>90 first-time hackers</p>
                                         </Row>
                                         <Row className={styles.alignItemsCenter}>
                                             <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>24 workshops</p>
+                                            <p className={styles.statsFont}>29 schools</p>
                                         </Row>
                                     </Col>
                                     <Col md>
                                         <Row className={styles.alignItemsCenter}>
                                             <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>50 designers</p>
+                                            <p className={styles.statsFont}>55% developers</p>
                                         </Row>
                                         <Row className={styles.alignItemsCenter}>
                                             <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>$500 in prizes</p>
+                                            <p className={styles.statsFont}>30% business analysts</p>
                                         </Row>
                                         <Row className={styles.alignItemsCenter}>
                                             <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>50 designers</p>
+                                            <p className={styles.statsFont}>15% designers</p>
                                         </Row>
                                     </Col>
                                 </Row>
                             </Col>
                         </Row>
                     </Container>
+                <Image src={gradient_bits} className={styles.width100}/>
                 </div>
 
                 {/* Sponsors */}
-                <div className={styles.background}>
+                <div className={styles.sponsorsBackground}>
                     <Container>
                         <Sponsors
                             v2021={true}
@@ -169,10 +175,11 @@ export default class WebsitePage extends Component {
                 </div>
 
                 {/* FAQ */}
-                <div className={styles.backgroundInverted}>
+                <div className={styles.backgroundInverted} style={{paddingBottom: "10vh"}}>
+                    <Image src={gradient_bits_out} className={styles.width100} />
                     <Container>
                         <Row className={styles.fullHeight}>
-                            <Col md>
+                            <Col md className={styles.marginTop10}>
                                 <h2 className={styles.h2}>Frequently Asked Questions</h2>
                                 <Image src={hexagon2} alt="TGH" className={styles.width100}/>
                             </Col>
@@ -184,7 +191,7 @@ export default class WebsitePage extends Component {
                                         { question: "Who can participate?", answer: ["Any University, College or Secondary School student 18 or older is welcome to participate."] },
                                         { question: "How many people can be on a team?", answer: ["Teams can range in size from 1-4 people.", "Don't have a team? No sweat! We'll be hosting a team-building activity during the event."] },
                                         { question: "How much does it cost to participate?", answer: ["Participation is entirely free!"] },
-                                        { question: "How do I become a sponsor?", answer: ["If you are interested in learning about our sponsorship package, email our Corporate team at sponsoring@thegoldenhack.ca and we will be in contact with you shortly."] },
+                                        { question: "How do I become a sponsor?", answer: ["If you are interested in learning about our sponsorship package, email our Corporate team at sponsoring@thegoldenhack.ca."] },
                                         { question: "What if I don't see my question here?", answer: ["Shoot us an email at contact@thegoldenhack.ca or message us on Facebook."] }
                                     ]}
                                 />

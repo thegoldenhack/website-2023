@@ -17,7 +17,7 @@
 .container {
   padding-left: 50px;
   padding-right: 50px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 .button {
   background-color: #f6d030;
