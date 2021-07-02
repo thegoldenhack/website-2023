@@ -70,7 +70,7 @@ export default class WebsitePage extends Component {
                 <div className={styles.backgroundInverted}>
                     <Container>
                         <Row className={styles.fullHeight}>
-                            <Col lg={8}>
+                            <Col lg={7}>
                                 <ReactPlayer
                                     url="videos/take_on_the_challenge.mp4"
                                     controls={true}
@@ -80,7 +80,8 @@ export default class WebsitePage extends Component {
                             </Col>
                             <Col lg>
                                 <h2 className={styles.h2}>Take on the Challenge!</h2>
-                                <p className={styles.white}>Unlock the best of both the tech and business worlds at The GoldenHack 3.0!</p>
+                                <p className={styles.white}>Unlock the best of both the tech and business worlds.</p>
+                                <p className={styles.white}>The GoldenHack 3.0: Oct 2-3, 2021.</p>
                             </Col>
                         </Row>
                     </Container>
@@ -95,10 +96,25 @@ export default class WebsitePage extends Component {
                             </Col>
                             <Col className={styles.title}>
                                 <h2 className={styles.h2}>Who We Are</h2>
-                                <p>Lorem ipsum...</p>
-
-                                <h2 className={styles.h2}>Our Vision</h2>
-                                <p>Lorem ipsum...</p>
+                                <p className={styles.white}>
+                                    The GoldenHack team is composed of developers, founders, innovators,
+                                    and most importantly, friends! We wanted to bring our love of innovation,
+                                    collaboration and technology to Wilfrid Laurier University and make the
+                                    most of its talented business and design students.
+                                </p>
+                                <br />
+                                <h2 className={styles.h2}>Our Vision for a Hybrid Hackathon</h2>
+                                <p className={styles.white}>
+                                    To create a supportive and inclusive community that sparks YOUR
+                                    creativity and entrepreneurial journey.
+                                </p>
+                                <br />
+                                <p className={styles.white}>
+                                    In order to guarantee our participants have the best experience possible,
+                                    we are planning to organize our first ever hybrid hackathon. Our event
+                                    will be open to students world-wide and combine the best of digital
+                                    and physical events.
+                                </p>
 
                                 {/* <Button>Meet the Team</Button> */}
                             </Col>
@@ -186,7 +202,7 @@ export default class WebsitePage extends Component {
                             <Col md>
                                 <FAQ
                                     faqs={[
-                                        { question: "What is an Entrepreneurship Hackathon?", answer: ["Our goal is to bring together creators, innovators and problem solvers to build technology based solutions which can disrupt markets and give them the tools to take their ideas beyond the hackathon. We aim to better connect students to the Waterloo startup ecosystem and expose them to the talent in the region."] },
+                                        { question: "How will the event be hosted?", answer: ["We are planning to live stream our opening and closing ceremonies from Laurier’s beautiful Lazaridis Hall on campus where we will also provide a study space for participants in the Waterloo region wishing to meet up with fellow hackers. All our workshops will be virtual but available for viewing in a lecture hall on campus and sponsors will be able to choose between sending representatives in person or calling in through Zoom.", "After having our options limited for so long, we want to give our sponsors and participants a chance to make the most of our event while feeling safe and comfortable."] },
                                         { question: "What if I don’t know how to code?", answer: ["No sweat. Our goal is to make this hackathon friendly to newcomers. We’ll have lots of mentors and workshops to help you get up and running. Hacking should be fun, not frustrating.", "Not interested in coding? We have plenty of business and design opportunities as well."] },
                                         { question: "Who can participate?", answer: ["Any University, College or Secondary School student 18 or older is welcome to participate."] },
                                         { question: "How many people can be on a team?", answer: ["Teams can range in size from 1-4 people.", "Don't have a team? No sweat! We'll be hosting a team-building activity during the event."] },
