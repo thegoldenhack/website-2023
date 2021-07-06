@@ -2,3 +2,8 @@
   font-size: 12px;
   margin: auto;
 }
+.eventsElement {
+  height: 270px;
+  width: 50%;
+  overflow: scroll;
+}

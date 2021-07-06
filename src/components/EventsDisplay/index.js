@@ -19,14 +19,8 @@ export default class EventsDisplay extends Component {
     render() {
         return (
           <Element
-            className="element"
+            className={styles.eventsElement}
             id="scroll-container"
-            style={{
-              height: "270px",
-              width: "50%",
-              overflow: "scroll",
-              marginBottom: "20px",
-            }}
           >
             {this.state.events.map((object) => {
                 return (

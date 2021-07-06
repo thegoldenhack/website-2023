@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 
 import DashboardSidebar from "../../components/DashboardSidebar";
-import DashboardCard from "../../components/DashboardCard";
 import GradientBackground from "../../components/GradientBackground";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import MyEventsCard from "../../components/MyEventsCard";
@@ -16,12 +15,6 @@ import {
   getNameFromJwt,
   getRoleFromJwt,
 } from "../../utils/Cognito/index.js";
-import { getApplication } from "../../utils/API/index.js";
-
-const applicationDeadline = new Date(
-  process.env.REACT_APP_APPLICATION_DEADLINE
-);
-const today = new Date();
 
 export default class MyEventsPage extends Component {
   constructor(props) {
@@ -29,7 +22,7 @@ export default class MyEventsPage extends Component {
     this.state = {
       loadComplete: false,
       points: 0,
-      events: {},
+      events: [],
     };
 
     if (getJwt()) {
@@ -43,10 +36,7 @@ export default class MyEventsPage extends Component {
 
   componentDidMount() {
       // call API here to get actual points and events details
-      this.setState({
-        loadComplete: true,
-        points: 2,
-        events: [
+      var eventsFromAPICall = [
           {
             title: "Event Title #1",
             time: "Time 1",
@@ -71,7 +61,11 @@ export default class MyEventsPage extends Component {
             description: "Description 4",
             attended: true,
           },
-        ],
+        ];
+      this.setState({
+        loadComplete: true,
+        events: eventsFromAPICall,
+        points: eventsFromAPICall.filter((obj) => obj.attended).length,
       });
   }
 
@@ -94,7 +88,7 @@ export default class MyEventsPage extends Component {
                   <DashboardSidebar />
                 </Col>
                 <Col className={styles.centerContent}>
-                <div style={{ color: "white" }}>
+                <div className={styles.title}>
                     Hello World, welcome to the Executive Dashboard!
                 </div>
                 </Col>
