@@ -22,33 +22,25 @@ const getHiddenColumnsFilteringExtensions = (hiddenColumnNames) =>
 
 export default () => {
   const [rows, setRows] = useState([
-    { first_name: "Wen", last_name: "Zhang", email: "wz2705@gmail.com"},
-    { first_name: "Brayden", last_name: "Royston", email: "helloworld2@gmail.com"},
-    { first_name: "Dunja", last_name: "Tomic", email: "dunja.tomic@thegoldenhack.ca"}
+    { name: "Workshop #1", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"},
+    { name: "Workshop #1", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"},
+    { name: "Workshop #1", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"},
+    { name: "Workshop #1", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"}
   ]);
-  useEffect(() => {getAllApplications(
-    (response) => {
-      setRows(response.Items);
-    },
-    () => {
-      console.log("error");
-    }
-  );}, [getAllApplications]);
+//   useEffect(() => {getAllApplications(
+//     (response) => {
+//       setRows(response.Items);
+//     },
+//     () => {
+//       console.log("error");
+//     }
+//   );}, [getAllApplications]);
   
   const [columns] = useState([
-    { name: "first_name", title: "First Name" },
-    { name: "last_name", title: "Last Name" },
-    { name: "birth_date", title: "Birth Date" },
-    { name: "Gender", title: "Gender" },
-    { name: "email", title: "Email" },
-    { name: "ethnicity", title: "Ethnicity" },
-    { name: "degree", title: "Degree" },
-    { name: "coop_terms", title: "Co-op Terms" },
-    { name: "num_hackathons", title: "Number of Hackathons" },
-    { name: "how_heard", title: "How you heard about us" },
-    { name: "submitted", title: "Submitted" },
-    { name: "date_submitted", title: "Application date/time" },
-    { name: "github_url", title: "Github URL" },
+    { name: "name", title: "Name" },
+    { name: "time", title: "Time" },
+    { name: "description", title: "Description" },
+    { name: "num_attendees", title: "# Attendees" },
   ]);
   const [selection, setSelection] = useState([]);
 

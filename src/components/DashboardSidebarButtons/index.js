@@ -42,6 +42,17 @@ export default class DashboardSidebarButtons extends Component {
           <h1 className={styles.text}>Application</h1>
         </Button>
       );
+    } else if (this.state.type === "manageEvents") {
+      return (
+        <Button
+          href={"/manageEvents"}
+          variant="link"
+          className={styles.button}
+          block
+        >
+          <h1 className={styles.text}>Manage Events</h1>
+        </Button>
+      );
     } else if (this.state.type === "logout") {
       return (
         <Link to="/">
