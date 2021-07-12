@@ -38,26 +38,46 @@ export default class Sponsors extends Component {
           }
         </Row>
 
-        <Row xs={2} md={3} className={styles.row}>
-          {this.props.current &&
-            this.props.current.map((item) => (
-            <Col className={styles.col}>
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image src={item.logo} className={styles.width75} alt={item.title} />
-              </a>
-            </Col>
-            ))
-          }
-        </Row>
+        {this.props.v2021 && 
+          <Row xs={1} md={2} className={styles.row}>
+            {this.props.current &&
+              this.props.current.map((item) => (
+              <Col className={styles.col}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src={item.logo} className={styles.width75} alt={item.title} />
+                </a>
+              </Col>
+              ))
+            }
+          </Row>
+        }
+
+        {!this.props.v2021 &&
+          <Row xs={2} md={3} className={styles.row}>
+            {this.props.current &&
+              this.props.current.map((item) => (
+              <Col className={styles.col}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src={item.logo} className={styles.width75} alt={item.title} />
+                </a>
+              </Col>
+              ))
+            }
+          </Row>
+        }
 
         <div>
           {this.props.v2021 &&
             this.props.previous &&
-              <h1 className={styles.h1_2021_marginTop100}>Previous Sponsors</h1>
+              <h1 className={styles.h1_2021_marginTop150}>Previous Sponsors</h1>
             }
 
           {!this.props.v2021 &&

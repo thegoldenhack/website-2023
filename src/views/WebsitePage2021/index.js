@@ -9,6 +9,10 @@ import hexagon2 from "../../assets/images/hexagon2.png";
 import gradient_bits from "../../assets/images/pic_numbers_fade_gradient.png"
 import gradient_bits_out from "../../assets/images/pic_numbers_fade_out_gradient.png"
 
+import awake_logo from "../../assets/sponsor_logos_2021/awake.png";
+import canadian_tire_logo from "../../assets/sponsor_logos_2021/canadian_tire.png";
+import communitech_logo from "../../assets/sponsor_logos_2021/communitech.png";
+import deloitte_logo from "../../assets/sponsor_logos_2021/deloitte.png";
 import caa_logo from "../../assets/sponsor_logos_2020/caa_logo.png";
 import digital_ocean_logo from "../../assets/sponsor_logos_2020/digital_ocean_logo.png";
 import jtdc_logo from "../../assets/sponsor_logos_2020/jtdc_logo.png";
@@ -169,6 +173,12 @@ export default class WebsitePage extends Component {
                     <Container>
                         <Sponsors
                             v2021={true}
+                            current={[
+                                { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
+                                { title: "Canadian Tire", logo: canadian_tire_logo, href: "https://www.canadiantire.ca/en.html" },
+                                { title: "Communitech", logo: communitech_logo, href: "https://www.communitech.ca/" },
+                                { title: "Deloitte", logo: deloitte_logo, href: "https://www2.deloitte.com/ca/en.html" },
+                            ]}
                             previous={[
                                 { title: "Uphabit", logo: uphabit_logo, href: "https://www.uphabit.com/" },
                                 { title: "Sun Life Financial", logo: sunlife_logo, href: "https://www.sunlife.ca/en/" },
