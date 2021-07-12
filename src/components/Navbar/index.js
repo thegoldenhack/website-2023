@@ -34,13 +34,13 @@ export default class CustomNavbar extends Component {
                 <Button className={styles.button}>Apply!</Button>
               </Nav.Link>
             }
-            <Nav.Link href={"https://www.instagram.com/thegoldenhackofficial/"}>
+            <Nav.Link href={"https://www.instagram.com/thegoldenhackofficial/"} target="_blank">
                 <Image src="https://img.icons8.com/metro/26/ffffff/instagram-new.png" width="30" className={styles.icon}/>
             </Nav.Link>
-            <Nav.Link href={"https://www.linkedin.com/company/thegoldenhack/"}>
+            <Nav.Link href={"https://www.linkedin.com/company/thegoldenhack/"} target="_blank">
                 <Image src="https://img.icons8.com/metro/26/ffffff/linkedin.png" width="30" className={styles.icon}/>
             </Nav.Link>
-            <Nav.Link href={"https://www.facebook.com/TheGoldenHackOfficial"}>
+            <Nav.Link href={"https://www.facebook.com/TheGoldenHackOfficial"} target="_blank">
                 <Image src="https://img.icons8.com/metro/26/ffffff/facebook.png" width="30" className={styles.icon}/>
             </Nav.Link>
           </Nav>

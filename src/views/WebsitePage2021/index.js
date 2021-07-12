@@ -92,7 +92,7 @@ export default class WebsitePage extends Component {
                 </div>
 
                 {/* About Us */}
-                <div className={styles.background}>
+                <div id="about" className={styles.background}>
                     <Container>
                         <Row className={styles.fullHeight}>
                             <Col md>
@@ -165,7 +165,7 @@ export default class WebsitePage extends Component {
                             </Col>
                         </Row>
                     </Container>
-                <Image src={gradient_bits} className={styles.width100}/>
+                <Image id="sponsors" src={gradient_bits} className={styles.width100}/>
                 </div>
 
                 {/* Sponsors */}
@@ -203,7 +203,7 @@ export default class WebsitePage extends Component {
                 {/* FAQ */}
                 <div className={styles.backgroundInverted} style={{paddingBottom: "10vh"}}>
                     <Image src={gradient_bits_out} className={styles.width100} />
-                    <Container>
+                    <Container id="faq">
                         <Row className={styles.fullHeight}>
                             <Col md className={styles.marginTop10}>
                                 <h2 className={styles.h2}>Frequently Asked Questions</h2>
