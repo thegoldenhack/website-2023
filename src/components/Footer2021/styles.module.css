@@ -1,0 +1,25 @@
+.footer {
+  padding: 10px;
+  height: 150%;
+  text-align: center;
+  background-color: rgb(176, 137, 250);
+}
+.inline {
+  display: inline;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.leftAlign {
+  text-align: left;
+}
+.rightAlign {
+  text-align: right;
+}
+.marginRight15 {
+  margin-right: 15px;
+}
+.justifyContentCenter {
+  justify-content: center;
+}

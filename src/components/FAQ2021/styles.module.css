@@ -1,0 +1,21 @@
+.accordion {
+  width: 100%;
+  border-radius: 30px;
+}
+.card {
+  border-radius: 25px;
+  border-width: 1px;
+  border-bottom-style: solid;
+  border-color: white;
+  background-color: transparent;
+}
+.accordionToggle {
+  border-radius: 30px;
+  border-width: 1px;
+  border-color: white;
+  background-color: transparent;
+  margin-bottom: 0px;
+}
+.white {
+  color: white;
+}

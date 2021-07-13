@@ -1,0 +1,31 @@
+.blue {
+  color: #053e5e;
+  margin-right: 15px;
+  font-family: "Montserrat";
+}
+.yellow {
+  color: #f6d030;
+}
+.white {
+  color: white;
+  margin-right: 15px;
+  font-family: "Montserrat";
+}
+.icon {
+  margin-right: 10px;
+}
+.container {
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: transparent;
+}
+.button {
+  background-color: #f6d030;
+  color: #053e5e;
+  border-color: white;
+}
+.button:hover {
+  background-color: #fdce04;
+  color: #053e5e;
+  border-color: #053e5e;
+}

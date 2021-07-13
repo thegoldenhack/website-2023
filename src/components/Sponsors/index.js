@@ -8,8 +8,13 @@ export default class Sponsors extends Component {
     return (
       <Container>
         <div>
-          {this.props.current &&
-            <h3>Our Sponsors</h3>
+          {this.props.v2021 &&
+            this.props.current &&
+            <h1 className={styles.h1_2021}>Our Sponsors</h1>
+          }
+          {!this.props.v2021 &&
+            this.props.current &&
+            <h1>Our Sponsors</h1>
           }
         </div>
 
@@ -17,15 +22,15 @@ export default class Sponsors extends Component {
           {this.props.keynote &&
             this.props.keynote.map((item) => (
               <Col className={styles.col}>
-                  <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 >
-                  <Image
-                    src={item.logo}
-                    className={styles.width35}
-                    alt={item.title}
+                <Image
+                  src={item.logo}
+                  className={styles.width35}
+                  alt={item.title}
                   />
                 </a>
               </Col>
@@ -33,25 +38,51 @@ export default class Sponsors extends Component {
           }
         </Row>
 
-        <Row xs={2} md={3} className={styles.row}>
-          {this.props.current &&
-            this.props.current.map((item) => (
-            <Col className={styles.col}>
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image src={item.logo} className={styles.width75} alt={item.title} />
-              </a>
-            </Col>
-            ))
-          }
-        </Row>
+        {this.props.v2021 && 
+          <Row xs={1} md={2} className={styles.row}>
+            {this.props.current &&
+              this.props.current.map((item) => (
+              <Col className={styles.col}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src={item.logo} className={styles.width75} alt={item.title} />
+                </a>
+              </Col>
+              ))
+            }
+          </Row>
+        }
+
+        {!this.props.v2021 &&
+          <Row xs={2} md={3} className={styles.row}>
+            {this.props.current &&
+              this.props.current.map((item) => (
+              <Col className={styles.col}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src={item.logo} className={styles.width75} alt={item.title} />
+                </a>
+              </Col>
+              ))
+            }
+          </Row>
+        }
 
         <div>
-          {this.props.previous &&
-            <h3 className={styles.marginTop100}>Our Previous Sponsors</h3>
+          {this.props.v2021 &&
+            this.props.previous &&
+              <h1 className={styles.h1_2021_marginTop150}>Previous Sponsors</h1>
+            }
+
+          {!this.props.v2021 &&
+            this.props.previous &&
+            <h1 className={styles.marginTop100}>Previous Sponsors</h1>
           }
         </div>
 
@@ -70,6 +101,21 @@ export default class Sponsors extends Component {
             ))
           }
         </Row>
+
+        <div className={styles.pb10}>
+          <Row className={styles.justifyContentCenter}>
+            <p>
+              Interested in sponsoring? 
+            </p>
+          </Row>
+          <Row className={styles.justifyContentCenter}>
+            <a href="mailto:sponsoring@thegoldenhack.ca?subject=Hello!">
+              <p className={styles.underline}>
+                Get in touch!
+              </p>
+            </a>
+          </Row>
+        </div>
       </Container>
     );
   }
