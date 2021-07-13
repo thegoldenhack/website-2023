@@ -44,7 +44,7 @@ export default class Footer extends Component {
                                 <Image src="https://img.icons8.com/000000/metro/26/facebook.png" />
                             </a>
                             <a
-                                href="mailto:sponsoring@thegoldenhack.ca?subject=Hello!"
+                                href="mailto:contact@thegoldenhack.ca?subject=Hello!"
                             >
                                 <Image src="https://img.icons8.com/000000/metro/26/new-post.png" />
                             </a>
