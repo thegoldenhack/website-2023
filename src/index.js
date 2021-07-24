@@ -18,6 +18,7 @@ import WebsitePage2020 from "./views/WebsitePage2020";
 import WebsitePage2021 from "./views/WebsitePage2021";
 import DashboardPage from "./views/DashboardPage";
 import ConfirmAccountPage from "./views/ConfirmAccountPage";
+import MyEventsPage from "./views/MyEventsPage";
 import ExecPage from "./views/ExecPage";
 import ModalDisplay from "./components/ApplicationModal/ModalDisplay";
 
@@ -43,6 +44,7 @@ const routing = (
       <Route path="/dashboard" component={DashboardPage} />
       <Route path="/application" component={ApplicationPage} />
       <Route exact path="/2020" component={WebsitePage2020} />
+      <Route path="/myevents" component={MyEventsPage} />
       <Route component={NotFound} />
     </Switch>
   </Router>

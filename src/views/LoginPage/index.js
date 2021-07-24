@@ -85,7 +85,7 @@ export default class LoginPage extends Component {
             handleChange={this.handleChange}
             type={"password"}
           />
-
+          
           {/* Display an error if needed */}
           {this.displayErrors()}
 

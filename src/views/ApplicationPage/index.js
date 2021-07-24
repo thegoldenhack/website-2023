@@ -58,9 +58,25 @@ export default class Application extends Component {
 
     const currentDate = new Date();
 
+    var jwt = getJwt();
+    //const currentDate = new Date();
+
+    // if the user is not logged in yeet them out
+    if (!jwt) {
+      this.props.history.push({
+        pathname: "/login",
+      });
+    }
+    // if the user is not a hacker, also yeet them out
+    if (getRoleFromJwt() !== "hacker") {
+      this.props.history.push({
+        pathname: "/dashboard",
+      });
+    }
   }
 
   isPhoneNumber(number) {
+    // eslint-disable-next-line
     var re = RegExp(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g);
     var re2 = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/g);
     var re3 = RegExp(/((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/g);
