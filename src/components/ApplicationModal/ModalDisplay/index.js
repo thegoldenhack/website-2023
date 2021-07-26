@@ -1,22 +1,19 @@
 import "./modal.scss";
 import { withRouter } from "react-router";
-import images from "../../../assets/icons/modal";
 import React, { Component } from "react";
 import ModalHeader from '../ModalHeader/index';
 import ModalContact from '../ModalContact/index';
 import ModalBasicInfo from '../ModalBasicInfo/index';
 import ModalApplicationInfo from '../ModalApplicationInfo';
-import { useParams } from 'react-router-dom';
 import { getApplication } from '../../../utils/API/index.js';
 import LoadingSpinner from "../../LoadingSpinner";
-import { ResponsiveEmbed } from "react-bootstrap";
 
 class ModalDisplay extends Component {
     constructor(props) {
         super(props);
         this.state = {
             id: this.props.match.params.id,
-            dataRetrieved: true,
+            dataRetrieved: false,
         };
     };
 

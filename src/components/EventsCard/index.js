@@ -8,6 +8,7 @@ import RSVPButton from "../RSVPButton";
 
 import styles from "./styles.module.css";
 import EventsGrid from "../EventsGrid";
+import EventModal from "../EventModal";
 
 export default class EventsCard extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class EventsCard extends Component {
     return (
       <Container className={styles.container}>
         <Card className={styles.card}>
-          <Card.Body className="py-5 px-5">
+          <Card.Body>
             {this.props.children}
             <Col className={styles.col}>
               <Row className={styles.row}>
@@ -33,6 +34,7 @@ export default class EventsCard extends Component {
                 <button>Create Event</button>
               </Row>
               <EventsGrid />
+              <EventModal />
             </Col>
           </Card.Body>
         </Card>
