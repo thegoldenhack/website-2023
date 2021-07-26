@@ -58,8 +58,8 @@ export default () => {
   let id = '1020';
 
   const onSelectionChange = (selection) => {
-    id = rows[selection].email;
-    history.push('/exec/' + id);
+    // id = rows[selection].name;
+    history.push('/manageEvents/' + id);
   }
 
   return (
