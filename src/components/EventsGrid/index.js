@@ -12,7 +12,7 @@ import {
   SearchPanel,
   TableHeaderRow,
 } from "@devexpress/dx-react-grid-material-ui";
-import { getAllApplications } from "../../utils/API/index.js";
+import { getAllApplications, getAllEvents } from "../../utils/API/index.js";
 
 const getHiddenColumnsFilteringExtensions = (hiddenColumnNames) =>
   hiddenColumnNames.map((columnName) => ({
@@ -23,18 +23,19 @@ const getHiddenColumnsFilteringExtensions = (hiddenColumnNames) =>
 export default () => {
   const [rows, setRows] = useState([
     { name: "Workshop #1", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"},
-    { name: "Workshop #1", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"},
-    { name: "Workshop #1", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"},
-    { name: "Workshop #1", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"}
+    { name: "Workshop #2", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"},
+    { name: "Workshop #3", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"},
+    { name: "Workshop #4", time: "3:00 - 4:00", description: "Fun workshop to attend...", num_attendees: "17"}
   ]);
-//   useEffect(() => {getAllApplications(
-//     (response) => {
-//       setRows(response.Items);
-//     },
-//     () => {
-//       console.log("error");
-//     }
-//   );}, [getAllApplications]);
+  useEffect(() => {getAllEvents(
+    (response) => {
+      console.log(response);
+      setRows(response.Items);
+    },
+    () => {
+      console.log("error");
+    }
+  );}, [getAllEvents]);
   
   const [columns] = useState([
     { name: "name", title: "Name" },
