@@ -40,7 +40,7 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "start": "set PORT=3002&& react-scripts start",
+    "start": "set PORT=3000&& react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
