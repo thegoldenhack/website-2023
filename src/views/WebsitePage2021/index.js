@@ -16,8 +16,7 @@ import camplete_logo from "../../assets/sponsor_logos/camplete_logo.svg";
 import communitech_logo from "../../assets/sponsor_logos_2020/communitech.png";
 import deloitte_logo from "../../assets/sponsor_logos_2020/deloitte.png";
 import df_logo from "../../assets/sponsor_logos/df_logo.png";
-import digital_ocean_logo from "../../assets/sponsor_logos_2020/digital_ocean_logo.png";
-import digital_ocean_logo_2 from "../../assets/sponsor_logos_2021/digital_ocean.png";
+import digital_ocean_logo from "../../assets/sponsor_logos_2021/digital_ocean.png";
 import dspace_logo from "../../assets/sponsor_logos/dspace_logo.png";
 import fossa_logo from "../../assets/sponsor_logos/fossa_logo.png";
 import jtdc_logo from "../../assets/sponsor_logos_2020/jtdc_logo.png";
@@ -181,8 +180,9 @@ export default class WebsitePage extends Component {
                                 { title: "PwC", logo: pwc_logo, href: "https://www.pwc.com/" }
                             ]}
                             bronze={[
-                                { title: "Digital Ocean", logo: digital_ocean_logo_2, href: "https://www.digitalocean.com/"},
+                                { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/"},
                                 { title: "Maplesoft", logo: maplesoft_logo, href: "https://www.maplesoft.com/" },
+                                { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" },
                                 { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com/language/"}
                             ]}
                             previous={[
@@ -192,7 +192,6 @@ export default class WebsitePage extends Component {
                                 { title: "Canadian Tire", logo: canadian_tire_logo, href: "https://www.canadiantire.ca/en.html" },
                                 { title: "Communitech", logo: communitech_logo, href: "https://www.communitech.ca/" },
                                 { title: "Deloitte", logo: deloitte_logo, href: "https://www2.deloitte.com/ca/en.html" },
-                                { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/" },
                                 { title: "DSpace", logo: dspace_logo, href: "https://www2.deloitte.com/ca/en/pages/technology/articles/welcome-to-d-space.html" },
                                 { title: "Dynamic Funds", logo: df_logo, href: "https://dynamic.ca/eng.html" },
                                 { title: "FOSSA", logo: fossa_logo, href: "http://fossa.ca/" },
@@ -203,7 +202,6 @@ export default class WebsitePage extends Component {
                                 { title: "Shopify", logo: shopify_logo, href: "https://www.shopify.ca/" },
                                 { title: "Sun Life Financial", logo: sunlife_logo, href: "https://www.sunlife.ca/en/" },
                                 { title: "Uphabit", logo: uphabit_logo, href: "https://www.uphabit.com/" },
-                                { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" },
                                 { title: "Zebu", logo: zebu_logo, href: "https://zebu.io/" },
                             ]}
                         />
