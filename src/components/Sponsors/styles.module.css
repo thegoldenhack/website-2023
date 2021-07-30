@@ -10,7 +10,8 @@
 .width35 {
   width: 35%;
 }
-.pb10 {
+.p10 {
+  padding-top: 7vh;
   padding-bottom: 10vh;
 }
 .col {

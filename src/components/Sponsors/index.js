@@ -9,11 +9,9 @@ export default class Sponsors extends Component {
       <Container>
         <div>
           {this.props.v2021 &&
-            this.props.current &&
             <h1 className={styles.h1_2021}>Our Sponsors</h1>
           }
           {!this.props.v2021 &&
-            this.props.current &&
             <h1>Our Sponsors</h1>
           }
         </div>
@@ -39,9 +37,27 @@ export default class Sponsors extends Component {
         </Row>
 
         {this.props.v2021 && 
-          <Row xs={1} md={2} className={styles.row}>
-            {this.props.current &&
-              this.props.current.map((item) => (
+          <Row xs={1} md={1} className={styles.row}>
+            {this.props.silver &&
+              this.props.silver.map((item) => (
+              <Col className={styles.col}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                    <Image src={item.logo} className={styles.width50} alt={item.title} />
+                </a>
+              </Col>
+              ))
+            }
+          </Row>
+        }
+
+        {this.props.v2021 && 
+          <Row xs={2} md={3} className={styles.row}>
+            {this.props.bronze &&
+              this.props.bronze.map((item) => (
               <Col className={styles.col}>
                 <a
                   href={item.href}
