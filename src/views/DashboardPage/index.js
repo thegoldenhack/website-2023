@@ -4,7 +4,9 @@ import { Redirect } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 
 import DashboardSidebar from "../../components/DashboardSidebar";
+import DashboardSidebarExec from "../../components/DashboardSidebarExec";
 import DashboardCard from "../../components/DashboardCard";
+import DashboardCardExec from "../../components/DashboardCardExec";
 import GradientBackground from "../../components/GradientBackground";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
@@ -109,12 +111,14 @@ export default class DashboardPage extends Component {
     
     const user_role = getRoleFromJwt();
     let dashboard_content;
+    let dashboard_sidebar;
 
     if (user_role === "exec") {
       dashboard_content =
-          <div style={{ color: "white" }}>
-            Hello World, welcome to the Executive Dashboard!
-        </div>
+        <DashboardCardExec
+        title={"Exec Dashboard"}
+        />
+      dashboard_sidebar = <DashboardSidebarExec />
     } else {
       dashboard_content =
           <DashboardCard
@@ -124,6 +128,7 @@ export default class DashboardPage extends Component {
             buttonStatus={this.state.buttonStatus}
             accepted={this.state.accepted}
           />
+      dashboard_sidebar = <DashboardSidebar />
     }
 
     return (
@@ -137,7 +142,7 @@ export default class DashboardPage extends Component {
           <Container fluid>
             <Row>
               <Col sm="auto" className={styles.noPadding}>
-                <DashboardSidebar />
+                  {dashboard_sidebar}
               </Col>
               {this.state.status &&
                 <Col className={styles.centerContent}>

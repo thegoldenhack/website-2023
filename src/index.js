@@ -20,6 +20,7 @@ import DashboardPage from "./views/DashboardPage";
 import ConfirmAccountPage from "./views/ConfirmAccountPage";
 import MyEventsPage from "./views/MyEventsPage";
 import ExecPage from "./views/ExecPage";
+import EventsPage from "./views/EventsPage";
 import ModalDisplay from "./components/ApplicationModal/ModalDisplay";
 
 import "./index.css";
@@ -29,6 +30,7 @@ const routing = (
     <Switch>
       <Route exact path="/" component={WebsitePage2021} />
       <Route path="/exec" component={ExecPage} />
+      <Route path="/manageEvents" component={EventsPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
       <Route path="/confirmaccount" component={ConfirmAccountPage} />

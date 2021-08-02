@@ -1,5 +1,7 @@
 const endpoint = process.env.REACT_APP_API_GATEWAY;
 const apiKey = process.env.REACT_APP_API_KEY;
+const allEventsApiKey = process.env.REACT_APP_ALL_EVENTS_API_KEY;
+
 
 // idk if this is a permanent fix, but I (Dunja) was having trouble getting
 // around the CORS policy without it. If anyone has a better solution please share!
@@ -241,6 +243,21 @@ export const waitlistApplication = (applicationId, onSuccess, onFailure) => {
     }),
   };
   fetch(apiEndpoint + `/applications/waitlist`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => onSuccess(data))
+    .catch((error) => onFailure(error));
+};
+
+export const getAllEvents = (onSuccess, onFailure) => {
+  var requestOptions = {
+    method: "GET",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+      "x-api-key": apiKey,
+    },
+  };
+  fetch(apiEndpoint + `/events`, requestOptions)
     .then((response) => response.json())
     .then((data) => onSuccess(data))
     .catch((error) => onFailure(error));
