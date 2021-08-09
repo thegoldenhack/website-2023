@@ -9,25 +9,28 @@ import hexagon2 from "../../assets/images/hexagon2.png";
 import gradient_bits from "../../assets/images/pic_numbers_fade_gradient.png"
 import gradient_bits_out from "../../assets/images/pic_numbers_fade_out_gradient.png"
 
-import awake_logo from "../../assets/sponsor_logos_2021/awake.png";
-import canadian_tire_logo from "../../assets/sponsor_logos_2021/canadian_tire.png";
-import communitech_logo from "../../assets/sponsor_logos_2021/communitech.png";
-import deloitte_logo from "../../assets/sponsor_logos_2021/deloitte.png";
+import awake_logo from "../../assets/sponsor_logos_2020/awake.png";
 import caa_logo from "../../assets/sponsor_logos_2020/caa_logo.png";
-import digital_ocean_logo from "../../assets/sponsor_logos_2020/digital_ocean_logo.png";
+import canadian_tire_logo from "../../assets/sponsor_logos_2020/canadian_tire.png";
+import camplete_logo from "../../assets/sponsor_logos/camplete_logo.svg";
+import communitech_logo from "../../assets/sponsor_logos_2020/communitech.png";
+import deloitte_logo from "../../assets/sponsor_logos_2020/deloitte.png";
+import df_logo from "../../assets/sponsor_logos/df_logo.png";
+import digital_ocean_logo from "../../assets/sponsor_logos_2021/digital_ocean.png";
+import dspace_logo from "../../assets/sponsor_logos/dspace_logo.png";
+import fossa_logo from "../../assets/sponsor_logos/fossa_logo.png";
 import jtdc_logo from "../../assets/sponsor_logos_2020/jtdc_logo.png";
+import ldss_logo from "../../assets/sponsor_logos/ldss_logo.png";
+import maplesoft_logo from "../../assets/sponsor_logos_2021/maplesoft.png";
+import next_canada_logo from "../../assets/sponsor_logos/next_canada_logo.png";
+import phi_logo from "../../assets/sponsor_logos/phi_logo.png";
+import pwc_logo from "../../assets/sponsor_logos_2021/pwc.png";
 import shopify_logo from "../../assets/sponsor_logos_2020/shopify_logo.png";
 import sunlife_logo from "../../assets/sponsor_logos_2020/sunlife_logo.png";
-import uphabit_logo from "../../assets/sponsor_logos_2020/uphabit_logo.png";
 import voiceflow_logo from "../../assets/sponsor_logos_2020/voiceflow_logo.png";
-import phi_logo from "../../assets/sponsor_logos/phi_logo.png";
-import ldss_logo from "../../assets/sponsor_logos/ldss_logo.png";
-import fossa_logo from "../../assets/sponsor_logos/fossa_logo.png";
-import df_logo from "../../assets/sponsor_logos/df_logo.png";
-import dspace_logo from "../../assets/sponsor_logos/dspace_logo.png";
-import next_canada_logo from "../../assets/sponsor_logos/next_canada_logo.png";
+import uphabit_logo from "../../assets/sponsor_logos_2020/uphabit_logo.png";
+import wolfram_logo from "../../assets/sponsor_logos_2021/wolfram.png";
 import zebu_logo from "../../assets/sponsor_logos/zebu_logo.png";
-import camplete_logo from "../../assets/sponsor_logos/camplete_logo.svg";
 
 import Particles from "../../components/Particles"
 import Navbar from "../../components/Navbar"
@@ -173,28 +176,33 @@ export default class WebsitePage extends Component {
                     <Container>
                         <Sponsors
                             v2021={true}
-                            current={[
+                            silver={[
+                                { title: "PwC", logo: pwc_logo, href: "https://www.pwc.com/" }
+                            ]}
+                            bronze={[
+                                { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/"},
+                                { title: "Maplesoft", logo: maplesoft_logo, href: "https://www.maplesoft.com/" },
+                                { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" },
+                                { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com/language/"}
+                            ]}
+                            previous={[
                                 { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
+                                { title: "CAA", logo: caa_logo, href: "https://www.caa.ca/" },
+                                { title: "Camplete", logo: camplete_logo, href: "https://camplete.com/" },
                                 { title: "Canadian Tire", logo: canadian_tire_logo, href: "https://www.canadiantire.ca/en.html" },
                                 { title: "Communitech", logo: communitech_logo, href: "https://www.communitech.ca/" },
                                 { title: "Deloitte", logo: deloitte_logo, href: "https://www2.deloitte.com/ca/en.html" },
-                            ]}
-                            previous={[
-                                { title: "Uphabit", logo: uphabit_logo, href: "https://www.uphabit.com/" },
-                                { title: "Sun Life Financial", logo: sunlife_logo, href: "https://www.sunlife.ca/en/" },
-                                { title: "CAA", logo: caa_logo, href: "https://www.caa.ca/" },
-                                { title: "Shopify", logo: shopify_logo, href: "https://www.shopify.ca/" },
-                                { title: "WLU Phi", logo: phi_logo, href: "https://www.facebook.com/wluPHI/" },
-                                { title: "JTD Consulting", logo: jtdc_logo, href: "https://www.jtdc.ca/" },
-                                { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/" },
-                                { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" },
-                                { title: "LDSS", logo: ldss_logo, href: "https://www.facebook.com/LaurierDataScienceSociety/" },
-                                { title: "FOSSA", logo: fossa_logo, href: "http://fossa.ca/" },
-                                { title: "Dynamic Funds", logo: df_logo, href: "https://dynamic.ca/eng.html" },
                                 { title: "DSpace", logo: dspace_logo, href: "https://www2.deloitte.com/ca/en/pages/technology/articles/welcome-to-d-space.html" },
+                                { title: "Dynamic Funds", logo: df_logo, href: "https://dynamic.ca/eng.html" },
+                                { title: "FOSSA", logo: fossa_logo, href: "http://fossa.ca/" },
+                                { title: "JTD Consulting", logo: jtdc_logo, href: "https://www.jtdc.ca/" },
+                                { title: "LDSS", logo: ldss_logo, href: "https://www.facebook.com/LaurierDataScienceSociety/" },
                                 { title: "Next Canada", logo: next_canada_logo, href: "https://www.nextcanada.com/" },
+                                { title: "WLU Phi", logo: phi_logo, href: "https://www.facebook.com/wluPHI/" },
+                                { title: "Shopify", logo: shopify_logo, href: "https://www.shopify.ca/" },
+                                { title: "Sun Life Financial", logo: sunlife_logo, href: "https://www.sunlife.ca/en/" },
+                                { title: "Uphabit", logo: uphabit_logo, href: "https://www.uphabit.com/" },
                                 { title: "Zebu", logo: zebu_logo, href: "https://zebu.io/" },
-                                { title: "Camplete", logo: camplete_logo, href: "https://camplete.com/" }
                             ]}
                         />
                     </Container>
