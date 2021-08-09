@@ -1,4 +1,4 @@
-const coopTermsList = ["Winter 2021", "Spring 2021", "Fall 2021", "Full-time"];
+const coopTermsList = ["Winter 2022", "Spring 2022", "Fall 2022", "Full-time"];
 
 export const coopTerms = coopTermsList.map((v) => ({
   label: v,

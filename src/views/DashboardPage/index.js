@@ -36,7 +36,7 @@ export default class DashboardPage extends Component {
     };
 
     if (getJwt()) {
-      this.state.email = getEmailFromJwt();
+      this.setState({email: getEmailFromJwt()})
     }
     // } else {
     //   return <Redirect to="/login" />;
