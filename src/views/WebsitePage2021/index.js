@@ -46,7 +46,7 @@ export default class WebsitePage extends Component {
         return (
             <div>
                 <Navbar headings={["About", "Sponsors", "FAQ"]}
-                    // apply={true}
+                    apply={true}
                 />
                 
                 {/* Header */}

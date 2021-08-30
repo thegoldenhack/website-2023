@@ -488,7 +488,7 @@ export default class Application extends Component {
                 edited, but feel free to save as many times as you'd like.
               </p>
 
-              <h5>Application Deadline: {applicationDeadline}</h5>
+              {/* <h5>Application Deadline: {applicationDeadline}</h5> */}
 
               <div>
                 {/* Phone Number */}
