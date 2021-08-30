@@ -29,11 +29,6 @@ export default class CustomNavbar extends Component {
                 <div className={styles.white}>{item}</div>
               </Nav.Link>
             ))}
-            {this.props.apply &&
-              <Nav.Link href={"/application"}>
-                <Button className={styles.button}>Apply!</Button>
-              </Nav.Link>
-            }
             <Nav.Link href={"https://www.instagram.com/thegoldenhackofficial/"} target="_blank">
                 <Image src="https://img.icons8.com/metro/26/ffffff/instagram-new.png" width="30" className={styles.icon}/>
             </Nav.Link>
@@ -43,6 +38,11 @@ export default class CustomNavbar extends Component {
             <Nav.Link href={"https://www.facebook.com/TheGoldenHackOfficial"} target="_blank">
                 <Image src="https://img.icons8.com/metro/26/ffffff/facebook.png" width="30" className={styles.icon}/>
             </Nav.Link>
+            {this.props.apply &&
+              <Nav.Link href={"/application"}>
+                <Button className={styles.applyButton}>Apply!</Button>
+              </Nav.Link>
+            }
           </Nav>
         </BootstrapNavbar.Collapse>
       </BootstrapNavbar>

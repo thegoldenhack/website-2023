@@ -45,7 +45,9 @@ export default class WebsitePage extends Component {
     render() {
         return (
             <div>
-                <Navbar headings={["About", "Sponsors", "FAQ"]} />
+                <Navbar headings={["About", "Sponsors", "FAQ"]}
+                    // apply={true}
+                />
                 
                 {/* Header */}
                 <div className={styles.background}>

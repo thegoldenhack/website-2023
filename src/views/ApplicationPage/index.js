@@ -54,12 +54,10 @@ export default class Application extends Component {
       loadComplete: false,
       err: false,
       errMessage: "",
+      currentDate: new Date()
     };
 
-    const currentDate = new Date();
-
     var jwt = getJwt();
-    //const currentDate = new Date();
 
     // if the user is not logged in yeet them out
     if (!jwt) {
@@ -373,7 +371,7 @@ export default class Application extends Component {
       how_heard: this.state.how_heard,
       why_goldenhack: this.state.why_goldenhack,
       submitted: submittedBool,
-      timestamp: this.currentDate.getTime(),
+      timestamp: this.state.currentDate.getTime(),
     };
   };
 
@@ -479,7 +477,7 @@ export default class Application extends Component {
           <GradientBackground className={styles.gradientBackground}>
             <Container className={styles.container}>
               <h2 className={styles.heading}>
-                The GoldenHack 2020 Application
+                The GoldenHack 2021 Application
               </h2>
 
               <p className={styles.disclaimerText}>

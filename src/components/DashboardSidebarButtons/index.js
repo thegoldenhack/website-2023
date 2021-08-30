@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 
 import { signOut } from "../../utils/Cognito/index.js";
 
@@ -53,19 +52,31 @@ export default class DashboardSidebarButtons extends Component {
           <h1 className={styles.text}>Manage Events</h1>
         </Button>
       );
+    } else if (this.state.type === "myevents") {
+      return (
+        <Button
+          href={"/myevents"}
+          variant="link"
+          className={styles.button}
+          block
+        >
+          <h1 className={styles.text}>My Events</h1>
+        </Button>
+      );
     } else if (this.state.type === "logout") {
       return (
-        <Link to="/">
-          <Button
-            variant="link"
-            className={styles.button}
-            onClick={this.logout.bind(this)}
-            block
-          >
-            <h1 className={styles.text}>Logout</h1>
-          </Button>
-        </Link>
+        <Button
+          href={"/"}
+          variant="link"
+          className={styles.button}
+          onClick={this.logout.bind(this)}
+          block
+        >
+          <h1 className={styles.text}>Logout</h1>
+        </Button>
       );
+    } else {
+      return null
     }
   };
 

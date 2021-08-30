@@ -77,7 +77,7 @@ export default class RSVPButton extends Component {
               <Modal.Header closeButton onClick={() => this.handleModalShowHide(this.state.rsvp, false)}>
                 <Modal.Title>RSVP for The GoldenHack</Modal.Title>
               </Modal.Header>
-              <Modal.Body>Are you attending The GoldenHack 2020 (virtually, of course!)?</Modal.Body>
+              <Modal.Body>Are you attending The GoldenHack 2021?</Modal.Body>
               <Modal.Footer>
               <Button variant="success" onClick={() => this.handleModalShowHide(true, true)}>
                   Going! :D

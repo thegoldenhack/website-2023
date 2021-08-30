@@ -29,3 +29,14 @@
   color: #053e5e;
   border-color: #053e5e;
 }
+.applyButton {
+  background-color: #f6d030;
+  color: #053e5e;
+  border-color: white;
+  width: 100%;
+  padding: 0rem 0.75rem;
+}
+.applyButton:hover {
+  background-color: #fdce04;
+  border-color: white;
+}

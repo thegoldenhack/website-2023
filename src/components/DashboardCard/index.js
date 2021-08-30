@@ -63,7 +63,8 @@ export default class DashboardCard extends Component {
                 </Row>
               )}
               <br />
-              <Row>
+              {/* Uncomment this section when we have a mentor application link */}
+              {/* <Row>
                 <h5>
                   Applying to be a mentor? Submit your application{" "}
                   <a
@@ -75,7 +76,7 @@ export default class DashboardCard extends Component {
                   </a>
                   !
                 </h5>
-              </Row>
+              </Row> */}
             </Col>
           </Card.Body>
         </Card>
