@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Redirect } from "react-router-dom";
 
-import { Row, Col, Container, Spinner } from "react-bootstrap";
+import { Row, Col, Container, Spinner, Form } from "react-bootstrap";
 
 import {
   schools,
@@ -15,6 +15,7 @@ import {
   howHeard,
   numHackathons,
   streams,
+  country
 } from "../../assets/data";
 
 import DashboardSidebar from "../../components/DashboardSidebar";
@@ -91,6 +92,7 @@ export default class Application extends Component {
             phone_number: data.phone_number,
             birth_date: data.birth_date,
             gender: data.gender,
+            country: data.country,
             degree: data.degree,
             study_year: data.study_year,
             github_url: data.github_url,
@@ -110,6 +112,10 @@ export default class Application extends Component {
             coop_terms: data.coop_terms ?? [],
             streams: data.streams ?? [],
 
+            code_of_conduct_agreement: false,
+            event_logistics_agreement: false,
+            emails_from_mlh_agreement: data.emails_from_mlh_agreement,
+
             loadComplete: true,
           });
         }
@@ -122,6 +128,7 @@ export default class Application extends Component {
           birth_date: "",
           gender: "",
           ethnicity: [],
+          country: "",
           streams: [],
           school: [],
           degree: "",
@@ -136,6 +143,10 @@ export default class Application extends Component {
           num_hackathons: "",
           how_heard: "",
           why_goldenhack: "",
+
+          code_of_conduct_agreement: false,
+          event_logistics_agreement: false,
+          emails_from_mlh_agreement: false,
 
           loadComplete: true,
         });
@@ -167,6 +178,9 @@ export default class Application extends Component {
     if (!this.state.gender) {
       notAllFilledOutItems.push("Gender");
     }
+    if (!this.state.country) {
+      notAllFilledOutItems.push("Country");
+    }
     if (this.state.school.length === 0) {
       notAllFilledOutItems.push("School");
     }
@@ -193,6 +207,12 @@ export default class Application extends Component {
     }
     if (!this.state.how_heard) {
       notAllFilledOutItems.push("How did you hear about us?");
+    }
+    if (!this.state.code_of_conduct_agreement) {
+      notAllFilledOutItems.push("Code of Conduct agreement")
+    }
+    if (!this.state.event_logistics_agreement) {
+      notAllFilledOutItems.push("Event logistics agreement")
     }
 
     if (notAllFilledOutItems.length > 0) {
@@ -354,6 +374,7 @@ export default class Application extends Component {
       last_name: getLastNameFromJwt(),
       phone_number: this.state.phone_number,
       birth_date: this.state.birth_date,
+      country: this.state.country,
       gender: this.state.gender,
       ethnicity: this.state.ethnicity,
       streams: this.state.streams,
@@ -372,6 +393,7 @@ export default class Application extends Component {
       why_goldenhack: this.state.why_goldenhack,
       submitted: submittedBool,
       timestamp: this.state.currentDate.getTime(),
+      emails_from_mlh_agreement: this.state.emails_from_mlh_agreement
     };
   };
 
@@ -449,7 +471,7 @@ export default class Application extends Component {
       return <Redirect to="/login" />;
     }
     // if the user is not a hacker, also yeet them out
-    else if (getRoleFromJwt() != "hacker") {
+    else if (getRoleFromJwt() !== "hacker") {
       return <Redirect to="/dashboard" />;
     } else return (
       <div>
@@ -542,6 +564,20 @@ export default class Application extends Component {
                   }
                   onChange={this.handleChange}
                   options={ethnicity}
+                />
+
+                {/* Country */}
+                <InputFieldSelect
+                  label={"Country"}
+                  name={"country"}
+                  multiSelect={false}
+                  defaultValue={
+                    this.state.country
+                      ? { value: this.state.country, label: this.state.country }
+                      : null
+                  }
+                  onChange={this.handleChange}
+                  options={country}
                 />
 
                 {/* Stream */}
@@ -731,6 +767,70 @@ export default class Application extends Component {
                   onChange={this.handleChange}
                   options={howHeard}
                 />
+
+                <br /> 
+                  <Form.Group controlId="formBasicCheckbox">
+                    <Form.Check
+                      type="checkbox"
+                      label={
+                        <>
+                          (Required) I have read and agree to the&nbsp;
+                          <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" className="blue-text">
+                            MLH Code of Conduct
+                          </a>
+                          .
+                        </>
+                      }
+                      name="code_of_conduct_agreement"
+                      checked={this.state.code_of_conduct_agreement}
+                      onChange={e => this.setState({ code_of_conduct_agreement: e.target.checked })}
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicCheckbox">
+                    <Form.Check
+                      type="checkbox"
+                      label={(
+                        <>
+                          (Required) I authorize you to share my application/registration
+                          information with Major League Hacking for event administration,
+                          ranking, and MLH administration in-line with the &nbsp;
+                          <a href="https://mlh.io/privacy" className="blue-text">
+                            MLH Privacy Policy
+                          </a>
+                          . I further agree to the terms of both the&nbsp;
+                          <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
+                            className="blue-text">
+                            MLH Contest Terms and Conditions
+                          </a>
+                          &nbsp;and the&nbsp;
+                          <a href="https://mlh.io/privacy" className="blue-text">
+                            MLH Privacy Policy
+                          </a>
+                          .
+                        </>
+                      )}
+                      name="event_logistics_agreement"
+                      checked={this.state.event_logistics_agreement}
+                      onChange={e => this.setState({ event_logistics_agreement: e.target.checked })}
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicCheckbox">
+                    <Form.Check
+                      type="checkbox"
+                      label={(
+                        <>
+                          (Optional) I authorize MLH to send me pre- and post-event
+                          informational emails, which contain free credit and opportunities
+                          from their partners.
+                        </>
+                      )}
+                      name="emails_from_mlh_agreement"
+                      checked={this.state.emails_from_mlh_agreement}
+                      onChange={e => this.setState({ emails_from_mlh_agreement: e.target.checked })}
+                    />
+                  </Form.Group>
 
                 <div className={styles.errorContainer}>
                   {this.displayErrors()}
