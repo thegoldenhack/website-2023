@@ -40,3 +40,15 @@
   background-color: #fdce04;
   border-color: white;
 }
+
+.items {
+  margin-left: auto;
+  align-items: center;
+}
+
+/* Medium breakpoint */
+@media (min-width: 768px) {
+  .items {
+    margin-right: 80px;
+  }
+}

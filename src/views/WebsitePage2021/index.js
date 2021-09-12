@@ -19,13 +19,17 @@ import df_logo from "../../assets/sponsor_logos/df_logo.png";
 import digital_ocean_logo from "../../assets/sponsor_logos_2021/digital_ocean.png";
 import dspace_logo from "../../assets/sponsor_logos/dspace_logo.png";
 import fossa_logo from "../../assets/sponsor_logos/fossa_logo.png";
+import figma_logo from "../../assets/sponsor_logos_2021/figma.png";
+import flipp_logo from "../../assets/sponsor_logos_2021/flipp.png";
 import jtdc_logo from "../../assets/sponsor_logos_2020/jtdc_logo.png";
 import ldss_logo from "../../assets/sponsor_logos/ldss_logo.png";
 import maplesoft_logo from "../../assets/sponsor_logos_2021/maplesoft.png";
 import next_canada_logo from "../../assets/sponsor_logos/next_canada_logo.png";
 import phi_logo from "../../assets/sponsor_logos/phi_logo.png";
 import pwc_logo from "../../assets/sponsor_logos_2021/pwc.png";
+import roku_logo from "../../assets/sponsor_logos_2021/roku.png";
 import shopify_logo from "../../assets/sponsor_logos_2020/shopify_logo.png";
+import sticker_mule_logo from "../../assets/sponsor_logos_2021/sticker_mule_logo.png";
 import sunlife_logo from "../../assets/sponsor_logos_2020/sunlife_logo.png";
 import voiceflow_logo from "../../assets/sponsor_logos_2020/voiceflow_logo.png";
 import uphabit_logo from "../../assets/sponsor_logos_2020/uphabit_logo.png";
@@ -46,7 +50,7 @@ export default class WebsitePage extends Component {
         return (
             <div>
                 <Navbar headings={["About", "Sponsors", "FAQ"]}
-                    // apply={true}
+                    apply={true}
                 />
                 
                 {/* Header */}
@@ -182,13 +186,17 @@ export default class WebsitePage extends Component {
                                 { title: "PwC", logo: pwc_logo, href: "https://www.pwc.com/" }
                             ]}
                             bronze={[
-                                { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/"},
+                                { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
+                                { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/" },
+                                { title: "Figma", logo: figma_logo, href: "https://figma.com/"},
+                                // { title: "Flipp", logo: flipp_logo, href: "https://flipp.com/"},
                                 { title: "Maplesoft", logo: maplesoft_logo, href: "https://www.maplesoft.com/" },
+                                { title: "Roku", logo: roku_logo, href: "https://www.roku.com/en-ca/" },
+                                { title: "Sticker Mule", logo: sticker_mule_logo, href: "http://hackp.ac/mlh-stickermule-hackathons" },
                                 { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" },
-                                { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com/language/"}
+                                { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com/language/" }
                             ]}
                             previous={[
-                                { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
                                 { title: "CAA", logo: caa_logo, href: "https://www.caa.ca/" },
                                 { title: "Camplete", logo: camplete_logo, href: "https://camplete.com/" },
                                 { title: "Canadian Tire", logo: canadian_tire_logo, href: "https://www.canadiantire.ca/en.html" },

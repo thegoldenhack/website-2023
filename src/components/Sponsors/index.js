@@ -55,7 +55,7 @@ export default class Sponsors extends Component {
         }
 
         {this.props.v2021 && 
-          <Row xs={2} md={2} className={styles.row}>
+          <Row xs={2} md={4} className={styles.row}>
             {this.props.bronze &&
               this.props.bronze.map((item) => (
               <Col className={styles.col}>

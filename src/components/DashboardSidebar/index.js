@@ -13,7 +13,7 @@ export default class DashboardSidebar extends Component {
         <br />
         <DashboardSidebarButtons type="status" />
         <DashboardSidebarButtons type="application" />
-        <DashboardSidebarButtons type="myevents" />
+        {/* <DashboardSidebarButtons type="myevents" /> */}
         <DashboardSidebarButtons type="logout" />
       </Sidebar>
     );
