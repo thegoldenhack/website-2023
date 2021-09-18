@@ -40,7 +40,7 @@ export default class CustomNavbar extends Component {
                     <Image src="https://img.icons8.com/metro/26/ffffff/facebook.png" width="30" className={styles.icon}/>
                 </Nav.Link>
                 {this.props.apply &&
-                  <Nav.Link href={"/application"}>
+                  <Nav.Link href={"https://forms.gle/MaFWowsTbw589epZ8"} target="_blank">
                     <Button className={styles.applyButton}>Apply!</Button>
                   </Nav.Link>
                 }

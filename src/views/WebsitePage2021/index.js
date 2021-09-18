@@ -17,6 +17,7 @@ import communitech_logo from "../../assets/sponsor_logos_2020/communitech.png";
 import deloitte_logo from "../../assets/sponsor_logos_2020/deloitte.png";
 import df_logo from "../../assets/sponsor_logos/df_logo.png";
 import digital_ocean_logo from "../../assets/sponsor_logos_2021/digital_ocean.png";
+import dropbase_logo from "../../assets/sponsor_logos_2021/dropbase.png";
 import dspace_logo from "../../assets/sponsor_logos/dspace_logo.png";
 import fossa_logo from "../../assets/sponsor_logos/fossa_logo.png";
 import figma_logo from "../../assets/sponsor_logos_2021/figma.png";
@@ -183,7 +184,8 @@ export default class WebsitePage extends Component {
                         <Sponsors
                             v2021={true}
                             silver={[
-                                { title: "PwC", logo: pwc_logo, href: "https://www.pwc.com/" }
+                                { title: "PwC", logo: pwc_logo, href: "https://www.pwc.com/" },
+                                { title: "Dropbase", logo: dropbase_logo, href: "https://www.dropbase.io/" }
                             ]}
                             bronze={[
                                 { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
