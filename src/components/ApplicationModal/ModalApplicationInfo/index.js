@@ -1,4 +1,4 @@
-import "./modalApplicationInfo.scss";
+import "./modalApplicationInfo.css";
 import React, { Component } from "react";
 
 const ModalApplicationInfo = ({userWhyGoldenhack}) => {

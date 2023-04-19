@@ -1,4 +1,4 @@
-import "./modal.scss";
+import "./modal.css";
 import { withRouter } from "react-router";
 import React, { Component } from "react";
 import ModalHeader from '../ModalHeader/index';

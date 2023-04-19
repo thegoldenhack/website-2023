@@ -1,0 +1,92 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+}
+.modal-main {
+    position: fixed;
+    background: white;
+    width: 30%;
+    height: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    padding: 35px 30px 20px 30px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.header h1 {
+    font-size: 20px;
+}
+.attendees {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.attendees h2 {
+    font-size: 16px;
+    font-weight: 500;
+}
+.attendees p {
+    font-size: 10px;
+    line-height: 10%;
+}
+.attendees textarea {
+    background-color: rgba(0, 0, 0, 0.02);
+    border: none;
+    min-height: 70px;
+    width: 100%;
+    border-radius: 10px;
+    resize: none;
+    padding: 0px 2px 0px 2px;
+    font-size: 10px;
+}
+.attendees-list {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 120px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.attendees-list h2 {
+    font-size: 16px;
+    font-weight: 500;
+}
+.attendees-list li {
+    font-size: 12px;
+}
+.attendees-list p {
+    font-size: 10px;
+    line-height: 10%;
+}
+.submit {
+    display: flex;
+    justify-content: center;
+}
+.submit input {
+    background: #12b623;
+    color: black;
+    font-size: 12px;
+    text-align: center;
+    height: 33px;
+    border-radius: 10px;
+    width: 182px;
+    border: none;
+    font-weight: 600;
+    padding: 5px 5px 5px 5px;
+}
+.display-block {
+    display: block;
+}
+.display-none {
+    display: none;
+}

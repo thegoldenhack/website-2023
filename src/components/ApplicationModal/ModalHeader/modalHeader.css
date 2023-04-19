@@ -1,0 +1,60 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.header h1 {
+    justify-content: space-around;
+    color: #396889;
+    font-size: 72px;
+}
+.header .status {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+    height: 35px;
+    width: 30%;
+}
+.header .status .dropdown {
+    background-color: #fff;
+    color: black;
+    width: 60%;
+}
+.header .status button {
+    background: #139969;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+.header .status button:hover {
+    opacity: 0.5;
+}
+.header .button {
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+}
+.header .button .expand-button {
+    background-image: url("../../../assets/icons/modal/expand_button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+.header .button .expand-button:hover {
+    opacity: 0.5;
+}
+.header .button .close-button {
+    background-image: url("../../../assets/icons/modal/close_button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+.header .button .close-button:hover {
+    opacity: 0.5;
+}

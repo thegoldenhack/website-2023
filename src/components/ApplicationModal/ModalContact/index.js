@@ -1,4 +1,4 @@
-import "./modalContact.scss";
+import "./modalContact.css";
 import images from "../../../assets/icons/modal";
 import React, { Component } from "react";
 

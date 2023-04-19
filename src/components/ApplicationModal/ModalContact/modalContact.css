@@ -1,0 +1,59 @@
+.info-display {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+}
+.info-display .info-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+.info-display .info-column .info-box {
+    background-color: #0e5385;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    overflow: auto;
+}
+.info-display .info-column .info-box h1 {
+    color: #f2c551;
+    font-size: 36px;
+}
+.info-display .info-column .info-box h2 {
+    color: #f9bb5e;
+    font-size: 18px;
+}
+.info-display .info-column .info-box .label {
+    display: flex;
+    flex-direction: row;
+}
+.info-display .info-column .info-box .label div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    word-break: normal;
+}
+.info-display .info-column .info-box .label img {
+    max-width: 50px;
+    height: auto;
+    object-fit: contain;
+    padding-right: 10px;
+}
+.info-display .info-column .info-box p {
+    color: #fff;
+    font-size: 14px;
+    word-break: normal;
+}
+.info-display .left {
+    width: 35%;
+}
+.info-display .right {
+    width: 65%;
+}

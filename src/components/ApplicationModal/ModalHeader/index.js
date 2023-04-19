@@ -1,4 +1,4 @@
-import "./modalHeader.scss";
+import "./modalHeader.css";
 import React, { Component } from "react";
 import Select from "react-select";
 
