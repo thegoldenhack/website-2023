@@ -10,7 +10,7 @@ cd website-2023
 Set the original repo (ie non fork) as the "remote"
 
 ```
-git remote add upstream https://github.com/thegoldenhack/website-2020.git
+git remote add upstream https://github.com/thegoldenhack/website-2023.git
 git fetch upstream
 git checkout master
 ```
