@@ -4,7 +4,7 @@ Fork this repo and then clone it onto your local machine.
 
 ```
 git clone <your fork name>
-cd website-2020
+cd website-2023
 ```
 
 Set the original repo (ie non fork) as the "remote"
