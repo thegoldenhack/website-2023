@@ -26,8 +26,6 @@
 }
 ::-webkit-scrollbar-track {
     background: white;
-    margin-top: 100px;
-    margin-bottom: 40px;
 }
 ::-webkit-scrollbar-thumb {
     background: #98b2c2;

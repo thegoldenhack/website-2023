@@ -68,7 +68,7 @@ export default class WebsitePage extends Component {
                                         <h1 className={styles.h1}>Golden</h1>
                                         <h1 className={styles.h1}>Hack</h1>
                                         <h1 className={styles.h1}>5.0</h1>
-                                        <h4>October 2-3, 2023</h4>
+                                        <h4>September 30th - October 1st, 2023</h4>
                                         <h4>Wilfrid Laurier University</h4>
                                     </Col>
                                     <Col md className={styles.flexCenter}>
@@ -95,7 +95,7 @@ export default class WebsitePage extends Component {
                             <Col lg>
                                 <h2 className={styles.h2}>Take on the Challenge!</h2>
                                 <p className={styles.white}>Unlock the best of both the tech and business worlds.</p>
-                                <p className={styles.white}>The GoldenHack 5.0: Oct 2-3, 2023.</p>
+                                <p className={styles.white}>The GoldenHack 5.0: Sept 30th - Oct 1st, 2023.</p>
                             </Col>
                         </Row>
                     </Container>
@@ -112,20 +112,22 @@ export default class WebsitePage extends Component {
                                 <h2 className={styles.h2}>Who We Are</h2>
                                 <p className={styles.white}>
                                     The GoldenHack team is composed of developers, founders, innovators,
-                                    and most importantly, friends! We wanted to bring our love of innovation,
+                                    and most importantly, friends! We want to bring our love of innovation,
                                     collaboration and technology to Wilfrid Laurier University and make the
                                     most of its talented business and design students.
                                 </p>
                                 <br />
-                                <h2 className={styles.h2}>Our Vision for a Hybrid Hackathon</h2>
+                                <h2 className={styles.h2}>Our Vision for The GoldenHack 2023</h2>
                                 <p className={styles.white}>
-                                    To create a supportive and inclusive community that sparks YOUR
-                                    creativity and entrepreneurial journey.
+                                    With restrictions lifted, we are planning on bringing back an in-person overnight hackathon, 
+                                    including all the in-person activities that a hackathon normally has! And to bring forward 
+                                    the business spirit forward, we'll be hosting our first networking event at the event! 
+                                    So join us on Saturday, September 30th - Sunday, October 1st, for our 5th hackathon, TGH 5.0!
                                 </p>
                                 <br />
                                 <p className={styles.white}>
                                     In order to guarantee our participants have the best experience possible,
-                                    we are planning to organize our first ever hybrid hackathon. Our event
+                                    we are planning to organize our second ever hybrid hackathon. Our event
                                     will be open to students world-wide and combine the best of digital
                                     and physical events.
                                 </p>
@@ -141,7 +143,7 @@ export default class WebsitePage extends Component {
                     <Container>
                         <Row className={styles.fullHeight}>
                             <Col>
-                                <h2 className={styles.h2}>Last Year We Had...</h2>
+                                <h2 className={styles.h2}>Previously We've Had...</h2>
                                 <Row>
                                     <Col md>
                                         <Row className={styles.alignItemsCenter}>
@@ -232,9 +234,9 @@ export default class WebsitePage extends Component {
                             <Col md>
                                 <FAQ
                                     faqs={[
-                                        { question: "How will the event be hosted?", answer: ["We are planning to host in-person our opening and closing ceremonies from Laurier’s beautiful Lazaridis Hall on campus where we will also provide a study space for participants in the Waterloo region wishing to meet up with fellow hackers. All our workshops will be in-person but available for viewing in a lecture hall on campus and sponsors will be able to choose between sending representatives in person or calling in through Zoom.", "After having our options limited for so long, we want to give our sponsors and participants a chance to make the most of our event while feeling safe and comfortable."] },
+                                        { question: "How will the event be hosted?", answer: ["While the event itself will be hosted in-person, we are planning on live streaming our opening and closing ceremonies from Laurier’s beautiful Lazaridis Hall on campus. We will be providing food and study space for hackers, and the option to sleep overnight will be available!", "After having our options limited for so long, we want to give our sponsors and participants a chance to make the most of our event while feeling safe and comfortable."] },
                                         { question: "What if I don’t know how to code?", answer: ["No sweat. Our goal is to make this hackathon friendly to newcomers. We’ll have lots of mentors and workshops to help you get up and running. Hacking should be fun, not frustrating.", "Not interested in coding? We have plenty of business and design opportunities as well."] },
-                                        { question: "Who can participate?", answer: ["Any University, College or Secondary School student 18 or older is welcome to participate."] },
+                                        { question: "Who can participate?", answer: ["Any University, College or Secondary School student 18 years or older is welcome to participate."] },
                                         { question: "How many people can be on a team?", answer: ["Teams can range in size from 1-4 people.", "Don't have a team? No sweat! We'll be hosting a team-building activity during the event."] },
                                         { question: "How much does it cost to participate?", answer: ["Participation is entirely free!"] },
                                         { question: "How do I become a sponsor?", answer: ["If you are interested in learning about our sponsorship package, email our Corporate team at sponsoring@thegoldenhack.ca."] },
