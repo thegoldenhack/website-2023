@@ -18,6 +18,9 @@ export default class Footer extends Component {
                                 <p>Code of Conduct</p>
                             </a>
                         </Col>
+                        <Col className={styles.justifyContentCenter}>
+                            <p>© Copyright 2023 The GoldenHack</p>
+                        </Col>
                         <Col className={styles.rightAlign}>
                             <a
                                 href={"https://www.instagram.com/thegoldenhackofficial/"}
@@ -49,9 +52,6 @@ export default class Footer extends Component {
                                 <Image src="https://img.icons8.com/000000/metro/26/new-post.png" />
                             </a>
                         </Col>
-                    </Row>
-                    <Row className={styles.justifyContentCenter}>
-                        <p>© Copyright 2021 The GoldenHack</p>
                     </Row>
                 </Container>
             </div>

@@ -55,7 +55,7 @@ export default class WebsitePage extends Component {
                 />
                 
                 {/* Header */}
-                <div className={styles.background}>
+                <div id='head' className={styles.background}>
                     <div className={styles.positionRelative}>
                         <div className={styles.particles}>
                             <Particles/>
