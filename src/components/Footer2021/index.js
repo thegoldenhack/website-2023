@@ -48,8 +48,11 @@ export default class Footer extends Component {
                             </a>
                             <a
                                 href="mailto:contact@thegoldenhack.ca?subject=Hello!"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.marginRight15}
                             >
-                                <Image src="https://img.icons8.com/000000/metro/26/new-post.png" />
+                                <Image height='35' width='35' src="https://img.icons8.com/000000/metro/26/new-post.png" />
                             </a>
                         </Col>
                     </Row>
