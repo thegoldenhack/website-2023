@@ -19,7 +19,7 @@ export default class CustomNavbar extends Component {
     return (
       <div>
       <BootstrapNavbar fixed="top" expand="md" className={styles.container}>
-        <BootstrapNavbar.Brand href="/">
+        <BootstrapNavbar.Brand href="#head">
           <Image src={logo_yellow} alt="logo" width="100"></Image>
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
