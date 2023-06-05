@@ -67,8 +67,8 @@ export default class WebsitePage extends Component {
                                         <h1 className={styles.h1}>The</h1>
                                         <h1 className={styles.h1}>Golden</h1>
                                         <h1 className={styles.h1}>Hack</h1>
-                                        <h1 className={styles.h1}>3.0</h1>
-                                        <h4>October 2-3, 2021</h4>
+                                        <h1 className={styles.h1}>5.0</h1>
+                                        <h4>October 2-3, 2023</h4>
                                         <h4>Wilfrid Laurier University</h4>
                                     </Col>
                                     <Col md className={styles.flexCenter}>
@@ -95,7 +95,7 @@ export default class WebsitePage extends Component {
                             <Col lg>
                                 <h2 className={styles.h2}>Take on the Challenge!</h2>
                                 <p className={styles.white}>Unlock the best of both the tech and business worlds.</p>
-                                <p className={styles.white}>The GoldenHack 3.0: Oct 2-3, 2021.</p>
+                                <p className={styles.white}>The GoldenHack 5.0: Oct 2-3, 2023.</p>
                             </Col>
                         </Row>
                     </Container>
