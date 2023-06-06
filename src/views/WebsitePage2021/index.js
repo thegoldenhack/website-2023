@@ -68,8 +68,8 @@ export default class WebsitePage extends Component {
                                         <h1 className={styles.h1}>Golden</h1>
                                         <h1 className={styles.h1}>Hack</h1>
                                         <h1 className={styles.h1}>5.0</h1>
-                                        <h4>September 30th - October 1st, 2023</h4>
-                                        <h4>Wilfrid Laurier University</h4>
+                                        <h4 className={styles.p1}>September 30th - October 1st, 2023</h4>
+                                        <h4 className={styles.p1}>Wilfrid Laurier University</h4>
                                     </Col>
                                     <Col md className={styles.flexCenter}>
                                         <Image src={header1} alt="TGH" className={styles.width80}></Image>

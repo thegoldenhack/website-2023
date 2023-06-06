@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap');
+
 .background {
   background-image: linear-gradient(
     to bottom left,
@@ -59,20 +61,28 @@
   width: 100%;
 }
 .h1 {
-  font-family: "Press Start 2P";
-  font-size: 4rem;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 5rem;
+}
+.p1 {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: white;
 }
 .h2_25rem {
-  font-family: "Press Start 2P";
+  font-family: 'Roboto Mono', monospace;
   font-size: 2.5rem;
 }
 .h2 {
-  font-family: "Press Start 2P";
-  font-size: 2rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 3rem;
+  font-weight: 700;
   color: #f6d030;
 }
 .h1_2rem {
-  font-family: "Press Start 2P";
+  font-family: 'Roboto Mono', monospace;
   font-size: 2rem;
 }
 .alignItemsCenter {
@@ -86,10 +96,14 @@
   margin-top: 10vh;
 }
 .statsFont {
+  font-family: 'Roboto Mono', monospace;
   font-size: 1.5rem;
   color: white;
 }
 .white {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  font-weight: 400;
   color: white;
 }
 /* Medium breakpoint */
