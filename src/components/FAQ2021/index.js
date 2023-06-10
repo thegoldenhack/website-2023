@@ -23,7 +23,8 @@ var cardStyle = {
     borderColor: "white",
     backgroundColor: "transparent",
     marginBottom: "0px",
-    marginTop: "10px"
+    marginTop: "10px",
+    backgroundColor: "#cb91ff",
 }
 var accordionToggleStyle = {
     borderRadius: "30px",
