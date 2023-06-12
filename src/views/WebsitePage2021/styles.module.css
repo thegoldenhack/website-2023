@@ -95,17 +95,144 @@
 .marginTop10 {
   margin-top: 10vh;
 }
-.statsFont {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 1.5rem;
-  color: white;
-}
 .white {
   font-family: 'Roboto Mono', monospace;
   font-size: 1rem;
   font-weight: 400;
   color: white;
 }
+
+.statsContainer{
+  height: 90%;
+  margin-top: -2px;
+  width:100%;
+  position: relative;
+  border: solid;
+  border-color: red;
+  border-width: 0px;
+}
+.statsOne{
+  position: absolute;
+  left: 7%;
+  bottom: 70%;
+  height: 225px;
+  width: 225px;
+  background-color: #f6d030;
+  border-radius: 30px;
+}
+.statsTwo{
+  position: absolute;
+  left: 50%;
+  bottom: 43%;
+  height: 225px;
+  width: 225px;
+  background-color: rgb(115, 93, 188);
+  border-radius: 30px;
+}
+.statsThree{
+  position: absolute;
+  left: 0%;
+  bottom: 30%;
+  height: 200px;
+  width: 200px;
+  background-color: rgb(115, 93, 188);
+  border-radius: 30px;
+}
+.statsFour{
+  position: absolute;
+  left: 75%;
+  bottom: 10%;
+  height: 200px;
+  width: 200px;
+  background-color: #f6d030;
+  border-radius: 30px;
+}
+.statsFive{
+  position: absolute;
+  left: 30%;
+  bottom: 5%;
+  height: 175px;
+  width: 175px;
+  background-color: #20acf7;
+  border-radius: 30px;
+}
+.statsSix{
+  position: absolute;
+  left: 85%;
+  bottom: 73%;
+  height: 175px;
+  width: 175px;
+  background-color: #20acf7;
+  border-radius: 30px;
+}
+.statsFontBig {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+.statsFontMid {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+.statsFontSm{
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+.gearOne{
+  position: absolute;
+  left: 75%;
+  bottom: 55%;
+}
+.gearTwo{
+  position: absolute;
+  left: 30%;
+  bottom: 45%;
+}
+.gearThree{
+  position: absolute;
+  left: 35%;
+  bottom: 90%;
+}
+.gearFour{
+  position: absolute;
+  left: 55%;
+  bottom: 15%;
+}
+.gearFive{
+  position: absolute;
+  left: 10%;
+  bottom: 5%;
+}
+.gearSix{
+  position: absolute;
+  left: -5%;
+  bottom: 65%;
+}
+.gearSeven{
+  position: absolute;
+  left: 65%;
+  bottom: 85%;
+}
+.gearEight{
+  position: absolute;
+  left: 100%;
+  bottom: 35%;
+}
+
+.cont{
+  height: 650px;
+}
+
+
+
 /* Medium breakpoint */
 @media (max-width: 768px) {
   .title {
