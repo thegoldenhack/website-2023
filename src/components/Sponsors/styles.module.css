@@ -29,14 +29,16 @@
   text-align: center;
 }
 .h1_2021 {
-  font-family: "Press Start 2P";
-  font-size: 2rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 4rem;
+  font-weight: 700;
   text-align: center;
 }
 .h1_2021_marginTop150 {
-  font-family: "Press Start 2P";
+  font-family: 'Roboto Mono', monospace;
   margin-top: 150px;
-  font-size: 2rem;
+  font-size: 4rem;
+  font-weight: 700;
   text-align: center;
 }
 .justifyContentCenter {

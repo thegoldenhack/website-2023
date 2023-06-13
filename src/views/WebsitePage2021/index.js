@@ -68,8 +68,8 @@ export default class WebsitePage extends Component {
                                         <h1 className={styles.h1}>Golden</h1>
                                         <h1 className={styles.h1}>Hack</h1>
                                         <h1 className={styles.h1}>5.0</h1>
-                                        <h4>September 30th - October 1st, 2023</h4>
-                                        <h4>Wilfrid Laurier University</h4>
+                                        <h4 className={styles.p1}>September 30th - October 1st, 2023</h4>
+                                        <h4 className={styles.p1}>Wilfrid Laurier University</h4>
                                     </Col>
                                     <Col md className={styles.flexCenter}>
                                         <Image src={header1} alt="TGH" className={styles.width80}></Image>
@@ -141,41 +141,51 @@ export default class WebsitePage extends Component {
                 {/* Last Year We had... */}
                 <div className={styles.backgroundInverted}>
                     <Container>
-                        <Row className={styles.fullHeight}>
-                            <Col>
-                                <h2 className={styles.h2}>Previously We've Had...</h2>
-                                <Row>
-                                    <Col md>
-                                        <Row className={styles.alignItemsCenter}>
-                                            <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>276 applicants</p>
-                                        </Row>
-                                        <Row className={styles.alignItemsCenter}>
-                                            <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>90 first-time hackers</p>
-                                        </Row>
-                                        <Row className={styles.alignItemsCenter}>
-                                            <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>29 schools</p>
-                                        </Row>
-                                    </Col>
-                                    <Col md>
-                                        <Row className={styles.alignItemsCenter}>
-                                            <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>55% developers</p>
-                                        </Row>
-                                        <Row className={styles.alignItemsCenter}>
-                                            <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>30% business analysts</p>
-                                        </Row>
-                                        <Row className={styles.alignItemsCenter}>
-                                            <Gear rotation={40} timing={300} width={100} />
-                                            <p className={styles.statsFont}>15% designers</p>
-                                        </Row>
-                                    </Col>
-                                </Row>
-                            </Col>
-                        </Row>
+                        <div className={styles.statsContainer}>
+                            <div className={styles.cont}> </div>
+                            <div className={styles.statsOne}>
+                                <p className={styles.statsFontBig}>276 Applicants</p>
+                            </div>
+                            <div className={styles.statsTwo}>
+                                <p className={styles.statsFontBig}>55% Developers</p>
+                            </div>
+                            <div className={styles.statsThree}>
+                                <p className={styles.statsFontMid}>90 First-Time Hackers</p>
+                            </div>
+                            <div className={styles.statsFour}>
+                                <p className={styles.statsFontMid}>30% Business Analysts</p>
+                            </div>
+                            <div className={styles.statsFive}>
+                                <p className={styles.statsFontSm}>29 Schools</p>
+                            </div>
+                            <div className={styles.statsSix}>
+                                <p className={styles.statsFontSm}>15% Designers</p>
+                            </div>
+                            <div className={styles.gearOne}>
+                                <Gear rotation={40} timing={300} width={100} />
+                            </div>
+                            <div className={styles.gearTwo}>
+                                <Gear rotation={40} timing={300} width={100} />
+                            </div>
+                            <div className={styles.gearThree}>
+                                <Gear rotation={40} timing={300} width={100} />
+                            </div>
+                            <div className={styles.gearFour}>
+                                <Gear rotation={40} timing={300} width={100} />
+                            </div>
+                            <div className={styles.gearFive}>
+                                <Gear rotation={40} timing={300} width={100} />
+                            </div>
+                            <div className={styles.gearSix}>
+                                <Gear rotation={40} timing={300} width={100} />
+                            </div>
+                            <div className={styles.gearSeven}>
+                                <Gear rotation={40} timing={300} width={100} />
+                            </div>
+                            <div className={styles.gearEight}>
+                                <Gear rotation={40} timing={300} width={100} />
+                            </div>
+                        </div>
                     </Container>
                 <Image id="sponsors" src={gradient_bits} className={styles.width100}/>
                 </div>
