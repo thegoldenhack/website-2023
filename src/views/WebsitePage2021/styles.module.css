@@ -119,6 +119,8 @@
   width: 225px;
   background-color: #f6d030;
   border-radius: 30px;
+  box-shadow: 5px 5px 3px gray;
+  display: table;
 }
 .statsTwo{
   position: absolute;
@@ -128,6 +130,8 @@
   width: 225px;
   background-color: rgb(115, 93, 188);
   border-radius: 30px;
+  box-shadow: 5px 5px 3px gray;
+  display: table;
 }
 .statsThree{
   position: absolute;
@@ -137,6 +141,8 @@
   width: 200px;
   background-color: rgb(115, 93, 188);
   border-radius: 30px;
+  box-shadow: 5px 5px 3px gray;
+  display: table;
 }
 .statsFour{
   position: absolute;
@@ -146,6 +152,8 @@
   width: 200px;
   background-color: #f6d030;
   border-radius: 30px;
+  box-shadow: 5px 5px 3px gray;
+  display: table;
 }
 .statsFive{
   position: absolute;
@@ -155,6 +163,8 @@
   width: 175px;
   background-color: #20acf7;
   border-radius: 30px;
+  box-shadow: 5px 5px 3px gray;
+  display: table;
 }
 .statsSix{
   position: absolute;
@@ -164,6 +174,8 @@
   width: 175px;
   background-color: #20acf7;
   border-radius: 30px;
+  box-shadow: 5px 5px 3px gray;
+  display: table;
 }
 .statsFontBig {
   font-family: 'Roboto Mono', monospace;
@@ -171,20 +183,26 @@
   font-weight: 700;
   color: white;
   text-align: center;
+  vertical-align: middle;
+  display: table-cell;
 }
 .statsFontMid {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+.statsFontSm{
   font-family: 'Roboto Mono', monospace;
   font-size: 1.85rem;
   font-weight: 700;
   color: white;
   text-align: center;
-}
-.statsFontSm{
-  font-family: 'Roboto Mono', monospace;
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: white;
-  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
 }
 .gearOne{
   position: absolute;

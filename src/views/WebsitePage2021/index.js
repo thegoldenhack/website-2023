@@ -153,11 +153,10 @@ export default class WebsitePage extends Component {
                                 <p className={styles.statsFontMid}>90 First-Time Hackers</p>
                             </div>
                             <div className={styles.statsFour}>
-                                <p className={styles.statsFontMid}>30% business analysts</p>
+                                <p className={styles.statsFontMid}>30% Business Analysts</p>
                             </div>
                             <div className={styles.statsFive}>
-                                <p className={styles.statsFontSm}>29</p>
-                                <p className={styles.statsFontSm}>Schools</p>
+                                <p className={styles.statsFontSm}>29 Schools</p>
                             </div>
                             <div className={styles.statsSix}>
                                 <p className={styles.statsFontSm}>15% Designers</p>
