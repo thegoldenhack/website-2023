@@ -249,6 +249,40 @@
   height: 650px;
 }
 
+.cont2{
+  height: 550px;
+}
+
+.takeOnChallenge {
+  text-align: center;
+}
+
+.computerContainer {
+  height: 90%;
+  margin-top: -2px;
+  width:100%;
+  position: relative;
+}
+
+.computer {
+  position: absolute;
+  height: 900px;
+  right: 10%;
+  bottom: -15%;
+}
+
+.carousel {
+  width: 800px;
+  position: absolute;
+  right: 5.2%;
+  bottom: 27%;
+}
+
+.computerImage {
+  height: 373px;
+  width: 593px;
+  border-radius: 3px;
+}
 
 
 /* Medium breakpoint */

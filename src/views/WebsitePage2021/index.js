@@ -6,6 +6,7 @@ import header from "../../assets/images/header.png";
 import header1 from "../../assets/images/header1.png";
 import hexagon from "../../assets/images/hexagon.png";
 import hexagon2 from "../../assets/images/hexagon2.png";
+import computer from "../../assets/images/laptop_cartoon_mac_no_background.png";
 import gradient_bits from "../../assets/images/pic_numbers_fade_gradient.png"
 import gradient_bits_out from "../../assets/images/pic_numbers_fade_out_gradient.png"
 
@@ -44,7 +45,16 @@ import Sponsors from "../../components/Sponsors";
 import FAQ from "../../components/FAQ2021";
 import Footer from "../../components/Footer2021";
 
-import styles from './styles.module.css'
+import styles from './styles.module.css';
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import carouselImg1 from "../../assets/photos2019/3.jpg";
+import carouselImg2 from "../../assets/photos2019/5.jpg";
+import carouselImg3 from "../../assets/photos2019/6.jpg";
+import carouselImg4 from "../../assets/photos2019/7.jpg";
+import carouselImg5 from "../../assets/photos2019/9.jpg";
+import carouselImg6 from "../../assets/photos2019/10.JPG";
+const carouselImages = [carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselImg5, carouselImg6]
 
 export default class WebsitePage extends Component {
     render() {
@@ -82,22 +92,34 @@ export default class WebsitePage extends Component {
 
                 {/* Take on the Challenge */}
                 <div className={styles.backgroundInverted}>
-                    <Container>
-                        <Row className={styles.fullHeight}>
-                            <Col lg={7}>
-                                <ReactPlayer
-                                    url="videos/take_on_the_challenge.mp4"
-                                    controls={true}
-                                    width="100%"
-                                    height="100%"
-                                />
-                            </Col>
-                            <Col lg>
-                                <h2 className={styles.h2}>Take on the Challenge!</h2>
-                                <p className={styles.white}>Unlock the best of both the tech and business worlds.</p>
-                                <p className={styles.white}>The GoldenHack 5.0: Sept 30th - Oct 1st, 2023.</p>
-                            </Col>
-                        </Row>
+                    <Container className={styles.takeOnChallenge}>
+                        
+                        <div className={styles.computerContainer}>
+                            <h2 className={styles.h2}>Take on the Challenge!</h2>
+                            <Image src={computer} alt="Computer" className={styles.computer}/>
+                            <Carousel 
+                                className={styles.carousel}
+                                useKeyboardArrows={true} 
+                                autoPlay={true} 
+                                showArrows={false} 
+                                showThumbs={false}
+                                showIndicators={false}
+                                showStatus={false}
+                                infiniteLoop={true}
+                                interval={5000}
+                                transitionTime={0}
+                            >
+                                {carouselImages.map((URL, index) => (
+                                <div className={styles.computerImage}>
+                                    <img alt="sample_file" src={URL} key={index} className={styles.computerImage}/>
+                                </div>
+                                ))}
+                            </Carousel>
+                            <div className={styles.cont2}/>
+                            <p className={styles.white}>Unlock the best of both the tech and business worlds.</p>
+                            <p className={styles.white}>The GoldenHack 5.0: Sept 30th - Oct 1st, 2023.</p>
+                        </div>
+                        
                     </Container>
                 </div>
 
