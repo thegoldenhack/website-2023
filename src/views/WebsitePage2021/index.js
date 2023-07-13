@@ -93,7 +93,8 @@ export default class WebsitePage extends Component {
                                 />
                             </Col>
                             <Col lg>
-                                <h2 className={styles.h2}>Take on the Challenge!</h2>
+                                <h2 className={styles.h2}>Take on the</h2>
+                                <h2 className={styles.h2_gradient}> Challenge!</h2>
                                 <p className={styles.white}>Unlock the best of both the tech and business worlds.</p>
                                 <p className={styles.white}>The GoldenHack 5.0: Sept 30th - Oct 1st, 2023.</p>
                             </Col>
@@ -109,7 +110,8 @@ export default class WebsitePage extends Component {
                                 <Image src={hexagon} alt="TGH" className={styles.width100}/>
                             </Col>
                             <Col className={styles.title}>
-                                <h2 className={styles.h2}>Who We Are</h2>
+                                <h2 className={styles.h2_gradient}>Who </h2>
+                                <h2 className={styles.h2}>We Are </h2>
                                 <p className={styles.white}>
                                     The GoldenHack team is composed of developers, founders, innovators,
                                     and most importantly, friends! We want to bring our love of innovation,
@@ -117,7 +119,9 @@ export default class WebsitePage extends Component {
                                     most of its talented business and design students.
                                 </p>
                                 <br />
-                                <h2 className={styles.h2}>Our Vision for The GoldenHack 2023</h2>
+                                <h2 className={styles.h2}>Our </h2>
+                                <h2 className={styles.h2_gradient}>Vision</h2>
+                                <h2 className={styles.h2}> for The GoldenHack 2023</h2>
                                 <p className={styles.white}>
                                     With restrictions lifted, we are planning on bringing back an in-person overnight hackathon, 
                                     including all the in-person activities that a hackathon normally has! And to bring forward 
