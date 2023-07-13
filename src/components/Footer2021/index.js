@@ -15,11 +15,11 @@ export default class Footer extends Component {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <p>Code of Conduct</p>
+                                <p className={styles.footerColors}>Code of Conduct</p>
                             </a>
                         </Col>
                         <Col className={styles.justifyContentCenter}>
-                            <p>© Copyright 2023 The GoldenHack</p>
+                            <p className={styles.footerColors}>© Copyright 2023 The GoldenHack</p>
                         </Col>
                         <Col className={styles.rightAlign}>
                             <a
@@ -28,7 +28,7 @@ export default class Footer extends Component {
                                 rel="noopener noreferrer"
                                 className={styles.marginRight15}
                             >
-                                <Image src="https://img.icons8.com/000000/metro/26/instagram-new.png" />
+                                <Image height='30' width='30' src="https://img.icons8.com/ios-filled/50/FFFFFF/instagram.png" />
                             </a>
                             <a
                                 href={"https://www.linkedin.com/company/thegoldenhack/"}
@@ -36,15 +36,16 @@ export default class Footer extends Component {
                                 rel="noopener noreferrer"
                                 className={styles.marginRight15}
                             >
-                                <Image src="https://img.icons8.com/000000/metro/26/linkedin.png"/>
+                                <Image height='30' width='30' src="https://img.icons8.com/ios-filled/50/FFFFFF/linkedin.png"/>
                             </a>
                             <a
                                 href={"https://www.facebook.com/TheGoldenHackOfficial"}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.marginRight15}
+                                
                             >
-                                <Image src="https://img.icons8.com/000000/metro/26/facebook.png" />
+                                <Image height='30' width='30'src="https://img.icons8.com/ios-filled/50/FFFFFF/facebook--v1.png" />
                             </a>
                             <a
                                 href="mailto:contact@thegoldenhack.ca?subject=Hello!"
@@ -52,7 +53,7 @@ export default class Footer extends Component {
                                 rel="noopener noreferrer"
                                 className={styles.marginRight15}
                             >
-                                <Image height='35' width='35' src="https://img.icons8.com/000000/metro/26/new-post.png" />
+                                <Image height='30' width='30' src="https://img.icons8.com/ios-filled/50/FFFFFF/gmail-new.png" />
                             </a>
                         </Col>
                     </Row>

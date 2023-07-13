@@ -2,7 +2,7 @@
   padding: 10px;
   height: 150%;
   text-align: center;
-  background-color: rgb(176, 137, 250);
+  background-color: rgb(115, 93, 188);
 }
 .inline {
   display: inline;
@@ -22,4 +22,9 @@
 }
 .justifyContentCenter {
   justify-content: center;
+}
+
+.footerColors
+{
+  color: white;
 }
