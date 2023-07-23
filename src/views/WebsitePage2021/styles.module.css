@@ -69,9 +69,7 @@ html{
   font-family: 'Roboto Mono', monospace;
   font-weight: 700;
   font-size: 5rem;
-  background: -webkit-linear-gradient(0deg, #edf904, #ff0000);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #edf904;
   -webkit-text-stroke: 1px black;
 }
 .p1 {
@@ -93,16 +91,6 @@ html{
   display: inline;
 }
 
-.h2_gradient {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 3rem;
-  font-weight: 700;
-  background: -webkit-linear-gradient(0deg, #f9b804, #ff0077);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px black;
-  display: inline;
-}
 
 .h1_2rem {
   font-family: 'Roboto Mono', monospace;
