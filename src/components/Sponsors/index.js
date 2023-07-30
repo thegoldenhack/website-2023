@@ -125,7 +125,7 @@ export default class Sponsors extends Component {
             </p>
           </Row>
           <Row className={styles.justifyContentCenter}>
-            <a href="mailto:sponsoring@thegoldenhack.ca?subject=Hello!">
+            <a href="mailto:kathie.ho@thegoldenhack.ca?subject=Hello!">
               <p className={styles.underline}>
                 Get in touch!
               </p>

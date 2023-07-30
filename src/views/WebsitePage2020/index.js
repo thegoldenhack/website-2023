@@ -249,7 +249,7 @@ export default class WebsitePage extends Component {
               <h2 className={styles.fontSize64}>Interested in Sponsoring?</h2>
               <Button
                 className={styles.button}
-                href="mailto:sponsoring@thegoldenhack.ca"
+                href="mailto:kathie.ho@thegoldenhack.ca"
               >
                 Get in touch
               </Button>
