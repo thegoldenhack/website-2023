@@ -7,7 +7,7 @@
     rgb(176, 137, 250)
   );
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   height: 100%;
 }
 
@@ -32,7 +32,7 @@ html{
     rgb(151, 205, 250)
   );
   width: 100%;
-  min-height: 100vh;
+  min-height: 70vh;
   height: 100%;
 }
 .width100 {
@@ -45,7 +45,7 @@ html{
   height: 100%;
 }
 .fullHeight {
-  min-height: 100vh;
+  min-height: 60vh;
   height: 100%;
   align-items: center;
 }
@@ -69,6 +69,8 @@ html{
   font-family: 'Roboto Mono', monospace;
   font-weight: 700;
   font-size: 5rem;
+  color: #edf904;
+  -webkit-text-stroke: 1px black;
 }
 .p1 {
   font-family: 'Roboto Mono', monospace;
@@ -84,8 +86,12 @@ html{
   font-family: 'Roboto Mono', monospace;
   font-size: 3rem;
   font-weight: 700;
-  color: #f6d030;
+  color: #edf904;
+  -webkit-text-stroke: 1px black;
+  display: inline;
 }
+
+
 .h1_2rem {
   font-family: 'Roboto Mono', monospace;
   font-size: 2rem;
