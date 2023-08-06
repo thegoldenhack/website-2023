@@ -33,6 +33,7 @@
   font-size: 4rem;
   font-weight: 700;
   text-align: center;
+  color: rgb(115, 93, 188);
 }
 .h1_2021_marginTop150 {
   font-family: 'Roboto Mono', monospace;
@@ -40,6 +41,7 @@
   font-size: 4rem;
   font-weight: 700;
   text-align: center;
+  color: rgb(115, 93, 188);
 }
 .justifyContentCenter {
   justify-content: center;
