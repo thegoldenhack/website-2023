@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { Container, Row, Col, Image, Button, Nav } from 'react-bootstrap'
 import ReactPlayer from "react-player"
 
 import header from "../../assets/images/header.png";
@@ -109,9 +109,9 @@ export default class WebsitePage extends Component {
                                 interval={5000}
                                 transitionTime={0}
                             >
-                                {carouselImages.map((URL, index) => (
+                                {carouselImages.map((url, index) => (
                                 <div className={styles.computerImage}>
-                                    <img alt="sample_file" src={URL} key={index} className={styles.computerImage}/>
+                                    <img alt="TGH" src={url} key={index} className={styles.computerImage}/>
                                 </div>
                                 ))}
                             </Carousel>
@@ -126,18 +126,17 @@ export default class WebsitePage extends Component {
                 {/* About Us */}
                 <div id="about" className={styles.background}>
                     <Container>
-                        <Row className={styles.fullHeight}>
-                            <Col md>
-                                <Image src={hexagon} alt="TGH" className={styles.width100}/>
-                            </Col>
-                            <Col className={styles.title}>
-                                <h2 className={styles.h2}>Who We Are</h2>
-                                <p className={styles.white}>
+                        <Row className={styles.height70}>
+                            <div className={styles.whoWeAre}>
+                                <h2 className={styles.whoWeAreTitle}>Who We Are</h2>
+                                <p className={styles.whoWeAreBody}>
                                     The GoldenHack team is composed of developers, founders, innovators,
                                     and most importantly, friends! We want to bring our love of innovation,
                                     collaboration and technology to Wilfrid Laurier University and make the
                                     most of its talented business and design students.
                                 </p>
+                            </div>   
+                            <Col className={styles.title}>
                                 <br />
                                 <h2 className={styles.h2}>Our Vision for The GoldenHack 2023</h2>
                                 <p className={styles.white}>
@@ -156,7 +155,16 @@ export default class WebsitePage extends Component {
 
                                 {/* <Button>Meet the Team</Button> */}
                             </Col>
+                            <Col>
+                                <Image src={hexagon} alt="TGH" className={styles.width80}/>
+                            </Col>
+                            
                         </Row>
+                        <div className={styles.applyButtonContainer}>
+                            <Nav.Link href={"https://forms.gle/MaFWowsTbw589epZ8"} target="_blank">
+                                <Button className={styles.applyButton}>Apply Now</Button>
+                            </Nav.Link>
+                        </div>
                     </Container>
                 </div>
 
