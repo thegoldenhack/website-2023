@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Image, Button, Nav } from 'react-bootstrap'
-import ReactPlayer from "react-player"
 
-import header from "../../assets/images/header.png";
 import header1 from "../../assets/images/header1.png";
 import hexagon from "../../assets/images/hexagon.png";
 import hexagon2 from "../../assets/images/hexagon2.png";
@@ -22,7 +20,6 @@ import dropbase_logo from "../../assets/sponsor_logos_2021/dropbase.png";
 import dspace_logo from "../../assets/sponsor_logos/dspace_logo.png";
 import fossa_logo from "../../assets/sponsor_logos/fossa_logo.png";
 import figma_logo from "../../assets/sponsor_logos_2021/figma.png";
-import flipp_logo from "../../assets/sponsor_logos_2021/flipp.png";
 import jtdc_logo from "../../assets/sponsor_logos_2020/jtdc_logo.png";
 import ldss_logo from "../../assets/sponsor_logos/ldss_logo.png";
 import maplesoft_logo from "../../assets/sponsor_logos_2021/maplesoft.png";
@@ -95,7 +92,7 @@ export default class WebsitePage extends Component {
                     <Container className={styles.takeOnChallenge}>
                         
                         <div className={styles.computerContainer}>
-                            <h2 className={styles.h2}>Take on the Challenge!</h2>
+                            <h2 className={styles.takeOnChallengeHeader}>Take on the Challenge!</h2>
                             <Image src={computer} alt="Computer" className={styles.computer}/>
                             <Carousel 
                                 className={styles.carousel}
@@ -136,17 +133,17 @@ export default class WebsitePage extends Component {
                                     most of its talented business and design students.
                                 </p>
                             </div>   
-                            <Col className={styles.title}>
+                            <Col className={styles.ourVision}>
                                 <br />
-                                <h2 className={styles.h2}>Our Vision for The GoldenHack 2023</h2>
-                                <p className={styles.white}>
+                                <h2 className={styles.ourVisionTitle}>Our Vision for The GoldenHack 2023</h2>
+                                <p className={styles.ourVisionBody}>
                                     With restrictions lifted, we are planning on bringing back an in-person overnight hackathon, 
                                     including all the in-person activities that a hackathon normally has! And to bring forward 
                                     the business spirit forward, we'll be hosting our first networking event at the event! 
                                     So join us on Saturday, October 7th - Sunday, October 8th, for our 5th hackathon, TGH 5.0!
                                 </p>
                                 <br />
-                                <p className={styles.white}>
+                                <p className={styles.ourVisionBody}>
                                     In order to guarantee our participants have the best experience possible,
                                     we are planning to organize our second ever hybrid hackathon. Our event
                                     will be open to students world-wide and combine the best of digital
@@ -265,10 +262,10 @@ export default class WebsitePage extends Component {
                 {/* FAQ */}
                 <div className={styles.backgroundInverted} style={{paddingBottom: "10vh"}}>
                     <Image src={gradient_bits_out} className={styles.width100} />
+                    <h2 className={styles.h2}>Frequently Asked Questions</h2>
                     <Container id="faq">
                         <Row className={styles.fullHeight}>
                             <Col md className={styles.marginTop10}>
-                                <h2 className={styles.h2}>Frequently Asked Questions</h2>
                                 <Image src={hexagon2} alt="TGH" className={styles.width100}/>
                             </Col>
                             <Col md>
