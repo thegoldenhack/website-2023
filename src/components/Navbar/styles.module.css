@@ -18,6 +18,7 @@
   padding-left: 50px;
   padding-right: 50px;
   background-color: rgb(115, 93, 188);
+  position: relative;
 }
 .button {
   background-color: #f6d030;
