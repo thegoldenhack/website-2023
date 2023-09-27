@@ -16,9 +16,29 @@ export default class Sponsors extends Component {
           }
         </div>
 
+        {this.props.v2021 && 
+          <Row xs={1} md={1} className={styles.row}>
+            {this.props.platinum &&
+              this.props.platinum.map((item) => (
+              <Col className={styles.col}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                    <Image src={item.logo} className={styles.width100} alt={item.title} />
+                </a>
+                <div className={styles.platinumParagraph} dangerouslySetInnerHTML={{__html: item.paragraph}}>
+                </div>
+              </Col>
+              ))
+            }
+          </Row>
+        }
+
         <Row className={styles.row}>
-          {this.props.keynote &&
-            this.props.keynote.map((item) => (
+          {this.props.silverWide &&
+            this.props.silverWide.map((item) => (
               <Col className={styles.col}>
                 <a
                 href={item.href}
@@ -27,7 +47,7 @@ export default class Sponsors extends Component {
                 >
                 <Image
                   src={item.logo}
-                  className={styles.width35}
+                  className={styles.width75}
                   alt={item.title}
                   />
                 </a>
@@ -37,7 +57,7 @@ export default class Sponsors extends Component {
         </Row>
 
         {this.props.v2021 && 
-          <Row xs={1} md={1} className={styles.row}>
+          <Row xs={1} md={2} className={styles.row}>
             {this.props.silver &&
               this.props.silver.map((item) => (
               <Col className={styles.col}>
@@ -46,7 +66,7 @@ export default class Sponsors extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                    <Image src={item.logo} className={styles.width50} alt={item.title} />
+                    <Image src={item.logo} className={styles.silver} alt={item.title} />
                 </a>
               </Col>
               ))

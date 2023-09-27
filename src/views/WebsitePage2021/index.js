@@ -10,6 +10,7 @@ import computer from "../../assets/images/laptop_cartoon_mac_no_background.png";
 import gradient_bits from "../../assets/images/pic_numbers_fade_gradient.png"
 import gradient_bits_out from "../../assets/images/pic_numbers_fade_out_gradient.png"
 
+import onepassword_logo from "../../assets/sponsor_logos/1password_logo.png";
 import awake_logo from "../../assets/sponsor_logos_2020/awake.png";
 import caa_logo from "../../assets/sponsor_logos_2020/caa_logo.png";
 import canadian_tire_logo from "../../assets/sponsor_logos_2020/canadian_tire.png";
@@ -20,6 +21,8 @@ import df_logo from "../../assets/sponsor_logos/df_logo.png";
 import digital_ocean_logo from "../../assets/sponsor_logos_2021/digital_ocean.png";
 import dropbase_logo from "../../assets/sponsor_logos_2021/dropbase.png";
 import dspace_logo from "../../assets/sponsor_logos/dspace_logo.png";
+import echo3d_logo from "../../assets/sponsor_logos/echo3d_logo.png";
+import environics_logo from "../../assets/sponsor_logos/environics_logo.png";
 import fossa_logo from "../../assets/sponsor_logos/fossa_logo.png";
 import figma_logo from "../../assets/sponsor_logos_2021/figma.png";
 import flipp_logo from "../../assets/sponsor_logos_2021/flipp.png";
@@ -27,15 +30,19 @@ import jtdc_logo from "../../assets/sponsor_logos_2020/jtdc_logo.png";
 import ldss_logo from "../../assets/sponsor_logos/ldss_logo.png";
 import maplesoft_logo from "../../assets/sponsor_logos_2021/maplesoft.png";
 import next_canada_logo from "../../assets/sponsor_logos/next_canada_logo.png";
+import ollon_logo from "../../assets/sponsor_logos/ollon_logo.png";
 import phi_logo from "../../assets/sponsor_logos/phi_logo.png";
 import pwc_logo from "../../assets/sponsor_logos_2021/pwc.png";
+import rogers_logo from "../../assets/sponsor_logos/rogers_business_logo.png";
 import roku_logo from "../../assets/sponsor_logos_2021/roku.png";
+import sephora_logo from "../../assets/sponsor_logos/sephora_logo.png";
 import shopify_logo from "../../assets/sponsor_logos_2020/shopify_logo.png";
 import sticker_mule_logo from "../../assets/sponsor_logos_2021/sticker_mule_logo.png";
 import sunlife_logo from "../../assets/sponsor_logos_2020/sunlife_logo.png";
 import voiceflow_logo from "../../assets/sponsor_logos_2020/voiceflow_logo.png";
 import uphabit_logo from "../../assets/sponsor_logos_2020/uphabit_logo.png";
-import wolfram_logo from "../../assets/sponsor_logos_2021/wolfram.png";
+import veritas_ai_logo from "../../assets/sponsor_logos/veritas_ai_logo.png";
+import wolfram_logo from "../../assets/sponsor_logos/wolfram_corporate_logo.png";
 import zebu_logo from "../../assets/sponsor_logos/zebu_logo.png";
 
 import Particles from "../../components/Particles"
@@ -225,22 +232,33 @@ export default class WebsitePage extends Component {
                     <Container>
                         <Sponsors
                             v2021={true}
+                            platinum={[
+                                { title: "Sephora", logo: sephora_logo, href: "https://www.sephora.com/", paragraph: `Sephora's ASPIRE program is a testament to our commitment to nurturing and supporting early talent. Sephora Canada’s Early talent program is a paid co-op program for 4 or 8 months that encourages and fuels students’ career aspirations with support and guidance from innovators, artists and experts in every field and function.  Our Sephora Canada Life IG account <a href='https://www.instagram.com/sephoracanadalife'>@sephoracanadalife</a> provides a glimpse into the vibrant and inclusive culture at Sephora, showcasing the diverse voices and talents that make our company thrive. At Sephora, we take pride in being recognized as an Employer of Choice, where creativity, diversity, and innovation are celebrated. We have been awarded as Canada’s Best Employers 2022, Canada’s Best Employers for Diversity 2022, Best Workplaces in Retail & Hospitality 2022 and Talent Development 2022. To learn more about Sephora Canada, check out <a href='https://www.inside-sephora.com'/>inside-sephora.com</a>! #SephoraASPIRE #LifeAtSephoraCanada #EmployerOfChoice` },
+                                { title: "Environics Analytics", logo: environics_logo, href: "https://environicsanalytics.com/", paragraph: "Environics Analytics (EA) is an innovative data and analytics company whose mission is to make people's lives better and their clients more successful through transformative and actionable data, insights and solutions. We stand as a prominent data, analytics and marketing services provider in North America, catering to a wide range of industries in private, nonprofit and public sectors. As a company, we are committed to transparency and delivering the highest standards of work to our customers and reflecting those standards in our company culture and beliefs. At our core, EA was a company built to help others through a transformative view of data analytics. But beyond the numbers we are a tight knit community of geodemographers, data scientists, modelling experts, statisticians and marketing experts working to improve the way we do business one datapoint at a time." },
+                            ]}
+                            silverWide={[
+                                { title: "Rogers Business", logo: rogers_logo, href: "https://www.rogers.com/business" },
+                            ]}
                             silver={[
-                                { title: "PwC", logo: pwc_logo, href: "https://www.pwc.com/" },
-                                { title: "Dropbase", logo: dropbase_logo, href: "https://www.dropbase.io/" }
+                                { title: "Ollon", logo: ollon_logo, href: "https://www.ollon.ca/" }, 
+                                { title: "Veritas AI", logo: veritas_ai_logo, href: "https://www.veritasai.com/" },
                             ]}
                             bronze={[
+                                { title: "1Password", logo: onepassword_logo, href: "https://www.1password.com/" },
                                 { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
-                                { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/" },
+                                { title: "Echo3D", logo: echo3d_logo, href: "https://www.echo3d.com/" },
                                 { title: "Figma", logo: figma_logo, href: "https://figma.com/"},
-                                // { title: "Flipp", logo: flipp_logo, href: "https://flipp.com/"},
-                                { title: "Maplesoft", logo: maplesoft_logo, href: "https://www.maplesoft.com/" },
                                 { title: "Roku", logo: roku_logo, href: "https://www.roku.com/en-ca/" },
-                                { title: "Sticker Mule", logo: sticker_mule_logo, href: "http://hackp.ac/mlh-stickermule-hackathons" },
-                                { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" },
-                                { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com/language/" }
+                                { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" }, 
+                                { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com//" }, 
                             ]}
                             previous={[
+                                { title: "PwC", logo: pwc_logo, href: "https://www.pwc.com/" },
+                                { title: "Dropbase", logo: dropbase_logo, href: "https://www.dropbase.io/" },
+                                { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/" }, 
+                                // { title: "Flipp", logo: flipp_logo, href: "https://flipp.com/"},
+                                { title: "Maplesoft", logo: maplesoft_logo, href: "https://www.maplesoft.com/" },
+                                { title: "Sticker Mule", logo: sticker_mule_logo, href: "http://hackp.ac/mlh-stickermule-hackathons" },
                                 { title: "CAA", logo: caa_logo, href: "https://www.caa.ca/" },
                                 { title: "Camplete", logo: camplete_logo, href: "https://camplete.com/" },
                                 { title: "Canadian Tire", logo: canadian_tire_logo, href: "https://www.canadiantire.ca/en.html" },
