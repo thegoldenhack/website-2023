@@ -4,8 +4,12 @@
 .width75 {
   width: 75%;
 }
+.silver {
+  max-height: 350px;
+}
 .width50 {
-  width: 50%;
+  height: 100%;
+  max-width: 60%;
 }
 .width35 {
   width: 35%;
@@ -48,4 +52,11 @@
 }
 .underline {
   text-decoration: underline;
+}
+.platinumParagraph {
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 18px;
 }
