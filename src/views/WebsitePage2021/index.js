@@ -33,7 +33,6 @@ import next_canada_logo from "../../assets/sponsor_logos/next_canada_logo.png";
 import ollon_logo from "../../assets/sponsor_logos/ollon_logo.png";
 import phi_logo from "../../assets/sponsor_logos/phi_logo.png";
 import pwc_logo from "../../assets/sponsor_logos_2021/pwc.png";
-import rogers_logo from "../../assets/sponsor_logos/rogers_business_logo.png";
 import roku_logo from "../../assets/sponsor_logos_2021/roku.png";
 import sephora_logo from "../../assets/sponsor_logos/sephora_logo.png";
 import shopify_logo from "../../assets/sponsor_logos_2020/shopify_logo.png";
@@ -235,9 +234,6 @@ export default class WebsitePage extends Component {
                             platinum={[
                                 { title: "Sephora", logo: sephora_logo, href: "https://www.sephora.com/", paragraph: `Sephora's ASPIRE program is a testament to our commitment to nurturing and supporting early talent. Sephora Canada’s Early talent program is a paid co-op program for 4 or 8 months that encourages and fuels students’ career aspirations with support and guidance from innovators, artists and experts in every field and function.  Our Sephora Canada Life IG account <a href='https://www.instagram.com/sephoracanadalife'>@sephoracanadalife</a> provides a glimpse into the vibrant and inclusive culture at Sephora, showcasing the diverse voices and talents that make our company thrive. At Sephora, we take pride in being recognized as an Employer of Choice, where creativity, diversity, and innovation are celebrated. We have been awarded as Canada’s Best Employers 2022, Canada’s Best Employers for Diversity 2022, Best Workplaces in Retail & Hospitality 2022 and Talent Development 2022. To learn more about Sephora Canada, check out <a href='https://www.inside-sephora.com'/>inside-sephora.com</a>! #SephoraASPIRE #LifeAtSephoraCanada #EmployerOfChoice` },
                                 { title: "Environics Analytics", logo: environics_logo, href: "https://environicsanalytics.com/", paragraph: "Environics Analytics (EA) is an innovative data and analytics company whose mission is to make people's lives better and their clients more successful through transformative and actionable data, insights and solutions. We stand as a prominent data, analytics and marketing services provider in North America, catering to a wide range of industries in private, nonprofit and public sectors. As a company, we are committed to transparency and delivering the highest standards of work to our customers and reflecting those standards in our company culture and beliefs. At our core, EA was a company built to help others through a transformative view of data analytics. But beyond the numbers we are a tight knit community of geodemographers, data scientists, modelling experts, statisticians and marketing experts working to improve the way we do business one datapoint at a time." },
-                            ]}
-                            silverWide={[
-                                { title: "Rogers Business", logo: rogers_logo, href: "https://www.rogers.com/business" },
                             ]}
                             silver={[
                                 { title: "Ollon", logo: ollon_logo, href: "https://www.ollon.ca/" }, 
