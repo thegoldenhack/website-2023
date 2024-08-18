@@ -19,7 +19,7 @@ export default class Footer extends Component {
                             </a>
                         </Col>
                         <Col className={styles.justifyContentCenter}>
-                            <p className={styles.footerColors}>© Copyright 2023 The GoldenHack</p>
+                            <p className={styles.footerColors}>© Copyright 2024 The GoldenHack</p>
                         </Col>
                         <Col className={styles.rightAlign}>
                             <a

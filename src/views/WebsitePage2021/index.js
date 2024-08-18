@@ -80,8 +80,8 @@ export default class WebsitePage extends Component {
                                         <h1 className={styles.h1}>The</h1>
                                         <h1 className={styles.h1}>Golden</h1>
                                         <h1 className={styles.h1}>Hack</h1>
-                                        <h1 className={styles.h1}>5.0</h1>
-                                        <h4 className={styles.p1}>October 7th - October 8th, 2023</h4>
+                                        <h1 className={styles.h1}>6.0</h1>
+                                        <h4 className={styles.p1}>Fall 2024</h4>
                                         <h4 className={styles.p1}>Wilfrid Laurier University</h4>
                                     </Col>
                                     <Col md className={styles.flexCenter}>
@@ -120,7 +120,7 @@ export default class WebsitePage extends Component {
                             </Carousel>
                             <div className={styles.cont2}/>
                             <p className={styles.white}>Unlock the best of both the tech and business worlds.</p>
-                            <p className={styles.white}>The GoldenHack 5.0: Oct 7th - Oct 8th, 2023.</p>
+                            <p className={styles.white}>The GoldenHack 6.0: Fall 2024.</p>
                         </div>
                         
                     </Container>
@@ -141,12 +141,10 @@ export default class WebsitePage extends Component {
                             </div>   
                             <Col className={styles.ourVision}>
                                 <br />
-                                <h2 className={styles.ourVisionTitle}>Our Vision for The GoldenHack 2023</h2>
+                                <h2 className={styles.ourVisionTitle}>Our Vision for The GoldenHack 2024</h2>
                                 <p className={styles.ourVisionBody}>
-                                    With restrictions lifted, we are planning on bringing back an in-person overnight hackathon, 
-                                    including all the in-person activities that a hackathon normally has! And to bring forward 
-                                    the business spirit forward, we'll be hosting our first networking event at the event! 
-                                    So join us on Saturday, October 7th - Sunday, October 8th, for our 5th hackathon, TGH 5.0!
+                                    We plan to bring an in-person overnight hackathon with lots of fun activities!  
+                                    So join us in Fall 2024 for our 6th hackathon, TGH 6.0!
                                 </p>
                                 <br />
                                 <p className={styles.ourVisionBody}>
@@ -177,22 +175,22 @@ export default class WebsitePage extends Component {
                         <div className={styles.statsContainer}>
                             <div className={styles.cont}> </div>
                             <div className={styles.statsOne}>
-                                <p className={styles.statsFontBig}>276 Applicants</p>
+                                <p className={styles.statsFontBig}>Update # Applicants</p>
                             </div>
                             <div className={styles.statsTwo}>
-                                <p className={styles.statsFontBig}>55% Developers</p>
+                                <p className={styles.statsFontBig}>Update # Developers</p>
                             </div>
                             <div className={styles.statsThree}>
-                                <p className={styles.statsFontMid}>90 First-Time Hackers</p>
+                                <p className={styles.statsFontMid}>Update # First-Time Hackers</p>
                             </div>
                             <div className={styles.statsFour}>
-                                <p className={styles.statsFontMid}>30% Business Analysts</p>
+                                <p className={styles.statsFontMid}>Update # Business Analysts</p>
                             </div>
                             <div className={styles.statsFive}>
-                                <p className={styles.statsFontSm}>29 Schools</p>
+                                <p className={styles.statsFontSm}>Update # Schools</p>
                             </div>
                             <div className={styles.statsSix}>
-                                <p className={styles.statsFontSm}>15% Designers</p>
+                                <p className={styles.statsFontSm}>Update # Designers</p>
                             </div>
                             <div className={styles.gearOne}>
                                 <Gear rotation={40} timing={300} width={100} />
