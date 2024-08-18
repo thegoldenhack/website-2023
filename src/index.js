@@ -21,7 +21,7 @@ import ConfirmAccountPage from "./views/ConfirmAccountPage";
 import MyEventsPage from "./views/MyEventsPage";
 import ExecPage from "./views/ExecPage";
 import EventsPage from "./views/EventsPage";
-import ModalDisplay from "./components/ApplicationModal/ModalDisplay";
+//import ModalDisplay from "./components/ApplicationModal/ModalDisplay";
 
 import "./index.css";
 
