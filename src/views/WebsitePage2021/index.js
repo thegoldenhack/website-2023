@@ -175,22 +175,22 @@ export default class WebsitePage extends Component {
                         <div className={styles.statsContainer}>
                             <div className={styles.cont}> </div>
                             <div className={styles.statsOne}>
-                                <p className={styles.statsFontBig}>Update # Applicants</p>
+                                <p className={styles.statsFontBig}>200 Applicants</p>
                             </div>
                             <div className={styles.statsTwo}>
-                                <p className={styles.statsFontBig}>Update # Developers</p>
+                                <p className={styles.statsFontBig}>120 Developers</p>
                             </div>
                             <div className={styles.statsThree}>
-                                <p className={styles.statsFontMid}>Update # First-Time Hackers</p>
+                                <p className={styles.statsFontMid}>No coding experience required!</p>
                             </div>
                             <div className={styles.statsFour}>
-                                <p className={styles.statsFontMid}>Update # Business Analysts</p>
+                                <p className={styles.statsFontMid}>8 Sponsor Representatives</p>
                             </div>
                             <div className={styles.statsFive}>
-                                <p className={styles.statsFontSm}>Update # Schools</p>
+                                <p className={styles.statsFontSm}>8 Schools</p>
                             </div>
                             <div className={styles.statsSix}>
-                                <p className={styles.statsFontSm}>Update # Designers</p>
+                                <p className={styles.statsFontSm}>Open to all programs!</p>
                             </div>
                             <div className={styles.gearOne}>
                                 <Gear rotation={40} timing={300} width={100} />
