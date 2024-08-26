@@ -222,35 +222,39 @@ export default class WebsitePage extends Component {
                 </div>
 
                 {/* Sponsors */}
+
                 <div className={styles.sponsorsBackground}>
                     <Container>
                         <Sponsors
                             v2021={true}
                             platinum={[
-                                { title: "Sephora", logo: sephora_logo, href: "https://www.sephora.com/", paragraph: `Sephora's ASPIRE program is a testament to our commitment to nurturing and supporting early talent. Sephora Canada’s Early talent program is a paid co-op program for 4 or 8 months that encourages and fuels students’ career aspirations with support and guidance from innovators, artists and experts in every field and function.  Our Sephora Canada Life IG account <a href='https://www.instagram.com/sephoracanadalife'>@sephoracanadalife</a> provides a glimpse into the vibrant and inclusive culture at Sephora, showcasing the diverse voices and talents that make our company thrive. At Sephora, we take pride in being recognized as an Employer of Choice, where creativity, diversity, and innovation are celebrated. We have been awarded as Canada’s Best Employers 2022, Canada’s Best Employers for Diversity 2022, Best Workplaces in Retail & Hospitality 2022 and Talent Development 2022. To learn more about Sephora Canada, check out <a href='https://www.inside-sephora.com'/>inside-sephora.com</a>! #SephoraASPIRE #LifeAtSephoraCanada #EmployerOfChoice` },
-                                { title: "Environics Analytics", logo: environics_logo, href: "https://environicsanalytics.com/", paragraph: "Environics Analytics (EA) is an innovative data and analytics company whose mission is to make people's lives better and their clients more successful through transformative and actionable data, insights and solutions. We stand as a prominent data, analytics and marketing services provider in North America, catering to a wide range of industries in private, nonprofit and public sectors. As a company, we are committed to transparency and delivering the highest standards of work to our customers and reflecting those standards in our company culture and beliefs. At our core, EA was a company built to help others through a transformative view of data analytics. But beyond the numbers we are a tight knit community of geodemographers, data scientists, modelling experts, statisticians and marketing experts working to improve the way we do business one datapoint at a time." },
+                                <p className={styles.whoWeAreBody}>  Coming soon! </p>
+                                //{ title: "Sephora", logo: sephora_logo, href: "https://www.sephora.com/", paragraph: `Sephora's ASPIRE program is a testament to our commitment to nurturing and supporting early talent. Sephora Canada’s Early talent program is a paid co-op program for 4 or 8 months that encourages and fuels students’ career aspirations with support and guidance from innovators, artists and experts in every field and function.  Our Sephora Canada Life IG account <a href='https://www.instagram.com/sephoracanadalife'>@sephoracanadalife</a> provides a glimpse into the vibrant and inclusive culture at Sephora, showcasing the diverse voices and talents that make our company thrive. At Sephora, we take pride in being recognized as an Employer of Choice, where creativity, diversity, and innovation are celebrated. We have been awarded as Canada’s Best Employers 2022, Canada’s Best Employers for Diversity 2022, Best Workplaces in Retail & Hospitality 2022 and Talent Development 2022. To learn more about Sephora Canada, check out <a href='https://www.inside-sephora.com'/>inside-sephora.com</a>! #SephoraASPIRE #LifeAtSephoraCanada #EmployerOfChoice` },
+                                //{ title: "Environics Analytics", logo: environics_logo, href: "https://environicsanalytics.com/", paragraph: "Environics Analytics (EA) is an innovative data and analytics company whose mission is to make people's lives better and their clients more successful through transformative and actionable data, insights and solutions. We stand as a prominent data, analytics and marketing services provider in North America, catering to a wide range of industries in private, nonprofit and public sectors. As a company, we are committed to transparency and delivering the highest standards of work to our customers and reflecting those standards in our company culture and beliefs. At our core, EA was a company built to help others through a transformative view of data analytics. But beyond the numbers we are a tight knit community of geodemographers, data scientists, modelling experts, statisticians and marketing experts working to improve the way we do business one datapoint at a time." },
                             ]}
                             silver={[
-                                { title: "Ollon", logo: ollon_logo, href: "https://www.ollon.ca/" }, 
-                                { title: "Veritas AI", logo: veritas_ai_logo, href: "https://www.veritasai.com/" },
+                                //{ title: "Ollon", logo: ollon_logo, href: "https://www.ollon.ca/" }, 
+                                //{ title: "Veritas AI", logo: veritas_ai_logo, href: "https://www.veritasai.com/" },
                             ]}
                             bronze={[
-                                { title: "1Password", logo: onepassword_logo, href: "https://www.1password.com/" },
-                                { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
-                                { title: "Echo3D", logo: echo3d_logo, href: "https://www.echo3d.com/" },
-                                { title: "Figma", logo: figma_logo, href: "https://figma.com/"},
-                                { title: "Roku", logo: roku_logo, href: "https://www.roku.com/en-ca/" },
-                                { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" }, 
-                                { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com//" }, 
+                                //{ title: "1Password", logo: onepassword_logo, href: "https://www.1password.com/" },
+                                // { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
+                                // { title: "Echo3D", logo: echo3d_logo, href: "https://www.echo3d.com/" },
+                                //{ title: "Figma", logo: figma_logo, href: "https://figma.com/"},
+                                // { title: "Roku", logo: roku_logo, href: "https://www.roku.com/en-ca/" },
+                                // { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" }, 
+                                // { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com//" }, 
                             ]}
                             previous={[
+                                { title: "Sephora", logo: sephora_logo, href:  "https://www.sephora.com/" },
+                                { title: "Roku", logo: roku_logo, href: "https://www.roku.com/en-ca/" },
+                                { title: "CAA", logo: caa_logo, href: "https://www.caa.ca/" },
                                 { title: "PwC", logo: pwc_logo, href: "https://www.pwc.com/" },
                                 { title: "Dropbase", logo: dropbase_logo, href: "https://www.dropbase.io/" },
                                 { title: "Digital Ocean", logo: digital_ocean_logo, href: "https://www.digitalocean.com/" }, 
                                 // { title: "Flipp", logo: flipp_logo, href: "https://flipp.com/"},
                                 { title: "Maplesoft", logo: maplesoft_logo, href: "https://www.maplesoft.com/" },
                                 { title: "Sticker Mule", logo: sticker_mule_logo, href: "http://hackp.ac/mlh-stickermule-hackathons" },
-                                { title: "CAA", logo: caa_logo, href: "https://www.caa.ca/" },
                                 { title: "Camplete", logo: camplete_logo, href: "https://camplete.com/" },
                                 { title: "Canadian Tire", logo: canadian_tire_logo, href: "https://www.canadiantire.ca/en.html" },
                                 { title: "Communitech", logo: communitech_logo, href: "https://www.communitech.ca/" },
@@ -266,10 +270,24 @@ export default class WebsitePage extends Component {
                                 { title: "Sun Life Financial", logo: sunlife_logo, href: "https://www.sunlife.ca/en/" },
                                 { title: "Uphabit", logo: uphabit_logo, href: "https://www.uphabit.com/" },
                                 { title: "Zebu", logo: zebu_logo, href: "https://zebu.io/" },
+                                { title: "Environics Analytics", logo: environics_logo, href: "https://environicsanalytics.com/" },
+                                { title: "Ollon", logo: ollon_logo, href: "https://www.ollon.ca/" }, 
+                                { title: "Veritas AI", logo: veritas_ai_logo, href: "https://www.veritasai.com/" },
+                                //{ title: "1Password", logo: onepassword_logo, href: "https://www.1password.com/" },
+                                //{ title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
+                                { title: "Echo3D", logo: echo3d_logo, href: "https://www.echo3d.com/" },
+                                { title: "Figma", logo: figma_logo, href: "https://figma.com/"},
+                                { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" }, 
+                                { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com//" }, 
+
+
+                                
+
                             ]}
                         />
                     </Container>
                 </div>
+                
 
                 {/* FAQ */}
                 <div className={styles.backgroundInverted} style={{paddingBottom: "10vh"}}>
