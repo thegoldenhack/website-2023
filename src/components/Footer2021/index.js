@@ -48,7 +48,7 @@ export default class Footer extends Component {
                                 <Image height='30' width='30'src="https://img.icons8.com/ios-filled/50/FFFFFF/facebook--v1.png" />
                             </a>
                             <a
-                                href="mailto:contact@thegoldenhack.ca?subject=Hello!"
+                                href="mailto:khushi.sheth@thegoldenhack.ca?subject=Hello!"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.marginRight15}

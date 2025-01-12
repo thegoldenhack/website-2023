@@ -5,6 +5,7 @@ import { Navbar as BootstrapNavbar } from "react-bootstrap";
 
 import logo_blue from "../../assets/logo_blue.png";
 import logo_yellow from "../../assets/logo_yellow.png";
+import new_logo from "../../assets/new_logo.png";
 import styles from "./styles.module.css";
 
 export default class CustomNavbar extends Component {
@@ -20,7 +21,7 @@ export default class CustomNavbar extends Component {
       <div>
       <BootstrapNavbar fixed="top" expand="md" className={styles.container}>
         <BootstrapNavbar.Brand href="#head">
-          <Image src={logo_yellow} alt="logo" width="100"></Image>
+          <Image src={new_logo} alt="logo" width="100"></Image>
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
           <BootstrapNavbar.Collapse>

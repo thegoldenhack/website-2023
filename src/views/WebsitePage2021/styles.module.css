@@ -82,10 +82,12 @@ html{
 .h1 {
   font-family: 'New Amsterdam', monospace;
   font-weight: 700;
-  font-size: 5rem;
+  font-size: 4rem; /* Adjusted font size */
   color: #fdd04b;
-  /*-webkit-text-stroke: 1px black; */
+  white-space: nowrap; /* Prevents line breaks */
+  /* -webkit-text-stroke: 1px black; Uncomment if needed */
 }
+
 .p1 {
   font-family: 'Poppins', monospace;
   font-size: 1.5rem;
