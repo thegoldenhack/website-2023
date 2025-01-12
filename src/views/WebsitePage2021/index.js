@@ -240,7 +240,7 @@ export default class WebsitePage extends Component {
                                 {title: "Flatlogic", logo: flatlogic, href: "https://flatlogic.com/" }, 
 
                                 { title: "Nord Security", logo: nordsec, href: "https://nordsecurity.com/" },
-                            ]}
+                            
                             ]}
                             bronze={[
                                 //{ title: "1Password", logo: onepassword_logo, href: "https://www.1password.com/" },
