@@ -40,6 +40,9 @@ import uphabit_logo from "../../assets/sponsor_logos_2020/uphabit_logo.png";
 import veritas_ai_logo from "../../assets/sponsor_logos/veritas_ai_logo.png";
 import wolfram_logo from "../../assets/sponsor_logos/wolfram_corporate_logo.png";
 import zebu_logo from "../../assets/sponsor_logos/zebu_logo.png";
+import dorahack from "../../assets/sponsor_logos/DoraHacks logo_white.png";
+import flatlogic from "../../assets/sponsor_logos/flat_logic_logo.png";
+import nordsec from "../../assets/sponsor_logos/nordsec_logo.png"
 
 import Particles from "../../components/Particles"
 import Navbar from "../../components/Navbar"
@@ -78,7 +81,7 @@ export default class WebsitePage extends Component {
                                 <Row className={styles.fullHeight}>
                                     <Col md className={styles.title}>
                                         <h1 className={styles.h1}>The Golden Hack 6.0</h1>
-                                        <h4 className={styles.p1}>Fall 2024</h4>
+                                        <h4 className={styles.p1}>Winter 2025</h4>
                                         <h4 className={styles.p1}>Wilfrid Laurier University</h4>
                                     </Col>
                                     <Col md className={styles.flexCenter}>
@@ -117,7 +120,7 @@ export default class WebsitePage extends Component {
                             </Carousel>
                             <div className={styles.cont2}/>
                             <p className={styles.white}>Unlock the best of both the tech and business worlds.</p>
-                            <p className={styles.white}>The GoldenHack 6.0: Fall 2024.</p>
+                            <p className={styles.white}>The GoldenHack 6.0: Winter 2025.</p>
                         </div>
                         
                     </Container>
@@ -138,10 +141,10 @@ export default class WebsitePage extends Component {
                             </div>   
                             <Col className={styles.ourVision}>
                                 <br />
-                                <h2 className={styles.ourVisionTitle}>Our Vision for The GoldenHack 2024</h2>
+                                <h2 className={styles.ourVisionTitle}>Our Vision for The GoldenHack 2025</h2>
                                 <p className={styles.ourVisionBody}>
                                     We plan to bring an in-person overnight hackathon with lots of fun activities!  
-                                    So join us in Fall 2024 for our 6th hackathon, TGH 6.0!
+                                    So join us in Winter 2025 for our 6th hackathon, TGH 6.0!
                                 </p>
                                 <br />
                                 <p className={styles.ourVisionBody}>
@@ -225,21 +228,27 @@ export default class WebsitePage extends Component {
                         <Sponsors
                             v2021={true}
                             platinum={[
-                                <p className={styles.whoWeAreBody}>  Coming soon! </p>
+                                
                                 //{ title: "Sephora", logo: sephora_logo, href: "https://www.sephora.com/", paragraph: `Sephora's ASPIRE program is a testament to our commitment to nurturing and supporting early talent. Sephora Canada’s Early talent program is a paid co-op program for 4 or 8 months that encourages and fuels students’ career aspirations with support and guidance from innovators, artists and experts in every field and function.  Our Sephora Canada Life IG account <a href='https://www.instagram.com/sephoracanadalife'>@sephoracanadalife</a> provides a glimpse into the vibrant and inclusive culture at Sephora, showcasing the diverse voices and talents that make our company thrive. At Sephora, we take pride in being recognized as an Employer of Choice, where creativity, diversity, and innovation are celebrated. We have been awarded as Canada’s Best Employers 2022, Canada’s Best Employers for Diversity 2022, Best Workplaces in Retail & Hospitality 2022 and Talent Development 2022. To learn more about Sephora Canada, check out <a href='https://www.inside-sephora.com'/>inside-sephora.com</a>! #SephoraASPIRE #LifeAtSephoraCanada #EmployerOfChoice` },
-                                //{ title: "Environics Analytics", logo: environics_logo, href: "https://environicsanalytics.com/", paragraph: "Environics Analytics (EA) is an innovative data and analytics company whose mission is to make people's lives better and their clients more successful through transformative and actionable data, insights and solutions. We stand as a prominent data, analytics and marketing services provider in North America, catering to a wide range of industries in private, nonprofit and public sectors. As a company, we are committed to transparency and delivering the highest standards of work to our customers and reflecting those standards in our company culture and beliefs. At our core, EA was a company built to help others through a transformative view of data analytics. But beyond the numbers we are a tight knit community of geodemographers, data scientists, modelling experts, statisticians and marketing experts working to improve the way we do business one datapoint at a time." },
+                                //{ title:"Environics Analytics", logo: environics_logo, href: "https://environicsanalytics.com/", paragraph: "Environics Analytics (EA) is an innovative data and analytics company whose mission is to make people's lives better and their clients more successful through transformative and actionable data, insights and solutions. We stand as a prominent data, analytics and marketing services provider in North America, catering to a wide range of industries in private, nonprofit and public sectors. As a company, we are committed to transparency and delivering the highest standards of work to our customers and reflecting those standards in our company culture and beliefs. At our core, EA was a company built to help others through a transformative view of data analytics. But beyond the numbers we are a tight knit community of geodemographers, data scientists, modelling experts, statisticians and marketing experts working to improve the way we do business one datapoint at a time." },
+                                {title: "DoraHack", logo: dorahack, href: "https://dorahacks.io/", paragraph: "DoraHacks is a global hackathon organizer and one of the world's most active multi-chain Web3 developer platforms. It fosters a global hacker movement and provides crypto-native toolkits to help developers worldwide collaborate and fund their ideas and BUIDLs through hackathons, bounties, grants, grant DAOs, and public good staking. To date, over 5,300 projects from the DoraHacks community have received more than $60 million in grants and contributions from supporters across the globe. A wide range of open-source communities, DAOs, and over 90 major blockchain ecosystems actively use Dora's infrastructure (DoraHacks.io) for open-source funding and community governance." },
+
                             ]}
                             silver={[
                                 //{ title: "Ollon", logo: ollon_logo, href: "https://www.ollon.ca/" }, 
                                 //{ title: "Veritas AI", logo: veritas_ai_logo, href: "https://www.veritasai.com/" },
+                                {title: "Flatlogic", logo: flatlogic, href: "https://flatlogic.com/" }, 
+
+                                { title: "Nord Security", logo: nordsec, href: "https://nordsecurity.com/" },
+                            ]}
                             ]}
                             bronze={[
                                 //{ title: "1Password", logo: onepassword_logo, href: "https://www.1password.com/" },
-                                // { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
+                                 { title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
                                 // { title: "Echo3D", logo: echo3d_logo, href: "https://www.echo3d.com/" },
                                 //{ title: "Figma", logo: figma_logo, href: "https://figma.com/"},
                                 // { title: "Roku", logo: roku_logo, href: "https://www.roku.com/en-ca/" },
-                                // { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" }, 
+                                 { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" }, 
                                 // { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com//" }, 
                             ]}
                             previous={[
@@ -274,7 +283,7 @@ export default class WebsitePage extends Component {
                                 //{ title: "Awake Chocolate", logo: awake_logo, href: "https://awakechocolate.ca/"},
                                 { title: "Echo3D", logo: echo3d_logo, href: "https://www.echo3d.com/" },
                                 { title: "Figma", logo: figma_logo, href: "https://figma.com/"},
-                                { title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" }, 
+                                //{ title: "Voiceflow", logo: voiceflow_logo, href: "https://www.voiceflow.com/" }, 
                                 { title: "Wolfram Language", logo: wolfram_logo, href: "https://www.wolfram.com//" }, 
 
 
