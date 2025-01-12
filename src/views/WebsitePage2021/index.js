@@ -77,10 +77,7 @@ export default class WebsitePage extends Component {
                             <Container className="align-items-center">
                                 <Row className={styles.fullHeight}>
                                     <Col md className={styles.title}>
-                                        <h1 className={styles.h1}>The</h1>
-                                        <h1 className={styles.h1}>Golden</h1>
-                                        <h1 className={styles.h1}>Hack</h1>
-                                        <h1 className={styles.h1}>6.0</h1>
+                                        <h1 className={styles.h1}>The Golden Hack 6.0</h1>
                                         <h4 className={styles.p1}>Fall 2024</h4>
                                         <h4 className={styles.p1}>Wilfrid Laurier University</h4>
                                     </Col>
